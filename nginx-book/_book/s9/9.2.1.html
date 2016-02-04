@@ -1,0 +1,4174 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>auto 脚本 | nginx-book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.2">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../s9/9.2.2.html" />
+    
+    
+    <link rel="prev" href="../s9/9.2.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="9.2.1"
+        data-chapter-title="auto 脚本"
+        data-filepath="s9/9.2.1.md"
+        data-basepath=".."
+        data-revision="Thu Feb 04 2016 12:05:33 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="s1/index.html">
+            
+                
+                    <a href="../s1/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        背景介绍
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="s1/1.1.html">
+            
+                
+                    <a href="../s1/1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        nginx 历史
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="s1/1.2.html">
+            
+                
+                    <a href="../s1/1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        使用简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="s1/1.3.html">
+            
+                
+                    <a href="../s1/1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        nginx 特点介绍
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="s2/index.html">
+            
+                
+                    <a href="../s2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        nginx 平台初探
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="s2/2.1.html">
+            
+                
+                    <a href="../s2/2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        初探 nginx 架构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="s2/2.2.html">
+            
+                
+                    <a href="../s2/2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        nginx 基础概念
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="s2/2.2.1.html">
+            
+                
+                    <a href="../s2/2.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.1.</b>
+                        
+                        connection
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="s2/2.2.2.html">
+            
+                
+                    <a href="../s2/2.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.2.</b>
+                        
+                        request
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.2.1" data-path="s2/2.2.2.1.html">
+            
+                
+                    <a href="../s2/2.2.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.2.1.</b>
+                        
+                        keepalive
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.2" data-path="s2/2.2.2.2.html">
+            
+                
+                    <a href="../s2/2.2.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.2.2.</b>
+                        
+                        pipe
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.3" data-path="s2/2.2.2.3.html">
+            
+                
+                    <a href="../s2/2.2.2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.2.3.</b>
+                        
+                        lingering_close
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="s2/2.3.html">
+            
+                
+                    <a href="../s2/2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        基本数据结构
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="s2/2.3.1.html">
+            
+                
+                    <a href="../s2/2.3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.1.</b>
+                        
+                        ngx_str_t
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="s2/2.3.2.html">
+            
+                
+                    <a href="../s2/2.3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.2.</b>
+                        
+                        ngx_pool_t
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="s2/2.3.3.html">
+            
+                
+                    <a href="../s2/2.3.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.3.</b>
+                        
+                        ngx_array_t
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="s2/2.3.4.html">
+            
+                
+                    <a href="../s2/2.3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.4.</b>
+                        
+                        ngx_hash_t
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.5" data-path="s2/2.3.5.html">
+            
+                
+                    <a href="../s2/2.3.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.5.</b>
+                        
+                        ngx_hash_wildcard_t
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.6" data-path="s2/2.3.6.html">
+            
+                
+                    <a href="../s2/2.3.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.6.</b>
+                        
+                        ngx_hash_combined_t
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.7" data-path="s2/2.3.7.html">
+            
+                
+                    <a href="../s2/2.3.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.7.</b>
+                        
+                        ngx_hash_keys_arrays_t
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.8" data-path="s2/2.3.8.html">
+            
+                
+                    <a href="../s2/2.3.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.8.</b>
+                        
+                        ngx_chain_t
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.9" data-path="s2/2.3.9.html">
+            
+                
+                    <a href="../s2/2.3.9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.9.</b>
+                        
+                        ngx_buf_t
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.10" data-path="s2/2.3.10.html">
+            
+                
+                    <a href="../s2/2.3.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.10.</b>
+                        
+                        ngx_list_t
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.11" data-path="s2/2.3.11.html">
+            
+                
+                    <a href="../s2/2.3.11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.11.</b>
+                        
+                        ngx_queue_t
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="s2/2.4.html">
+            
+                
+                    <a href="../s2/2.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        nginx 的配置系统
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="s2/2.4.1.html">
+            
+                
+                    <a href="../s2/2.4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.1.</b>
+                        
+                        指令概述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="s2/2.4.2.html">
+            
+                
+                    <a href="../s2/2.4.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.2.</b>
+                        
+                        指令参数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3" data-path="s2/2.4.3.html">
+            
+                
+                    <a href="../s2/2.4.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.3.</b>
+                        
+                        指令上下文
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="s2/2.5.html">
+            
+                
+                    <a href="../s2/2.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        nginx 的模板化体系结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="s2/2.6.html">
+            
+                
+                    <a href="../s2/2.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        模块概述
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" data-path="s2/2.6.1.html">
+            
+                
+                    <a href="../s2/2.6.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.1.</b>
+                        
+                        模块的分类
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="s2/2.7.html">
+            
+                
+                    <a href="../s2/2.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        nginx 的请求处理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.7.1" data-path="s2/2.7.1.html">
+            
+                
+                    <a href="../s2/2.7.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.1.</b>
+                        
+                        请求的处理流程
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="s3/index.html">
+            
+                
+                    <a href="../s3/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        handler 模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="s3/3.1.html">
+            
+                
+                    <a href="../s3/3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        handler 模块简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="s3/3.2.html">
+            
+                
+                    <a href="../s3/3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        模块的基本结构
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="s3/3.2.1.html">
+            
+                
+                    <a href="../s3/3.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.1.</b>
+                        
+                        模块配置结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="s3/3.2.2.html">
+            
+                
+                    <a href="../s3/3.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.2.</b>
+                        
+                        模块配置指令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="s3/3.2.3.html">
+            
+                
+                    <a href="../s3/3.2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.3.</b>
+                        
+                        模块上下文结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="s3/3.2.4.html">
+            
+                
+                    <a href="../s3/3.2.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.4.</b>
+                        
+                        模块的定义
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="s3/3.3.html">
+            
+                
+                    <a href="../s3/3.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        handler 模块的基本结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="s3/3.4.html">
+            
+                
+                    <a href="../s3/3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        handler 模块的挂载
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="s3/3.4.1.html">
+            
+                
+                    <a href="../s3/3.4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.1.</b>
+                        
+                        按处理阶段挂载
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="s3/3.4.2.html">
+            
+                
+                    <a href="../s3/3.4.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.2.</b>
+                        
+                        按需挂载
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="s3/3.5.html">
+            
+                
+                    <a href="../s3/3.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        handler 的编写步骤
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="s3/3.6.html">
+            
+                
+                    <a href="../s3/3.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        示例: hello handler 模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="s3/3.7.html">
+            
+                
+                    <a href="../s3/3.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        handler 模块的编译和使用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.7.1" data-path="s3/3.7.1.html">
+            
+                
+                    <a href="../s3/3.7.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.1.</b>
+                        
+                        config 文件的编写
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.2" data-path="s3/3.7.2.html">
+            
+                
+                    <a href="../s3/3.7.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.2.</b>
+                        
+                        编译
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.3" data-path="s3/3.7.3.html">
+            
+                
+                    <a href="../s3/3.7.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.3.</b>
+                        
+                        使用
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="s3/3.8.html">
+            
+                
+                    <a href="../s3/3.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        更多 handler 模块示例分析
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.8.1" data-path="s3/3.8.1.html">
+            
+                
+                    <a href="../s3/3.8.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.1.</b>
+                        
+                        http access module
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8.2" data-path="s3/3.8.2.html">
+            
+                
+                    <a href="../s3/3.8.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.2.</b>
+                        
+                        http static module
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8.3" data-path="s3/3.8.3.html">
+            
+                
+                    <a href="../s3/3.8.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.3.</b>
+                        
+                        http log module
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="s4/index.html">
+            
+                
+                    <a href="../s4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        过滤模块(90%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="s4/4.1.html">
+            
+                
+                    <a href="../s4/4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        过滤模块简介
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="s4/4.1.1.html">
+            
+                
+                    <a href="../s4/4.1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.1.</b>
+                        
+                        执行时间和内容
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="s4/4.1.2.html">
+            
+                
+                    <a href="../s4/4.1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.2.</b>
+                        
+                        执行顺序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="s4/4.1.3.html">
+            
+                
+                    <a href="../s4/4.1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.3.</b>
+                        
+                        模块编译
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="s4/4.2.html">
+            
+                
+                    <a href="../s4/4.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        过滤模块的分析
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="s4/4.2.1.html">
+            
+                
+                    <a href="../s4/4.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.1.</b>
+                        
+                        相关结构体
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="s4/4.2.2.html">
+            
+                
+                    <a href="../s4/4.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.2.</b>
+                        
+                        响应头过滤函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="s4/4.2.3.html">
+            
+                
+                    <a href="../s4/4.2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.3.</b>
+                        
+                        响应体过滤函数
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.3.1" data-path="s4/4.2.3.1.html">
+            
+                
+                    <a href="../s4/4.2.3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.3.1.</b>
+                        
+                        主要功能介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3.2" data-path="s4/4.2.3.2.html">
+            
+                
+                    <a href="../s4/4.2.3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.3.2.</b>
+                        
+                        发出子请求
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3.3" data-path="s4/4.2.3.3.html">
+            
+                
+                    <a href="../s4/4.2.3.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.3.3.</b>
+                        
+                        一些优化措施
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3.4" data-path="s4/4.2.3.4.html">
+            
+                
+                    <a href="../s4/4.2.3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.3.4.</b>
+                        
+                        过滤内容的缓存
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="s5/index.html">
+            
+                
+                    <a href="../s5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        upstream 模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="s5/5.1.html">
+            
+                
+                    <a href="../s5/5.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        upstream 模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="s5/5.1.1.html">
+            
+                
+                    <a href="../s5/5.1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.1.</b>
+                        
+                        upstream 模块接口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="s5/5.1.2.html">
+            
+                
+                    <a href="../s5/5.1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.2.</b>
+                        
+                        memcached 模块分析
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.2.1" data-path="s5/5.1.2.1.html">
+            
+                
+                    <a href="../s5/5.1.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.2.1.</b>
+                        
+                        Handler 模块？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2.2" data-path="s5/5.1.2.2.html">
+            
+                
+                    <a href="../s5/5.1.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.2.2.</b>
+                        
+                        Upstream 模块！
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2.3" data-path="s5/5.1.2.3.html">
+            
+                
+                    <a href="../s5/5.1.2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.2.3.</b>
+                        
+                        回调函数
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="s5/5.1.3.html">
+            
+                
+                    <a href="../s5/5.1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.3.</b>
+                        
+                        本节回顾
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="s5/5.2.html">
+            
+                
+                    <a href="../s5/5.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        负载均衡模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="s5/5.2.1.html">
+            
+                
+                    <a href="../s5/5.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.1.</b>
+                        
+                        配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="s5/5.2.2.html">
+            
+                
+                    <a href="../s5/5.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.2.</b>
+                        
+                        指令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="s5/5.2.3.html">
+            
+                
+                    <a href="../s5/5.2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.3.</b>
+                        
+                        钩子
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.3.1" data-path="s5/5.2.3.1.html">
+            
+                
+                    <a href="../s5/5.2.3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.3.1.</b>
+                        
+                        设置 uscf-&gt;flags
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3.2" data-path="s5/5.2.3.2.html">
+            
+                
+                    <a href="../s5/5.2.3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.3.2.</b>
+                        
+                        设置 init_upstream回调
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="s5/5.2.4.html">
+            
+                
+                    <a href="../s5/5.2.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.4.</b>
+                        
+                        初始化配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="s5/5.2.5.html">
+            
+                
+                    <a href="../s5/5.2.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.5.</b>
+                        
+                        初始化请求
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.6" data-path="s5/5.2.6.html">
+            
+                
+                    <a href="../s5/5.2.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.6.</b>
+                        
+                        peer.get 和 peer.free 回调函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="s5/5.2.7.html">
+            
+                
+                    <a href="../s5/5.2.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.7.</b>
+                        
+                        本节回顾
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="s6/index.html">
+            
+                
+                    <a href="../s6/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        其他模块(40%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="s6/6.1.html">
+            
+                
+                    <a href="../s6/6.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        core 模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="s6/6.1.1.html">
+            
+                
+                    <a href="../s6/6.1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.1.</b>
+                        
+                        nginx 的启动模块
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="s6/6.2.html">
+            
+                
+                    <a href="../s6/6.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        event 模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="s6/6.2.1.html">
+            
+                
+                    <a href="../s6/6.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.1.</b>
+                        
+                        event 的类型和功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="s6/6.2.2.html">
+            
+                
+                    <a href="../s6/6.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.2.</b>
+                        
+                        accept 锁
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="s6/6.2.3.html">
+            
+                
+                    <a href="../s6/6.2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.3.</b>
+                        
+                        定时器
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="s6/6.3.html">
+            
+                
+                    <a href="../s6/6.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        mail 模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="s6/6.3.1.html">
+            
+                
+                    <a href="../s6/6.3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.1.</b>
+                        
+                        mail 模块的实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="s6/6.3.2.html">
+            
+                
+                    <a href="../s6/6.3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.2.</b>
+                        
+                        mail 模块的功能
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="s7/index.html">
+            
+                
+                    <a href="../s7/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        模块开发高级篇(30%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="s7/7.1.html">
+            
+                
+                    <a href="../s7/7.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        变量(80%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="s7/7.1.1.html">
+            
+                
+                    <a href="../s7/7.1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.1.</b>
+                        
+                        综述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="s7/7.1.2.html">
+            
+                
+                    <a href="../s7/7.1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.2.</b>
+                        
+                        创建变量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="s7/7.1.3.html">
+            
+                
+                    <a href="../s7/7.1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.3.</b>
+                        
+                        使用变量
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="s7/7.2.html">
+            
+                
+                    <a href="../s7/7.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        upstream
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="s7/7.2.1.html">
+            
+                
+                    <a href="../s7/7.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.</b>
+                        
+                        使用 subrequest 访问 upstream
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1.1" data-path="s7/7.2.1.1.html">
+            
+                
+                    <a href="../s7/7.2.1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.1.</b>
+                        
+                        event 机制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.1.2" data-path="s7/7.2.1.2.html">
+            
+                
+                    <a href="../s7/7.2.1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.2.</b>
+                        
+                        例讲(主动健康检查模块)
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="s7/7.2.2.html">
+            
+                
+                    <a href="../s7/7.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.2.</b>
+                        
+                        超越 upstream
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="s7/7.3.html">
+            
+                
+                    <a href="../s7/7.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        使用 lua 模块
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="s8/index.html">
+            
+                
+                    <a href="../s8/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        高性能服务器设计(0%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="s8/8.1.html">
+            
+                
+                    <a href="../s8/8.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        c10k 问题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="s8/8.2.html">
+            
+                
+                    <a href="../s8/8.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        高性能服务器编写的关键原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="s8/8.3.html">
+            
+                
+                    <a href="../s8/8.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        事件驱动的核心引擎
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="s8/8.4.html">
+            
+                
+                    <a href="../s8/8.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        定时器管理
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="s9/index.html">
+            
+                
+                    <a href="../s9/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        nginx 架构详解(50%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="s9/9.1.html">
+            
+                
+                    <a href="../s9/9.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        nginx 的源码目录结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="s9/9.2.html">
+            
+                
+                    <a href="../s9/9.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        nginx 的 configure 原理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="9.2.1" data-path="s9/9.2.1.html">
+            
+                
+                    <a href="../s9/9.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.1.</b>
+                        
+                        auto 脚本
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" data-path="s9/9.2.2.html">
+            
+                
+                    <a href="../s9/9.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.2.</b>
+                        
+                        模块编译顺序
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="s9/9.3.html">
+            
+                
+                    <a href="../s9/9.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        nginx 的事件机制(0%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" data-path="s9/9.3.1.html">
+            
+                
+                    <a href="../s9/9.3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.1.</b>
+                        
+                        event 框架及非阻塞模型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" data-path="s9/9.3.2.html">
+            
+                
+                    <a href="../s9/9.3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.2.</b>
+                        
+                        定时器实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.3" data-path="s9/9.3.3.html">
+            
+                
+                    <a href="../s9/9.3.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.3.</b>
+                        
+                        信号处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.4" data-path="s9/9.3.4.html">
+            
+                
+                    <a href="../s9/9.3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.4.</b>
+                        
+                        惊群问题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="s9/9.4.html">
+            
+                
+                    <a href="../s9/9.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        nginx 的进程机制(0%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.4.1" data-path="s9/9.4.1.html">
+            
+                
+                    <a href="../s9/9.4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.1.</b>
+                        
+                        master 进程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.2" data-path="s9/9.4.2.html">
+            
+                
+                    <a href="../s9/9.4.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.2.</b>
+                        
+                        worker 进程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4.3" data-path="s9/9.4.3.html">
+            
+                
+                    <a href="../s9/9.4.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.3.</b>
+                        
+                        进程间通讯
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="s10/index.html">
+            
+                
+                    <a href="../s10/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        nginx 基础设施(10%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="s10/10.1.html">
+            
+                
+                    <a href="../s10/10.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        内存池
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1.1" data-path="s10/10.1.1.html">
+            
+                
+                    <a href="../s10/10.1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.1.</b>
+                        
+                        简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.2" data-path="s10/10.1.2.html">
+            
+                
+                    <a href="../s10/10.1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.2.</b>
+                        
+                        结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.3" data-path="s10/10.1.3.html">
+            
+                
+                    <a href="../s10/10.1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.3.</b>
+                        
+                        实现
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="s10/10.2.html">
+            
+                
+                    <a href="../s10/10.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        共享内存(0%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.2.1" data-path="s10/10.2.1.html">
+            
+                
+                    <a href="../s10/10.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.1.</b>
+                        
+                        slab 算法
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="s10/10.3.html">
+            
+                
+                    <a href="../s10/10.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        buffer 管理(0%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.3.1" data-path="s10/10.3.1.html">
+            
+                
+                    <a href="../s10/10.3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.1.</b>
+                        
+                        buffer 重用机制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3.2" data-path="s10/10.3.2.html">
+            
+                
+                    <a href="../s10/10.3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.2.</b>
+                        
+                        buffer 防拷贝机制
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="s10/10.4.html">
+            
+                
+                    <a href="../s10/10.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        chain 管理(0%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.4.1" data-path="s10/10.4.1.html">
+            
+                
+                    <a href="../s10/10.4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.1.</b>
+                        
+                        chain 重用机制
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="s10/10.5.html">
+            
+                
+                    <a href="../s10/10.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        aio 原理(0%)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="s10/10.6.html">
+            
+                
+                    <a href="../s10/10.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        锁实现(0%)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="s10/10.7.html">
+            
+                
+                    <a href="../s10/10.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        基本数据结构(0%)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="s10/10.8.html">
+            
+                
+                    <a href="../s10/10.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.8.</b>
+                        
+                        时间缓存(0%)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.9" data-path="s10/10.9.html">
+            
+                
+                    <a href="../s10/10.9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.9.</b>
+                        
+                        文件缓存(0%)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.10" data-path="s10/10.10.html">
+            
+                
+                    <a href="../s10/10.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.10.</b>
+                        
+                        log机制(0%)
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="s11/index.html">
+            
+                
+                    <a href="../s11/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        nginx 的启动阶段(30%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="s11/11.1.html">
+            
+                
+                    <a href="../s11/11.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        概述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="s11/11.2.html">
+            
+                
+                    <a href="../s11/11.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        共有流程
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.2.1" data-path="s11/11.2.1.html">
+            
+                
+                    <a href="../s11/11.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.1.</b>
+                        
+                        配置解析接口
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="s11/11.3.html">
+            
+                
+                    <a href="../s11/11.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        配置解析(90%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.3.1" data-path="s11/11.3.1.html">
+            
+                
+                    <a href="../s11/11.3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.1.</b>
+                        
+                        通用过程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.2" data-path="s11/11.3.2.html">
+            
+                
+                    <a href="../s11/11.3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.2.</b>
+                        
+                        http 的解析
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.3.2.1" data-path="s11/11.3.2.1.html">
+            
+                
+                    <a href="../s11/11.3.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.2.1.</b>
+                        
+                        创建并初始化上下文环境
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.2.2" data-path="s11/11.3.2.2.html">
+            
+                
+                    <a href="../s11/11.3.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.2.2.</b>
+                        
+                        调用通用解析流程解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.2.3" data-path="s11/11.3.2.3.html">
+            
+                
+                    <a href="../s11/11.3.2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.2.3.</b>
+                        
+                        根据解析结果进行后续合并处理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.3.2.3.1" data-path="s11/11.3.2.3.1.html">
+            
+                
+                    <a href="../s11/11.3.2.3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.2.3.1.</b>
+                        
+                        location 配置树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.2.3.2" data-path="s11/11.3.2.3.2.html">
+            
+                
+                    <a href="../s11/11.3.2.3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.2.3.2.</b>
+                        
+                        location 搜索树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.2.3.3" data-path="s11/11.3.2.3.3.html">
+            
+                
+                    <a href="../s11/11.3.2.3.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.2.3.3.</b>
+                        
+                        变量表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.2.3.4" data-path="s11/11.3.2.3.4.html">
+            
+                
+                    <a href="../s11/11.3.2.3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.2.3.4.</b>
+                        
+                        阶段处理回调表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.2.3.5" data-path="s11/11.3.2.3.5.html">
+            
+                
+                    <a href="../s11/11.3.2.3.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.2.3.5.</b>
+                        
+                        server 对照表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.2.3.6" data-path="s11/11.3.2.3.6.html">
+            
+                
+                    <a href="../s11/11.3.2.3.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.2.3.6.</b>
+                        
+                        端口监听表
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.2.4" data-path="s11/11.3.2.4.html">
+            
+                
+                    <a href="../s11/11.3.2.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.2.4.</b>
+                        
+                        善后工作
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.3" data-path="s11/11.3.3.html">
+            
+                
+                    <a href="../s11/11.3.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.3.</b>
+                        
+                        server 的管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.4" data-path="s11/11.3.4.html">
+            
+                
+                    <a href="../s11/11.3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.4.</b>
+                        
+                        location 的管理
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="s11/11.4.html">
+            
+                
+                    <a href="../s11/11.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.4.</b>
+                        
+                        模块初始化(0%)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="s11/11.5.html">
+            
+                
+                    <a href="../s11/11.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.5.</b>
+                        
+                        热代码部署(0%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.5.1" data-path="s11/11.5.1.html">
+            
+                
+                    <a href="../s11/11.5.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.5.1.</b>
+                        
+                        reload 过程解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5.2" data-path="s11/11.5.2.html">
+            
+                
+                    <a href="../s11/11.5.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.5.2.</b>
+                        
+                        upgrade 过程解析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="s12/index.html">
+            
+                
+                    <a href="../s12/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        nginx 的请求处理阶段(90%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="s12/12.1.html">
+            
+                
+                    <a href="../s12/12.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        接收请求流程(99%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.1" data-path="s12/12.1.1.html">
+            
+                
+                    <a href="../s12/12.1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.1.</b>
+                        
+                        http 请求格式简介(99%)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.1.2" data-path="s12/12.1.2.html">
+            
+                
+                    <a href="../s12/12.1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.2.</b>
+                        
+                        请求头读取(99%)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.2.1" data-path="s12/12.1.2.1.html">
+            
+                
+                    <a href="../s12/12.1.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.2.1.</b>
+                        
+                        解析请求行(99%)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.1.2.2" data-path="s12/12.1.2.2.html">
+            
+                
+                    <a href="../s12/12.1.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.2.2.</b>
+                        
+                        解析请求头(99%)
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.1.3" data-path="s12/12.1.3.html">
+            
+                
+                    <a href="../s12/12.1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.3.</b>
+                        
+                        请求体读取
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1.3.1" data-path="s12/12.1.3.1.html">
+            
+                
+                    <a href="../s12/12.1.3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.3.1.</b>
+                        
+                        读取请求体
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.1.3.2" data-path="s12/12.1.3.2.html">
+            
+                
+                    <a href="../s12/12.1.3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.3.2.</b>
+                        
+                        丢弃请求体
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="s12/12.2.html">
+            
+                
+                    <a href="../s12/12.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        多阶段处理请求
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.2.1" data-path="s12/12.2.1.html">
+            
+                
+                    <a href="../s12/12.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.1.</b>
+                        
+                        多阶段执行链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.2" data-path="s12/12.2.2.html">
+            
+                
+                    <a href="../s12/12.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.2.</b>
+                        
+                        POST_READ 阶段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.3" data-path="s12/12.2.3.html">
+            
+                
+                    <a href="../s12/12.2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.3.</b>
+                        
+                        SERVER_REWRITE 阶段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.4" data-path="s12/12.2.4.html">
+            
+                
+                    <a href="../s12/12.2.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.4.</b>
+                        
+                        FIND_CONFIG 阶段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.5" data-path="s12/12.2.5.html">
+            
+                
+                    <a href="../s12/12.2.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.5.</b>
+                        
+                        REWRITE 阶段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.6" data-path="s12/12.2.6.html">
+            
+                
+                    <a href="../s12/12.2.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.6.</b>
+                        
+                        POST_REWRITE 阶段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.7" data-path="s12/12.2.7.html">
+            
+                
+                    <a href="../s12/12.2.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.7.</b>
+                        
+                        PREACCESS 阶段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.8" data-path="s12/12.2.8.html">
+            
+                
+                    <a href="../s12/12.2.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.8.</b>
+                        
+                        ACCESS 阶段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.9" data-path="s12/12.2.9.html">
+            
+                
+                    <a href="../s12/12.2.9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.9.</b>
+                        
+                        POST_ACCESS 阶段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.10" data-path="s12/12.2.10.html">
+            
+                
+                    <a href="../s12/12.2.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.10.</b>
+                        
+                        TRY_FILES 阶段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.11" data-path="s12/12.2.11.html">
+            
+                
+                    <a href="../s12/12.2.11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.11.</b>
+                        
+                        CONTENT 阶段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2.12" data-path="s12/12.2.12.html">
+            
+                
+                    <a href="../s12/12.2.12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.12.</b>
+                        
+                        LOG 阶段
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="s12/12.3.html">
+            
+                
+                    <a href="../s12/12.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        nginx filter
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.3.1" data-path="s12/12.3.1.html">
+            
+                
+                    <a href="../s12/12.3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.1.</b>
+                        
+                        header filter 分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3.2" data-path="s12/12.3.2.html">
+            
+                
+                    <a href="../s12/12.3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.2.</b>
+                        
+                        body filter 分析
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.3.2.1" data-path="s12/12.3.2.1.html">
+            
+                
+                    <a href="../s12/12.3.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.2.1.</b>
+                        
+                        ngx_http_copy_filter_module 分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3.2.2" data-path="s12/12.3.2.2.html">
+            
+                
+                    <a href="../s12/12.3.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.2.2.</b>
+                        
+                        ngx_http_write_filter_module 分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="s12/12.4.html">
+            
+                
+                    <a href="../s12/12.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        subrequest 原理解析(99%)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="s12/12.5.html">
+            
+                
+                    <a href="../s12/12.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        https 请求处理解析
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.5.1" data-path="s12/12.5.1.html">
+            
+                
+                    <a href="../s12/12.5.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.1.</b>
+                        
+                        nginx 支持 ssl 简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5.2" data-path="s12/12.5.2.html">
+            
+                
+                    <a href="../s12/12.5.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.2.</b>
+                        
+                        ssl 连接建立( ssl 握手)
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.5.2.1" data-path="s12/12.5.2.1.html">
+            
+                
+                    <a href="../s12/12.5.2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.2.1.</b>
+                        
+                        对 ssl 连接建立的准备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5.2.2" data-path="s12/12.5.2.2.html">
+            
+                
+                    <a href="../s12/12.5.2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.2.2.</b>
+                        
+                        实际 ssl 握手阶段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5.2.3" data-path="s12/12.5.2.3.html">
+            
+                
+                    <a href="../s12/12.5.2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.2.3.</b>
+                        
+                        ssl 协议接受数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5.2.4" data-path="s12/12.5.2.4.html">
+            
+                
+                    <a href="../s12/12.5.2.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.2.4.</b>
+                        
+                        ssl 协议发送数据
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="s13/index.html">
+            
+                
+                    <a href="../s13/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        nginx 的 upstream 原理解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="s14/index.html">
+            
+                
+                    <a href="../s14/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        nginx 的 script 处理
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >nginx-book</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="auto-&#x811A;&#x672C;">auto &#x811A;&#x672C;</h1>
+<hr>
+<p>&#x2003;&#x2003;
+auto &#x811A;&#x672C;&#x7531;&#x4E00;&#x7CFB;&#x5217;&#x811A;&#x672C;&#x7EC4;&#x6210;&#xFF0C;&#x5B83;&#x4EEC;&#x6709;&#x4E00;&#x4E9B;&#x662F;&#x5B9E;&#x73B0;&#x4E00;&#x4E9B;&#x901A;&#x7528;&#x529F;&#x80FD;&#x7531;&#x5176;&#x5B83;&#x811A;&#x672C;&#x6765;&#x8C03;&#x7528;&#xFF08;&#x5982; have &#xFF09;&#xFF0C;&#x6709;&#x4E00;&#x4E9B;&#x5219;&#x662F;&#x5B8C;&#x6210;&#x4E00;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x529F;&#x80FD;&#xFF08;&#x5982; option &#xFF09;&#x3002;
+&#x811A;&#x672C;&#x4E4B;&#x95F4;&#x7684;&#x4E3B;&#x8981;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x53CA;&#x8C03;&#x7528;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF08;&#x7531;&#x4E0A;&#x5230;&#x4E0B;&#x8868;&#x793A;&#x4E3B;&#x6D41;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF09;&#xFF1A;</p>
+<p><a href="http://tengine.taobao.org/book/_images/chapter-9-1.jpg" target="_blank">http://tengine.taobao.org/book/_images/chapter-9-1.jpg</a> (&#x56FE;&#x7247;&#x4E22;&#x5931;)</p>
+<p>&#x2003;&#x2003;
+&#x63A5;&#x4E0B;&#x6765;&#x7ED3;&#x5408;&#x4EE3;&#x7801;&#x6765;&#x5206;&#x6790;&#x4E0B; configure &#x7684;&#x539F;&#x7406;:</p>
+<p>&#x2003;&#x2003;
+&#x4E00;&#x3001;&#x521D;&#x59CB;&#x5316;</p>
+<pre><code>. auto/options
+. auto/init
+. auto/sources
+</code></pre><p>&#x2003;&#x2003;
+&#x8FD9;&#x662F; configure &#x6E90;&#x7801;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x7684;&#x524D;&#x4E09;&#x884C;&#xFF0C;&#x4F9D;&#x6B21;&#x4EA4;&#x7531; auto &#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x7684; option&#x3001;init&#x3001;sources &#x6765;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x4E8C;&#x3001;auto/options</p>
+<p>&#x2003;&#x2003;
+&#x4E3B;&#x662F;&#x5904;&#x7406;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684; configure &#x9009;&#x9879;&#x4EE5;&#x53CA;&#x8F93;&#x51FA;&#x5E2E;&#x52A9;&#x4FE1;&#x606F;&#x7B49;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED3;&#x5408; nginx &#x7684;&#x6E90;&#x7801;&#x6765;&#x9605;&#x8BFB;&#x672C;&#x7AE0;&#x5185;&#x5BB9;&#x3002;
+&#x7531;&#x4E8E;&#x7BC7;&#x5E45;&#x5173;&#x7CFB;&#xFF0C;&#x8FD9;&#x91CC;&#x5927;&#x81F4;&#x5217;&#x51FA;&#x6B64;&#x6587;&#x4EF6;&#x7684;&#x7ED3;&#x6784;&#xFF1A;</p>
+<pre><code>##1. &#x8BBE;&#x7F6E;&#x9009;&#x9879;&#x5BF9;&#x5E94;&#x7684; shell &#x53D8;&#x91CF;&#x4EE5;&#x53CA;&#x4ED6;&#x4EEC;&#x7684;&#x521D;&#x59CB;&#x503C;
+help=no
+NGX_PREFIX=
+NGX_SBIN_PATH=
+NGX_CONF_PREFIX=
+NGX_CONF_PATH=
+NGX_ERROR_LOG_PATH=
+NGX_PID_PATH=
+NGX_LOCK_PATH=
+NGX_USER=
+NGX_GROUP=
+
+...
+
+## 2, &#x5904;&#x7406;&#x6BCF;&#x4E00;&#x4E2A;&#x9009;&#x9879;&#x503C;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E2D;
+for option
+do
+    opt=&quot;$opt `echo $option | sed -e \&quot;s/\(--[^=]*=\)\(.* .*\)/\1&apos;\2&apos;/\&quot;`&quot;
+
+    # &#x5F97;&#x5230;&#x6B64;&#x9009;&#x9879;&#x7684;value&#x90E8;&#x5206;
+    case &quot;$option&quot; in
+        -*=*) value=`echo &quot;$option&quot; | sed -e &apos;s/[-_a-zA-Z0-9]*=//&apos;` ;;
+            *) value=&quot;&quot; ;;
+    esac
+
+    # &#x6839;&#x636E;option&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x5339;&#x914D;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x76F8;&#x5E94;&#x7684;&#x9009;&#x9879;
+    case &quot;$option&quot; in
+        --help)                          help=yes                   ;;
+        --prefix=)                       NGX_PREFIX=&quot;!&quot;             ;;
+        --prefix=*)                      NGX_PREFIX=&quot;$value&quot;        ;;
+        --sbin-path=*)                   NGX_SBIN_PATH=&quot;$value&quot;     ;;
+        --conf-path=*)                   NGX_CONF_PATH=&quot;$value&quot;     ;;
+        --error-log-path=*)              NGX_ERROR_LOG_PATH=&quot;$value&quot;;;
+        --pid-path=*)                    NGX_PID_PATH=&quot;$value&quot;      ;;
+        --lock-path=*)                   NGX_LOCK_PATH=&quot;$value&quot;     ;;
+        --user=*)                        NGX_USER=&quot;$value&quot;          ;;
+        --group=*)                       NGX_GROUP=&quot;$value&quot;         ;;
+
+        ...
+
+        *)
+            # &#x6CA1;&#x6709;&#x627E;&#x5230;&#x7684;&#x5BF9;&#x5E94;&#x9009;&#x9879;
+            echo &quot;$0: error: invalid option \&quot;$option\&quot;&quot;
+            exit 1
+        ;;
+    esac
+done
+
+## 3. &#x5BF9;&#x9009;&#x9879;&#x8FDB;&#x884C;&#x5904;&#x7406;
+
+# &#x5982;&#x679C;&#x6709; --help&#xFF0C;&#x5219;&#x8F93;&#x51FA;&#x5E2E;&#x52A9;&#x4FE1;&#x606F;
+if [ $help = yes ]; then
+
+    cat &lt;&lt; END
+
+        --help                             print this message
+
+        --prefix=PATH                      set installation prefix
+        --sbin-path=PATH                   set nginx binary pathname
+        --conf-path=PATH                   set nginx.conf pathname
+        --error-log-path=PATH              set error log pathname
+        --pid-path=PATH                    set nginx.pid pathname
+        --lock-path=PATH                   set nginx.lock pathname
+
+        --user=USER                        set non-privileged user for
+        worker processes
+        --group=GROUP                      set non-privileged group for
+                                 worker processes
+END
+
+    exit 1
+fi
+
+# &#x9ED8;&#x8BA4;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
+NGX_CONF_PATH=${NGX_CONF_PATH:-conf/nginx.conf}
+NGX_CONF_PREFIX=`dirname $NGX_CONF_PATH`
+NGX_PID_PATH=${NGX_PID_PATH:-logs/nginx.pid}
+NGX_LOCK_PATH=${NGX_LOCK_PATH:-logs/nginx.lock}
+
+...
+</code></pre><p>&#x2003;&#x2003;
+&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#x9009;&#x7528;&#x4E86;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x4E86;&#x8BF4;&#x660E;&#xFF0C;&#x53EF;&#x7ED3;&#x5408;&#x6E90;&#x7801;&#x518D;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;
+auto/options &#x7684;&#x76EE;&#x7684;&#x4E3B;&#x8981;&#x662F;&#x5904;&#x7406;&#x7528;&#x6237;&#x9009;&#x9879;&#xFF0C;&#x5E76;&#x7531;&#x9009;&#x9879;&#x751F;&#x6210;&#x4E00;&#x4E9B;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x8FD9;&#x4E9B;&#x503C;&#x5728;&#x5176;&#x5B83;&#x6587;&#x4EF6;&#x4E2D;&#x4F1A;&#x7528;&#x5230;&#x3002;
+&#x8BE5;&#x6587;&#x4EF6;&#x4E5F;&#x4F1A;&#x8F93;&#x51FA; configure &#x7684;&#x5E2E;&#x52A9;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x4E09;&#x3001;auto/init</p>
+<p>&#x2003;&#x2003;
+&#x8BE5;&#x6587;&#x4EF6;&#x7684;&#x76EE;&#x5F55;&#x5728;&#x4E8E;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E9B;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x68C0;&#x67E5; echo &#x7684;&#x517C;&#x5BB9;&#x6027;&#xFF0C;&#x5E76;&#x521B;&#x5EFA; Makefile&#x3002;</p>
+<pre><code># &#x751F;&#x6210;&#x6700;&#x7EC8;&#x6267;&#x884C;&#x7F16;&#x8BD1;&#x7684; makefile &#x6587;&#x4EF6;&#x8DEF;&#x5F84;
+NGX_MAKEFILE=$NGX_OBJS/Makefile
+# &#x52A8;&#x6001;&#x751F;&#x6210; nginx &#x6A21;&#x5757;&#x5217;&#x8868;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x7531;&#x4E8E; nginx &#x7684;&#x7684;&#x4E00;&#x4E9B;&#x6A21;&#x5757;&#x662F;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x7F16;&#x8BD1;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x6240;&#x4EE5;&#x6A21;&#x5757;&#x5217;&#x8868;&#x662F;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;
+NGX_MODULES_C=$NGX_OBJS/ngx_modules.c
+
+NGX_AUTO_HEADERS_H=$NGX_OBJS/ngx_auto_headers.h
+NGX_AUTO_CONFIG_H=$NGX_OBJS/ngx_auto_config.h
+
+# &#x81EA;&#x52A8;&#x6D4B;&#x8BD5;&#x76EE;&#x5F55;&#x4E0E;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x6587;&#x4EF6;
+NGX_AUTOTEST=$NGX_OBJS/autotest
+# &#x5982;&#x679C; configure &#x51FA;&#x9519;&#xFF0C;&#x53EF;&#x7528;&#x6765;&#x67E5;&#x627E;&#x51FA;&#x9519;&#x7684;&#x539F;&#x56E0;
+NGX_AUTOCONF_ERR=$NGX_OBJS/autoconf.err
+
+NGX_ERR=$NGX_OBJS/autoconf.err
+MAKEFILE=$NGX_OBJS/Makefile
+
+
+NGX_PCH=
+NGX_USE_PCH=
+
+
+# &#x68C0;&#x67E5; echo &#x662F;&#x5426;&#x652F;&#x6301; -n &#x6216; \c
+
+# check the echo&apos;s &quot;-n&quot; option and &quot;\c&quot; capability
+
+if echo &quot;test\c&quot; | grep c &gt;/dev/null; then
+
+    # &#x4E0D;&#x652F;&#x6301; -c &#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x652F;&#x6301; -n &#x7684;&#x65B9;&#x5F0F;
+
+    if echo -n test | grep n &gt;/dev/null; then
+        ngx_n=
+        ngx_c=
+
+    else
+        ngx_n=-n
+        ngx_c=
+    fi
+
+else
+    ngx_n=
+    ngx_c=&apos;\c&apos;
+fi
+
+# &#x521B;&#x5EFA;&#x6700;&#x521D;&#x59CB;&#x7684; makefile &#x6587;&#x4EF6;
+# default &#x8868;&#x793A;&#x76EE;&#x524D;&#x7F16;&#x8BD1;&#x5BF9;&#x8C61;
+# clean &#x8868;&#x793A;&#x6267;&#x884C; clean &#x5DE5;&#x4F5C;&#x65F6;&#x9700;&#x8981;&#x5220;&#x9664; makefile &#x6587;&#x4EF6;&#x4EE5;&#x53CA; objs &#x76EE;&#x5F55;
+# &#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#x53EA;&#x4F1A;&#x751F;&#x6210; makefile &#x6587;&#x4EF6;&#x4EE5;&#x53CA; objs &#x76EE;&#x5F55;&#xFF0C;&#x5176;&#x5B83;&#x6240;&#x6709;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x90FD;&#x5728; objs &#x76EE;&#x5F55;&#x4E4B;&#x4E0B;&#xFF0C;&#x6240;&#x4EE5;&#x6267;&#x884C; clean &#x540E;&#xFF0C;&#x6574;&#x4E2A;&#x76EE;&#x5F55;&#x8FD8;&#x539F;&#x5230;&#x521D;&#x59CB;&#x72B6;&#x6001;
+# &#x8981;&#x518D;&#x6B21;&#x6267;&#x884C;&#x7F16;&#x8BD1;&#xFF0C;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x6267;&#x884C; configure &#x547D;&#x4EE4;
+
+# create Makefile
+
+cat &lt;&lt; END &gt; Makefile
+
+default:    build
+
+clean:
+    rm -rf Makefile $NGX_OBJS
+END
+</code></pre><p>&#x2003;&#x2003;
+&#x56DB;&#x3001;auto/sources</p>
+<p>&#x2003;&#x2003;
+&#x8BE5;&#x6587;&#x4EF6;&#x4ECE;&#x6587;&#x4EF6;&#x540D;&#x4E2D;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x5B83;&#x7684;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#x662F;&#x8DDF;&#x6E90;&#x6587;&#x4EF6;&#x76F8;&#x5173;&#x7684;&#x3002;
+&#x5B83;&#x7684;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x662F;&#x5B9A;&#x4E49;&#x4E0D;&#x540C;&#x529F;&#x80FD;&#x6216;&#x7CFB;&#x7EDF;&#x6240;&#x9700;&#x8981;&#x7684;&#x6587;&#x4EF6;&#x7684;&#x53D8;&#x91CF;&#x3002;
+&#x6839;&#x636E;&#x529F;&#x80FD;&#x5206;&#x4E3A; CORE/REGEX/EVENT/UNIX/FREEBSD/HTTP &#x7B49;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x6BCF;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x5C06;&#x4F1A;&#x7531;&#x56DB;&#x4E2A;&#x53D8;&#x91CF;&#x7EC4;&#x6210;&#xFF1A;</p>
+<ul>
+<li>_MODULES &#x8868;&#x793A;&#x6B64;&#x529F;&#x80FD;&#x76F8;&#x5173;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x6700;&#x7EC8;&#x4F1A;&#x8F93;&#x51FA;&#x5230; ngx_modules.c &#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5373;&#x52A8;&#x6001;&#x751F;&#x6210;&#x9700;&#x8981;&#x7F16;&#x8BD1;&#x5230; nginx &#x4E2D;&#x7684;&#x6A21;&#x5757;&#xFF1B;</li>
+<li>INCS &#x8868;&#x793A;&#x6B64;&#x529F;&#x80FD;&#x4F9D;&#x8D56;&#x7684;&#x6E90;&#x7801;&#x76EE;&#x5F55;&#xFF0C;&#x67E5;&#x627E;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x7528;&#x5230;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x4E2D;&#xFF0C;&#x4F1A;&#x51FA;&#x73B0;&#x5728; -I &#x4E2D;&#xFF1B;</li>
+<li>DEPS &#x663E;&#x793A;&#x6307;&#x660E;&#x5728; Makefile &#x4E2D;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x7684;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x5373;&#x7F16;&#x8BD1;&#x65F6;&#x9700;&#x8981;&#x68C0;&#x67E5;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x7684;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1B;</li>
+<li>SRCS &#x8868;&#x793A;&#x9700;&#x8981;&#x6B64;&#x529F;&#x80FD;&#x7F16;&#x8BD1;&#x9700;&#x8981;&#x7684;&#x6E90;&#x6587;&#x4EF6;&#x3002;</li>
+</ul>
+<p>&#x2003;&#x2003;
+&#x62FF; core &#x6765;&#x8BF4;&#xFF1A;</p>
+<pre><code>CORE_MODULES=&quot;ngx_core_module ngx_errlog_module ngx_conf_module ngx_emp_server_module ngx_emp_server_core_module&quot;
+
+CORE_INCS=&quot;src/core&quot;
+
+CORE_DEPS=&quot;src/core/nginx.h \
+         src/core/ngx_config.h \
+         src/core/ngx_core.h \
+         src/core/ngx_log.h \
+         src/core/ngx_palloc.h \
+         src/core/ngx_array.h \
+         src/core/ngx_list.h \
+         src/core/ngx_hash.h \
+         src/core/ngx_buf.h \
+         src/core/ngx_queue.h \
+         src/core/ngx_string.h \
+         src/core/ngx_parse.h \
+         src/core/ngx_inet.h \
+         src/core/ngx_file.h \
+         src/core/ngx_crc.h \
+         src/core/ngx_crc32.h \
+         src/core/ngx_murmurhash.h \
+         src/core/ngx_md5.h \
+         src/core/ngx_sha1.h \
+         src/core/ngx_rbtree.h \
+         src/core/ngx_radix_tree.h \
+         src/core/ngx_slab.h \
+         src/core/ngx_times.h \
+         src/core/ngx_shmtx.h \
+         src/core/ngx_connection.h \
+         src/core/ngx_cycle.h \
+         src/core/ngx_conf_file.h \
+         src/core/ngx_resolver.h \
+         src/core/ngx_open_file_cache.h \
+         src/core/nginx_emp_server.h \
+         src/core/emp_server.h \
+         src/core/task_thread.h \
+         src/core/standard.h \
+         src/core/dprint.h \
+         src/core/ngx_crypt.h&quot;
+
+CORE_SRCS=&quot;src/core/nginx.c \
+         src/core/ngx_log.c \
+         src/core/ngx_palloc.c \
+         src/core/ngx_array.c \
+         src/core/ngx_list.c \
+         src/core/ngx_hash.c \
+         src/core/ngx_buf.c \
+         src/core/ngx_queue.c \
+         src/core/ngx_output_chain.c \
+         src/core/ngx_string.c \
+         src/core/ngx_parse.c \
+         src/core/ngx_inet.c \
+         src/core/ngx_file.c \
+         src/core/ngx_crc32.c \
+         src/core/ngx_murmurhash.c \
+         src/core/ngx_md5.c \
+         src/core/ngx_rbtree.c \
+         src/core/ngx_radix_tree.c \
+         src/core/ngx_slab.c \
+         src/core/ngx_times.c \
+         src/core/ngx_shmtx.c \
+         src/core/ngx_connection.c \
+         src/core/ngx_cycle.c \
+         src/core/ngx_spinlock.c \
+         src/core/ngx_cpuinfo.c \
+         src/core/ngx_conf_file.c \
+         src/core/ngx_resolver.c \
+         src/core/ngx_open_file_cache.c \
+         src/core/nginx_emp_server.c \
+         src/core/emp_server.c \
+         src/core/standard.c \
+         src/core/task_thread.c \
+         src/core/dprint.c \
+         src/core/ngx_crypt.c&quot;
+</code></pre><p>&#x2003;&#x2003;
+&#x5982;&#x679C;&#x81EA;&#x5DF1;&#x5199;&#x4E00;&#x4E2A;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x5F15;&#x7528;&#x5230;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x6216;&#x5BF9;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#xFF0C;&#x6BD4;&#x5982;&#x6DFB;&#x52A0;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x6216;&#x6DFB;&#x52A0;&#x81EA;&#x5DF1;&#x7684;&#x4E00;&#x4E2A;&#x5934;&#x6587;&#x4EF6;&#x67E5;&#x627E;&#x76EE;&#x5F55;(&#x5728;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#x7684; config &#x4E2D;)&#xFF0C;&#x5728;&#x540E;&#x9762;&#x4F1A;&#x770B;&#x5230;&#x5B83;&#x662F;&#x5982;&#x4F55;&#x52A0;&#x6846;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#x7684;&#x3002;
+&#x5728;&#x7EE7;&#x7EED;&#x5206;&#x6790;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x4E4B;&#x524D;&#x5148;&#x4ECB;&#x7ECD;&#x4E00;&#x4E9B;&#x5DE5;&#x5177;&#x811A;&#x672C;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x4E94;&#x3001;auto/have</p>
+<pre><code>cat &lt;&lt; END &gt;&gt; $NGX_AUTO_CONFIG_H
+
+#ifndef $have
+#define $have  1
+#endif
+
+END
+</code></pre><p>&#x2003;&#x2003;
+&#x4ECE;&#x4EE3;&#x7801;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x4E2A;&#x5DE5;&#x5177;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5C06; $have &#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x5B8F;&#x5B9A;&#x4E49;&#x4E3A; 1&#xFF0C;&#x5E76;&#x8F93;&#x51FA;&#x5230; auto_config &#x6587;&#x4EF6;&#x4E2D;&#x3002;
+&#x901A;&#x5E38;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x5DE5;&#x5177;&#x6765;&#x63A7;&#x5236;&#x662F;&#x5426;&#x6253;&#x5F00;&#x67D0;&#x4E2A;&#x7279;&#x6027;&#x3002;
+&#x8FD9;&#x4E2A;&#x5DE5;&#x5177;&#x5728;&#x4F7F;&#x7528;&#x524D;&#x9700;&#x8981;&#x5148;&#x5B9A;&#x4E49;&#x5B8F;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x5373; $have &#x53D8;&#x91CF;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x516D;&#x3001;&#x518D;&#x56DE;&#x5230; configure &#x6587;&#x4EF6;&#x4E2D;&#x6765;</p>
+<pre><code># NGX_DEBUG &#x662F;&#x5728; auto/options &#x6587;&#x4EF6;&#x4E2D;&#x5904;&#x7406;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6709; --with-debug &#x9009;&#x9879;&#xFF0C;&#x5219;&#x5176;&#x503C;&#x662F; YES
+if [ $NGX_DEBUG = YES ]; then
+    # &#x5F53;&#x6709; debug &#x9009;&#x9879;&#x65F6;&#xFF0C;&#x4F1A;&#x5B9A;&#x4E49; NGX_DEBUG &#x5B8F;
+    have=NGX_DEBUG . auto/have
+fi
+</code></pre><p>&#x2003;&#x2003;
+&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;configure &#x662F;&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7279;&#x6027;&#x7684;&#xFF1A;&#x901A;&#x8FC7;&#x5B8F;&#x5B9A;&#x4E49;&#xFF0C;&#x8F93;&#x51FA;&#x5230; config &#x5934;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x7A0B;&#x5E8F;&#x4E2D;&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x8FD9;&#x4E2A;&#x5B8F;&#x662F;&#x5426;&#x6709;&#x5B9A;&#x4E49;&#xFF0C;&#x6765;&#x5B9E;&#x73B0;&#x4E0D;&#x540C;&#x7684;&#x7279;&#x6027;&#x3002;</p>
+<p>&#x2003;&#x2003;
+configure &#x6587;&#x4EF6;&#x4E2D;&#x7EE7;&#x7EED;&#x5411;&#x4E0B;&#xFF1A;</p>
+<pre><code># &#x7F16;&#x8BD1;&#x5668;&#x9009;&#x9879;
+. auto/cc/conf
+
+# &#x5934;&#x6587;&#x4EF6;&#x652F;&#x6301;&#x5B8F;&#x5B9A;&#x4E49;
+if [ &quot;$NGX_PLATFORM&quot; != win32 ]; then
+    . auto/headers
+fi
+
+# &#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x76F8;&#x5173;&#x7684;&#x914D;&#x7F6E;&#x7684;&#x68C0;&#x6D4B;
+. auto/os/conf
+
+# unix &#x4F53;&#x7CFB;&#x4E0B;&#x7684;&#x901A;&#x7528;&#x914D;&#x7F6E;&#x68C0;&#x6D4B;
+if [ &quot;$NGX_PLATFORM&quot; != win32 ]; then
+    . auto/unix
+fi
+</code></pre><p>&#x2003;&#x2003;
+configure &#x4F1A;&#x4F9D;&#x6B21;&#x8C03;&#x7528;&#x5176;&#x5B83;&#x51E0;&#x4E2A;&#x6587;&#x4EF6;&#x6765;&#x8FDB;&#x884C;&#x73AF;&#x5883;&#x7684;&#x68C0;&#x6D4B;&#xFF0C;&#x5305;&#x62EC;&#x7F16;&#x8BD1;&#x5668;&#x3001;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x76F8;&#x5173;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x4E03;&#x3001;auto/feature</p>
+<p>&#x2003;&#x2003;
+nginx &#x7684; configure &#x4F1A;&#x81EA;&#x52A8;&#x68C0;&#x6D4B;&#x4E0D;&#x540C;&#x5E73;&#x53F0;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x795E;&#x5947;&#x4E4B;&#x5904;&#x5C31;&#x662F; auto/feature &#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5728;&#x7EE7;&#x7EED;&#x5411;&#x4E0B;&#x5206;&#x6790;&#x4E4B;&#x524D;&#x5148;&#x6765;&#x770B;&#x770B;&#x8FD9;&#x4E2A;&#x5DE5;&#x5177;&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x3002;
+&#x6B64;&#x5DE5;&#x5177;&#x7684;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x662F;&#x8F93;&#x51FA;&#x4E00;&#x5C0F;&#x6BB5;&#x4EE3;&#x8868;&#x6027; c &#x7A0B;&#x5E8F;&#xFF0C;&#x7136;&#x540E;&#x8BBE;&#x7F6E;&#x597D;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#xFF0C;&#x518D;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x8FDE;&#x63A5;&#x8FD0;&#x884C;&#xFF0C;&#x518D;&#x5BF9;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;
+&#x4F8B;&#x5982;&#x5982;&#x679C;&#x60F3;&#x68C0;&#x6D4B;&#x67D0;&#x4E2A;&#x5E93;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x5C31;&#x5728;&#x5C0F;&#x6BB5; c &#x7A0B;&#x5E8F;&#x91CC;&#x9762;&#x8C03;&#x7528;&#x5E93;&#x91CC;&#x9762;&#x7684;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x518D;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x94FE;&#x63A5;&#xFF0C;&#x5982;&#x679C;&#x51FA;&#x9519;&#xFF0C;=&#x5219;&#x8868;&#x793A;&#x5E93;&#x7684;&#x73AF;&#x5883;&#x4E0D;&#x6B63;&#x5E38;&#xFF0C;&#x5982;&#x679C;&#x7F16;&#x8BD1;&#x6210;&#x529F;&#x4E14;&#x8FD0;&#x884C;&#x6B63;&#x5E38;&#xFF0C;&#x5219;&#x5E93;&#x7684;&#x73AF;&#x5883;&#x68C0;&#x6D4B;&#x6B63;&#x5E38;&#x3002;
+&#x5728;&#x5199; nginx &#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#x65F6;&#x4E5F;&#x5E38;&#x4F7F;&#x7528;&#x6B64;&#x5DE5;&#x5177;&#x6765;&#x8FDB;&#x884C;&#x73AF;&#x5883;&#x7684;&#x68C0;&#x6D4B;&#xFF0C;&#x6240;&#x4EE5;&#x6B64;&#x5DE5;&#x5177;&#x7684;&#x4F5C;&#x7528;&#x8D2F;&#x7A7F;&#x6574;&#x4E2A; configure &#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5148;&#x770B;&#x4E00;&#x5C0F;&#x6BB5;&#x4F7F;&#x7528;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code>ngx_feature=&quot;poll()&quot;
+ngx_feature_name=
+ngx_feature_run=no
+ngx_feature_incs=&quot;#include &lt;poll.h&gt;&quot;
+ngx_feature_path=
+ngx_feature_libs=
+ngx_feature_test=&quot;int  n; struct pollfd  pl;
+                  pl.fd = 0;
+                  pl.events = 0;
+                  pl.revents = 0;
+                  n = poll(&amp;pl, 1, 0);
+                  if (n == -1) return 1&quot;
+. auto/feature
+
+if [ $ngx_found = no ]; then
+    # &#x5982;&#x679C;&#x6CA1;&#x6709;&#x627E;&#x5230; poll&#xFF0C;&#x5C31;&#x8BBE;&#x7F6E;&#x53D8;&#x91CF;&#x7684;&#x503C;
+    EVENT_POLL=NONE
+fi
+</code></pre><p>&#x2003;&#x2003;
+&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5728; auto/unix &#x91CC;&#x9762;&#x5B9E;&#x73B0;&#xFF0C;&#x7528;&#x6765;&#x68C0;&#x6D4B;&#x5F53;&#x524D;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x662F;&#x5426;&#x652F;&#x6301; poll &#x51FD;&#x6570;&#x8C03;&#x7528;&#x3002;
+&#x5728;&#x8C03;&#x7528; auto/feature &#x4E4B;&#x524D;&#x9700;&#x8981;&#x5148;&#x8BBE;&#x7F6E;&#x51E0;&#x4E2A;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x7ED3;&#x679C;&#x4F1A;&#x5B58;&#x5728; $ngx_found &#x53D8;&#x91CF;&#x91CC;&#x9762;, &#x5E76;&#x8F93;&#x51FA;&#x5B8F;&#x5B9A;&#x4E49;&#x4EE5;&#x8868;&#x793A;&#x652F;&#x6301;&#x6B64;&#x7279;&#x6027;:</p>
+<pre><code>$ngx_feature        &#x7279;&#x6027;&#x540D;&#x79F0;
+$ngx_feature_name   &#x7279;&#x6027;&#x7684;&#x5B8F;&#x5B9A;&#x4E49;&#x540D;&#x79F0;&#xFF0C;&#x5982;&#x679C;&#x7279;&#x6027;&#x6D4B;&#x8BD5;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x4F1A;&#x5B9A;&#x4E49;&#x8BE5;&#x5B8F;&#x5B9A;&#x4E49;
+$ngx_feature_path   &#x7F16;&#x8BD1;&#x65F6;&#x8981;&#x67E5;&#x627E;&#x5934;&#x6587;&#x4EF6;&#x76EE;&#x5F55;
+$ngx_feature_test   &#x8981;&#x6267;&#x884C;&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;
+$ngx_feature_incs   &#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x8981;include&#x7684;&#x5934;&#x6587;&#x4EF6;
+$ngx_feature_libs   &#x7F16;&#x8BD1;&#x65F6;&#x9700;&#x8981;link&#x7684;&#x5E93;&#x6587;&#x4EF6;&#x9009;&#x9879;
+$ngx_feature_run    &#x7F16;&#x8BD1;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x5BF9;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x9700;&#x8981;&#x505A;&#x7684;&#x52A8;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;yes value bug &#x5176;&#x5B83;
+
+#ngx_found          &#x5982;&#x679C;&#x627E;&#x5230;&#xFF0C;&#x5E76;&#x6D4B;&#x8BD5;&#x6210;&#x529F;&#xFF0C;&#x5176;&#x503C;&#x4E3A;yes&#xFF0C;&#x5426;&#x5219;&#x5176;&#x503C;&#x4E3A;no
+</code></pre><p>&#x2003;&#x2003;
+&#x770B;&#x770B; ngx_feature &#x7684;&#x5173;&#x952E;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code># &#x521D;&#x59CB;&#x5316;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E3A; no
+ngx_found=no
+
+#&#x5C06;&#x7279;&#x6027;&#x540D;&#x79F0;&#x5C0F;&#x5199;&#x8F6C;&#x6362;&#x6210;&#x5927;&#x5199;
+if test -n &quot;$ngx_feature_name&quot;; then
+    # &#x5C0F;&#x5199;&#x8F6C;&#x5927;&#x5199;
+    ngx_have_feature=`echo $ngx_feature_name \
+                   | tr abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ`
+fi
+
+# &#x5C06;&#x6240;&#x6709; include &#x76EE;&#x5F55;&#x8F6C;&#x6362;&#x6210;&#x7F16;&#x8BD1;&#x9009;&#x9879;
+if test -n &quot;$ngx_feature_path&quot;; then
+    for ngx_temp in $ngx_feature_path; do
+        ngx_feature_inc_path=&quot;$ngx_feature_inc_path -I $ngx_temp&quot;
+    done
+fi
+
+
+# &#x751F;&#x6210;&#x4E34;&#x65F6;&#x7684;&#x5C0F;&#x6BB5; c &#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x3002;
+# $ngx_feature_incs &#x53D8;&#x91CF;&#x662F;&#x7A0B;&#x5E8F;&#x9700;&#x8981; include &#x7684;&#x5934;&#x6587;&#x4EF6;
+# $ngx_feature_test &#x662F;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;
+cat &lt;&lt; END &gt; $NGX_AUTOTEST.c
+
+#include &lt;sys/types.h&gt;
+$NGX_INCLUDE_UNISTD_H
+$ngx_feature_incs
+
+int main() {
+    $ngx_feature_test;
+    return 0;
+}
+
+END
+
+# &#x7F16;&#x8BD1;&#x547D;&#x4EE4;
+# &#x7F16;&#x8BD1;&#x4E4B;&#x540E;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x662F; $NGX_AUTOTEST&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x5224;&#x65AD;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x7F16;&#x8BD1;&#x6210;&#x529F;
+ngx_test=&quot;$CC $CC_TEST_FLAGS $CC_AUX_FLAGS $ngx_feature_inc_path \
+      -o $NGX_AUTOTEST $NGX_AUTOTEST.c $NGX_TEST_LD_OPT $ngx_feature_libs&quot;
+
+# &#x6267;&#x884C;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;
+# &#x7F16;&#x8BD1;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x4F1A;&#x751F;&#x6210; $NGX_AUTOTEST &#x547D;&#x540D;&#x7684;&#x6587;&#x4EF6;
+eval &quot;/bin/sh -c \&quot;$ngx_test\&quot; &gt;&gt; $NGX_AUTOCONF_ERR 2&gt;&amp;1&quot;
+
+# &#x5982;&#x679C;&#x6587;&#x4EF6;&#x5B58;&#x5728;&#x5219;&#x7F16;&#x8BD1;&#x6210;&#x529F;
+if [ -x $NGX_AUTOTEST ]; then
+
+    case &quot;$ngx_feature_run&quot; in
+
+        # &#x9700;&#x8981;&#x8FD0;&#x884C;&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x652F;&#x6301;&#x7279;&#x6027;
+        # &#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;&#x80FD;&#x5426;&#x6B63;&#x5E38;&#x6267;&#x884C;&#xFF08;&#x5373;&#x7A0B;&#x5E8F;&#x9000;&#x51FA;&#x540E;&#x7684;&#x72B6;&#x6001;&#x7801;&#x662F;&#x5426;&#x662F; 0 &#xFF09;&#xFF0C;&#x5982;&#x679C;&#x6B63;&#x5E38;&#x9000;&#x51FA;&#xFF0C;&#x5219;&#x7279;&#x6027;&#x6D4B;&#x8BD5;&#x6210;&#x529F;&#xFF0C;&#x8BBE;&#x7F6E; ngx_found &#x4E3A; yes&#xFF0C;&#x5E76;&#x6DFB;&#x52A0;&#x540D;&#x4E3A; ngx_feature_name &#x7684;&#x5B8F;&#x5B9A;&#x4E49;&#xFF0C;&#x5B8F;&#x7684;&#x503C;&#x4E3A; 1
+        yes)
+            # &#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x6B63;&#x5E38;&#x9000;&#x51FA;&#xFF0C;&#x9000;&#x51FA;&#x7801;&#x4E3A; 0&#xFF0C;&#x5219;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x6210;&#x529F;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x91CC;&#x9762;&#x624B;&#x52A8;&#x8FD4;&#x56DE;&#x975E; 0 &#x6765;&#x8868;&#x793A;&#x7A0B;&#x5E8F;&#x51FA;&#x9519;
+            # /bin/sh is used to intercept &quot;Killed&quot; or &quot;Abort trap&quot; messages
+            if /bin/sh -c $NGX_AUTOTEST &gt;&gt; $NGX_AUTOCONF_ERR 2&gt;&amp;1; then
+                echo &quot; found&quot;
+                ngx_found=yes
+
+                # &#x6DFB;&#x52A0;&#x5B8F;&#x5B9A;&#x4E49;&#xFF0C;&#x5B8F;&#x7684;&#x503C;&#x4E3A; 1
+                if test -n &quot;$ngx_feature_name&quot;; then
+                    have=$ngx_have_feature . auto/have
+                fi
+
+            else
+                echo &quot; found but is not working&quot;
+            fi
+        ;;
+
+        # &#x9700;&#x8981;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x652F;&#x6301;&#x7279;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x652F;&#x6301;&#xFF0C;&#x5C06;&#x7A0B;&#x5E8F;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x4F5C;&#x4E3A;&#x5B8F;&#x7684;&#x503C;
+        value)
+        # /bin/sh is used to intercept &quot;Killed&quot; or &quot;Abort trap&quot; messages
+        if /bin/sh -c $NGX_AUTOTEST &gt;&gt; $NGX_AUTOCONF_ERR 2&gt;&amp;1; then
+            echo &quot; found&quot;
+            ngx_found=yes
+
+            # &#x4E0E; yes &#x4E0D;&#x4E00;&#x6837;&#x7684;&#x662F;&#xFF0C;value &#x4F1A;&#x5C06;&#x7A0B;&#x5E8F;&#x4ECE;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x91CC;&#x9762;&#x6253;&#x5370;&#x51FA;&#x6765;&#x7684;&#x503C;&#xFF0C;&#x8BBE;&#x7F6E;&#x4E3A; ngx_feature_name &#x5B8F;&#x53D8;&#x91CF;&#x7684;&#x503C;
+            # &#x5728;&#x6B64;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x8BBE;&#x7F6E; ngx_feature_name &#x53D8;&#x91CF;&#x540D;
+            cat &lt;&lt; END &gt;&gt; $NGX_AUTO_CONFIG_H
+
+#ifndef $ngx_feature_name
+#define $ngx_feature_name  `$NGX_AUTOTEST`
+#endif
+
+END
+            else
+                echo &quot; found but is not working&quot;
+            fi
+        ;;
+
+        # &#x4E0E; yes &#x6B63;&#x597D;&#x76F8;&#x53CD;
+        bug)
+            # /bin/sh is used to intercept &quot;Killed&quot; or &quot;Abort trap&quot; messages
+            if /bin/sh -c $NGX_AUTOTEST &gt;&gt; $NGX_AUTOCONF_ERR 2&gt;&amp;1; then
+                echo &quot; not found&quot;
+
+            else
+                echo &quot; found&quot;
+                ngx_found=yes
+
+                if test -n &quot;$ngx_feature_name&quot;; then
+                    have=$ngx_have_feature . auto/have
+                fi
+            fi
+        ;;
+
+        # &#x4E0D;&#x9700;&#x8981;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x6700;&#x540E;&#x5B9A;&#x4E49;&#x5B8F;&#x53D8;&#x91CF;
+        *)
+            echo &quot; found&quot;
+            ngx_found=yes
+
+            if test -n &quot;$ngx_feature_name&quot;; then
+                have=$ngx_have_feature . auto/have
+            fi
+        ;;
+
+    esac
+else
+    # &#x7F16;&#x8BD1;&#x5931;&#x8D25;
+    echo &quot; not found&quot;
+
+    # &#x7F16;&#x8BD1;&#x5931;&#x8D25;&#xFF0C;&#x4F1A;&#x4FDD;&#x5B58;&#x4FE1;&#x606F;&#x5230;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x4E2D;
+    echo &quot;----------&quot;    &gt;&gt; $NGX_AUTOCONF_ERR
+    # &#x4FDD;&#x7559;&#x7F16;&#x8BD1;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;
+    cat $NGX_AUTOTEST.c  &gt;&gt; $NGX_AUTOCONF_ERR
+    echo &quot;----------&quot;    &gt;&gt; $NGX_AUTOCONF_ERR
+    # &#x4FDD;&#x7559;&#x7F16;&#x8BD1;&#x6587;&#x4EF6;&#x7684;&#x9009;&#x9879;
+    echo $ngx_test       &gt;&gt; $NGX_AUTOCONF_ERR
+    echo &quot;----------&quot;    &gt;&gt; $NGX_AUTOCONF_ERR
+fi
+
+# &#x6700;&#x540E;&#x5220;&#x9664;&#x751F;&#x6210;&#x7684;&#x4E34;&#x65F6;&#x6587;&#x4EF6;
+rm $NGX_AUTOTEST*
+</code></pre><p>&#x2003;&#x2003;
+&#x516B;&#x3001;auto/cc/conf</p>
+<p>&#x2003;&#x2003;
+&#x5728;&#x4E86;&#x89E3;&#x4E86;&#x5DE5;&#x5177; auto/feature &#x540E;&#x7EE7;&#x7EED;&#x4E3B;&#x6D41;&#x7A0B;&#xFF0C;auto/cc/conf &#x7684;&#x4EE3;&#x7801;&#x5C31;&#x5F88;&#x597D;&#x7406;&#x89E3;&#x4E86;&#xFF0C;&#x8FD9;&#x4E00;&#x6B65;&#x4E3B;&#x8981;&#x662F;&#x68C0;&#x6D4B;&#x7F16;&#x8BD1;&#x5668;&#x5E76;&#x8BBE;&#x7F6E;&#x7F16;&#x8BD1;&#x5668;&#x76F8;&#x5173;&#x7684;&#x9009;&#x9879;&#x3002;
+&#x5B83;&#x5148;&#x8C03;&#x7528; auto/cc/name &#x6765;&#x5F97;&#x5230;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;&#x7F16;&#x8BD1;&#x5668;&#x9009;&#x62E9;&#x6267;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x76F8;&#x5173;&#x7684;&#x6587;&#x4EF6;&#x5982; gcc &#x6267;&#x884C; auto/cc/gcc &#x6765;&#x8BBE;&#x7F6E;&#x7F16;&#x8BD1;&#x5668;&#x76F8;&#x5173;&#x7684;&#x4E00;&#x4E9B;&#x9009;&#x9879;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x4E5D;&#x3001;auto/include</p>
+<p>&#x2003;&#x2003;
+&#x8FD9;&#x4E2A;&#x5DE5;&#x5177;&#x7528;&#x6765;&#x68C0;&#x6D4B;&#x662F;&#x5934;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x652F;&#x6301;&#x3002;
+&#x9700;&#x8981;&#x68C0;&#x6D4B;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x653E;&#x5728; $ngx_include &#x91CC;&#x9762;&#xFF0C;&#x5982;&#x679C;&#x652F;&#x6301;&#x5219; $ngx_found &#x53D8;&#x91CF;&#x7684;&#x503C;&#x4E3A; yes&#xFF0C;&#x5E76;&#x4E14;&#x4F1A;&#x4EA7;&#x751F; NGX_HAVE_{ngx_include} &#x7684;&#x5B8F;&#x5B9A;&#x4E49;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5341;&#x3001;auto/headers</p>
+<p>&#x2003;&#x2003;
+&#x751F;&#x6210;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x5B8F;&#x5B9A;&#x4E49;&#x3002;
+&#x751F;&#x6210;&#x7684;&#x5B9A;&#x4E49;&#x653E;&#x5728; objs/ngx_auto_headers.h &#x91CC;&#x9762;&#xFF1A;</p>
+<pre><code>#ifndef NGX_HAVE_UNISTD_H
+#define NGX_HAVE_UNISTD_H  1
+#endif
+
+#ifndef NGX_HAVE_INTTYPES_H
+#define NGX_HAVE_INTTYPES_H  1
+#endif
+
+#ifndef NGX_HAVE_LIMITS_H
+#define NGX_HAVE_LIMITS_H  1
+#endif
+
+#ifndef NGX_HAVE_SYS_FILIO_H
+#define NGX_HAVE_SYS_FILIO_H  1
+#endif
+
+#ifndef NGX_HAVE_SYS_PARAM_H
+#define NGX_HAVE_SYS_PARAM_H  1
+#endif
+</code></pre><p>&#x2003;&#x2003;
+&#x5341;&#x4E00;&#x3001;auto/os/conf</p>
+<p>&#x2003;&#x2003;
+&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5E73;&#x53F0;&#x7279;&#x6027;&#x7684;&#x68C0;&#x6D4B;&#xFF0C;&#x5E76;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684; CORE_INCS&#x3001;CORE_DEPS&#x3001;CORE_SRCS &#x53D8;&#x91CF;&#x3002;
+nginx &#x8DE8;&#x5E73;&#x53F0;&#x7684;&#x652F;&#x6301;&#x5C31;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x5730;&#x65B9;&#x4F53;&#x73B0;&#x51FA;&#x6765;&#x7684;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5341;&#x4E8C;&#x3001;auto/unix</p>
+<p>&#x2003;&#x2003;
+&#x9488;&#x5BF9; unix &#x4F53;&#x7CFB;&#x7684;&#x901A;&#x7528;&#x914D;&#x7F6E;&#x6216;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x68C0;&#x6D4B;&#xFF0C;&#x5982; poll &#x7B49;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x68C0;&#x6D4B;&#x7B49;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5341;&#x4E09;&#x3001;&#x56DE;&#x5230; configure &#x91CC;&#x9762;</p>
+<pre><code># &#x751F;&#x6210;&#x6A21;&#x5757;&#x5217;&#x8868;
+. auto/modules
+# &#x914D;&#x7F6E;&#x5E93;&#x7684;&#x4F9D;&#x8D56;
+. auto/lib/conf
+</code></pre><p>&#x2003;&#x2003;
+&#x5341;&#x56DB;&#x3001;auto/modules</p>
+<p>&#x2003;&#x2003;
+&#x8BE5;&#x811A;&#x672C;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x6761;&#x4EF6;&#x8F93;&#x51FA;&#x4E0D;&#x540C;&#x7684;&#x6A21;&#x5757;&#x5217;&#x8868;&#xFF0C;&#x6700;&#x540E;&#x8F93;&#x51FA;&#x7684;&#x6A21;&#x5757;&#x5217;&#x8868;&#x7684;&#x6587;&#x4EF6;&#x5728; objs/ngx_modules.c&#xFF1A;</p>
+<pre><code>#include &lt;ngx_config.h&gt;
+#include &lt;ngx_core.h&gt;
+
+extern ngx_module_t  ngx_core_module;
+extern ngx_module_t  ngx_errlog_module;
+extern ngx_module_t  ngx_conf_module;
+extern ngx_module_t  ngx_emp_server_module;
+
+...
+
+ngx_module_t *ngx_modules[] = {
+    &amp;ngx_core_module,
+    &amp;ngx_errlog_module,
+    &amp;ngx_conf_module,
+    &amp;ngx_emp_server_module,
+    ...
+    NULL
+};
+</code></pre><p>&#x2003;&#x2003;
+&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4F1A;&#x51B3;&#x5B9A;&#x6240;&#x6709;&#x6A21;&#x5757;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x8FD9;&#x4F1A;&#x76F4;&#x63A5;&#x5F71;&#x54CD;&#x5230;&#x6700;&#x540E;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4E0B;&#x4E00;&#x5C0F;&#x8282;&#x5C06;&#x8BA8;&#x8BBA;&#x6A21;&#x5757;&#x95F4;&#x7684;&#x987A;&#x5E8F;&#x3002;
+&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4F1A;&#x52A0;&#x8F7D;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x503C;&#x5F97;&#x5173;&#x6CE8;&#x7684;&#x5730;&#x65B9;&#xFF1A;</p>
+<pre><code>if test -n &quot;$NGX_ADDONS&quot;; then
+
+    echo configuring additional modules
+
+    for ngx_addon_dir in $NGX_ADDONS
+    do
+        echo &quot;adding module in $ngx_addon_dir&quot;
+
+        if test -f $ngx_addon_dir/config; then
+            # &#x6267;&#x884C;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#x7684;&#x914D;&#x7F6E;
+            . $ngx_addon_dir/config
+
+            echo &quot; + $ngx_addon_name was configured&quot;
+        else
+            echo &quot;$0: error: no $ngx_addon_dir/config was found&quot;
+            exit 1
+        fi
+    done
+fi
+</code></pre><p>&#x2003;&#x2003;
+&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x786E;&#x5B9E;&#x73B0;&#x4E86; nginx &#x5F88;&#x5F3A;&#x5927;&#x7684;&#x6269;&#x5C55;&#x6027;&#xFF0C;&#x52A0;&#x8F7D;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#x3002;
+$ngx_addon_dir &#x53D8;&#x91CF;&#x662F;&#x5728; configure &#x6267;&#x884C;&#x65F6;&#xFF0C;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570; &#x2013;add-module &#x52A0;&#x5165;&#x7684;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x5217;&#x8868;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#x3002;
+&#x4ECE;&#x4EE3;&#x7801;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5B83;&#x5C31;&#x662F;&#x9488;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x7B2C;&#x4E09;&#x65B9;&#x6A21;&#x5757;&#x6267;&#x884C;&#x5176;&#x76EE;&#x5F55;&#x4E0B;&#x7684; config &#x6587;&#x4EF6;&#x3002;
+&#x4E8E;&#x662F;&#x53EF;&#x4EE5;&#x5728; config &#x6587;&#x4EF6;&#x91CC;&#x9762;&#x6267;&#x884C;&#x81EA;&#x5DF1;&#x7684;&#x68C0;&#x6D4B;&#x903B;&#x8F91;&#xFF0C;&#x6BD4;&#x5982;&#x68C0;&#x6D4B;&#x5E93;&#x4F9D;&#x8D56;&#xFF0C;&#x6DFB;&#x52A0;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x7B49;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5341;&#x4E94;&#x3001;auto/lib/conf</p>
+<p>&#x2003;&#x2003;
+&#x8BE5;&#x6587;&#x4EF6;&#x4F1A;&#x9488;&#x5BF9; nginx &#x7F16;&#x8BD1;&#x6240;&#x9700;&#x8981;&#x7684;&#x57FA;&#x7840;&#x5E93;&#x7684;&#x68C0;&#x6D4B;&#xFF0C;&#x6BD4;&#x5982; rewrite &#x6A21;&#x5757;&#x9700;&#x8981;&#x7684; PCRE &#x5E93;&#x7684;&#x68C0;&#x6D4B;&#x652F;&#x6301;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5341;&#x516D;&#x3001;configure &#x63A5;&#x4E0B;&#x6765;&#x5B9A;&#x4E49;&#x4E00;&#x4E9B;&#x5B8F;&#x5E38;&#x91CF;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x662F;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x65B9;&#x9762;&#x7684;&#xFF1A;</p>
+<pre><code>case &quot;.$NGX_PREFIX&quot; in
+    .)
+        NGX_PREFIX=${NGX_PREFIX:-/usr/local/nginx}
+        have=NGX_PREFIX value=&quot;\&quot;$NGX_PREFIX/\&quot;&quot; . auto/define
+    ;;
+
+    .!)
+        NGX_PREFIX=
+    ;;
+
+    *)
+        have=NGX_PREFIX value=&quot;\&quot;$NGX_PREFIX/\&quot;&quot; . auto/define
+    ;;
+esac
+
+if [ &quot;.$NGX_CONF_PREFIX&quot; != &quot;.&quot; ]; then
+    have=NGX_CONF_PREFIX value=&quot;\&quot;$NGX_CONF_PREFIX/\&quot;&quot; . auto/define
+fi
+
+have=NGX_SBIN_PATH value=&quot;\&quot;$NGX_SBIN_PATH\&quot;&quot; . auto/define
+have=NGX_CONF_PATH value=&quot;\&quot;$NGX_CONF_PATH\&quot;&quot; . auto/define
+have=NGX_PID_PATH value=&quot;\&quot;$NGX_PID_PATH\&quot;&quot; . auto/define
+have=NGX_LOCK_PATH value=&quot;\&quot;$NGX_LOCK_PATH\&quot;&quot; . auto/define
+have=NGX_ERROR_LOG_PATH value=&quot;\&quot;$NGX_ERROR_LOG_PATH\&quot;&quot; . auto/define
+
+have=NGX_HTTP_LOG_PATH value=&quot;\&quot;$NGX_HTTP_LOG_PATH\&quot;&quot; . auto/define
+have=NGX_HTTP_CLIENT_TEMP_PATH value=&quot;\&quot;$NGX_HTTP_CLIENT_TEMP_PATH\&quot;&quot;
+. auto/define
+have=NGX_HTTP_PROXY_TEMP_PATH value=&quot;\&quot;$NGX_HTTP_PROXY_TEMP_PATH\&quot;&quot;
+. auto/define
+have=NGX_HTTP_FASTCGI_TEMP_PATH value=&quot;\&quot;$NGX_HTTP_FASTCGI_TEMP_PATH\&quot;&quot;
+. auto/define
+have=NGX_HTTP_UWSGI_TEMP_PATH value=&quot;\&quot;$NGX_HTTP_UWSGI_TEMP_PATH\&quot;&quot;
+. auto/define
+have=NGX_HTTP_SCGI_TEMP_PATH value=&quot;\&quot;$NGX_HTTP_SCGI_TEMP_PATH\&quot;&quot;
+. auto/define
+</code></pre><p>&#x2003;&#x2003;
+&#x5341;&#x4E03;&#x3001;configure &#x6700;&#x540E;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x751F;&#x6210;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;&#x7684; makefile</p>
+<pre><code># &#x751F;&#x6210; objs/makefile &#x6587;&#x4EF6;
+. auto/make
+
+# &#x751F;&#x6210;&#x5173;&#x4E8E;&#x5E93;&#x7684;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x5230; makefile &#x6587;&#x4EF6;
+. auto/lib/make
+# &#x751F;&#x6210;&#x4E0E;&#x5B89;&#x88C5;&#x76F8;&#x5173;&#x7684; makefile &#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x5E76;&#x751F;&#x6210;&#x6700;&#x5916;&#x5C42;&#x7684; makefile &#x6587;&#x4EF6;
+. auto/install
+
+# STUB
+. auto/stubs
+
+have=NGX_USER value=&quot;\&quot;$NGX_USER\&quot;&quot; . auto/define
+have=NGX_GROUP value=&quot;\&quot;$NGX_GROUP\&quot;&quot; . auto/define
+
+# &#x7F16;&#x8BD1;&#x7684;&#x6700;&#x540E;&#x9636;&#x6BB5;&#xFF0C;&#x6C47;&#x603B;&#x4FE1;&#x606F;
+. auto/summary
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../s9/9.2.html" class="navigation navigation-prev " aria-label="Previous page: nginx 的 configure 原理"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../s9/9.2.2.html" class="navigation navigation-next " aria-label="Next page: 模块编译顺序"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
