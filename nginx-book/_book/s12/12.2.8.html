@@ -53,7 +53,7 @@
         data-chapter-title="ACCESS 阶段"
         data-filepath="s12/12.2.8.md"
         data-basepath=".."
-        data-revision="Thu Feb 04 2016 16:04:37 GMT+0800 (CST)"
+        data-revision="Thu Feb 04 2016 17:11:33 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3492,6 +3492,11 @@
                     
                         <h1 id="access-&#x9636;&#x6BB5;">ACCESS &#x9636;&#x6BB5;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x8BE5;&#x9636;&#x6BB5;&#x7684;&#x9996;&#x8981;&#x76EE;&#x7684;&#x662F;&#x505A;&#x6743;&#x9650;&#x63A7;&#x5236;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B; nginx &#x7684; ngx_http_access_module &#x548C; ngx_http_auth_basic_module &#x6A21;&#x5757;&#x5206;&#x522B;&#x4F1A;&#x5728;&#x8BE5;&#x9636;&#x6BB5;&#x6CE8;&#x518C;&#x4E00;&#x4E2A; handler&#x3002;</p>
+<p>&#x2003;&#x2003;
+ACCESS &#x9636;&#x6BB5;&#x7684; checker &#x662F; ngx_http_core_access_phase &#x51FD;&#x6570;&#xFF0C;&#x6B64;&#x51FD;&#x6570;&#x5BF9; handler &#x8FD4;&#x56DE;&#x503C;&#x7684;&#x5904;&#x7406;&#x5927;&#x81F4;&#x548C; ngx_http_core_generic_phase &#x4E00;&#x81F4;&#xFF0C;&#x7279;&#x6B8A;&#x7684;&#x5730;&#x65B9;&#x662F;&#x5F53; clcf-&gt;satisfy &#x4E3A; NGX_HTTP_SATISFY_ALL&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x9700;&#x8981;&#x6EE1;&#x8DB3;&#x8BE5;&#x9636;&#x6BB5;&#x6CE8;&#x518C;&#x7684;&#x6240;&#x6709; handler &#x7684;&#x9A8C;&#x8BC1;&#x65F6;&#xFF0C;&#x67D0;&#x4E2A; handler &#x8FD4;&#x56DE; NGX_OK &#x65F6;&#x8FD8;&#x9700;&#x8981;&#x7EE7;&#x7EED;&#x5904;&#x7406;&#x672C;&#x9636;&#x6BB5;&#x7684;&#x5176;&#x4ED6; handler&#x3002;
+clcf-&gt;satisfy &#x7684;&#x503C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; satisfy &#x6307;&#x4EE4;&#x6307;&#x5B9A;&#x3002;</p>
 
                     
                     </section>
