@@ -53,7 +53,7 @@
         data-chapter-title="丢弃请求体"
         data-filepath="s12/12.1.3.2.md"
         data-basepath=".."
-        data-revision="Thu Feb 04 2016 12:05:33 GMT+0800 (CST)"
+        data-revision="Thu Feb 04 2016 16:04:37 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3492,6 +3492,144 @@
                     
                         <h1 id="&#x4E22;&#x5F03;&#x8BF7;&#x6C42;&#x4F53;">&#x4E22;&#x5F03;&#x8BF7;&#x6C42;&#x4F53;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x60F3;&#x8981;&#x4E3B;&#x52A8;&#x7684;&#x4E22;&#x5F03;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x8FC7;&#x7684;&#x8BF7;&#x6C42;&#x4F53;&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528; nginx &#x6838;&#x5FC3;&#x63D0;&#x4F9B;&#x7684; ngx_http_discard_request_body() &#x63A5;&#x53E3;&#x3002;
+&#x4E3B;&#x52A8;&#x4E22;&#x5F03;&#x7684;&#x539F;&#x56E0;&#x53EF;&#x80FD;&#x6709;&#x5F88;&#x591A;&#x79CD;&#xFF0C;&#x5982;&#x6A21;&#x5757;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x538B;&#x6839;&#x4E0D;&#x9700;&#x8981;&#x8BF7;&#x6C42;&#x4F53;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x4E86;&#x8FC7;&#x5927;&#x7684;&#x8BF7;&#x6C42;&#x4F53;&#xFF0C;&#x53E6;&#x5916;&#x4E3A;&#x4E86;&#x517C;&#x5BB9; http1.1 &#x534F;&#x8BAE;&#x7684; pipeline &#x8BF7;&#x6C42;&#xFF0C;&#x6A21;&#x5757;&#x6709;&#x4E49;&#x52A1;&#x4E3B;&#x52A8;&#x4E22;&#x5F03;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x8BF7;&#x6C42;&#x4F53;&#x3002;
+&#x603B;&#x4E4B;&#x4E3A;&#x4E86;&#x4FDD;&#x6301;&#x826F;&#x597D;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x517C;&#x5BB9;&#x6027;&#xFF0C;nginx &#x5FC5;&#x987B;&#x4E3B;&#x52A8;&#x4E22;&#x5F03;&#x65E0;&#x7528;&#x7684;&#x8BF7;&#x6C42;&#x4F53;&#x3002;
+&#x4E0B;&#x9762;&#x5F00;&#x59CB;&#x5206;&#x6790; ngx_http_discard_request_body() &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code>ngx_int_t
+ngx_http_discard_request_body(ngx_http_request_t *r) {
+    ssize_t       size;
+    ngx_event_t  *rev;
+
+    if (r != r-&gt;main || r-&gt;discard_body) {
+        return NGX_OK;
+    }
+
+    if (ngx_http_test_expect(r) != NGX_OK) {
+        return NGX_HTTP_INTERNAL_SERVER_ERROR;
+    }
+
+    rev = r-&gt;connection-&gt;read;
+
+    ngx_log_debug0(NGX_LOG_DEBUG_HTTP, rev-&gt;log, 0, &quot;http set discard body&quot;);
+
+    if (rev-&gt;timer_set) {
+        ngx_del_timer(rev);
+    }
+
+    if (r-&gt;headers_in.content_length_n &lt;= 0 || r-&gt;request_body) {
+        return NGX_OK;
+    }
+
+    size = r-&gt;header_in-&gt;last - r-&gt;header_in-&gt;pos;
+
+    if (size) {
+        if (r-&gt;headers_in.content_length_n &gt; size) {
+            r-&gt;header_in-&gt;pos += size;
+            r-&gt;headers_in.content_length_n -= size;
+
+        } else {
+            r-&gt;header_in-&gt;pos += (size_t) r-&gt;headers_in.content_length_n;
+            r-&gt;headers_in.content_length_n = 0;
+            return NGX_OK;
+        }
+    }
+
+    r-&gt;read_event_handler = ngx_http_discarded_request_body_handler;
+
+    if (ngx_handle_read_event(rev, 0) != NGX_OK) {
+        return NGX_HTTP_INTERNAL_SERVER_ERROR;
+    }
+
+    if (ngx_http_read_discarded_request_body(r) == NGX_OK) {
+        r-&gt;lingering_close = 0;
+
+    } else {
+        r-&gt;count++;
+        r-&gt;discard_body = 1;
+    }
+
+    return NGX_OK;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x7531;&#x4E8E;&#x51FD;&#x6570;&#x4E0D;&#x957F;&#xFF0C;&#x8FD9;&#x91CC;&#x628A;&#x5B83;&#x5B8C;&#x6574;&#x7684;&#x5217;&#x51FA;&#x6765;&#x4E86;&#x3002;
+&#x51FD;&#x6570;&#x7684;&#x5F00;&#x59CB;&#x540C;&#x6837;&#x5148;&#x5224;&#x65AD;&#x4E86;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x505A;&#x5904;&#x7406;&#x7684;&#x60C5;&#x51B5;&#xFF1A;
+&#x5B50;&#x8BF7;&#x6C42;&#x4E0D;&#x9700;&#x8981;&#x5904;&#x7406;&#xFF0C;&#x5DF2;&#x7ECF;&#x8C03;&#x7528;&#x8FC7;&#x6B64;&#x51FD;&#x6570;&#x7684;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x5904;&#x7406;&#x3002;
+&#x63A5;&#x7740;&#x8C03;&#x7528; ngx_http_test_expect() &#x5904;&#x7406; http1.1 expect &#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6839;&#x636E; http1.1 &#x7684; expect &#x673A;&#x5236;&#xFF0C;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x4E86; expect &#x5934;&#xFF0C;&#x800C;&#x670D;&#x52A1;&#x7AEF;&#x4E0D;&#x5E0C;&#x671B;&#x63A5;&#x6536;&#x8BF7;&#x6C42;&#x4F53;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x8FD4;&#x56DE; 417 ( Expectation Failed )&#x9519;&#x8BEF;&#x3002;
+nginx &#x5E76;&#x6CA1;&#x6709;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x5B83;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x8BA9;&#x5BA2;&#x6237;&#x7AEF;&#x628A;&#x8BF7;&#x6C42;&#x4F53;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x4E22;&#x5F03;&#x6389;&#x3002;
+&#x63A5;&#x4E0B;&#x6765;&#x51FD;&#x6570;&#x5220;&#x6389;&#x4E86;&#x8BFB;&#x4E8B;&#x4EF6;&#x4E0A;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x65F6;&#x672C;&#x8EAB;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x8BF7;&#x6C42;&#x4F53;&#xFF0C;&#x6240;&#x4EE5;&#x4E5F;&#x65E0;&#x6240;&#x8C13;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x7684;&#x5FEB;&#x8FD8;&#x662F;&#x6162;&#x4E86;&#xFF0C;&#x5F53;&#x7136;&#x540E;&#x9762;&#x8FD8;&#x4F1A;&#x8BB2;&#x5230;&#xFF0C;&#x5F53; nginx &#x5DF2;&#x7ECF;&#x5904;&#x7406;&#x5B8C;&#x8BE5;&#x8BF7;&#x6C42;&#x4F46;&#x5BA2;&#x6237;&#x7AEF;&#x8FD8;&#x6CA1;&#x6709;&#x53D1;&#x9001;&#x5B8C;&#x65E0;&#x7528;&#x7684;&#x8BF7;&#x6C42;&#x4F53;&#x65F6; nginx &#x4F1A;&#x5728;&#x8BFB;&#x4E8B;&#x4EF6;&#x4E0A;&#x518D;&#x6302;&#x4E0A;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5BA2;&#x6237;&#x7AEF;&#x5982;&#x679C;&#x6253;&#x7B97;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x4F53;&#x5C31;&#x5FC5;&#x987B;&#x53D1;&#x9001; content-length &#x5934;&#xFF0C;&#x6240;&#x4EE5;&#x51FD;&#x6570;&#x4F1A;&#x68C0;&#x67E5;&#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x7684; content-length &#x5934;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x4F1A;&#x67E5;&#x770B;&#x5176;&#x4ED6;&#x5730;&#x65B9;&#x662F;&#x4E0D;&#x662F;&#x5DF2;&#x7ECF;&#x8BFB;&#x53D6;&#x4E86;&#x8BF7;&#x6C42;&#x4F53;&#x3002;
+&#x5982;&#x679C;&#x786E;&#x5B9E;&#x6709;&#x5F85;&#x5904;&#x7406;&#x7684;&#x8BF7;&#x6C42;&#x4F53;&#xFF0C;&#x51FD;&#x6570;&#x63A5;&#x7740;&#x68C0;&#x67E5;&#x8BF7;&#x6C42;&#x5934; buffer &#x4E2D;&#x9884;&#x8BFB;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x9884;&#x8BFB;&#x7684;&#x6570;&#x636E;&#x4F1A;&#x76F4;&#x63A5;&#x88AB;&#x4E22;&#x6389;&#xFF0C;&#x5F53;&#x7136;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x4F53;&#x5DF2;&#x7ECF;&#x88AB;&#x5168;&#x90E8;&#x9884;&#x8BFB;&#xFF0C;&#x51FD;&#x6570;&#x5C31;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x4E86;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x63A5;&#x4E0B;&#x6765;&#x5982;&#x679C;&#x8FD8;&#x6709;&#x5269;&#x4F59;&#x7684;&#x8BF7;&#x6C42;&#x4F53;&#x672A;&#x5904;&#x7406;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x8C03;&#x7528; ngx_handle_read_event() &#x5728;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x673A;&#x5236;&#x4E2D;&#x6302;&#x8F7D;&#x597D;&#x8BFB;&#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x628A;&#x8BFB;&#x4E8B;&#x4EF6;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x8BBE;&#x7F6E;&#x4E3A; ngx_http_discarded_request_body_handler&#x3002;
+&#x505A;&#x597D;&#x8FD9;&#x4E9B;&#x51C6;&#x5907;&#x4E4B;&#x540E;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x6700;&#x540E;&#x8C03;&#x7528; ngx_http_read_discarded_request_body() &#x63A5;&#x53E3;&#x8BFB;&#x53D6;&#x5BA2;&#x6237;&#x7AEF;&#x8FC7;&#x6765;&#x7684;&#x8BF7;&#x6C42;&#x4F53;&#x5E76;&#x4E22;&#x5F03;&#x3002;
+&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x5E76;&#x6CA1;&#x6709;&#x4E00;&#x6B21;&#x5C06;&#x8BF7;&#x6C42;&#x4F53;&#x53D1;&#x8FC7;&#x6765;&#xFF0C;&#x51FD;&#x6570;&#x4F1A;&#x8FD4;&#x56DE;&#xFF0C;&#x5269;&#x4F59;&#x7684;&#x6570;&#x636E;&#x7B49;&#x5230;&#x4E0B;&#x4E00;&#x6B21;&#x8BFB;&#x4E8B;&#x4EF6;&#x8FC7;&#x6765;&#x65F6;&#x4EA4;&#x7ED9; ngx_http_discarded_request_body_handler() &#x6765;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x65F6;&#x8BF7;&#x6C42;&#x7684; discard_body &#x5C06;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A; 1 &#x7528;&#x6765;&#x6807;&#x8BC6;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x3002;
+&#x53E6;&#x5916;&#x8BF7;&#x6C42;&#x7684;&#x5F15;&#x7528;&#x6570;( count )&#x4E5F;&#x88AB;&#x52A0; 1&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x76EE;&#x7684;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x80FD;&#x5728; nginx &#x5904;&#x7406;&#x5B8C;&#x8BF7;&#x6C42;&#x4E4B;&#x540E;&#x4ECD;&#x672A;&#x5B8C;&#x6574;&#x53D1;&#x9001;&#x5F85;&#x53D1;&#x9001;&#x7684;&#x8BF7;&#x6C42;&#x4F53;&#xFF0C;&#x589E;&#x52A0;&#x5F15;&#x7528;&#x662F;&#x9632;&#x6B62; nginx &#x6838;&#x5FC3;&#x5728;&#x5904;&#x7406;&#x5B8C;&#x8BF7;&#x6C42;&#x540E;&#x76F4;&#x63A5;&#x91CA;&#x653E;&#x4E86;&#x8BF7;&#x6C42;&#x7684;&#x76F8;&#x5173;&#x8D44;&#x6E90;&#x3002;</p>
+<p>&#x2003;&#x2003;
+ngx_http_read_discarded_request_body() &#x51FD;&#x6570;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x5B83;&#x5FAA;&#x73AF;&#x7684;&#x4ECE;&#x94FE;&#x63A5;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x5E76;&#x4E22;&#x5F03;&#xFF0C;&#x76F4;&#x5230;&#x8BFB;&#x5B8C;&#x63A5;&#x6536;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x4F53;&#x5DF2;&#x7ECF;&#x88AB;&#x8BFB;&#x5B8C;&#x4E86;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x4F1A;&#x8BBE;&#x7F6E;&#x8BFB;&#x4E8B;&#x4EF6;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E3A; ngx_http_block_reading&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4EC5;&#x4EC5;&#x5220;&#x9664;&#x6C34;&#x5E73;&#x89E6;&#x53D1;&#x7684;&#x8BFB;&#x4E8B;&#x4EF6;&#xFF0C;&#x9632;&#x6B62;&#x540C;&#x4E00;&#x4E8B;&#x4EF6;&#x4E0D;&#x65AD;&#x88AB;&#x89E6;&#x53D1;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x6700;&#x540E;&#x770B;&#x4E00;&#x4E0B;&#x8BFB;&#x4E8B;&#x4EF6;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570; ngx_http_discarded_request_body_handler&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6BCF;&#x6B21;&#x8BFB;&#x4E8B;&#x4EF6;&#x6765;&#x65F6;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x5B83;&#x7684;&#x6E90;&#x7801;&#xFF1A;</p>
+<pre><code>void
+ngx_http_discarded_request_body_handler(ngx_http_request_t *r) {
+    ...
+    c = r-&gt;connection;
+    rev = c-&gt;read;
+
+    if (rev-&gt;timedout) {
+        c-&gt;timedout = 1;
+        c-&gt;error = 1;
+        ngx_http_finalize_request(r, NGX_ERROR);
+        return;
+    }
+
+    if (r-&gt;lingering_time) {
+        timer = (ngx_msec_t) (r-&gt;lingering_time - ngx_time());
+
+        if (timer &lt;= 0) {
+            r-&gt;discard_body = 0;
+            r-&gt;lingering_close = 0;
+            ngx_http_finalize_request(r, NGX_ERROR);
+            return;
+        }
+    } else {
+        timer = 0;
+    }
+
+    rc = ngx_http_read_discarded_request_body(r);
+
+    if (rc == NGX_OK) {
+        r-&gt;discard_body = 0;
+        r-&gt;lingering_close = 0;
+        ngx_http_finalize_request(r, NGX_DONE);
+        return;
+    }
+
+    /* rc == NGX_AGAIN */
+    if (ngx_handle_read_event(rev, 0) != NGX_OK) {
+        c-&gt;error = 1;
+        ngx_http_finalize_request(r, NGX_ERROR);
+        return;
+    }
+
+    if (timer) {
+        clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);
+        timer *= 1000;
+        if (timer &gt; clcf-&gt;lingering_timeout) {
+            timer = clcf-&gt;lingering_timeout;
+        }
+        ngx_add_timer(rev, timer);
+    }
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x51FD;&#x6570;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x5904;&#x7406;&#x4E86;&#x8BFB;&#x4E8B;&#x4EF6;&#x8D85;&#x65F6;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4E4B;&#x524D;&#x8BF4;&#x5230;&#x5728; ngx_http_discard_request_body() &#x51FD;&#x6570;&#x4E2D;&#x5DF2;&#x7ECF;&#x5220;&#x9664;&#x4E86;&#x8BFB;&#x4E8B;&#x4EF6;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x90A3;&#x4E48;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F1A;&#x8BBE;&#x7F6E;&#x5B9A;&#x65F6;&#x5668;&#x5462;&#xFF1F;
+&#x7B54;&#x6848;&#x5C31;&#x662F;&#x5728; nginx &#x5DF2;&#x7ECF;&#x5904;&#x7406;&#x5B8C;&#x8BE5;&#x8BF7;&#x6C42;&#xFF0C;&#x4F46;&#x662F;&#x53C8;&#x6CA1;&#x6709;&#x5B8C;&#x5168;&#x5C06;&#x8BE5;&#x8BF7;&#x6C42;&#x7684;&#x8BF7;&#x6C42;&#x4F53;&#x4E22;&#x5F03;&#x7684;&#x65F6;&#x5019;&#xFF08;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x80FD;&#x8FD8;&#x6CA1;&#x6709;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#xFF09;&#x3002;
+&#x5728; ngx_http_finalize_connection() &#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x68C0;&#x67E5;&#x5230;&#x8FD8;&#x6709;&#x672A;&#x4E22;&#x5F03;&#x7684;&#x8BF7;&#x6C42;&#x4F53;&#x65F6;&#xFF0C;nginx &#x4F1A;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x8BFB;&#x4E8B;&#x4EF6;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x5B83;&#x7684;&#x65F6;&#x957F;&#x4E3A; lingering_timeout &#x6307;&#x4EE4;&#x6240;&#x6307;&#x5B9A;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; 5 &#x79D2;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x4EC5;&#x4EC5;&#x4E24;&#x6B21;&#x8BFB;&#x4E8B;&#x4EF6;&#x4E4B;&#x95F4;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x7B49;&#x5F85;&#x8BF7;&#x6C42;&#x4F53;&#x7684;&#x603B;&#x65F6;&#x957F;&#x4E3A; lingering_time &#x6307;&#x4EE4;&#x6240;&#x6307;&#x5B9A;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; 30 &#x79D2;&#x3002;
+&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E2D;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5982;&#x679C;&#x68C0;&#x6D4B;&#x5230;&#x8D85;&#x65F6;&#x4E8B;&#x4EF6;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x5E76;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x3002;
+&#x540C;&#x6837;&#x8FD8;&#x9700;&#x8981;&#x63A7;&#x5236;&#x6574;&#x4E2A;&#x4E22;&#x5F03;&#x8BF7;&#x6C42;&#x4F53;&#x7684;&#x65F6;&#x957F;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7; lingering_time &#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#x6700;&#x5927;&#x65F6;&#x957F;&#xFF0C;&#x4E5F;&#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x5E76;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5982;&#x679C;&#x8BFB;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x5728;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x5B8C;&#x4E4B;&#x524D;&#x5219;&#x4E0D;&#x7528;&#x5904;&#x7406;&#x8D85;&#x65F6;&#x4E8B;&#x4EF6;&#xFF0C;&#x4E5F;&#x4E0D;&#x7528;&#x8BBE;&#x7F6E;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x51FD;&#x6570;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x8C03;&#x7528; ngx_http_read_discarded_request_body() &#x6765;&#x8BFB;&#x53D6;&#x5E76;&#x4E22;&#x5F03;&#x6570;&#x636E;&#x3002;</p>
 
                     
                     </section>

@@ -53,7 +53,7 @@
         data-chapter-title="多阶段执行链"
         data-filepath="s12/12.2.1.md"
         data-basepath=".."
-        data-revision="Thu Feb 04 2016 12:05:33 GMT+0800 (CST)"
+        data-revision="Thu Feb 04 2016 16:04:37 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3492,6 +3492,152 @@
                     
                         <h1 id="&#x591A;&#x9636;&#x6BB5;&#x6267;&#x884C;&#x94FE;">&#x591A;&#x9636;&#x6BB5;&#x6267;&#x884C;&#x94FE;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+nginx &#x6309;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x5C06;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#x5212;&#x5206;&#x4E3A;&#x591A;&#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x4E00;&#x822C;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x53C8;&#x53EF;&#x4EE5;&#x6CE8;&#x518C;&#x591A;&#x4E2A;&#x6A21;&#x5757;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;nginx &#x6309;&#x9636;&#x6BB5;&#x5C06;&#x8FD9;&#x4E9B;&#x5904;&#x7406;&#x51FD;&#x6570;&#x7EC4;&#x7EC7;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x94FE;&#xFF0C;&#x8FD9;&#x4E2A;&#x6267;&#x884C;&#x94FE;&#x4FDD;&#x5B58;&#x5728; http &#x4E3B;&#x914D;&#x7F6E;&#xFF08; ngx_http_core_main_conf_t &#xFF09;&#x7684; phase_engine &#x5B57;&#x6BB5;&#x4E2D;&#xFF0C;phase_engine &#x5B57;&#x6BB5;&#x7684;&#x7C7B;&#x578B;&#x4E3A; ngx_http_phase_engine_t&#xFF1A;</p>
+<pre><code>typedef struct {
+    ngx_http_phase_handler_t  *handlers;
+    ngx_uint_t                 server_rewrite_index;
+    ngx_uint_t                 location_rewrite_index;
+} ngx_http_phase_engine_t;
+</code></pre><p>&#x2003;&#x2003;
+&#x5176;&#x4E2D; handlers &#x5B57;&#x6BB5;&#x5373;&#x4E3A;&#x6267;&#x884C;&#x94FE;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x800C;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x4E4B;&#x95F4;&#x53C8;&#x88AB;&#x4E32;&#x6210;&#x94FE;&#x8868;&#xFF0C;&#x4ECE;&#x800C;&#x5141;&#x8BB8;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x5411;&#x524D;&#xFF0C;&#x6216;&#x8005;&#x5411;&#x540E;&#x7684;&#x9636;&#x6BB5;&#x8DF3;&#x8F6C;&#xFF0C;&#x6267;&#x884C;&#x94FE;&#x8282;&#x70B9;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>struct ngx_http_phase_handler_s {
+    ngx_http_phase_handler_pt  checker;
+    ngx_http_handler_pt        handler;
+    ngx_uint_t                 next;
+};
+</code></pre><p>&#x2003;&#x2003;
+&#x5176;&#x4E2D; checker &#x548C; handler &#x90FD;&#x662F;&#x51FD;&#x6570;&#x6307;&#x9488;&#xFF0C;&#x76F8;&#x540C;&#x9636;&#x6BB5;&#x7684;&#x8282;&#x70B9;&#x5177;&#x6709;&#x76F8;&#x540C;&#x7684; checker &#x51FD;&#x6570;&#xFF0C;handler &#x5B57;&#x6BB5;&#x4FDD;&#x5B58;&#x7684;&#x662F;&#x6A21;&#x5757;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;
+&#x4E00;&#x822C;&#x5728; checker &#x51FD;&#x6570;&#x4E2D;&#x4F1A;&#x6267;&#x884C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684; handler &#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x4F8B;&#x5916;&#x7684;&#x662F; NGX_HTTP_FIND_CONFIG_PHASE&#xFF0C;NGX_HTTP_POST_REWRITE_PHASE&#xFF0C;NGX_HTTP_POST_ACCESS_PHASE &#x548C; NGX_HTTP_TRY_FILES_PHASE &#x8FD9; 4 &#x4E2A;&#x9636;&#x6BB5;&#x4E0D;&#x80FD;&#x6CE8;&#x518C;&#x6A21;&#x5757;&#x51FD;&#x6570;&#x3002;
+next &#x5B57;&#x6BB5;&#x4E3A;&#x5FEB;&#x901F;&#x8DF3;&#x8DC3;&#x7D22;&#x5F15;&#xFF0C;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x662F;&#x6309;&#x7167;&#x6267;&#x884C;&#x94FE;&#x987A;&#x5E8F;&#x7684;&#x5F80;&#x524D;&#x6267;&#x884C;&#xFF0C;&#x4F46;&#x5728;&#x67D0;&#x4E9B;&#x6267;&#x884C;&#x9636;&#x6BB5;&#x7684; checker &#x51FD;&#x6570;&#x4E2D;&#x7531;&#x4E8E;&#x6267;&#x884C;&#x4E86;&#x67D0;&#x4E2A;&#x903B;&#x8F91;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x56DE;&#x8DF3;&#x81F3;&#x4E4B;&#x524D;&#x7684;&#x6267;&#x884C;&#x9636;&#x6BB5;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x8DF3;&#x8FC7;&#x4E4B;&#x540E;&#x7684;&#x67D0;&#x4E9B;&#x6267;&#x884C;&#x9636;&#x6BB5;&#xFF0C;next &#x5B57;&#x6BB5;&#x4FDD;&#x5B58;&#x7684;&#x5C31;&#x662F;&#x8DF3;&#x8DC3;&#x7684;&#x76EE;&#x7684;&#x7D22;&#x5F15;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x548C;&#x5EFA;&#x7ACB;&#x6267;&#x884C;&#x94FE;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x90FD;&#x4FDD;&#x5B58;&#x5728; http &#x4E3B;&#x914D;&#x7F6E;&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x662F; phases &#x5B57;&#x6BB5;&#xFF0C;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x662F; phase_engine &#x5B57;&#x6BB5;&#x3002;
+&#x5176;&#x4E2D; phases &#x5B57;&#x6BB5;&#x4E3A;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x5B83;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x7B49;&#x4E8E;&#x9636;&#x6BB5;&#x6570;&#x76EE;&#xFF0C;&#x5373;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x9636;&#x6BB5;&#x3002;
+&#x800C; phases &#x6570;&#x7EC4;&#x7684;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x53C8;&#x662F;&#x52A8;&#x6001;&#x6570;&#x7EC4;( ngx_array_t )&#xFF0C;&#x6BCF;&#x6B21;&#x6A21;&#x5757;&#x6CE8;&#x518C;&#x5904;&#x7406;&#x51FD;&#x6570;&#x65F6;&#x53EA;&#x9700;&#x8981;&#x5728;&#x5BF9;&#x5E94;&#x9636;&#x6BB5;&#x7684;&#x52A8;&#x6001;&#x6570;&#x7EC4;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x5904;&#x7406;&#x51FD;&#x6570;&#x7684;&#x6307;&#x9488;&#x3002;
+&#x7531;&#x4E8E;&#x5728;&#x67D0;&#x4E9B;&#x6267;&#x884C;&#x9636;&#x6BB5;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5411;&#x540E;&#x6216;&#x8005;&#x5411;&#x524D;&#x8DF3;&#x8F6C;&#xFF0C;&#x7B80;&#x5355;&#x7684;&#x4F7F;&#x7528; 2 &#x4E2A;&#x6570;&#x7EC4;&#x5E76;&#x4E0D;&#x65B9;&#x4FBF;&#xFF0C;&#x6240;&#x4EE5; nginx &#x53C8;&#x7EC4;&#x7EC7;&#x4E86;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x94FE;&#xFF0C;&#x4FDD;&#x5B58;&#x5728;&#x4E86; phase_engine &#x5B57;&#x6BB5;&#xFF0C;&#x5176;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x5305;&#x542B;&#x4E00;&#x4E2A; next &#x57DF;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x8DF3;&#x8DC3;&#x76EE;&#x7684;&#x8282;&#x70B9;&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x800C;&#x6267;&#x884C;&#x94FE;&#x7684;&#x5EFA;&#x7ACB;&#x5219;&#x5728; nginx &#x521D;&#x59CB;&#x5316;&#x7684; post config &#x9636;&#x6BB5;&#x4E4B;&#x540E;&#x8C03;&#x7528; ngx_http_init_phase_handlers &#x51FD;&#x6570;&#x5B8C;&#x6210;&#xFF0C;&#x4E0B;&#x9762;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x8BE5;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code>static ngx_int_t
+ngx_http_init_phase_handlers(ngx_conf_t *cf, ngx_http_core_main_conf_t *cmcf) {
+    ngx_int_t                   j;
+    ngx_uint_t                  i, n;
+    ngx_uint_t                  find_config_index, use_rewrite, use_access;
+    ngx_http_handler_pt        *h;
+    ngx_http_phase_handler_t   *ph;
+    ngx_http_phase_handler_pt   checker;
+
+    cmcf-&gt;phase_engine.server_rewrite_index = (ngx_uint_t) -1;
+    cmcf-&gt;phase_engine.location_rewrite_index = (ngx_uint_t) -1;
+    find_config_index = 0;
+    use_rewrite = cmcf-&gt;phases[NGX_HTTP_REWRITE_PHASE].handlers.nelts ? 1 : 0;
+    use_access = cmcf-&gt;phases[NGX_HTTP_ACCESS_PHASE].handlers.nelts ? 1 : 0;
+
+    n = use_rewrite + use_access + cmcf-&gt;try_files + 1 /* find config phase */;
+
+    for (i = 0; i &lt; NGX_HTTP_LOG_PHASE; i++) {
+        n += cmcf-&gt;phases[i].handlers.nelts;
+    }
+
+    ph = ngx_pcalloc(cf-&gt;pool,
+                     n * sizeof(ngx_http_phase_handler_t) + sizeof(void *));
+    if (ph == NULL) {
+        return NGX_ERROR;
+    }
+
+    cmcf-&gt;phase_engine.handlers = ph;
+    n = 0;
+
+    for (i = 0; i &lt; NGX_HTTP_LOG_PHASE; i++) {
+        h = cmcf-&gt;phases[i].handlers.elts;
+
+        switch (i) {
+
+        case NGX_HTTP_SERVER_REWRITE_PHASE:
+            if (cmcf-&gt;phase_engine.server_rewrite_index == (ngx_uint_t) -1) {
+                cmcf-&gt;phase_engine.server_rewrite_index = n;
+            }
+            checker = ngx_http_core_rewrite_phase;
+
+            break;
+
+        case NGX_HTTP_FIND_CONFIG_PHASE:
+            find_config_index = n;
+
+            ph-&gt;checker = ngx_http_core_find_config_phase;
+            n++;
+            ph++;
+
+            continue;
+
+        case NGX_HTTP_REWRITE_PHASE:
+            if (cmcf-&gt;phase_engine.location_rewrite_index == (ngx_uint_t) -1) {
+                cmcf-&gt;phase_engine.location_rewrite_index = n;
+            }
+            checker = ngx_http_core_rewrite_phase;
+
+            break;
+
+        case NGX_HTTP_POST_REWRITE_PHASE:
+            if (use_rewrite) {
+                ph-&gt;checker = ngx_http_core_post_rewrite_phase;
+                ph-&gt;next = find_config_index;
+                n++;
+                ph++;
+            }
+
+            continue;
+
+        case NGX_HTTP_ACCESS_PHASE:
+            checker = ngx_http_core_access_phase;
+            n++;
+            break;
+
+        case NGX_HTTP_POST_ACCESS_PHASE:
+            if (use_access) {
+                ph-&gt;checker = ngx_http_core_post_access_phase;
+                ph-&gt;next = n;
+                ph++;
+            }
+
+            continue;
+
+        case NGX_HTTP_TRY_FILES_PHASE:
+            if (cmcf-&gt;try_files) {
+                ph-&gt;checker = ngx_http_core_try_files_phase;
+                n++;
+                ph++;
+            }
+
+            continue;
+
+        case NGX_HTTP_CONTENT_PHASE:
+            checker = ngx_http_core_content_phase;
+            break;
+
+        default:
+            checker = ngx_http_core_generic_phase;
+        }
+
+        n += cmcf-&gt;phases[i].handlers.nelts;
+
+        for (j = cmcf-&gt;phases[i].handlers.nelts - 1; j &gt;=0; j--) {
+            ph-&gt;checker = checker;
+            ph-&gt;handler = h[j];
+            ph-&gt;next = n;
+            ph++;
+        }
+    }
+
+    return NGX_OK;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x9996;&#x5148;&#x9700;&#x8981;&#x8BF4;&#x660E;&#x7684;&#x662F; cmcf-&gt;phases &#x6570;&#x7EC4;&#x4E2D;&#x4FDD;&#x5B58;&#x4E86;&#x5728; post config &#x4E4B;&#x524D;&#x6CE8;&#x518C;&#x7684;&#x6240;&#x6709;&#x6A21;&#x5757;&#x51FD;&#x6570;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x51FD;&#x6570;&#x5148;&#x8BA1;&#x7B97;&#x6267;&#x884C;&#x94FE;&#x7684;&#x8282;&#x70B9;&#x4E2A;&#x6570;&#xFF0C;&#x5E76;&#x5206;&#x914D;&#x76F8;&#x5E94;&#x7684;&#x7A7A;&#x95F4;&#xFF0C;&#x524D;&#x9762;&#x63D0;&#x5230;&#x6709; 4 &#x4E2A;&#x9636;&#x6BB5;&#x4E0D;&#x80FD;&#x6CE8;&#x518C;&#x6A21;&#x5757;&#xFF0C;&#x5E76;&#x4E14; POST_REWRITE &#x548C; POST_ACCESS &#x8FD9; 2 &#x4E2A;&#x9636;&#x6BB5;&#x5206;&#x522B;&#x53EA;&#x6709;&#x5728; REWRITE &#x548C; ACCESS &#x9636;&#x6BB5;&#x6CE8;&#x518C;&#x4E86;&#x6A21;&#x5757;&#x65F6;&#x624D;&#x5B58;&#x5728;&#xFF0C;&#x53E6;&#x5916; TRY_FILES &#x9636;&#x6BB5;&#x53EA;&#x6709;&#x5728;&#x914D;&#x7F6E;&#x4E86; try_files &#x6307;&#x4EE4;&#x7684;&#x65F6;&#x5019;&#x624D;&#x5B58;&#x5728;&#xFF0C;&#x6700;&#x540E; FIND_CONFIG &#x9636;&#x6BB5;&#x867D;&#x7136;&#x4E0D;&#x80FD;&#x6CE8;&#x518C;&#x6A21;&#x5757;&#xFF0C;&#x4F46;&#x5B83;&#x662F;&#x5FC5;&#x987B;&#x5B58;&#x5728;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x8BA1;&#x7B97;&#x6267;&#x884C;&#x94FE;&#x8282;&#x70B9;&#x6570;&#x65F6;&#x9700;&#x8981;&#x8003;&#x8651;&#x8FD9;&#x4E9B;&#x56E0;&#x7D20;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5206;&#x914D;&#x597D;&#x5185;&#x5B58;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#x5EFA;&#x7ACB;&#x94FE;&#x8868;&#xFF0C;&#x8FC7;&#x7A0B;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x904D;&#x5386;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x6CE8;&#x518C;&#x7684;&#x6A21;&#x5757;&#x51FD;&#x6570;&#xFF0C;&#x4E3A;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x7684;&#x8282;&#x70B9;&#x8D4B;&#x503C; checker &#x51FD;&#x6570;&#xFF0C;handler &#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x53CA; next &#x7D22;&#x5F15;&#x3002;
+&#x6700;&#x7EC8;&#x5EFA;&#x7ACB;&#x597D;&#x7684;&#x6267;&#x884C;&#x94FE;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p>&#x2003;&#x2003;
+(&#x6682;&#x7F3A;)</p>
+<p>&#x2003;&#x2003;
+SERVER_REWRITE &#x9636;&#x6BB5;&#x7684;&#x8282;&#x70B9;&#x7684; next &#x57DF;&#x6307;&#x5411; FIND_CONFIG &#x9636;&#x6BB5;&#x7684;&#x7B2C; 1 &#x4E2A;&#x8282;&#x70B9;&#xFF0C;REWRITE &#x9636;&#x6BB5;&#x7684; next &#x57DF;&#x6307;&#x5411; POST_REWRITE &#x9636;&#x6BB5;&#x7684;&#x7B2C; 1 &#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x800C; POST_REWRITE &#x9636;&#x6BB5;&#x7684; next &#x57DF;&#x5219;&#x6307;&#x5411; FIND_CONFIG&#x3002;
+&#x56E0;&#x4E3A;&#x5F53;&#x51FA;&#x73B0; location &#x7EA7;&#x522B;&#x7684; uri &#x91CD;&#x5199;&#x65F6;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x5339;&#x914D;&#x65B0;&#x7684; location&#xFF0C;PREACCESS &#x9636;&#x6BB5;&#x7684; next &#x57DF;&#x6307;&#x5411; ACCESS &#x57DF;&#xFF0C;ACCESS &#x548C; POST_ACCESS &#x9636;&#x6BB5;&#x7684; next &#x57DF;&#x5219;&#x662F;&#x5219;&#x662F;&#x6307;&#x5411; CONTENT &#x9636;&#x6BB5;&#xFF0C;&#x5F53;&#x7136;&#x5982;&#x679C; TRY_FILES &#x9636;&#x6BB5;&#x5B58;&#x5728;&#x7684;&#x8BDD;&#x5219;&#x662F;&#x6307;&#x5411; TRY_FILES &#x9636;&#x6BB5;&#xFF0C;&#x6700;&#x540E; CONTENT &#x9636;&#x6BB5;&#x7684; next &#x57DF;&#x6307;&#x5411; LOG &#x9636;&#x6BB5;&#xFF0C;&#x5F53;&#x7136; next &#x57DF;&#x662F;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x7684; checker &#x51FD;&#x6570;&#x6839;&#x636E;&#x8BE5;&#x9636;&#x6BB5;&#x7684;&#x9700;&#x6C42;&#x6765;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x6CA1;&#x6709;&#x9700;&#x8981;&#x65F6; checker &#x51FD;&#x6570;&#x53EF;&#x80FD;&#x90FD;&#x4E0D;&#x4F1A;&#x4F7F;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
 
                     
                     </section>
