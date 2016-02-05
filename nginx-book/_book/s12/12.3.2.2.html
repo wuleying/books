@@ -53,7 +53,7 @@
         data-chapter-title="ngx_http_write_filter_module 分析"
         data-filepath="s12/12.3.2.2.md"
         data-basepath=".."
-        data-revision="Fri Feb 05 2016 10:22:52 GMT+0800 (CST)"
+        data-revision="Fri Feb 05 2016 11:24:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3492,7 +3492,492 @@
                     
                         <h1 id="ngxhttpwritefiltermodule-&#x5206;&#x6790;">ngx_http_write_filter_module &#x5206;&#x6790;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+ngx_http_write_filter_module &#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A; body filter&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5B83;&#x7684;&#x6CE8;&#x518C;&#x51FD;&#x6570;&#x7684;&#x7279;&#x6B8A;&#x6027;&#xFF1A;</p>
+<pre><code>static ngx_int_t
+ngx_http_write_filter_init(ngx_conf_t *cf) {
+    ngx_http_top_body_filter = ngx_http_write_filter;
 
+    return NGX_OK;
+}
+</code></pre><p>&#x2003;&#x2003;
+ngx_http_write_filter_module &#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x6CE8;&#x518C; body filter &#x7684;&#x6A21;&#x5757;&#xFF0C;&#x4E8E;&#x662F;&#x5B83;&#x4E5F;&#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x7684; body filter &#x6A21;&#x5757;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x76F4;&#x63A5;&#x6765;&#x770B; ngx_http_write_filter&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#x53BB;&#x6389;&#x4E86;&#x4E00;&#x4E9B;&#x8C03;&#x8BD5;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>ngx_int_t
+ngx_http_write_filter(ngx_http_request_t *r, ngx_chain_t *in) {
+    off_t                      size, sent, nsent, limit;
+    ngx_uint_t                 last, flush;
+    ngx_msec_t                 delay;
+    ngx_chain_t               *cl, *ln, **ll, *chain;
+    ngx_connection_t          *c;
+    ngx_http_core_loc_conf_t  *clcf;
+
+    c = r-&gt;connection;
+
+    if (c-&gt;error) {
+        return NGX_ERROR;
+    }
+
+    size = 0;
+    flush = 0;
+    last = 0;
+    ll = &amp;r-&gt;out;
+
+    /* find the size, the flush point and the last link of the saved chain */
+
+    for (cl = r-&gt;out; cl; cl = cl-&gt;next) {
+        ll = &amp;cl-&gt;next;
+#if 1
+        if (ngx_buf_size(cl-&gt;buf) == 0 &amp;&amp; !ngx_buf_special(cl-&gt;buf)) {
+            return NGX_ERROR;
+        }
+#endif
+
+        size += ngx_buf_size(cl-&gt;buf);
+
+        if (cl-&gt;buf-&gt;flush || cl-&gt;buf-&gt;recycled) {
+            flush = 1;
+        }
+
+        if (cl-&gt;buf-&gt;last_buf) {
+            last = 1;
+        }
+    }
+
+    /* add the new chain to the existent one */
+
+    for (ln = in; ln; ln = ln-&gt;next) {
+        cl = ngx_alloc_chain_link(r-&gt;pool);
+        if (cl == NULL) {
+            return NGX_ERROR;
+        }
+
+        cl-&gt;buf = ln-&gt;buf;
+        *ll = cl;
+        ll = &amp;cl-&gt;next;
+
+#if 1
+        if (ngx_buf_size(cl-&gt;buf) == 0 &amp;&amp; !ngx_buf_special(cl-&gt;buf)) {
+            return NGX_ERROR;
+        }
+#endif
+
+        size += ngx_buf_size(cl-&gt;buf);
+
+        if (cl-&gt;buf-&gt;flush || cl-&gt;buf-&gt;recycled) {
+            flush = 1;
+        }
+
+        if (cl-&gt;buf-&gt;last_buf) {
+            last = 1;
+        }
+    }
+
+    *ll = NULL;
+
+    clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);
+
+    /*
+     * avoid the output if there are no last buf, no flush point,
+     * there are the incoming bufs and the size of all bufs
+     * is smaller than &quot;postpone_output&quot; directive
+     */
+
+    if (!last &amp;&amp; !flush &amp;&amp; in &amp;&amp; size &lt; (off_t) clcf-&gt;postpone_output) {
+        return NGX_OK;
+    }
+
+    /* &#x5982;&#x679C;&#x8BF7;&#x6C42;&#x7531;&#x4E8E;&#x88AB;&#x9650;&#x901F;&#x800C;&#x5FC5;&#x987B;&#x5EF6;&#x8FDF;&#x53D1;&#x9001;&#x65F6;&#xFF0C;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6807;&#x8BC6;&#x540E;&#x9000;&#x51FA; */
+    if (c-&gt;write-&gt;delayed) {
+        c-&gt;buffered |= NGX_HTTP_WRITE_BUFFERED;
+        return NGX_AGAIN;
+    }
+
+    /* &#x5982;&#x679C; buffer &#x603B;&#x5927;&#x5C0F;&#x4E3A; 0&#xFF0C;&#x800C;&#x4E14;&#x5F53;&#x524D;&#x8FDE;&#x63A5;&#x4E4B;&#x524D;&#x6CA1;&#x6709;&#x7531;&#x4E8E;&#x5E95;&#x5C42;&#x53D1;&#x9001;&#x63A5;&#x53E3;&#x7684;&#x539F;&#x56E0;&#x5EF6;&#x8FDF;&#xFF0C;
+       &#x5219;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6709;&#x7279;&#x6B8A;&#x6807;&#x8BB0; */
+    if (size == 0 &amp;&amp; !(c-&gt;buffered &amp; NGX_LOWLEVEL_BUFFERED)) {
+        /* last_buf &#x6807;&#x8BB0;&#xFF0C;&#x8868;&#x793A;&#x8BF7;&#x6C42;&#x4F53;&#x5DF2;&#x7ECF;&#x53D1;&#x9001;&#x7ED3;&#x675F; */
+        if (last) {
+            r-&gt;out = NULL;
+            c-&gt;buffered &amp;= ~NGX_HTTP_WRITE_BUFFERED;
+
+            return NGX_OK;
+        }
+        /* flush &#x751F;&#x6548;&#xFF0C;&#x800C;&#x4E14;&#x53C8;&#x6CA1;&#x6709;&#x5B9E;&#x9645;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x6E05;&#x7A7A;&#x5F53;&#x524D;&#x7684;&#x672A;&#x53D1;&#x9001;&#x961F;&#x5217; */
+        if (flush) {
+            do {
+                r-&gt;out = r-&gt;out-&gt;next;
+            } while (r-&gt;out);
+
+            c-&gt;buffered &amp;= ~NGX_HTTP_WRITE_BUFFERED;
+
+            return NGX_OK;
+        }
+
+        return NGX_ERROR;
+    }
+
+    /* &#x8BF7;&#x6C42;&#x6709;&#x901F;&#x7387;&#x9650;&#x5236;&#xFF0C;&#x5219;&#x8BA1;&#x7B97;&#x5F53;&#x524D;&#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x7684;&#x5927;&#x5C0F; */
+    if (r-&gt;limit_rate) {
+        limit = r-&gt;limit_rate * (ngx_time() - r-&gt;start_sec + 1)
+                - (c-&gt;sent - clcf-&gt;limit_rate_after);
+
+        if (limit &lt;= 0) {
+            c-&gt;write-&gt;delayed = 1;
+            ngx_add_timer(c-&gt;write,
+                          (ngx_msec_t) (- limit * 1000 / r-&gt;limit_rate + 1));
+
+            c-&gt;buffered |= NGX_HTTP_WRITE_BUFFERED;
+
+            return NGX_AGAIN;
+        }
+
+        if (clcf-&gt;sendfile_max_chunk
+            &amp;&amp; (off_t) clcf-&gt;sendfile_max_chunk &lt; limit)
+        {
+            limit = clcf-&gt;sendfile_max_chunk;
+        }
+
+    } else {
+        limit = clcf-&gt;sendfile_max_chunk;
+    }
+
+    sent = c-&gt;sent;
+    /* &#x53D1;&#x9001;&#x6570;&#x636E; */
+    chain = c-&gt;send_chain(c, r-&gt;out, limit);
+
+    if (chain == NGX_CHAIN_ERROR) {
+        c-&gt;error = 1;
+        return NGX_ERROR;
+    }
+
+    /* &#x66F4;&#x65B0;&#x9650;&#x901F;&#x76F8;&#x5173;&#x7684;&#x4FE1;&#x606F; */
+    if (r-&gt;limit_rate) {
+
+        nsent = c-&gt;sent;
+
+        if (clcf-&gt;limit_rate_after) {
+            sent -= clcf-&gt;limit_rate_after;
+            if (sent &lt; 0) {
+                sent = 0;
+            }
+
+            nsent -= clcf-&gt;limit_rate_after;
+            if (nsent &lt; 0) {
+                nsent = 0;
+            }
+        }
+
+        delay = (ngx_msec_t) ((nsent - sent) * 1000 / r-&gt;limit_rate);
+
+        if (delay &gt; 0) {
+            limit = 0;
+            c-&gt;write-&gt;delayed = 1;
+            ngx_add_timer(c-&gt;write, delay);
+        }
+    }
+
+    if (limit
+        &amp;&amp; c-&gt;write-&gt;ready
+        &amp;&amp; c-&gt;sent - sent &gt;= limit - (off_t) (2 * ngx_pagesize))
+    {
+        c-&gt;write-&gt;delayed = 1;
+        ngx_add_timer(c-&gt;write, 1);
+    }
+
+    /* &#x66F4;&#x65B0;&#x8F93;&#x51FA;&#x94FE;&#xFF0C;&#x91CA;&#x653E;&#x5DF2;&#x7ECF;&#x53D1;&#x9001;&#x7684;&#x8282;&#x70B9; */
+    for (cl = r-&gt;out; cl &amp;&amp; cl != chain; /* void */) {
+        ln = cl;
+        cl = cl-&gt;next;
+        ngx_free_chain(r-&gt;pool, ln);
+    }
+
+    r-&gt;out = chain;
+
+    /* &#x5982;&#x679C;&#x6570;&#x636E;&#x672A;&#x53D1;&#x9001;&#x5B8C;&#x6BD5;&#xFF0C;&#x5219;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6807;&#x8BB0; */
+    if (chain) {
+        c-&gt;buffered |= NGX_HTTP_WRITE_BUFFERED;
+        return NGX_AGAIN;
+    }
+
+    c-&gt;buffered &amp;= ~NGX_HTTP_WRITE_BUFFERED;
+
+    /* &#x5982;&#x679C;&#x7531;&#x4E8E;&#x5E95;&#x5C42;&#x53D1;&#x9001;&#x63A5;&#x53E3;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x672A;&#x53D1;&#x9001;&#x5B8C;&#x5168;&#xFF0C;&#x4E14;&#x5F53;&#x524D;&#x8BF7;&#x6C42;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x9700;&#x8981;&#x53D1;&#x9001;&#xFF0C;
+       &#x6B64;&#x65F6;&#x8981;&#x8FD4;&#x56DE; NGX_AGAIN&#xFF0C;&#x8868;&#x793A;&#x8FD8;&#x6709;&#x6570;&#x636E;&#x672A;&#x53D1;&#x9001; */
+    if ((c-&gt;buffered &amp; NGX_LOWLEVEL_BUFFERED) &amp;&amp; r-&gt;postponed == NULL) {
+        return NGX_AGAIN;
+    }
+
+    return NGX_OK;
+}
+</code></pre><p>&#x2003;&#x2003;
+nginx &#x5C06;&#x5F85;&#x53D1;&#x9001;&#x7684; chain &#x94FE;&#x8868;&#x4FDD;&#x5B58;&#x5728; r-&gt;out&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x51FD;&#x6570;&#x5148;&#x68C0;&#x67E5;&#x4E4B;&#x524D;&#x672A;&#x53D1;&#x9001;&#x5B8C;&#x7684;&#x94FE;&#x8868;&#x4E2D;&#x662F;&#x5426;&#x6709; flush&#xFF0C;recycled &#x4EE5;&#x53CA; last_buf &#x6807;&#x8BC6;&#xFF0C;&#x5E76;&#x8BA1;&#x7B97;&#x6240;&#x6709; buffer &#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x63A5;&#x7740;&#x5BF9;&#x65B0;&#x8F93;&#x5165;&#x7684; chain &#x94FE;&#x8868;&#x505A;&#x540C;&#x6837;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x5E76;&#x5C06;&#x65B0;&#x94FE;&#x8868;&#x52A0;&#x5230; r-&gt;out &#x7684;&#x961F;&#x5C3E;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8F93;&#x51FA;&#x94FE;&#x8868;&#x4E2D;&#x6CA1;&#x6709;&#x88AB;&#x6807;&#x8BC6;&#x4E3A;&#x6700;&#x540E;&#x4E00;&#x5757; buffer &#x7684;&#x8282;&#x70B9;&#xFF0C;&#x800C;&#x4E14;&#x6CA1;&#x6709;&#x9700;&#x8981; flush &#x6216;&#x8005;&#x6025;&#x7740;&#x56DE;&#x6536;&#x7684; buffer&#xFF0C;&#x5E76;&#x4E14;&#x5F53;&#x524D;&#x961F;&#x5217;&#x4E2D; buffer &#x603B;&#x5927;&#x5C0F;&#x4E0D;&#x591F; postpone_output &#x6307;&#x4EE4;&#x8BBE;&#x7F6E;&#x7684;&#x5927;&#x5C0F;(&#x9ED8;&#x8BA4;&#x4E3A; 1460 &#x5B57;&#x8282;)&#x65F6;&#xFF0C;&#x51FD;&#x6570;&#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;</p>
+<p>&#x2003;&#x2003;
+ngx_http_write_filter &#x4F1A;&#x8C03;&#x7528; c-&gt;send_chain &#x5F80;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;c-&gt;send_chain &#x7684;&#x53D6;&#x503C;&#x5728;&#x4E0D;&#x540C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x4EE5;&#x53CA;&#x534F;&#x8BAE;&#x4E0B;( https &#x4E0B;&#x7528;&#x7684;&#x662F; ngx_ssl_send_chain )&#x4F1A;&#x53D6;&#x4E0D;&#x540C;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5178;&#x578B;&#x7684; linux &#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E0B;&#x5B83;&#x7684;&#x53D6;&#x503C;&#x4E3A; ngx_linux_sendfile_chain&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;
+&#x5B83;&#x7684;&#x51FD;&#x6570;&#x539F;&#x578B;&#x4E3A;&#xFF1A;</p>
+<pre><code>ngx_chain_t *
+ngx_linux_sendfile_chain(ngx_connection_t *c, ngx_chain_t *in, off_t limit)
+</code></pre><p>&#x2003;&#x2003;
+&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x5F53;&#x524D;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x6240;&#x9700;&#x8981;&#x53D1;&#x9001;&#x7684; chain&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x6240;&#x80FD;&#x53D1;&#x9001;&#x7684;&#x6700;&#x5927;&#x503C;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x9996;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x7684;&#x4E00;&#x4E9B;&#x91CD;&#x8981;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x5C40;&#x90E8;&#x53D8;&#x91CF;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>send</td>
+<td>&#x8868;&#x793A;&#x5C06;&#x8981;&#x53D1;&#x9001;&#x7684; buf &#x5DF2;&#x7ECF;&#x53D1;&#x9001;&#x7684;&#x5927;&#x5C0F;</td>
+</tr>
+<tr>
+<td>sent</td>
+<td>&#x8868;&#x793A;&#x5DF2;&#x7ECF;&#x53D1;&#x9001;&#x7684; buf &#x7684;&#x5927;&#x5C0F;</td>
+</tr>
+<tr>
+<td>prev_send</td>
+<td>&#x8868;&#x793A;&#x4E0A;&#x4E00;&#x6B21;&#x53D1;&#x9001;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5DF2;&#x7ECF;&#x53D1;&#x9001;&#x7684; buf &#x7684;&#x5927;&#x5C0F;</td>
+</tr>
+<tr>
+<td>fprev</td>
+<td>&#x548C; prev-send &#x7C7B;&#x4F3C;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x662F; file &#x7C7B;&#x578B;&#x7684;</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>&#x8868;&#x793A;&#x662F;&#x5426; buf &#x88AB;&#x5B8C;&#x5168;&#x53D1;&#x9001;&#x4E86;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; sent &#x662F;&#x5426;&#x7B49;&#x4E8E; send - prev_send</td>
+</tr>
+<tr>
+<td>header</td>
+<td>&#x8868;&#x793A;&#x9700;&#x8981;&#x662F;&#x7528; writev &#x6765;&#x53D1;&#x9001;&#x7684; buf&#xFF0C;&#x4E5F;&#x5C31;&#x662F; only in memory &#x7684; buf</td>
+</tr>
+<tr>
+<td>struct iovec *iov, headers[NGX_HEADERS]</td>
+<td>&#x8FD9;&#x4E2A;&#x4E3B;&#x8981;&#x662F;&#x7528;&#x4E8E; sendfile &#x548C; writev &#x7684;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x91CC;&#x6CE8;&#x610F;&#x4E0A;&#x9762; header &#x6570;&#x7EC4;&#x4FDD;&#x5B58;&#x7684;&#x5C31;&#x662F; iovec</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+&#x4E0B;&#x9762;&#x770B;&#x51FD;&#x6570;&#x5F00;&#x5934;&#x7684;&#x4E00;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>wev = c-&gt;write;
+
+if (!wev-&gt;ready) {
+    return in;
+}
+
+/* the maximum limit size is 2G-1 - the page size */
+
+if (limit == 0 || limit &gt; (off_t) (NGX_SENDFILE_LIMIT - ngx_pagesize)) {
+    limit = NGX_SENDFILE_LIMIT - ngx_pagesize;
+}
+
+send = 0;
+
+/* &#x8BBE;&#x7F6E; header&#xFF0C;&#x4E5F;&#x5C31;&#x662F; in memory &#x7684;&#x6570;&#x7EC4; */
+header.elts = headers;
+header.size = sizeof(struct iovec);
+header.nalloc = NGX_HEADERS;
+header.pool = c-&gt;pool;
+</code></pre><p>&#x2003;&#x2003;
+&#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5C31;&#x662F;&#x5904;&#x7406; in memory &#x7684;&#x90E8;&#x5206;&#xFF0C;&#x7136;&#x540E;&#x5C06; buf &#x653E;&#x5165;&#x5BF9;&#x5E94;&#x7684; iovec &#x6570;&#x7EC4;&#xFF0C;&#x5904;&#x7406;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x5C31;&#x662F;&#x5408;&#x5E76;&#x5185;&#x5B58;&#x8FDE;&#x7EED;&#x5E76;&#x76F8;&#x90BB;&#x7684; buf (&#x4E0D;&#x7BA1;&#x662F; in memory &#x8FD8;&#x662F; in file )&#xFF1A;</p>
+<pre><code>for (cl = in; cl &amp;&amp; send &lt; limit;  cl = cl-&gt;next) {
+    if (ngx_buf_special(cl-&gt;buf)) {
+        continue;
+    }
+
+    /* &#x5982;&#x679C;&#x65E2;&#x4E0D;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x53C8;&#x4E0D;&#x5728;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x9519;&#x8BEF; */
+    if (!ngx_buf_in_memory(cl-&gt;buf) &amp;&amp; !cl-&gt;buf-&gt;in_file) {
+        return NGX_CHAIN_ERROR;
+    }
+
+    /* &#x5982;&#x679C;&#x4E0D;&#x53EA;&#x662F;&#x5728; buf &#x4E2D;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x6709;&#x65F6; in file &#x7684; buf &#x53EF;&#x80FD;&#x9700;&#x8981;&#x5185;&#x5B58;&#x4E2D;&#x4E5F;&#x6709;&#x62F7;&#x8D1D;&#xFF0C;
+       &#x5982;&#x679C;&#x4E00;&#x4E2A; buf &#x540C;&#x65F6; in memoey &#x548C; in file &#x7684;&#x8BDD;&#xFF0C;nginx &#x4F1A;&#x628A;&#x5B83;&#x5F53;&#x505A; in file &#x6765;&#x5904;&#x7406; */
+    if (!ngx_buf_in_memory_only(cl-&gt;buf)) {
+        break;
+    }
+
+    /* &#x5F97;&#x5230; buf &#x7684;&#x5927;&#x5C0F; */
+    size = cl-&gt;buf-&gt;last - cl-&gt;buf-&gt;pos;
+
+    /* &#x5927;&#x4E8E; limit &#x7684;&#x8BDD;&#x4FEE;&#x6539;&#x4E3A; size */
+    if (send + size &gt; limit) {
+        size = limit - send;
+    }
+
+    /* &#x5982;&#x679C; prev &#x7B49;&#x4E8E; pos&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x5F53;&#x524D;&#x7684; buf &#x7684;&#x6570;&#x636E;&#x548C;&#x524D;&#x4E00;&#x4E2A; buf &#x7684;&#x6570;&#x636E;&#x662F;&#x8FDE;&#x7EED;&#x7684; */
+    if (prev == cl-&gt;buf-&gt;pos) {
+        iov-&gt;iov_len += (size_t) size;
+    } else {
+        if (header.nelts &gt;= IOV_MAX) {
+            break;
+        }
+
+        /* &#x5426;&#x5219;&#x8BF4;&#x660E;&#x662F;&#x4E0D;&#x540C;&#x7684; buf&#xFF0C;&#x56E0;&#x6B64;&#x589E;&#x52A0;&#x4E00;&#x4E2A; iovc */
+        iov = ngx_array_push(&amp;header);
+        if (iov == NULL) {
+            return NGX_CHAIN_ERROR;
+        }
+
+        iov-&gt;iov_base = (void *) cl-&gt;buf-&gt;pos;
+        iov-&gt;iov_len = (size_t) size;
+    }
+
+    /* &#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x770B;&#x5230; prev &#x4FDD;&#x5B58;&#x4E86;&#x5F53;&#x524D; buf &#x7684;&#x7ED3;&#x5C3E; */
+    prev = cl-&gt;buf-&gt;pos + (size_t) size;
+    /* &#x66F4;&#x65B0;&#x53D1;&#x9001;&#x7684;&#x5927;&#x5C0F; */
+    send += size;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x7136;&#x540E;&#x662F; in file &#x7684;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x91CC;&#x6BD4;&#x8F83;&#x6838;&#x5FC3;&#x7684;&#x4E00;&#x4E2A;&#x5224;&#x65AD;&#x5C31;&#x662F; fprev == cl-&gt;buf-&gt;file_pos&#xFF0C;&#x548C;&#x4E0A;&#x9762;&#x7684; in memory &#x7C7B;&#x4F3C;&#xFF0C;fprev &#x4FDD;&#x5B58;&#x7684;&#x5C31;&#x662F;&#x4E0A;&#x4E00;&#x6B21;&#x5904;&#x7406;&#x7684; buf &#x7684;&#x5C3E;&#x90E8;&#x3002;
+&#x8FD9;&#x91CC;&#x5982;&#x679C;&#x8FD9;&#x4E24;&#x4E2A;&#x76F8;&#x7B49;&#xFF0C;&#x90A3;&#x5C31;&#x8BF4;&#x660E;&#x5F53;&#x524D;&#x7684;&#x4E24;&#x4E2A; buf &#x662F;&#x8FDE;&#x7EED;&#x7684;(&#x6587;&#x4EF6;&#x8FDE;&#x7EED;)&#xFF1A;</p>
+<pre><code>/* &#x5982;&#x679C; header &#x7684;&#x5927;&#x5C0F;&#x4E0D;&#x4E3A; 0 &#x5219;&#x8BF4;&#x660E;&#x524D;&#x9762;&#x6709;&#x9700;&#x8981;&#x53D1;&#x9001;&#x7684; buf&#xFF0C;
+   &#x5E76;&#x4E14;&#x6570;&#x636E;&#x5927;&#x5C0F;&#x5DF2;&#x7ECF;&#x8D85;&#x8FC7;&#x9650;&#x5236;&#x5219;&#x8DF3;&#x8FC7; in file &#x5904;&#x7406; */
+if (header.nelts == 0 &amp;&amp; cl &amp;&amp; cl-&gt;buf-&gt;in_file &amp;&amp; send &lt; limit) {
+    /* &#x5F97;&#x5230; file
+    file = cl-&gt;buf;
+
+    /* &#x5F00;&#x59CB;&#x5408;&#x5E76; */
+    do {
+        /* &#x5F97;&#x5230;&#x5927;&#x5C0F; */
+        size = cl-&gt;buf-&gt;file_last - cl-&gt;buf-&gt;file_pos;
+
+        /* &#x5982;&#x679C;&#x592A;&#x5927;&#x5219;&#x8FDB;&#x884C;&#x5BF9;&#x9F50;&#x5904;&#x7406; */
+        if (send + size &gt; limit) {
+            size = limit - send;
+
+            aligned = (cl-&gt;buf-&gt;file_pos + size + ngx_pagesize - 1)
+                       &amp; ~((off_t) ngx_pagesize - 1);
+
+            if (aligned &lt;= cl-&gt;buf-&gt;file_last) {
+                size = aligned - cl-&gt;buf-&gt;file_pos;
+            }
+        }
+
+        /* &#x8BBE;&#x7F6E; file_size */
+        file_size += (size_t) size;
+        /* &#x8BBE;&#x7F6E;&#x9700;&#x8981;&#x53D1;&#x9001;&#x7684;&#x5927;&#x5C0F; */
+        send += size;
+        /* &#x548C;&#x4E0A;&#x9762;&#x7684; in memory &#x5904;&#x7406;&#x4E00;&#x6837;&#x5C31;&#x662F;&#x4FDD;&#x5B58;&#x8FD9;&#x6B21;&#x7684; last */
+        fprev = cl-&gt;buf-&gt;file_pos + size;
+        cl = cl-&gt;next;
+
+    } while (cl
+             &amp;&amp; cl-&gt;buf-&gt;in_file
+             &amp;&amp; send &lt; limit
+             &amp;&amp; file-&gt;file-&gt;fd == cl-&gt;buf-&gt;file-&gt;fd
+             &amp;&amp; fprev == cl-&gt;buf-&gt;file_pos);
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x7136;&#x540E;&#x5C31;&#x662F;&#x53D1;&#x9001;&#x90E8;&#x5206;&#xFF0C;&#x8FD9;&#x91CC; in file &#x4F7F;&#x7528; sendfile&#xFF0C;in memory &#x4F7F;&#x7528; writev&#x3002;
+&#x5904;&#x7406;&#x903B;&#x8F91;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x5C31;&#x662F;&#x53D1;&#x9001;&#x540E;&#x5224;&#x65AD;&#x53D1;&#x9001;&#x6210;&#x529F;&#x7684;&#x5927;&#x5C0F;&#xFF1A;</p>
+<pre><code>if (file) {
+#if 1
+    if (file_size == 0) {
+        ngx_debug_point();
+        return NGX_CHAIN_ERROR;
+    }
+#endif
+#if (NGX_HAVE_SENDFILE64)
+        offset = file-&gt;file_pos;
+#else
+        offset = (int32_t) file-&gt;file_pos;
+#endif
+
+    /* &#x6570;&#x636E;&#x5728;&#x6587;&#x4EF6;&#x4E2D;&#x5219;&#x8C03;&#x7528; sendfile &#x53D1;&#x9001;&#x6570;&#x636E; */
+    rc = sendfile(c-&gt;fd, file-&gt;file-&gt;fd, &amp;offset, file_size);
+    ...
+    /* &#x5F97;&#x5230;&#x53D1;&#x9001;&#x6210;&#x529F;&#x7684;&#x5B57;&#x8282;&#x6570; */
+    sent = rc &gt; 0 ? rc : 0;
+
+} else {
+    /* &#x6570;&#x636E;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x5219;&#x8C03;&#x7528; writev &#x53D1;&#x9001;&#x6570;&#x636E; */
+    rc = writev(c-&gt;fd, header.elts, header.nelts);
+    ...
+    /* &#x5F97;&#x5230;&#x53D1;&#x9001;&#x6210;&#x529F;&#x7684;&#x5B57;&#x8282;&#x6570; */
+    sent = rc &gt; 0 ? rc : 0;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;&#x9700;&#x8981;&#x6839;&#x636E;&#x53D1;&#x9001;&#x6210;&#x529F;&#x7684;&#x5B57;&#x8282;&#x6570;&#x6765;&#x66F4;&#x65B0; chain&#xFF1A;</p>
+<pre><code>/* &#x5982;&#x679C; send - prev_send == sent &#x5219;&#x8BF4;&#x660E;&#x8BE5;&#x53D1;&#x9001;&#x7684;&#x90FD;&#x53D1;&#x5B8C;&#x4E86; */
+if (send - prev_send == sent) {
+    complete = 1;
+}
+
+/* &#x66F4;&#x65B0; congnect &#x7684; sent &#x57DF; */
+c-&gt;sent += sent;
+
+/* &#x5F00;&#x59CB;&#x91CD;&#x65B0;&#x904D;&#x5386; chain&#xFF0C;&#x8FD9;&#x91CC;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x6CA1;&#x6709;&#x53D1;&#x9001;&#x5B8C;&#x5168;&#x7684;&#x60C5;&#x51B5;&#xFF0C;
+   &#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x5207;&#x5272; buf &#x4E86; */
+for (cl = in; cl; cl = cl-&gt;next) {
+    if (ngx_buf_special(cl-&gt;buf)) {
+        continue;
+    }
+
+    if (sent == 0) {
+        break;
+    }
+
+    /* &#x5F97;&#x5230; buf size */
+    size = ngx_buf_size(cl-&gt;buf);
+
+    /* &#x5982;&#x679C;&#x5927;&#x4E8E;&#x5F53;&#x524D;&#x7684; size&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x8FD9;&#x4E2A; buf &#x7684;&#x6570;&#x636E;&#x5DF2;&#x7ECF;&#x88AB;&#x5B8C;&#x5168;&#x53D1;&#x9001;&#x5B8C;&#x6BD5;&#x4E86;&#xFF0C;
+       &#x56E0;&#x6B64;&#x66F4;&#x65B0;&#x5B83;&#x7684;&#x57DF; */
+    if (sent &gt;= size){
+        /* &#x66F4;&#x65B0; sent &#x57DF; */
+        sent -= size;
+        /* &#x5982;&#x679C;&#x5728;&#x5185;&#x5B58;&#x5219;&#x66F4;&#x65B0; pos */
+        if (ngx_buf_in_memory(cl-&gt;buf)) {
+            cl-&gt;buf-&gt;pos = cl-&gt;buf-&gt;last;
+        }
+
+        /* &#x5982;&#x679C;&#x5728; file &#x4E2D;&#x5219;&#x66F4;&#x663E; file_pos */
+        if (cl-&gt;buf-&gt;in_file) {
+            cl-&gt;buf-&gt;file_pos = cl-&gt;buf-&gt;file_last;
+        }
+
+        continue;
+    }
+
+    /* &#x5230;&#x8FD9;&#x91CC;&#x8BF4;&#x660E;&#x5F53;&#x524D;&#x7684; buf &#x53EA;&#x6709;&#x4E00;&#x90E8;&#x5206;&#x88AB;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#x4E86;&#xFF0C;&#x56E0;&#x6B64;&#x53EA;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x6307;&#x9488;&#x3002;
+       &#x4EE5;&#x4FBF;&#x4E8E;&#x4E0B;&#x6B21;&#x53D1;&#x9001; */
+    if (ngx_buf_in_memory(cl-&gt;buf)) {
+        cl-&gt;buf-&gt;pos += (size_t) sent;
+    }
+
+    /* &#x540C;&#x4E0A; */
+    if (cl-&gt;buf-&gt;in_file) {
+        cl-&gt;buf-&gt;file_pos += sent;
+    }
+
+    break;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x6700;&#x540E;&#x4E00;&#x90E8;&#x5206;&#x662F;&#x4E00;&#x4E9B;&#x662F;&#x5426;&#x9000;&#x51FA;&#x5FAA;&#x73AF;&#x7684;&#x5224;&#x65AD;&#x3002;
+&#x8FD9;&#x91CC;&#x8981;&#x6CE8;&#x610F;&#xFF0C;nginx &#x4E2D;&#x5982;&#x679C;&#x53D1;&#x9001;&#x672A;&#x5B8C;&#x5168;&#x7684;&#x8BDD;&#x5C06;&#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x5C31;&#x662F;&#x6CA1;&#x6709;&#x53D1;&#x9001;&#x5B8C;&#x6BD5;&#x7684; chain&#xFF0C;&#x5B83;&#x7684; buf &#x4E5F;&#x5DF2;&#x7ECF;&#x88AB;&#x66F4;&#x65B0;&#x3002;
+&#x7136;&#x540E; nginx &#x8FD4;&#x56DE;&#x53BB;&#x5904;&#x7406;&#x5176;&#x4ED6;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x7B49;&#x5F85;&#x53EF;&#x5199;&#x4E4B;&#x540E;&#x518D;&#x6B21;&#x53D1;&#x9001;&#x672A;&#x53D1;&#x9001;&#x5B8C;&#x7684;&#x6570;&#x636E;&#xFF1A;</p>
+<pre><code>if (eintr) {
+    continue;
+}
+
+/* &#x5982;&#x679C;&#x672A;&#x5B8C;&#x6210;&#xFF0C;&#x5219;&#x8BBE;&#x7F6E; wev-&gt;ready &#x4E3A; 0 &#x540E;&#x8FD4;&#x56DE; */
+if (!complete) {
+    wev-&gt;ready = 0;
+    return cl;
+}
+
+/* &#x53D1;&#x9001;&#x6570;&#x636E;&#x8D85;&#x8FC7;&#x9650;&#x5236;&#xFF0C;&#x6216;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x4E86; */
+if (send &gt;= limit || cl == NULL) {
+    return cl;
+}
+
+/* &#x66F4;&#x65B0; in&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5F00;&#x59CB;&#x5904;&#x7406;&#x4E0B;&#x4E00;&#x4E2A; chain */
+in = cl;
+</code></pre>
                     
                     </section>
                 
