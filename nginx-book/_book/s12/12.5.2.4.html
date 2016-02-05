@@ -53,7 +53,7 @@
         data-chapter-title="ssl 协议发送数据"
         data-filepath="s12/12.5.2.4.md"
         data-basepath=".."
-        data-revision="Fri Feb 05 2016 14:23:36 GMT+0800 (CST)"
+        data-revision="Fri Feb 05 2016 15:07:10 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3492,7 +3492,24 @@
                     
                         <h1 id="ssl-&#x534F;&#x8BAE;&#x53D1;&#x9001;&#x6570;&#x636E;">ssl &#x534F;&#x8BAE;&#x53D1;&#x9001;&#x6570;&#x636E;</h1>
 <hr>
-
+<p>&#x2003;&#x2003;
+&#x5F53; nginx &#x53D1;&#x9001;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5982;&#x4F7F;&#x7528; ngx_output_chain &#x51FD;&#x6570;&#x53D1;&#x9001;&#x7F13;&#x5B58;&#x7684; http &#x6570;&#x636E;&#x7F13;&#x5B58;&#x94FE;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x8C03;&#x7528; c-&gt;send_chain() &#x6765;&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;
+&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5DF2;&#x7ECF;&#x5728; ngx_ssl_handshake &#x4E2D;&#x88AB;&#x8BBE;&#x7F6E;&#x6210; ngx_ssl_send_chain &#x4E86;&#x3002;
+ngx_ssl_send_chain &#x4F1A;&#x8FDB;&#x4E00;&#x6B65;&#x8C03;&#x7528; ngx_ssl_write&#x3002;
+&#x800C;ngx_ssl_write &#x8C03;&#x7528; openssl &#x5E93; SSL_write &#x51FD;&#x6570;&#x6765;&#x52A0;&#x5BC6;&#x5E76;&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;</p>
+<pre><code>/* ngx_output_chain
+ *  -&gt; ..
+ *   -&gt; ngx_chain_writer
+ *     -&gt; c-&gt;send_chain (ngx_ssl_send_chain)
+ *      -&gt; ngx_ssl_write
+ */
+ssize_t ngx_ssl_write(ngx_connection_t *c, u_char *data, size_t size) {
+    ...
+    n = SSL_write(c-&gt;ssl-&gt;connection, data, size);
+    ...
+    return n;
+}
+</code></pre>
                     
                     </section>
                 

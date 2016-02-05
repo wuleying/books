@@ -53,7 +53,7 @@
         data-chapter-title="ssl 协议接受数据"
         data-filepath="s12/12.5.2.3.md"
         data-basepath=".."
-        data-revision="Fri Feb 05 2016 14:23:36 GMT+0800 (CST)"
+        data-revision="Fri Feb 05 2016 15:07:10 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3492,7 +3492,18 @@
                     
                         <h1 id="ssl-&#x534F;&#x8BAE;&#x63A5;&#x53D7;&#x6570;&#x636E;">ssl &#x534F;&#x8BAE;&#x63A5;&#x53D7;&#x6570;&#x636E;</h1>
 <hr>
-
+<p>&#x2003;&#x2003;
+ngx_http_process_request &#x4E2D;&#x5904;&#x7406; http &#x8BF7;&#x6C42;&#x9700;&#x8981;&#x8BFB;&#x53D6;&#x548C;&#x89E3;&#x6790; http &#x534F;&#x8BAE;&#x3002;
+&#x800C;&#x5B9E;&#x9645;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x662F;&#x901A;&#x8FC7; c-&gt;recv() &#x51FD;&#x6570;&#x6765;&#x8BFB;&#x53D6;&#x7684;&#xFF0C;&#x6B64;&#x51FD;&#x6570;&#x5DF2;&#x7ECF;&#x5728; ngx_ssl_handshake &#x4E2D;&#x88AB;&#x66FF;&#x6362;&#x6210; ngx_ssl_recv &#x4E86;&#x3002;</p>
+<p>&#x2003;&#x2003;
+ngx_ssl_recv &#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528; openssl &#x5E93;&#x51FD;&#x6570; SSL_read() &#x6765;&#x8BFB;&#x53D6;&#x5E76;&#x89E3;&#x5BC6;&#x6570;&#x636E;&#xFF0C;&#x7B80;&#x5316;&#x540E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>ssize_t ngx_ssl_recv(ngx_connection_t *c, u_char *buf, size_t size) {
+    ...
+    n = SSL_read(c-&gt;ssl-&gt;connection, buf, size);
+    ...
+    return n;
+}
+</code></pre>
                     
                     </section>
                 

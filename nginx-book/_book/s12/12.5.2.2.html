@@ -53,7 +53,7 @@
         data-chapter-title="实际 ssl 握手阶段"
         data-filepath="s12/12.5.2.2.md"
         data-basepath=".."
-        data-revision="Fri Feb 05 2016 14:23:36 GMT+0800 (CST)"
+        data-revision="Fri Feb 05 2016 15:07:10 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3492,7 +3492,143 @@
                     
                         <h1 id="&#x5B9E;&#x9645;-ssl-&#x63E1;&#x624B;&#x9636;&#x6BB5;">&#x5B9E;&#x9645; ssl &#x63E1;&#x624B;&#x9636;&#x6BB5;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x7531;&#x4E8E;&#x5728; ngx_http_init_request &#x4E2D;&#x5C06;&#x8FDE;&#x63A5;&#x8BFB;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;&#x8BBE;&#x7F6E;&#x6210; ngx_http_ssl_handshake&#xFF0C;&#x5F53;&#x8FDE;&#x63A5;&#x4E2D;&#x6709;&#x53EF;&#x8BFB;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5C06;&#x4F1A;&#x8FDB;&#x5165; ngx_http_ssl_handshake &#x6765;&#x5904;&#x7406;(&#x82E5;&#x672A;&#x5F00;&#x542F; ssl&#xFF0C;&#x5C06;&#x8FDB;&#x5165; ngx_http_process_request_line &#x76F4;&#x63A5;&#x89E3;&#x6790; http &#x8BF7;&#x6C42;)&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5728; ngx_http_ssl_handshake&#x4E2D;&#xFF0C;&#x6765;&#x8FDB;&#x884C; ssl &#x63E1;&#x624B;:</p>
+<p>&#x2003;&#x2003;
+(1) &#x9996;&#x5148;&#x5224;&#x65AD;&#x8FDE;&#x63A5;&#x662F;&#x5426;&#x8D85;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x65F6;&#x5219;&#x5173;&#x95ED;&#x8FDE;&#x63A5;.</p>
+<pre><code>static void
+ngx_http_process_request(ngx_http_request_t *r) {
+    if (rev-&gt;timedout) {
+        ngx_log_error(NGX_LOG_INFO, c-&gt;log, NGX_ETIMEDOUT, &quot;client timed out&quot;);
+        c-&gt;timedout = 1;
+        ngx_http_close_request(r, NGX_HTTP_REQUEST_TIME_OUT);
+        return;
+    }
+}
+</code></pre><p>&#x2003;&#x2003;
+(2) &#x9996;&#x5B57;&#x8282;&#x9884;&#x8BFB;&#xFF1A;&#x4ECE; tcp &#x8FDE;&#x63A5;&#x4E2D;&#x67E5;&#x770B;&#x4E00;&#x4E2A;&#x5B57;&#x8282;(&#x901A;&#x8FC7; MSG_PEEK &#x67E5;&#x770B; tcp &#x8FDE;&#x63A5;&#x4E2D;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x4E0D;&#x4F1A;&#x5B9E;&#x9645;&#x8BFB;&#x53D6;&#x8BE5;&#x6570;&#x636E;)&#xFF0C;&#x82E5; tcp &#x8FDE;&#x63A5;&#x4E2D;&#x6CA1;&#x6709;&#x51C6;&#x5907;&#x597D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x91CD;&#x65B0;&#x6DFB;&#x52A0;&#x8BFB;&#x4E8B;&#x4EF6;&#x9000;&#x51FA;&#x7B49;&#x5F85;&#x65B0;&#x6570;&#x636E;&#x5230;&#x6765;&#x3002;</p>
+<pre><code>n = recv(c-&gt;fd, (char *) buf, 1, MSG_PEEK);
 
+if (n == -1 &amp;&amp; ngx_socket_errno == NGX_EAGAIN) {
+
+    if (!rev-&gt;timer_set) {
+        ngx_add_timer(rev, c-&gt;listening-&gt;post_accept_timeout);
+    }
+
+    if (ngx_handle_read_event(rev, 0) != NGX_OK) {
+        ngx_http_close_request(r, NGX_HTTP_INTERNAL_SERVER_ERROR);
+    }
+
+    return;
+}
+</code></pre><p>&#x2003;&#x2003;
+(3) &#x9996;&#x5B57;&#x8282;&#x63A2;&#x6D4B;&#xFF1A;&#x82E5;&#x6210;&#x529F;&#x67E5;&#x770B; 1 &#x4E2A;&#x5B57;&#x8282;&#x6570;&#x636E;&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x9996;&#x5B57;&#x8282;&#x6765;&#x63A2;&#x6D4B;&#x63A5;&#x53D7;&#x5230;&#x7684;&#x6570;&#x636E;&#x662F; ssl &#x63E1;&#x624B;&#x5305;&#x8FD8;&#x662F; http &#x6570;&#x636E;&#x3002;
+&#x6839;&#x636E; ssl &#x534F;&#x8BAE;&#x89C4;&#x5B9A; ssl &#x63E1;&#x624B;&#x5305;&#x7684;&#x9996;&#x5B57;&#x8282;&#x4E2D;&#x5305;&#x542B;&#x6709; ssl &#x534F;&#x8BAE;&#x7684;&#x7248;&#x672C;&#x4FE1;&#x606F;&#x3002;
+nginx &#x6839;&#x636E;&#x6B64;&#x6765;&#x5224;&#x65AD;&#x662F;&#x8FDB;&#x884C; ssl &#x63E1;&#x624B;&#x8FD8;&#x662F;&#x8FD4;&#x56DE;&#x6B63;&#x5E38;&#x5904;&#x7406; http &#x8BF7;&#x6C42;(&#x5B9E;&#x9645;&#x8FD4;&#x56DE;&#x5E94;&#x7B54; 400 BAD REQUEST )&#x3002;</p>
+<pre><code>if (n == 1) {
+    if (buf[0] &amp; 0x80 /* SSLv2 */ || buf[0] == 0x16 /* SSLv3/TLSv1 */) {
+        ngx_log_debug1(NGX_LOG_DEBUG_HTTP, rev-&gt;log, 0,
+                       &quot;https ssl handshake: 0x%02Xd&quot;, buf[0]);
+
+        /*
+         * &#x8C03;&#x7528; ngx_ssl_handshake &#x51FD;&#x6570;&#x8FDB;&#x884C; ssl &#x63E1;&#x624B;&#xFF0C;&#x8FDE;&#x63A5;&#x53CC;&#x65B9;&#x4F1A;&#x5728; ssl &#x63E1;&#x624B;&#x65F6;&#x4EA4;&#x6362;&#x76F8;
+         * &#x5173;&#x6570;&#x636E;( ssl &#x7248;&#x672C;&#xFF0C;ssl &#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#xFF0C;server &#x7AEF;&#x7684;&#x516C;&#x94A5;&#x7B49;)&#x5E76;&#x6B63;&#x5F0F;&#x5EFA;&#x7ACB;&#x8D77; ssl &#x8FDE;&#x63A5;&#x3002;
+         * ngx_ssl_handshake &#x51FD;&#x6570;&#x5185;&#x90E8;&#x5BF9; openssl &#x5E93;&#x8FDB;&#x884C;&#x4E86;&#x5C01;&#x88C5;&#x3002;
+         * &#x8C03;&#x7528; SSL_do_handshake() &#x6765;&#x8FDB;&#x884C;&#x63E1;&#x624B;&#xFF0C;&#x5E76;&#x6839;&#x636E;&#x5176;&#x8FD4;&#x56DE;&#x503C;&#x5224;&#x65AD; ssl &#x63E1;&#x624B;&#x662F;&#x5426;&#x5B8C;&#x6210;
+         * &#x6216;&#x8005;&#x51FA;&#x9519;&#x3002;
+         */
+        rc = ngx_ssl_handshake(c);
+
+        /*
+         * ssl &#x63E1;&#x624B;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x591A;&#x6B21;&#x6570;&#x636E;&#x4EA4;&#x4E92;&#x624D;&#x80FD;&#x5B8C;&#x6210;&#x3002;
+         * &#x5982;&#x679C; ssl &#x63E1;&#x624B;&#x6CA1;&#x6709;&#x5B8C;&#x6210;&#xFF0C;ngx_ssl_handshake &#x4F1A;&#x6839;&#x636E;&#x5177;&#x4F53;&#x60C5;&#x51B5;(&#x5982;&#x9700;&#x8981;&#x8BFB;&#x53D6;&#x66F4;
+         * &#x591A;&#x7684;&#x63E1;&#x624B;&#x6570;&#x636E;&#x5305;&#xFF0C;&#x6216;&#x8005;&#x9700;&#x8981;&#x53D1;&#x9001;&#x63E1;&#x624B;&#x6570;&#x636E;&#x5305;)&#x6765;&#x91CD;&#x65B0;&#x6DFB;&#x52A0;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;
+         */
+        if (rc == NGX_AGAIN) {
+            if (!rev-&gt;timer_set) {
+                ngx_add_timer(rev, c-&gt;listening-&gt;post_accept_timeout);
+            }
+
+            c-&gt;ssl-&gt;handler = ngx_http_ssl_handshake_handler;
+            return;
+        }
+
+        /*
+         * &#x82E5; ssl &#x63E1;&#x624B;&#x5B8C;&#x6210;&#x6216;&#x8005;&#x51FA;&#x9519;&#xFF0C;ngx_ssl_handshake &#x4F1A;&#x8FD4;&#x56DE; NGX_OK &#x6216;&#x8005; NGX_ERROR, &#x7136;&#x540E; ngx_http_ssl_handshake &#x8C03;&#x7528;
+         * ngx_http_ssl_handshake_handler &#x4EE5;&#x7EE7;&#x7EED;&#x5904;&#x7406;
+         */
+        ngx_http_ssl_handshake_handler(c);
+
+        return;
+    } else {
+        ngx_log_debug0(NGX_LOG_DEBUG_HTTP, rev-&gt;log, 0,
+                       &quot;plain http&quot;);
+
+        r-&gt;plain_http = 1;
+    }
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x9700;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#xFF0C;&#x5982;&#x679C; ssl &#x63E1;&#x624B;&#x5B8C;&#x6210;&#xFF0C;ngx_ssl_handshake &#x4F1A;&#x66FF;&#x6362;&#x8FDE;&#x63A5;&#x7684;&#x8BFB;&#x5199;&#x63A5;&#x53E3;&#x3002;
+&#x8FD9;&#x6837;&#x540E;&#x7EED;&#x9700;&#x8981;&#x8BFB;&#x5199;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x66FF;&#x6362;&#x7684;&#x63A5;&#x53E3;&#x4F1A;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#x89E3;&#x5BC6;&#x3002;
+&#x8BE6;&#x7EC6;&#x4EE3;&#x7801;&#x89C1;&#x4E0B;:</p>
+<pre><code>ngx_int_t
+ngx_ssl_handshake(ngx_connection_t *c) {
+    n = SSL_do_handshake(c-&gt;ssl-&gt;connection);
+    /* &#x8FD4;&#x56DE; 1 &#x8868;&#x793A; ssl &#x63E1;&#x624B;&#x6210;&#x529F; */
+    if (n == 1) {
+...
+        c-&gt;ssl-&gt;handshaked = 1;
+
+        c-&gt;recv = ngx_ssl_recv;
+        c-&gt;send = ngx_ssl_write;
+        c-&gt;recv_chain = ngx_ssl_recv_chain;
+        c-&gt;send_chain = ngx_ssl_send_chain;
+
+        return NGX_OK;
+    }
+...
+}
+</code></pre><p>&#x2003;&#x2003;
+(4) &#x63A2;&#x6D4B;&#x4E3A; http &#x534F;&#x8BAE;&#xFF1A;&#x6B63;&#x5E38;&#x7684; http &#x534F;&#x8BAE;&#x5305;&#x5904;&#x7406;&#x76F4;&#x63A5;&#x8C03;&#x7528; ngx_http_process_request_line &#x5904;&#x7406; http &#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x5C06;&#x8BFB;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;&#x8BBE;&#x7F6E;&#x6210; ngx_http_process_request_line&#x3002;
+(&#x5B9E;&#x9645;&#x5904;&#x7406;&#x7ED3;&#x679C;&#x662F;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE; 400 BAD REQUET&#xFF0C;&#x5728; ngx_http_process_request &#x4E2D;&#x53C8;&#x5BF9; r-&gt;plain_http &#x6807;&#x5FD7;&#x7684;&#x5355;&#x72EC;&#x5904;&#x7406;)</p>
+<pre><code>{
+    c-&gt;log-&gt;action = &quot;reading client request line&quot;;
+    rev-&gt;handler = ngx_http_process_request_line;
+    ngx_http_process_request_line(rev);
+} /* end of ngx_http_process_request() */
+</code></pre><p>&#x2003;&#x2003;
+(5) &#x5F53; ssl &#x63E1;&#x624B;&#x6210;&#x529F;&#x6216;&#x8005;&#x51FA;&#x9519;&#x65F6;&#xFF0C;&#x8C03;&#x7528; ngx_http_ssl_handshake_handler &#x51FD;&#x6570;&#x3002;</p>
+<p>&#x2003;&#x2003;
+(5.1) &#x82E5; ssl &#x63E1;&#x624B;&#x5B8C;&#x6210;( c-&gt;ssl-&gt;handshaked &#x7531; ngx_ssl_handshake() &#x786E;&#x5B9A;&#x63E1;&#x624B;&#x5B8C;&#x6210;&#x540E;&#x8BBE;&#x4E3A; 1 )&#xFF0C;&#x8BBE;&#x7F6E;&#x8BFB;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E3A; ngx_http_process_request_line&#xFF0C;&#x5E76;&#x8C03;&#x7528;&#x6B64;&#x51FD;&#x6570;&#x6B63;&#x5E38;&#x5904;&#x7406; http &#x8BF7;&#x6C42;&#x3002;</p>
+<p>&#x2003;&#x2003;
+(5.2) &#x82E5; ssl &#x63E1;&#x624B;&#x6CA1;&#x5B8C;&#x6210;(&#x5219;&#x8BF4;&#x660E; ssl &#x63E1;&#x624B;&#x51FA;&#x9519;)&#xFF0C;&#x5219;&#x8FD4;&#x56DE; 400 BAD REQUST &#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x81F3;&#x6B64; ssl &#x8FDE;&#x63A5;&#x5DF2;&#x7ECF;&#x5EFA;&#x7ACB;&#xFF0C;&#x6B64;&#x540E;&#x5728; ngx_http_process_request &#x4E2D;&#x4F1A;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x5E76;&#x89E3;&#x5BC6;&#x7136;&#x540E;&#x6B63;&#x5E38;&#x5904;&#x7406; http &#x8BF7;&#x6C42;&#x3002;</p>
+<pre><code>static void
+ngx_http_ssl_handshake_handler(ngx_connection_t *c) {
+    ngx_http_request_t  *r;
+    if (c-&gt;ssl-&gt;handshaked) {
+        /*
+         * The majority of browsers do not send the &quot;close notify&quot; alert.
+         * Among them are MSIE, old Mozilla, Netscape 4, Konqueror,
+         * and Links.  And what is more, MSIE ignores the server&apos;s alert.
+         *
+         * Opera and recent Mozilla send the alert.
+         */
+        c-&gt;ssl-&gt;no_wait_shutdown = 1;
+        c-&gt;log-&gt;action = &quot;reading client request line&quot;;
+        c-&gt;read-&gt;handler = ngx_http_process_request_line;
+        /* STUB: epoll edge */ c-&gt;write-&gt;handler = ngx_http_empty_handler;
+        ngx_http_process_request_line(c-&gt;read);
+        return;
+    }
+    r = c-&gt;data;
+    ngx_http_close_request(r, NGX_HTTP_BAD_REQUEST);
+    return;
+}
+</code></pre>
                     
                     </section>
                 
