@@ -53,7 +53,7 @@
         data-chapter-title="错误处理"
         data-filepath="s1/1.6.md"
         data-basepath=".."
-        data-revision="Fri Feb 05 2016 17:32:10 GMT+0800 (CST)"
+        data-revision="Mon Feb 15 2016 15:24:48 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,28 @@
                     
                         <h1 id="&#x9519;&#x8BEF;&#x5904;&#x7406;">&#x9519;&#x8BEF;&#x5904;&#x7406;</h1>
 <hr>
-
+<p>&#x2003;&#x2003;
+&#x5F53; Unix &#x51FD;&#x6570;&#x51FA;&#x9519;&#x65F6;&#xFF0C;&#x5E38;&#x5E38;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x8D1F;&#x503C;&#x5E76;&#x4E14;&#x4F7F;&#x7528; errno &#x6765;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#x53F7;&#xFF1A;</p>
+<pre><code>#include &lt;errno.h&gt;
+// &#x662F;&#x5426;&#x652F;&#x6301;&#x591A;&#x7EBF;&#x7A0B;
+#ifdef SUPPORT_MULTI_THREADS
+extern int errno;
+#else
+exrern int* __errno_locaiton(void);
+#define errno (*__errno_locaiton())
+#endif
+// &#x9519;&#x8BEF;&#x7F16;&#x53F7;(!0)
+#define EACCESS &lt;???&gt;
+#define EPERM &lt;???&gt;
+</code></pre><p>&#x2003;&#x2003;
+&#x6CA1;&#x6709;&#x652F;&#x6301;&#x591A;&#x7EBF;&#x7A0B;&#x4E4B;&#x524D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x6765;&#x8868;&#x793A;&#x3002;
+&#x4F46;&#x662F;&#x5982;&#x679C;&#x662F;&#x652F;&#x6301;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48; errno &#x5C06;&#x4F1A;&#x662F;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x6240;&#x4EE5; errno &#x5C31;&#x9700;&#x8981;&#x540E;&#x9762;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x8868;&#x793A;&#x3002;
+&#x56E0;&#x4E3A;&#x73B0;&#x5728;&#x5927;&#x90E8;&#x5206;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x90FD;&#x662F;&#x652F;&#x6301;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x8BA4;&#x8BC6;&#x5230; errno &#x5176;&#x5B9E;&#x662F;&#x4E00;&#x4E2A;&#x5B8F;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x540C;&#x65F6; C &#x6807;&#x51C6;&#x5B9A;&#x4E49;&#x4E86;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x5E2E;&#x52A9;&#x6253;&#x5370;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code>const char* strerror(int errnum);   // &#x6839;&#x636E;&#x9519;&#x8BEF;&#x53F7;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x5B57;&#x7B26;&#x4E32;
+void perror(const char* msg);       // msg: &lt;&#x9519;&#x8BEF;&#x6D88;&#x606F;&gt;&#x6253;&#x5370;&#x5230;&#x6807;&#x51C6;&#x9519;&#x8BEF;&#x4E0A;
+</code></pre>
                     
                     </section>
                 
