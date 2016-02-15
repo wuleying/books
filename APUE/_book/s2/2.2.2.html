@@ -53,7 +53,7 @@
         data-chapter-title="选项"
         data-filepath="s2/2.2.2.md"
         data-basepath=".."
-        data-revision="Mon Feb 15 2016 15:24:48 GMT+0800 (CST)"
+        data-revision="Mon Feb 15 2016 16:11:22 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,335 @@
                     
                         <h1 id="&#x9009;&#x9879;">&#x9009;&#x9879;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x9009;&#x9879;&#x4E3B;&#x8981;&#x5305;&#x62EC;&#x4E0B;&#x9762;&#x4E09;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>&#x7F16;&#x8BD1;&#x65F6;&#x9009;&#x9879; (&#x5934;&#x6587;&#x4EF6;)</li>
+<li>&#x4E0D;&#x4E0E;&#x6587;&#x4EF6;&#x6216;&#x8005;&#x662F;&#x76EE;&#x5F55;&#x76F8;&#x5173;&#x8054;&#x7684;&#x8FD0;&#x884C;&#x65F6;&#x9009;&#x9879; (sysconf).</li>
+<li>&#x4E0E;&#x6587;&#x4EF6;&#x6216;&#x8005;&#x662F;&#x76EE;&#x5F55;&#x76F8;&#x5173;&#x8054;&#x7684;&#x8FD0;&#x884C;&#x65F6;&#x9009;&#x9879; (pathconf/fpathconf)</li>
+</ul>
+<p>&#x2003;&#x2003;
+<strong>(1) &#x7F16;&#x8BD1;&#x65F6;&#x9009;&#x9879;</strong></p>
+<p>&#x2003;&#x2003;
+&#x5305;&#x542B; unistd.h &#x8FD9;&#x4E2A;&#x5934;&#x6587;&#x4EF6;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x5B8F;&#x6765;&#x5224;&#x65AD;&#x3002;
+&#x5BF9;&#x4E8E;&#x5B8F;&#x548C;&#x53C2;&#x6570;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#x662F;&#xFF1A;X &#x90A3;&#x4E48;&#x5B8F;&#x662F; <em>POSIX</em><X>, &#x800C;&#x53C2;&#x6570;&#x662F; <em>SC</em><X>&#x3002;
+&#x5982;&#x679C;&#x7F16;&#x8BD1;&#x65F6;&#x9009;&#x9879;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x65F6;&#x9009;&#x9879;&#x6765;&#x83B7;&#x53D6;&#x3002;</X></X></p>
+<p>&#x2003;&#x2003;
+<strong>(2) sysconf &#x9009;&#x9879;</strong></p>
+<p>&#x2003;&#x2003;
+&#x5173;&#x4E8E;&#x6BCF;&#x4E2A;&#x53EF;&#x9009;&#x63A5;&#x53E3;&#x7EC4;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; posixoptions &#x83B7;&#x5F97;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>&#x4EE3;&#x7801;</th>
+<th>&#x7B26;&#x53F7;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADV</td>
+<td>_POSIX_ADVISORY_INFO</td>
+<td>&#x5EFA;&#x8BAE;&#x6027;&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td>AIO</td>
+<td>_POSIX_ASYNCHRONOUS_IO</td>
+<td>&#x5F02;&#x6B65; IO</td>
+</tr>
+<tr>
+<td>BAR</td>
+<td>_POSIX_BARRIERRS</td>
+<td>&#x5C4F;&#x969C;</td>
+</tr>
+<tr>
+<td>CPT</td>
+<td>_POSIX_CPUTIME</td>
+<td>CPU &#x65F6;&#x949F;</td>
+</tr>
+<tr>
+<td>CS</td>
+<td>_POSIX_CLOCK_SELECTION</td>
+<td>&#x65F6;&#x949F;&#x9009;&#x62E9;</td>
+</tr>
+<tr>
+<td>FSC</td>
+<td>_POSIX_FSYNC</td>
+<td>&#x6587;&#x4EF6;&#x540C;&#x6B65;</td>
+</tr>
+<tr>
+<td>IP6</td>
+<td>_POSIX_IPV6</td>
+<td>ipv6 &#x63A5;&#x53E3;</td>
+</tr>
+<tr>
+<td>MF</td>
+<td>_POSIX_MAPPED_FILES</td>
+<td>&#x5B58;&#x50A8;&#x6620;&#x5C04;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td>ML</td>
+<td>_POSIX_MEMLOCK</td>
+<td>&#x8FDB;&#x7A0B;&#x5B58;&#x50A8;&#x533A;&#x52A0;&#x9501;</td>
+</tr>
+<tr>
+<td>MLR</td>
+<td>_POSIX_MEMLOCK_RANGE</td>
+<td>&#x5B58;&#x50A8;&#x533A;&#x52A0;&#x9501;</td>
+</tr>
+<tr>
+<td>MON</td>
+<td>_POSIX_MONOTONIC_CLOCCK</td>
+<td>&#x5355;&#x8C03;&#x65F6;&#x949F;</td>
+</tr>
+<tr>
+<td>MPR</td>
+<td>_POSIX_MEMORY_PROTECTION</td>
+<td>&#x5B58;&#x50A8;&#x4FDD;&#x62A4;</td>
+</tr>
+<tr>
+<td>MSG</td>
+<td>_POSIX_MESSAGE_PASSING</td>
+<td>&#x6D88;&#x606F;&#x4F20;&#x9001;</td>
+</tr>
+<tr>
+<td>PIO</td>
+<td>_POSIX_PRIORITIZED_IO</td>
+<td>&#x4F18;&#x5148; IO</td>
+</tr>
+<tr>
+<td>PS</td>
+<td>_POSIX_PRIORITIZED_SCHEDULING</td>
+<td>&#x4F18;&#x5148;&#x8FDB;&#x7A0B;&#x8C03;&#x5EA6;</td>
+</tr>
+<tr>
+<td>RS</td>
+<td>_POSIX_RAW_SOCKET</td>
+<td>&#x539F;&#x59CB;&#x5957;&#x63A5;&#x5B57;</td>
+</tr>
+<tr>
+<td>RTS</td>
+<td>_POSIX_REALTIME_SIGNALS</td>
+<td>&#x5B9E;&#x65F6;&#x4FE1;&#x53F7;</td>
+</tr>
+<tr>
+<td>SEM</td>
+<td>_POSIX_SEMAPHORES</td>
+<td>&#x4FE1;&#x53F7;&#x91CF;</td>
+</tr>
+<tr>
+<td>SHM</td>
+<td>_POSIX_SHARED_MEMORY_OBJECTS</td>
+<td>&#x5171;&#x4EAB;&#x5B58;&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>SIO</td>
+<td>_POSIX_SYNCHRONIZED_IO</td>
+<td>&#x540C;&#x6B65; IO</td>
+</tr>
+<tr>
+<td>SPI</td>
+<td>_POSIX_SPIN_LOCKS</td>
+<td>&#x81EA;&#x9009;&#x9501;</td>
+</tr>
+<tr>
+<td>SPN</td>
+<td>_POSIX_SPAWN</td>
+<td>&#x4EA7;&#x751F;&#x8FDB;&#x7A0B;</td>
+</tr>
+<tr>
+<td>SS</td>
+<td>_POSIX_SPORADIC_SERVER</td>
+<td>&#x8FDB;&#x7A0B;&#x53D1;&#x6563;&#x6027;&#x670D;&#x52A1;&#x5668;</td>
+</tr>
+<tr>
+<td>TCT</td>
+<td>_POSIX_THREAD_CPUTIME</td>
+<td>&#x7EBF;&#x7A0B; CPU &#x65F6;&#x949F;</td>
+</tr>
+<tr>
+<td>TEF</td>
+<td>_POSIX_TRACE_EVENT_FILTER</td>
+<td>&#x8DDF;&#x8E2A;&#x4E8B;&#x4EF6;&#x8FC7;&#x6EE4;&#x5668;</td>
+</tr>
+<tr>
+<td>THR</td>
+<td>_POSIX_THREADS</td>
+<td>&#x7EBF;&#x7A0B;</td>
+</tr>
+<tr>
+<td>TMO</td>
+<td>_POSIX_TIMEOUTS</td>
+<td>&#x8D85;&#x65F6;</td>
+</tr>
+<tr>
+<td>TMR</td>
+<td>_POSIX_TIMERS</td>
+<td>&#x8BA1;&#x65F6;&#x5668;</td>
+</tr>
+<tr>
+<td>TPI</td>
+<td>_POSIX_THREAD_PRIO_INHERIT</td>
+<td>&#x7EBF;&#x7A0B;&#x4F18;&#x5148;&#x7EA7;&#x7EE7;&#x627F;</td>
+</tr>
+<tr>
+<td>TPP</td>
+<td>_POSIX_THREAD_PRIO_PROTECT</td>
+<td>&#x7EBF;&#x7A0B;&#x4F18;&#x5148;&#x7EA7;&#x4FDD;&#x62A4;</td>
+</tr>
+<tr>
+<td>TPS</td>
+<td>_POSIX_THREAD_PRIORITY_SCHEDULING</td>
+<td>&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x8C03;&#x5EA6;</td>
+</tr>
+<tr>
+<td>TRC</td>
+<td>_POSIX_TRACE</td>
+<td>&#x8DDF;&#x8E2A;</td>
+</tr>
+<tr>
+<td>TRI</td>
+<td>_POSIX_TRACE_INHERIT</td>
+<td>&#x8DDF;&#x8E2A;&#x7EE7;&#x627F;</td>
+</tr>
+<tr>
+<td>TRL</td>
+<td>_POSIX_TRACE_LOG</td>
+<td>&#x8DDF;&#x8E2A;&#x65E5;&#x5FD7;</td>
+</tr>
+<tr>
+<td>TSA</td>
+<td>_POSIX_THREAD_ATTR_STACKADDR</td>
+<td>&#x7EBF;&#x7A0B;&#x6808;&#x5730;&#x5740;</td>
+</tr>
+<tr>
+<td>TSF</td>
+<td>_POSIX_THREAD_SAFE_FUNCTIONS</td>
+<td>&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x51FD;&#x6570;</td>
+</tr>
+<tr>
+<td>TSH</td>
+<td>_POSIX_THREAD_PROCESS_SHARED</td>
+<td>&#x7EBF;&#x7A0B;&#x8FDB;&#x7A0B;&#x5171;&#x4EAB;&#x540C;&#x6B65;</td>
+</tr>
+<tr>
+<td>TSP</td>
+<td>_POSIX_THREAD_SPORADIC_SERVER</td>
+<td>&#x7EBF;&#x7A0B;&#x53D1;&#x6563;&#x6027;&#x670D;&#x52A1;&#x5668;</td>
+</tr>
+<tr>
+<td>TSS</td>
+<td>_POSIX_THREAD_ATTR_STACKSZIE</td>
+<td>&#x7EBF;&#x7A0B;&#x6808;&#x5927;&#x5C0F;</td>
+</tr>
+<tr>
+<td>TYM</td>
+<td>_POSIX_TYPED_MEMORY_OBJECTS</td>
+<td>&#x7C7B;&#x578B;&#x5316;&#x5B58;&#x50A8;&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>XSI</td>
+<td>_XOPEN_UNIX</td>
+<td>X/Open &#x6269;&#x5C55;&#x63A5;&#x53E3;</td>
+</tr>
+<tr>
+<td>XSR</td>
+<td>_XOPEN_STREAMS</td>
+<td>XSI STREAMS</td>
+</tr>
+<tr>
+<td></td>
+<td>_POSIX_JOB_CONTROL</td>
+<td>&#x4F5C;&#x4E1A;&#x63A7;&#x5236;</td>
+</tr>
+<tr>
+<td></td>
+<td>_POSIX_READER_WRITER_LOCKS</td>
+<td>&#x8BFB;&#x5199;&#x9501;</td>
+</tr>
+<tr>
+<td></td>
+<td>_POSIX_SAVED_IDS</td>
+<td>&#x652F;&#x6301; saved &#x7684; uid &#x548C; gid</td>
+</tr>
+<tr>
+<td></td>
+<td>_POSIX_SHELL</td>
+<td>POSIX shell</td>
+</tr>
+<tr>
+<td></td>
+<td>_POSIX_VERSION</td>
+<td>POSIX version</td>
+</tr>
+<tr>
+<td></td>
+<td>_XOPEN_CRYPE</td>
+<td>&#x52A0;&#x5BC6;</td>
+</tr>
+<tr>
+<td></td>
+<td>_XOPEN_REALTIME</td>
+<td>&#x5B9E;&#x65F6;</td>
+</tr>
+<tr>
+<td></td>
+<td>_XOPEN_REALTIME_THREADS</td>
+<td>&#x5B9E;&#x65F6;&#x7EBF;&#x7A0B;</td>
+</tr>
+<tr>
+<td></td>
+<td>_XOPEN_STREAMS</td>
+<td>XSI STREAMS</td>
+</tr>
+<tr>
+<td></td>
+<td>_XOPEN_LEGACY</td>
+<td>&#x9057;&#x7559;&#x63A5;&#x53E3;</td>
+</tr>
+<tr>
+<td></td>
+<td>_XOPEN_VERSION</td>
+<td>XSI &#x7248;&#x672C;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+<strong>(3) pathconf/fpathconf &#x9009;&#x9879;</strong></p>
+<table>
+<thead>
+<tr>
+<th>&#x7B26;&#x53F7;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>_POSIX_CHOWN_RESTRICTED</td>
+<td>chown &#x9650;&#x5236;</td>
+</tr>
+<tr>
+<td>_POSIX_NO_TRUNC</td>
+<td>&#x6587;&#x4EF6;&#x540D;&#x79F0;&#x957F;&#x4E8E; NAME_MAX &#x5904;&#x7406;</td>
+</tr>
+<tr>
+<td>_POSIX_VDISABLE</td>
+<td>&#x7981;&#x7528;&#x7EC8;&#x7AEF;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>_POSIX_ASYNC_IO</td>
+<td>&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5F02;&#x6B65; IO</td>
+</tr>
+<tr>
+<td>_POSIX_PRIO_IO</td>
+<td>&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4F18;&#x5148; IO</td>
+</tr>
+<tr>
+<td>_POSIX_SYNC_IO</td>
+<td>&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x540C;&#x6B65; IO</td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>
