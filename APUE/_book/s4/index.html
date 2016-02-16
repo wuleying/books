@@ -53,7 +53,7 @@
         data-chapter-title="文件和目录"
         data-filepath="s4/README.md"
         data-basepath=".."
-        data-revision="Tue Feb 16 2016 11:37:54 GMT+0800 (CST)"
+        data-revision="Tue Feb 16 2016 15:12:40 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,32 @@
                     
                         <h1 id="&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;">&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;</h1>
 <hr>
-
+<p>&#x2003;&#x2003;
+&#x4E0A;&#x4E00;&#x7AE0;&#x4E3B;&#x8981;&#x662F;&#x56F4;&#x7ED5;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF; IO &#x6765;&#x5C55;&#x5F00;&#x7684;&#xFF0C;&#x800C;&#x8FD9;&#x7AE0;&#x4E3B;&#x8981;&#x8BF4;&#x660E;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x5176;&#x4ED6;&#x7279;&#x5F81;&#x548C;&#x6587;&#x4EF6;&#x7684;&#x6027;&#x8D28; (&#x6587;&#x4EF6;&#x5C5E;&#x6027;)&#x3002;
+&#x5728;&#x8BF4;&#x660E;&#x6587;&#x4EF6;&#x5C5E;&#x6027;&#x4E4B;&#x524D;&#x5148;&#x770B;&#x770B;&#x6709;&#x54EA;&#x4E9B;&#x5C5E;&#x6027;&#x662F;&#x9700;&#x8981;&#x88AB;&#x8BA8;&#x8BBA;&#x7684;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x8FD9;&#x51E0;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x83B7;&#x5F97;&#xFF1A;</p>
+<pre><code>stat(const char* restrict pathname, struct stat* restrict buf);
+fstat(int fd, struct stat* restrict buf);
+lstat(const char* restrict pathname, struct stat* restrict buf);
+</code></pre><p>&#x2003;&#x2003;
+&#x5176;&#x4E2D; lstat &#x548C; stat &#x533A;&#x522B;&#x5C31;&#x662F; lstat &#x662F;&#x83B7;&#x53D6;&#x8F6F;&#x94FE;&#x63A5;&#x6587;&#x4EF6;&#x5C5E;&#x6027;&#x7684;&#x3002;</p>
+<pre><code>struct stat {
+    mode_t      st_mode;      // &#x6587;&#x4EF6;&#x7C7B;&#x578B;&#x548C;&#x8BBF;&#x95EE;&#x6743;&#x9650;
+    ino_t       st_ino;       // inode &#x7F16;&#x53F7;
+    dev_t       st_dev;       // &#x8BBE;&#x5907;&#x53F7; (&#x5BF9;&#x4E8E;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6765;&#x8BF4;)
+    dev_t       st_rdev;      // &#x8BBE;&#x5907;&#x53F7; (&#x5BF9;&#x4E8E;&#x7279;&#x6B8A;&#x6587;&#x4EF6;&#x6765;&#x8BF4;)
+    nlink_t     st_nlink;     // &#x94FE;&#x63A5;&#x6570;&#x76EE;
+    uid_t       st_uid;       // &#x6587;&#x4EF6;&#x6240;&#x6709;&#x8005; uid
+    gid_t       st_gid;       // &#x6587;&#x4EF6;&#x6240;&#x6709;&#x8005; gid
+    off_t       st_size;      // &#x6587;&#x4EF6;&#x5927;&#x5C0F;
+    time_t      st_atime;     // access time
+    time_t      st_mtime;     // modification time
+    time_t      st_ctime;     // &#x5C5E;&#x6027;&#x6700;&#x8FD1;&#x4E00;&#x6B21; change time
+    blksize_t   st_blksize;   // block size
+    blkcnt_t    st_blocks;    // blocks
+};
+</code></pre>
                     
                     </section>
                 

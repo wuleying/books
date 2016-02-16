@@ -53,7 +53,7 @@
         data-chapter-title="文件长度"
         data-filepath="s4/4.5.md"
         data-basepath=".."
-        data-revision="Tue Feb 16 2016 11:37:54 GMT+0800 (CST)"
+        data-revision="Tue Feb 16 2016 15:12:40 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,32 @@
                     
                         <h1 id="&#x6587;&#x4EF6;&#x957F;&#x5EA6;">&#x6587;&#x4EF6;&#x957F;&#x5EA6;</h1>
 <hr>
-
+<p>&#x2003;&#x2003;
+&#x6587;&#x4EF6;&#x957F;&#x5EA6;&#x5BF9;&#x5E94; st_size &#x5B57;&#x6BB5;&#xFF0C;&#x800C;&#x6587;&#x4EF6;&#x4F7F;&#x7528;&#x7684;&#x5757;&#x5927;&#x5C0F;&#x5BF9;&#x5E94; st_blksize &#x5B57;&#x6BB5;&#xFF0C;&#x5360;&#x7528;&#x5757;&#x6570;&#x5BF9;&#x5E94; st_blocks &#x5B57;&#x6BB5;&#x3002;
+&#x5927;&#x90E8;&#x5206;&#x60C5;&#x51B5;&#x4E0B; st_size &#x548C; st_blksize * st_blocks &#x5E94;&#x8BE5;&#x662F;&#x5F88;&#x63A5;&#x8FD1;&#x7684;&#xFF0C;&#x9664;&#x975E;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x662F;&#x6587;&#x4EF6;&#x7A7A;&#x6D1E;&#x3002;
+&#x4E00;&#x822C;&#x5BF9;&#x5E94;&#x4E8E;&#x7A7A;&#x6D1E;&#x6587;&#x4EF6;&#x6765;&#x8BF4;&#xFF0C;st_size &#x53EF;&#x80FD;&#x5F88;&#x5927;&#xFF0C;&#x800C;&#x5B9E;&#x9645;&#x5360;&#x7528;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x5374;&#x5F88;&#x5C11;&#x3002;</p>
+<pre><code>#include &lt;sys/types.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+int main() {
+    // &#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x7A7A;&#x6D1E;&#x6587;&#x4EF6;
+    int fd = open(&quot;hole&quot;, O_WRONLY | O_CREAT, 0666);
+    write(fd, &quot;1G hole are coming&quot;, strlen(&quot;1G hole are coming&quot;));
+    lseek(fd, 1024 * 1024 * 1024, SEEK_CUR);
+    write(fd, &quot;1G hole are ending&quot;, strlen(&quot;1G hole are ending&quot;));
+    close(fd);
+    struct stat buf;
+    stat(&quot;hole&quot;, &amp;buf);
+    printf(&quot;size:%lu, st_blksize:%lu, st_blocks:%lu\n&quot;,
+           buf.st_size, buf.st_blksize, buf.st_blocks);
+    return 0;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>size:1073741860, st_blksize:4096, st_blocks:40
+</code></pre>
                     
                     </section>
                 

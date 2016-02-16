@@ -53,7 +53,7 @@
         data-chapter-title="文件访问权限"
         data-filepath="s4/4.4.md"
         data-basepath=".."
-        data-revision="Tue Feb 16 2016 11:37:54 GMT+0800 (CST)"
+        data-revision="Tue Feb 16 2016 15:12:40 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,73 @@
                     
                         <h1 id="&#x6587;&#x4EF6;&#x8BBF;&#x95EE;&#x6743;&#x9650;">&#x6587;&#x4EF6;&#x8BBF;&#x95EE;&#x6743;&#x9650;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x6587;&#x4EF6;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBF;&#x95EE; st_mode &#x6765;&#x83B7;&#x5F97;&#xFF0C;&#x6709;&#x4E0B;&#x9762; 9 &#x4E2A;&#x6743;&#x9650;&#x4F4D;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x6743;&#x9650;</th>
+<th>&#x610F;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S_IRUSR</td>
+<td>user read</td>
+</tr>
+<tr>
+<td>S_IWUSR</td>
+<td>user write</td>
+</tr>
+<tr>
+<td>S_IXUSR</td>
+<td>user exec</td>
+</tr>
+<tr>
+<td>S_IRGRP</td>
+<td>group read</td>
+</tr>
+<tr>
+<td>S_IWGRP</td>
+<td>group write</td>
+</tr>
+<tr>
+<td>S_IXGRP</td>
+<td>group exec</td>
+</tr>
+<tr>
+<td>S_IROTH</td>
+<td>other read</td>
+</tr>
+<tr>
+<td>S_IWOTH</td>
+<td>other write</td>
+</tr>
+<tr>
+<td>S_IXOTH</td>
+<td>other exec</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+&#x5728;&#x8C08;&#x8BBA;&#x89C4;&#x5219;&#x4E4B;&#x524D;&#x6709;&#x5FC5;&#x8981;&#x89E3;&#x91CA;&#x4E00;&#x4E0B;&#x76EE;&#x5F55;&#x7684;&#x6267;&#x884C;&#x6743;&#x9650;&#x3002;
+&#x76EE;&#x5F55;&#x662F;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x76EE;&#x5F55;&#x60F3;&#x8C61;&#x6210;&#x4E3A;&#x91CC;&#x9762;&#x90FD;&#x662F;&#x6587;&#x4EF6;&#x7684;&#x540D;&#x79F0;&#x7136;&#x540E;&#x914D;&#x4E0A;&#x5FC5;&#x8981;&#x7684;&#x7D22;&#x5F15;&#x4FE1;&#x606F;&#x3002;
+&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x7684;&#x8BFB;&#x6743;&#x9650;&#xFF0C;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x91CC;&#x9762;&#x6240;&#x6709;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x5185;&#x5BB9;&#xFF0C;&#x800C;&#x5BF9;&#x4E8E;&#x6267;&#x884C;&#x6743;&#x9650;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x641C;&#x7D22;&#x5176;&#x4E2D;&#x7279;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x6587;&#x4EF6;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x89C4;&#x5219;&#xFF1A;</p>
+<ul>
+<li>&#x8BFB;&#x5199;&#x6743;&#x9650;&#x63A7;&#x5236;&#x4E86;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x8BFB;&#x5199;&#x6587;&#x4EF6;&#x3002;</li>
+<li>&#x6253;&#x5F00;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#x6587;&#x4EF6;&#xFF0C;&#x5FC5;&#x987B;&#x6709;&#x6548; uid &#x548C;&#x6587;&#x4EF6; owner uid &#x5339;&#x914D;&#x6216;&#x8005;&#x662F; gid &#x5339;&#x914D;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x8D85;&#x7EA7;&#x6743;&#x9650;&#x3002;</li>
+<li>&#x6253;&#x5F00;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#x6587;&#x4EF6;&#xFF0C;&#x5FC5;&#x987B;&#x6709;&#x6240;&#x6709;&#x76EE;&#x5F55;&#x7684;&#x6267;&#x884C;&#x6743;&#x9650;&#x3002;</li>
+<li>&#x5728;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x9700;&#x8981;&#x5BF9;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x6709;&#x5199;&#x548C;&#x6267;&#x884C;&#x6743;&#x9650;&#x3002;</li>
+<li>&#x521B;&#x5EFA;&#x7684;&#x6587;&#x4EF6;&#x7684; uid &#x548C; gid &#x5206;&#x522B;&#x662F;&#x6709;&#x6548;&#x7684; uid &#x548C;&#x6709;&#x6548;&#x7684; gid&#x3002;</li>
+<li>&#x5220;&#x9664;&#x6587;&#x4EF6;&#x5FC5;&#x987B;&#x6709;&#x6548; uid &#x548C;&#x6587;&#x4EF6; owner uid &#x5339;&#x914D;&#xFF0C;&#x6216;&#x8005;&#x662F; gid &#x5339;&#x914D;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x8D85;&#x7EA7;&#x6743;&#x9650;&#x3002;</li>
+<li>&#x5220;&#x9664;&#x6587;&#x4EF6;&#x5FC5;&#x987B;&#x5BF9;&#x76EE;&#x5F55;&#x6709;&#x5199;&#x548C;&#x6267;&#x884C;&#x6743;&#x9650;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x5BF9;&#x6587;&#x4EF6;&#x6709;&#x8BFB;&#x5199;&#x6743;&#x9650;&#x3002;</li>
+<li>&#x6267;&#x884C;&#x6587;&#x4EF6;&#x5FC5;&#x987B;&#x5BF9;&#x6587;&#x4EF6;&#x6709;&#x6267;&#x884C;&#x6743;&#x9650;&#xFF0C;&#x5E76;&#x4E14;&#x6587;&#x4EF6;&#x8FD8;&#x662F;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x6587;&#x4EF6;&#x3002;</li>
+</ul>
+<p>&#x2003;&#x2003;
+&#x5176;&#x5B9E;&#x5BF9;&#x4E8E;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x6765;&#x8BF4;&#xFF0C;&#x65B0;&#x6587;&#x4EF6;&#x7684; gid owner &#x8FD8;&#x53EF;&#x80FD;&#x662F;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x7EE7;&#x627F;&#x4E0A;&#x7EA7;&#x76EE;&#x5F55;&#x7684; gid owner&#x3002;
+&#x5BF9;&#x4E8E; Linux &#x7CFB;&#x7EDF;&#x65B9;&#x5F0F;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;&#x5982;&#x679C;&#x4E0A;&#x7EA7;&#x76EE;&#x5F55;&#x8BBE;&#x7F6E;&#x4E86;&#x8BBE;&#x7F6E; gid &#x4F4D;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x7EE7;&#x627F;&#x4E0A;&#x7EA7;&#x7684; gid owner&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x4F7F;&#x7528;&#x521B;&#x5EFA;&#x8005;&#x7684;&#x6709;&#x6548; gid&#x3002;(&#x6309;&#x7167;&#x521B;&#x5EFA;&#x8005;&#x7684;&#x6709;&#x6548; uid &#x548C; gid &#x6BD4;&#x8F83;&#x597D;&#x7406;&#x89E3;&#x95EE;&#x9898;)</p>
 
                     
                     </section>

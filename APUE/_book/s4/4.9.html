@@ -53,7 +53,7 @@
         data-chapter-title="文件时间"
         data-filepath="s4/4.9.md"
         data-basepath=".."
-        data-revision="Tue Feb 16 2016 11:37:54 GMT+0800 (CST)"
+        data-revision="Tue Feb 16 2016 15:12:40 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,211 @@
                     
                         <h1 id="&#x6587;&#x4EF6;&#x65F6;&#x95F4;">&#x6587;&#x4EF6;&#x65F6;&#x95F4;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x6587;&#x4EF6;&#x65F6;&#x95F4;&#x5206;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li>&#x6700;&#x540E;&#x8BBF;&#x95EE;&#x65F6;&#x95F4; (read)</li>
+<li>&#x6700;&#x540E;&#x4FEE;&#x6539;&#x65F6;&#x95F4; (write)</li>
+<li>&#x6700;&#x540E;&#x66F4;&#x6539;&#x65F6;&#x95F4; (chmod, chown)</li>
+</ul>
+<p>&#x2003;&#x2003;
+&#x4FEE;&#x6539;&#x65F6;&#x95F4;&#x548C;&#x66F4;&#x6539;&#x65F6;&#x95F4;&#x5DEE;&#x522B;&#x662F;&#xFF1A;&#x4FEE;&#x6539;&#x65F6;&#x95F4;&#x662F;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x5757;&#x5185;&#x5BB9;&#x65F6;&#x95F4;&#xFF0C;&#x800C;&#x66F4;&#x6539;&#x65F6;&#x95F4;&#x662F;&#x66F4;&#x6539; inode &#x8282;&#x70B9;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5DEE;&#x522B;&#x5C31;&#x597D;&#x6BD4;&#x64CD;&#x4F5C;&#x6587;&#x4EF6;&#x5B9E;&#x9645;&#x5185;&#x5BB9;&#x548C;&#x6587;&#x4EF6;&#x5C5E;&#x6027;&#x3002;
+&#x4E0D;&#x540C;&#x64CD;&#x4F5C;&#x5F71;&#x54CD;&#x65F6;&#x95F4;&#x4E0D;&#x540C;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x4F1A;&#x5F71;&#x54CD;&#x6240;&#x5728;&#x7236;&#x76EE;&#x5F55;&#x7684;&#x65F6;&#x95F4;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>&#x51FD;&#x6570;</th>
+<th>&#x6587;&#x4EF6; access</th>
+<th>&#x6587;&#x4EF6; modify</th>
+<th>&#x6587;&#x4EF6; change</th>
+<th>&#x7236; access</th>
+<th>&#x7236; modify</th>
+<th>&#x7236; change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chmod/fchmod</td>
+<td>-</td>
+<td>-</td>
+<td>Y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>chown/fchown</td>
+<td>-</td>
+<td>-</td>
+<td>Y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>creat (O_CREAT)</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>creat (O_TRUNC)</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>Y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>lchown</td>
+<td>-</td>
+<td>-</td>
+<td>Y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>link</td>
+<td>-</td>
+<td>-</td>
+<td>Y</td>
+<td>-</td>
+<td>Y (2nd param)</td>
+<td>Y (2nd param)</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>mkfifo</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>open (O_CREAT)</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>open (O_TRUNC)</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>read</td>
+<td>Y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>remove (unlink)</td>
+<td>-</td>
+<td>-</td>
+<td>Y</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>remove (rmdir)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>rename</td>
+<td>-</td>
+<td>-</td>
+<td>Y</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>truncate/ftruncate</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>unlink</td>
+<td>-</td>
+<td>-</td>
+<td>Y</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>utime</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>write</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>
