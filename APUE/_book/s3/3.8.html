@@ -53,7 +53,7 @@
         data-chapter-title="dup/dup2"
         data-filepath="s3/3.8.md"
         data-basepath=".."
-        data-revision="Mon Feb 15 2016 16:11:22 GMT+0800 (CST)"
+        data-revision="Tue Feb 16 2016 11:37:54 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,11 @@
                     
                         <h1 id="dupdup2">dup/dup2</h1>
 <hr>
+<pre><code>int dup(int fd);
+int dup2(int src_fd, int dst_fd);
+</code></pre><p>&#x2003;&#x2003;
+dup2 &#x5141;&#x8BB8;&#x6307;&#x5B9A;&#x5C06; src_fd &#x590D;&#x5236;&#x7ED9;&#x67D0;&#x4E2A;dst_fd&#xFF0C;&#x800C; dup &#x662F;&#x5C06; fd &#x590D;&#x5236;&#x7ED9;&#x6700;&#x5C0F;&#x672A;&#x4F7F;&#x7528;&#x7684; fd&#x3002;
+dup2 &#x76F8;&#x5F53;&#x4E8E;&#x4E00;&#x4E2A;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#xFF0C;&#x9996;&#x5148;&#x5173;&#x95ED; dst_fd &#x7136;&#x540E;&#x518D;&#x590D;&#x5236;&#x5230; dst_fd &#x4E0A;&#x3002;</p>
 
                     
                     </section>

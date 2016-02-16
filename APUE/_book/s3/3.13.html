@@ -53,7 +53,7 @@
         data-chapter-title="底层实现"
         data-filepath="s3/3.13.md"
         data-basepath=".."
-        data-revision="Mon Feb 15 2016 16:11:22 GMT+0800 (CST)"
+        data-revision="Tue Feb 16 2016 11:37:54 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,28 @@
                     
                         <h1 id="&#x5E95;&#x5C42;&#x5B9E;&#x73B0;">&#x5E95;&#x5C42;&#x5B9E;&#x73B0;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x8FD9;&#x8282;&#x4E3B;&#x8981;&#x8BF4;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x7684;&#xFF0C;&#x5047;&#x8BBE;&#x5728;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E2D;&#x5B58;&#x5728;&#x5F88;&#x591A;&#x8FDB;&#x7A0B; (process)&#xFF0C;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x91CC;&#x9762;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x8868;&#xFF0C;&#x5927;&#x81F4;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>struct Process {
+    // &#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x5C31;&#x662F;&#x4E0B;&#x6807;&#x3002;
+    vector&lt;FileDescriptorEntry&gt; entries;
+};
+
+struct FileDescriptorEntry {
+    bool close_on_exec;         // &#x8C03;&#x7528; exec &#x662F;&#x5426;&#x5173;&#x95ED;
+    bool other_flags;           // &#x5176;&#x4ED6;&#x6807;&#x8BB0;
+    OpenedFileTable* ft_ptr;    // &#x6307;&#x5411;&#x5168;&#x5C40;&#x7684;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x8868;&#x8868;&#x9879;
+};
+</code></pre><p>&#x2003;&#x2003;
+&#x7136;&#x540E;&#x7CFB;&#x7EDF;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x6253;&#x5F00;&#x8868;&#x6587;&#x4EF6;&#x8868;&#x8868;&#x9879;&#xFF0C;&#x5728;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x91CC;&#x9762;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x8868;&#x9879;&#x6307;&#x9488;&#x3002;
+&#x5927;&#x81F4;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>struct OpenedFileTable {
+    int status;     // &#x72B6;&#x6001;&#x6807;&#x5FD7;&#xFF0C;&#x6BD4;&#x5982; O_RDWR&#xFF0C;O_APPEND&#xFF0C;OSYNC &#x7B49;&#x3002;
+    off_t offset;   // &#x5F53;&#x524D;&#x504F;&#x79FB;
+    vnode_t* vnode; // &#x6240;&#x6307;&#x5411;&#x7684; vnode
+};
+</code></pre><p>&#x2003;&#x2003;
+&#x5728;&#x8FDB;&#x7A0B;&#x590D;&#x5236;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x5E76;&#x6CA1;&#x6709;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x8868;&#x9879;&#xFF0C;&#x800C;&#x662F;&#x6307;&#x5411;&#x76F8;&#x540C;&#x7684;&#x8868;&#x9879;&#x3002;&#x7136;&#x540E; vnode_t &#x5C31;&#x662F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5BF9;&#x5E94;&#x7684;&#x5185;&#x5BB9;&#x4E86;&#xFF0C;&#x5305;&#x62EC;&#x4F4D;&#x7F6E;&#x5927;&#x5C0F;&#x5C5E;&#x6027;&#x7B49;&#x7B49;&#x4FE1;&#x606F;&#x3002;</p>
 
                     
                     </section>

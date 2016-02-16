@@ -1,2 +1,29 @@
 # 文件 IO
 ***
+
+&emsp;&emsp;
+文件 IO 通常来说只需要用到下面 5 个函数：
+
++ open
++ read
++ write
++ lseek
++ close
+
+&emsp;&emsp;
+这里 read/write 就是不带缓冲的 IO，因为它们直接进行系统调用而不在用户态进行缓冲。
+相对应的是标准 IO，标准 IO 在用户态进行了数据缓冲。
+不带缓冲 IO 不是 ISO C 的组成部分，但是却是 POSIX 和 SUS 的组成部分。
+
+&emsp;&emsp;
+对于文件 IO 来说操作的对象就是文件描述符，这是一个非负整数。
+通常来说系统会使用 0、1、2 来作为进程的标准输入、输出和错误。
+但是最好不要依赖这个行为，而使用：
+
+    #include <unistd.h>
+    #define STDIN_FILENO 0
+    #define STDOUT_FILENO 1
+    #define STDERR_FILENO 2
+
+&emsp;&emsp;
+同时需要注意的是，对于进程打开的文件描述符是存在上限的，可以通过 sysconf 得到。

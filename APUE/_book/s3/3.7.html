@@ -53,7 +53,7 @@
         data-chapter-title="pread/pwrite"
         data-filepath="s3/3.7.md"
         data-basepath=".."
-        data-revision="Mon Feb 15 2016 16:11:22 GMT+0800 (CST)"
+        data-revision="Tue Feb 16 2016 11:37:54 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,25 @@
                     
                         <h1 id="preadpwrite">pread/pwrite</h1>
 <hr>
-
+<p>&#x2003;&#x2003;
+pread/pwrite &#x76F8;&#x5F53;&#x4E8E;&#x4E00;&#x4E2A;&#x65B9;&#x4FBF;&#x7684; lseek+read/write &#x64CD;&#x4F5C;&#xFF0C;&#x5E76;&#x4E14;&#x6709;&#x4E00;&#x4E2A;&#x7279;&#x70B9;&#x5C31;&#x662F;&#x4E0D;&#x4FEE;&#x6539;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x504F;&#x79FB;&#x3002;</p>
+<pre><code>#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+int main(){
+    int fd = open(&quot;main.cc&quot;, O_RDONLY);
+    char buf[128];
+    memset(buf, 0, sizeof(buf));
+    for(int i=0; i&lt;10; i++){
+        // &#x6BCF;&#x6B21;&#x8BFB;&#x53D6;&#x5230;&#x7684;&#x90FD;&#x662F;&#x76F8;&#x540C;&#x7684;&#x5185;&#x5BB9;
+        pread(fd, buf, sizeof(buf) - 1, 128);
+        printf(&quot;%s\n&quot;, buf);
+    }
+    close(fd);
+    return 0;
+}
+</code></pre>
                     
                     </section>
                 
