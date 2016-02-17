@@ -53,7 +53,7 @@
         data-chapter-title="打开和关闭流"
         data-filepath="s5/5.3.md"
         data-basepath=".."
-        data-revision="Tue Feb 16 2016 15:12:40 GMT+0800 (CST)"
+        data-revision="Wed Feb 17 2016 11:09:09 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,65 @@
                     
                         <h1 id="&#x6253;&#x5F00;&#x548C;&#x5173;&#x95ED;&#x6D41;">&#x6253;&#x5F00;&#x548C;&#x5173;&#x95ED;&#x6D41;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x6253;&#x5F00;&#x6D41;&#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code>// &#x6253;&#x5F00; pathname
+FILE* fopen(const char* restrict pathname, const char* restrict type);
+// &#x5173;&#x95ED; fp&#xFF0C;&#x7136;&#x540E;&#x6253;&#x5F00; pathname &#x548C; fp &#x8FDB;&#x884C;&#x5173;&#x8054;
+FILE* freopen(const char* restrict pathname, const char* restrict type, FILE* restrict fp);
+// &#x5C06;&#x6253;&#x5F00;&#x7684; fd &#x6620;&#x5C04;&#x6210;&#x4E3A;&#x6D41;
+FILE* fdopen(int fd,const char* type);
+</code></pre><p>&#x2003;&#x2003;
+&#x901A;&#x5E38; freopen &#x7684;&#x7528;&#x9014;&#x662F;&#xFF1A;&#x5C06; fp &#x8BBE;&#x7F6E;&#x6210;&#x4E3A; stdin&#x3001;stdout &#x6216;&#x662F; stderr&#xFF0C;&#x8FD9;&#x6837;&#x539F;&#x6765;&#x64CD;&#x4F5C; fprintf &#x51FD;&#x6570;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5173;&#x8054;&#x5230;&#x6587;&#x4EF6;&#x4E0A;&#x9762;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x5F88;&#x591A;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5173;&#x4E8E; type &#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x51E0;&#x79CD;&#x679A;&#x4E3E;&#x503C;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r/rb</td>
+<td>&#x8BFB;&#x6253;&#x5F00;</td>
+</tr>
+<tr>
+<td>w/wb</td>
+<td>&#x622A;&#x65AD;&#x5199;&#x6253;&#x5F00;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#x521B;&#x5EFA;</td>
+</tr>
+<tr>
+<td>a/ab</td>
+<td>&#x8FFD;&#x52A0;&#x5199;&#x6253;&#x5F00;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#x521B;&#x5EFA;</td>
+</tr>
+<tr>
+<td>r+/r+b/rb+</td>
+<td>&#x8BFB;&#x5199;&#x6253;&#x5F00;</td>
+</tr>
+<tr>
+<td>w+/w+b/wb+</td>
+<td>&#x622A;&#x65AD;&#x8BFB;&#x5199;&#x6253;&#x5F00;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x521B;&#x5EFA;</td>
+</tr>
+<tr>
+<td>a+/a+b/ab+</td>
+<td>&#x8FFD;&#x52A0;&#x8BFB;&#x5199;&#x6253;&#x5F00;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#x521B;&#x5EFA;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+&#x5BF9;&#x4E8E; fdopen &#x7684; type &#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#xFF0C;type &#x4E0D;&#x80FD;&#x591F;&#x6307;&#x5B9A;&#x521B;&#x5EFA;&#x8FD8;&#x662F;&#x622A;&#x65AD;&#xFF0C;&#x5E76;&#x4E14;&#x5173;&#x4E8E;&#x8BFB;&#x5199;&#x6A21;&#x5F0F;&#x5FC5;&#x987B;&#x548C; fd &#x7684;&#x5C5E;&#x6027;&#x76F8;&#x540C;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x56E0;&#x4E3A;&#x6807;&#x51C6; IO &#x5185;&#x90E8;&#x53EA;&#x662F;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x5982;&#x679C;&#x8BFB;&#x5199;&#x4EA4;&#x66FF;&#xFF0C;&#x90A3;&#x4E48;&#x5B9E;&#x9645;&#x4E0A;&#x4F1A;&#x6253;&#x4E71;&#x5185;&#x90E8; buffer &#x5185;&#x5BB9;&#x3002;
+&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F7F;&#x7528; + &#x6253;&#x5F00;&#xFF0C;&#x5728;&#x4EA4;&#x66FF;&#x8F93;&#x51FA;&#x548C;&#x8F93;&#x5165;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x8FDB;&#x884C; flush &#x64CD;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code>fseek
+fseeko
+fsetpos
+rewind
+fflush
+</code></pre><p>&#x2003;&#x2003;
+&#x5173;&#x4E8E;&#x6D41;&#x4F7F;&#x7528; fclose &#x51FD;&#x6570;&#xFF0C;&#x5728;&#x6587;&#x4EF6;&#x5173;&#x95ED;&#x4E4B;&#x524D;&#x4F1A;&#x51B2;&#x6D17;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x8F93;&#x51FA;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4E14;&#x4E22;&#x5F03;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x4EFB;&#x4F55;&#x8F93;&#x5165;&#x6570;&#x636E;&#x3002;
+&#x5E76;&#x4E14;&#x5982;&#x679C; IO &#x5E93;&#x5DF2;&#x7ECF;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x5730;&#x91CA;&#x653E;&#x8FD9;&#x5757;&#x7F13;&#x51B2;&#x533A;&#x3002;</p>
 
                     
                     </section>

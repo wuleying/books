@@ -18,8 +18,8 @@
     struct stat {
         mode_t      st_mode;      // 文件类型和访问权限
         ino_t       st_ino;       // inode 编号
-        dev_t       st_dev;       // 设备号 (对于文件系统来说)
-        dev_t       st_rdev;      // 设备号 (对于特殊文件来说)
+        dev_t       st_dev;       // 设备号 (对文件系统)
+        dev_t       st_rdev;      // 设备号 (对特殊文件)
         nlink_t     st_nlink;     // 链接数目
         uid_t       st_uid;       // 文件所有者 uid
         gid_t       st_gid;       // 文件所有者 gid
