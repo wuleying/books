@@ -53,7 +53,7 @@
         data-chapter-title="存储器分配"
         data-filepath="s7/7.4.md"
         data-basepath=".."
-        data-revision="Thu Feb 18 2016 14:55:42 GMT+0800 (CST)"
+        data-revision="Thu Feb 18 2016 15:53:12 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,36 @@
                     
                         <h1 id="&#x5B58;&#x50A8;&#x5668;&#x5206;&#x914D;">&#x5B58;&#x50A8;&#x5668;&#x5206;&#x914D;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5173;&#x4E8E;&#x5B58;&#x50A8;&#x5668;&#x7684;&#x5206;&#x914D;&#x5305;&#x62EC;&#x4E24;&#x4E2A;&#x533A;&#x57DF;&#x5B58;&#x50A8;&#x5206;&#x914D;&#xFF0C;&#x4E00;&#x4E2A;&#x662F; heap &#x4E00;&#x4E2A;&#x662F; stack&#x3002;
+heap &#x5728; ISO C &#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x6765;&#x5206;&#x914D; heap &#x4E0A;&#x7684;&#x7A7A;&#x95F4;&#xFF1A;</p>
+<pre><code>malloc
+calloc
+realloc
+</code></pre><p>&#x2003;&#x2003;
+&#x8FD9;&#x4E9B;&#x91CC;&#x9762;&#x4F1A;&#x8C03;&#x7528; sbrk &#x6216;&#x8005;&#x662F; mmap &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;&#x5F97;&#x5230;&#x5185;&#x5B58;&#x4E4B;&#x540E;&#x5728;&#x7528;&#x6237;&#x6001;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#x3002;
+&#x5BF9;&#x4E8E; sbrk &#x5F97;&#x5230;&#x5185;&#x5B58; free &#x4E0D;&#x4F1A;&#x91CA;&#x653E;&#x56DE;&#x53BB;&#xFF0C;&#x800C;&#x8C03;&#x7528; mmap &#x5F97;&#x5230;&#x7684;&#x5185;&#x5B58;&#x4F1A; mumap &#x56DE;&#x53BB;&#x3002;</p>
+<p>&#x2003;&#x2003;
+stack &#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x51FD;&#x6570;&#x4E00;&#x79CD;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x8BED;&#x6CD5;&#x3002;
+&#x51FD;&#x6570;&#x662F; alloca &#x800C;&#x8BED;&#x6CD5;&#x5C31;&#x662F;varied length array(VLA) (&#x53EA;&#x6709; gcc &#x652F;&#x6301;&#xFF0C;g++ &#x4E0D;&#x652F;&#x6301;)&#x3002;</p>
+<pre><code>#include &lt;alloca.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
 
+int main() {
+    // alloca
+    char* p = (char*) alloca(100);
+    strcpy(p, &quot;hello,world&quot;);
+    printf(&quot;%s\n&quot;, p);
+
+    // VLA
+    int len=100;
+    char p2[len];
+    strcpy(p2, &quot;hello,world&quot;);
+    printf(&quot;%s\n&quot;, p2);
+    return 0;
+}
+</code></pre>
                     
                     </section>
                 

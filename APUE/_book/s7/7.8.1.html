@@ -53,7 +53,7 @@
         data-chapter-title="控制进程和 CPU 亲和性"
         data-filepath="s7/7.8.1.md"
         data-basepath=".."
-        data-revision="Thu Feb 18 2016 14:55:42 GMT+0800 (CST)"
+        data-revision="Thu Feb 18 2016 15:53:12 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,47 @@
                     
                         <h1 id="&#x63A7;&#x5236;&#x8FDB;&#x7A0B;&#x548C;-cpu-&#x4EB2;&#x548C;&#x6027;">&#x63A7;&#x5236;&#x8FDB;&#x7A0B;&#x548C; CPU &#x4EB2;&#x548C;&#x6027;</h1>
 <hr>
+<pre><code>#include &lt;sched.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;pthread.h&gt;
+void* (void *arg) {
+    int a = 0;
+    while(1) {
+        a++;
+    }
+    return NULL;
+}
+
+int main() {
+    cpu_set_t cpu_set;
+    CPU_ZERO(&amp;cpu_set);
+    CPU_SET(1, &amp;cpu_set); //&#x6307;&#x5B9A;&#x5728; CPU#1 &#x548C; #3 &#x4E0A;&#x9762;&#x8FD0;&#x884C;...
+    CPU_SET(3, &amp;cpu_set);
+    sched_setaffinity(getpid(), sizeof(cpu_set), &amp;cpu_set);
+    pthread_t thread[5];
+    for(int i=0; i&lt;5; i++){
+        pthread_create(thread+i, NULL, ok, NULL);
+    }
+    for(int i=0; i&lt;5; i++) {
+        pthread_join(thread[i], NULL);
+    }
+    return 0;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>[zhangyan@tc-cm-et18.tc.baidu.com]$ mpstat -P ALL 1
+08&#x65F6;34&#x5206;00&#x79D2;  CPU   %user   %nice %system %iowait    %irq   %soft   %idle    intr/s
+08&#x65F6;34&#x5206;01&#x79D2;  all   37.45    0.00    0.00    0.00    0.00    0.00   62.55   1005.00
+08&#x65F6;34&#x5206;01&#x79D2;    0    0.00    0.00    0.00    0.00    0.00    0.00  100.00   1001.00
+08&#x65F6;34&#x5206;01&#x79D2;    1  100.00    0.00    0.00    0.00    0.00    0.00    0.00      0.00
+08&#x65F6;34&#x5206;01&#x79D2;    2    0.00    0.00    0.00    0.00    0.00    0.00  100.00      4.00
+08&#x65F6;34&#x5206;01&#x79D2;    3  100.00    0.00    0.00    0.00    0.00    0.00    0.00      0.00
+08&#x65F6;34&#x5206;01&#x79D2;    4  100.00    0.00    0.00    0.00    0.00    0.00    0.00      0.00
+08&#x65F6;34&#x5206;01&#x79D2;    5    0.00    0.00    0.00    0.00    0.00    0.00  100.00      0.00
+08&#x65F6;34&#x5206;01&#x79D2;    6    0.00    0.00    0.00    0.00    0.00    0.00  100.00      0.00
+08&#x65F6;34&#x5206;01&#x79D2;    7    0.00    0.00    0.00    0.00    0.00    0.00  100.00      0.00
+</code></pre><p>&#x2003;&#x2003;
+&#x76F8;&#x5173;&#x6587;&#x7AE0;&#xFF1A;<a href="http://linux.die.net/man/2/sched_setaffinity" target="_blank">sched_setaffinity(2) - Linux man page</a></p>
 
                     
                     </section>

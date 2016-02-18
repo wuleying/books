@@ -53,7 +53,7 @@
         data-chapter-title="非局部跳转"
         data-filepath="s7/7.6.md"
         data-basepath=".."
-        data-revision="Thu Feb 18 2016 14:55:42 GMT+0800 (CST)"
+        data-revision="Thu Feb 18 2016 15:53:12 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,88 @@
                     
                         <h1 id="&#x975E;&#x5C40;&#x90E8;&#x8DF3;&#x8F6C;">&#x975E;&#x5C40;&#x90E8;&#x8DF3;&#x8F6C;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5C40;&#x90E8;&#x8DF3;&#x8F6C;&#x662F;&#x6307;&#x5728;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x5185;&#x7684;&#x8DF3;&#x8F6C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; goto&#xFF0C;&#x975E;&#x5C40;&#x90E8;&#x8DF3;&#x8F6C;&#x5C31;&#x662F;&#x6307;&#x51FD;&#x6570;&#x4E4B;&#x95F4;&#x7684;&#x8DF3;&#x8F6C;&#x3002;
+&#x4F7F;&#x7528;&#x7684;&#x51FD;&#x6570;&#x662F;&#xFF1A;</p>
+<pre><code>#include &lt;setjmp.h&gt;
+int setjmp(jmp_buf env);
+void longjmp(jmp_buf env, int val);
+</code></pre><p>&#x2003;&#x2003;
+&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x662F;&#xFF1A;&#x5728;&#x4E00;&#x4E2A;&#x5730;&#x65B9; setjmp &#x5F97;&#x5230;&#x5F53;&#x524D; jmp_buf &#x5185;&#x5BB9;&#x5E76;&#x4E14;&#x8FD4;&#x56DE; 0&#xFF0C;&#x8868;&#x793A;&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x3002;
+&#x5982;&#x679C;&#x4F7F;&#x7528; longjmp &#x5E76;&#x4E14; val &#x4E0D;&#x7B49;&#x4E8E; 0 &#xFF0C;&#x90A3;&#x4E48;&#x8C03;&#x56DE;&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x8BF4;&#x660E;&#x662F;&#x975E;&#x5C40;&#x90E8;&#x8DF3;&#x8F6C;&#x3002;</p>
+<pre><code>#include &lt;setjmp.h&gt;
+#include &lt;stdio.h&gt;
+jmp_buf env;
+
+void foo() {
+    printf(&quot;ins 1\n&quot;);
+    longjmp(env, 1);
+    printf(&quot;ins 2\n&quot;);
+}
+
+int main() {
+    int ret = setjmp(env);
+    if(ret == 0) {
+        foo();
+    } else if(ret == 1) {
+        printf(&quot;jmp from foo\n&quot;);
+    }
+    return 0;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>[dirlt@localhost.localdomain]$ ./main
+ins 1
+jmp from foo
+</code></pre><p>&#x2003;&#x2003;
+&#x5BF9;&#x4E8E;&#x975E;&#x5C40;&#x90E8;&#x8DF3;&#x8F6C;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4EC5;&#x4EC5;&#x662F;&#x4FDD;&#x5B58;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x5185;&#x5BB9;&#x3002;
+&#x4E5F;&#x5C31;&#x5982;&#x679C;&#x53D8;&#x91CF;&#x88AB;&#x5B89;&#x6392;&#x5728;&#x5BC4;&#x5B58;&#x5668;&#x4E0A;&#xFF0C;&#x90A3;&#x4E48;&#x8DF3;&#x56DE;&#x53BB;&#x7684;&#x65F6;&#x5019;&#x503C;&#x662F;&#x4F1A;&#x56DE;&#x6EDA;&#x7684;&#x3002;
+&#x5982;&#x679C;&#x4E0D;&#x5E0C;&#x671B;&#x56DE;&#x6EDA;&#x5C31;&#x8981;&#x58F0;&#x660E;&#x53D8;&#x91CF;&#x662F; volatile &#x7684;&#x3002;
+&#x540C;&#x65F6;&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x56E0;&#x4E3A;&#x4EC5;&#x4EC5;&#x4FDD;&#x5B58;&#x7684;&#x662F;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x8DF3;&#x8F6C;&#x5230;&#x51FD;&#x6570;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x6808;&#x4E0A;&#x5185;&#x5BB9;&#x6CA1;&#x6709;&#x88AB;&#x4FEE;&#x6539;&#x3002;</p>
+<pre><code>#include &lt;setjmp.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+jmp_buf main_env;
+jmp_buf foo_env;
+void foo() {
+    char stack[16];
+    strcpy(stack, &quot;hello,world&quot;);
+    if(setjmp(foo_env) == 0) {
+        printf(&quot;%p, %x\n&quot;, stack, (unsigned char) stack[0]);
+    } else {
+        printf(&quot;%p, %x\n&quot;, stack, (unsigned char) stack[0]);
+        longjmp(main_env, 1);
+    }
+}
+
+void foo2() {
+    char stack[16];
+    strcpy(stack, &quot;hello,dirlt&quot;);
+    printf(&quot;%s\n&quot;, stack);
+}
+
+int main() {
+    if(setjmp(main_env) == 0) {
+        foo();
+        foo2();
+        printf(&quot;jmp to foo again\n&quot;);
+        longjmp(foo_env, 1);
+    } else {
+        printf(&quot;jmp from foo\n&quot;);
+    }
+
+    return 0;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>[dirlt@localhost.localdomain]$ ./main
+0xbffc0d28, 68
+hello, dirlt
+jmp to foo again
+0xbffc0d28, b0
+jmp from foo
+</code></pre><p>&#x2003;&#x2003;
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8C03;&#x7528; foo2 &#x4E4B;&#x540E;&#x4F01;&#x56FE;&#x91CD;&#x65B0;&#x8FDB;&#x5165; foo&#xFF0C;&#x7ED3;&#x679C;&#x662F; stack &#x53D8;&#x91CF;&#x4FEE;&#x6539;&#x4E86;&#x3002;</p>
 
                     
                     </section>
