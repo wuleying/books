@@ -53,7 +53,7 @@
         data-chapter-title="时间和日期例程"
         data-filepath="s6/6.7.md"
         data-basepath=".."
-        data-revision="Wed Feb 17 2016 11:09:09 GMT+0800 (CST)"
+        data-revision="Thu Feb 18 2016 14:55:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,80 @@
                     
                         <h1 id="&#x65F6;&#x95F4;&#x548C;&#x65E5;&#x671F;&#x4F8B;&#x7A0B;">&#x65F6;&#x95F4;&#x548C;&#x65E5;&#x671F;&#x4F8B;&#x7A0B;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+Unix &#x6240;&#x63D0;&#x4F9B;&#x7684;&#x65F6;&#x95F4;&#x548C;&#x65E5;&#x671F;&#x662F;&#x5B58;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x91CF;&#x503C;&#x91CC;&#x9762;&#x7684;&#xFF0C;&#x5C31;&#x662F; time_t&#x3002;
+&#x8868;&#x793A;&#x4ECE;&#x56FD;&#x9645;&#x6807;&#x51C6;&#x65F6;&#x95F4; 1970 &#x5E74; 1 &#x6708; 1 &#x65E5; 00:00:00 &#x81F3;&#x4ECA;&#x7684;&#x79D2;&#x6570;&#xFF0C;&#x4F7F;&#x7528;&#x8C03;&#x7528; time &#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x3002;
+Unix &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x51FD;&#x6570;&#x6765;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#x548C;&#x672C;&#x5730;&#x5316;&#x64CD;&#x4F5C;&#xFF0C;&#x5305;&#x62EC;&#x590F;&#x65F6;&#x5236;&#x8F6C;&#x6362;&#x4EE5;&#x53CA;&#x8F6C;&#x6362;&#x6210;&#x4E3A;&#x672C;&#x5730;&#x65F6;&#x533A;&#x7684;&#x65F6;&#x95F4;&#x3002;
+Unix &#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x52A0;&#x7CBE;&#x786E;&#x5230;&#x5FAE;&#x79D2;&#x7684;&#x8C03;&#x7528; gettimeofday&#x3002;</p>
+<pre><code>struct timeval{
+    time_t  tv_sec;     // &#x8FD9;&#x4E2A;&#x5206;&#x91CF;&#x8FD8;&#x662F;&#x8868;&#x793A;&#x79D2;
+    long    tv_usec;    // &#x5FAE;&#x79D2;
+};
+</code></pre><p>&#x2003;&#x2003;
+time_t &#x662F;&#x4E00;&#x4E2A;&#x79D2;&#x7684;&#x6982;&#x5FF5;&#xFF0C;Unix &#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x7ED3;&#x6784;&#x53EF;&#x4EE5;&#x8868;&#x8FBE;&#x65E5;&#x671F;&#x65F6;&#x95F4;&#x6982;&#x5FF5;&#xFF1A;</p>
+<pre><code>struct tm {
+    int tm_sec;         /* seconds [0, 60] 60&#x8868;&#x793A;&#x95F0;&#x79D2; */
+    int tm_min;         /* minutes */
+    int tm_hour;        /* hours */
+    int tm_mday;        /* day of the month */
+    int tm_mon;         /* month */
+    int tm_year;        /* year since 1900 */
+    int tm_wday;        /* day of the week */
+    int tm_yday;        /* day in the year */
+    int tm_isdst;       /* daylight saving time  &#x5927;&#x4E8E; 0 &#x65F6;&#x590F;&#x65F6;&#x5236;&#x751F;&#x6548; */ 
+};
+</code></pre><p>&#x2003;&#x2003;
+&#x5F97;&#x5230;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x7528;&#x6237;&#x8FD8;&#x5FC5;&#x987B;&#x81EA;&#x5DF1;&#x5236;&#x4F5C;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x6709;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#x8FBE;&#x65B9;&#x5F0F; (const char*)&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>from</th>
+<th>to</th>
+<th>function</th>
+<th>&#x53D7;TZ &#x5F71;&#x54CD;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time_t</td>
+<td>struct tm</td>
+<td>gmtime</td>
+<td>&#x5426;</td>
+</tr>
+<tr>
+<td>time_t</td>
+<td>struct tm</td>
+<td>localtime</td>
+<td>&#x662F;</td>
+</tr>
+<tr>
+<td>struct tm</td>
+<td>time_t</td>
+<td>mktime</td>
+<td>&#x5426;</td>
+</tr>
+<tr>
+<td>time_t</td>
+<td>const char*</td>
+<td>ctime</td>
+<td>&#x662F;</td>
+</tr>
+<tr>
+<td>struct tm</td>
+<td>const char*</td>
+<td>asctime</td>
+<td>&#x5426;</td>
+</tr>
+<tr>
+<td>struct tm</td>
+<td>const char*</td>
+<td>strftime</td>
+<td>&#x662F;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+&#x53D7; TZ (timezone) &#x5F71;&#x54CD;&#x7684;&#x610F;&#x601D;&#x662F;&#x53D7;&#x73AF;&#x5883;&#x53D8;&#x91CF; TZ &#x7684;&#x5F71;&#x54CD;&#xFF0C;TZ &#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5B9A;&#x4E49;&#x7CFB;&#x7EDF;&#x6240;&#x5904;&#x7684;&#x65F6;&#x533A;&#x3002;</p>
 
                     
                     </section>

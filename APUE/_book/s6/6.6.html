@@ -53,7 +53,7 @@
         data-chapter-title="系统标识"
         data-filepath="s6/6.6.md"
         data-basepath=".."
-        data-revision="Wed Feb 17 2016 11:09:09 GMT+0800 (CST)"
+        data-revision="Thu Feb 18 2016 14:55:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,56 @@
                     
                         <h1 id="&#x7CFB;&#x7EDF;&#x6807;&#x8BC6;">&#x7CFB;&#x7EDF;&#x6807;&#x8BC6;</h1>
 <hr>
-
+<p>&#x2003;&#x2003;
+uname &#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x548C;&#x5F53;&#x524D;&#x4E3B;&#x673A;&#x548C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code>#include &lt;sys/utsname.h&gt;
+int uname(struct utsname *buf);
+struct utsname {
+    char sysname[];
+    char nodename[];
+    char release[];
+    char version[];
+    char machine[];
+#ifdef _GNU_SOURCE
+    char domainname[];
+#endif
+};
+</code></pre><p>&#x2003;&#x2003;
+&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; nodename &#x4E0D;&#x80FD;&#x591F;&#x7528;&#x4E8E;&#x5F15;&#x7528;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x4E3B;&#x673A;&#xFF0C;&#x4EC5;&#x4EC5;&#x9002;&#x7528;&#x4E8E;&#x5F15;&#x7528; UUCP &#x7F51;&#x7EDC;&#x4E0A;&#x7684;&#x4E3B;&#x673A;&#x3002;
+&#x5982;&#x679C;&#x9700;&#x8981;&#x8FD4;&#x56DE; TCP &#x7F51;&#x7EDC;&#x4E3B;&#x673A;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; gethostname &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code>#include &lt;unistd.h&gt;
+int gethostname(char* name, int namelen);
+#include &lt;sys/utsname.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;cstdio&gt;
+int main() {
+    struct utsname buf;
+    uname(&amp;buf);
+    printf(&quot;sysname:%s\n&quot;
+           &quot;nodename:%s\n&quot;
+           &quot;release:%s\n&quot;
+           &quot;version:%s\n&quot;
+           &quot;machine:%s\n&quot;
+           &quot;domainname:%s\n&quot;,
+           buf.sysname,buf.nodename,
+           buf.release,buf.version,
+           buf.machine,buf.domainname);
+    char host[128];
+    gethostname(host, sizeof(host));
+    printf(&quot;hostname:%s\n&quot;, host);
+    return 0;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>[dirlt@localhost.localdomain]$ ./main
+sysname:Linux
+nodename:localhost.localdomain
+release:2.6.23.1-42.fc8
+version:#1 SMP Tue Oct 30 13:55:12 EDT 2007
+machine:i686
+domainname:(none)
+hostname:localhost.localdomain
+</code></pre>
                     
                     </section>
                 

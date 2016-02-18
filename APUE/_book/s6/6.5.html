@@ -53,7 +53,7 @@
         data-chapter-title="登录账户记录"
         data-filepath="s6/6.5.md"
         data-basepath=".."
-        data-revision="Wed Feb 17 2016 11:09:09 GMT+0800 (CST)"
+        data-revision="Thu Feb 18 2016 14:55:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,47 @@
                     
                         <h1 id="&#x767B;&#x5F55;&#x8D26;&#x6237;&#x8BB0;&#x5F55;">&#x767B;&#x5F55;&#x8D26;&#x6237;&#x8BB0;&#x5F55;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+Unix &#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x8FD9;&#x4E24;&#x4E2A;&#x6570;&#x636E;&#x6587;&#x4EF6; utmp &#x548C; wtmp&#x3002;
+&#x5176;&#x4E2D; utmp &#x8BB0;&#x5F55;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x8FDB;&#x5165;&#x7CFB;&#x7EDF;&#x7684;&#x5404;&#x4E2A;&#x7528;&#x6237;&#xFF0C;&#x800C; wtmp &#x662F;&#x8DDF;&#x8E2A;&#x5404;&#x4E2A;&#x767B;&#x5F55;&#x548C;&#x6CE8;&#x9500;&#x4E8B;&#x4EF6;&#xFF0C;&#x5185;&#x90E8;&#x90FD;&#x662F;&#x76F8;&#x540C;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x8BB0;&#x5F55;&#x3002;
+&#x5728; Linux &#x7CFB;&#x7EDF;&#x4E0A;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x5B58;&#x653E;&#x4F4D;&#x7F6E;&#x5206;&#x522B;&#x662F; /var/run/utmp &#x548C; /var/log/wtmp&#xFF0C;&#x67E5;&#x770B; man utmp &#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x4E8C;&#x8FDB;&#x5236;&#x7684;&#x683C;&#x5F0F;&#xFF1A;</p>
+<pre><code>struct exit_status {
+    short int e_termination;    /* process termination status */
+    short int e_exit;           /* process exit status */
+};
+
+struct utmp {
+    short ut_type;              /* type of login */
+    pid_t ut_pid;               /* PID of login process */
+    char ut_line[UT_LINESIZE];  /* device name of tty - &quot;/dev/&quot; */
+    char ut_id[4];              /* init id or abbrev. ttyname */
+    char ut_user[UT_NAMESIZE];  /* user name */
+    char ut_host[UT_HOSTSIZE];  /* hostname for remote login */
+    struct exit_status ut_exit; /* The exit status of a process
+                                   marked as DEAD_PROCESS */
+
+    /* The ut_session and ut_tv fields must be the same size when
+       compiled 32- and 64-bit.  This allows data files and shared
+       memory to be shared between 32- and 64-bit applications */
+#if __WORDSIZE == 64 &amp;&amp; defined __WORDSIZE_COMPAT32
+    int32_t ut_session;         /* Session ID, used for windowing */
+    struct {
+        int32_t tv_sec;         /* Seconds */
+        int32_t tv_usec;        /* Microseconds */
+    } ut_tv;                    /* Time entry was made */
+#else
+    long int ut_session;        /* Session ID, used for windowing */
+    struct timeval ut_tv;       /* Time entry was made */
+#endif
+
+    int32_t ut_addr_v6[4];       /* IP address of remote host */
+    char __unused[20];           /* Reserved for future use */
+};
+</code></pre><p>&#x2003;&#x2003;
+&#x767B;&#x5F55;&#x65F6;&#xFF0C;login &#x8FDB;&#x7A0B;&#x586B;&#x5199;&#x6B64;&#x7ED3;&#x6784;&#xFF0C;&#x5199;&#x5165; utmp &#x548C; wtmp &#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x6CE8;&#x9500;&#x65F6; init &#x8FDB;&#x7A0B;&#x5C06; utmp &#x6587;&#x4EF6;&#x4E2D;&#x5BF9;&#x5E94;&#x8BB0;&#x5F55;&#x64E6;&#x9664;&#x5E76;&#x4E14;&#x589E;&#x52A0;&#x4E00;&#x6761;&#x65B0;&#x8BB0;&#x5F55;&#x5230; wtmp &#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x7CFB;&#x7EDF;&#x91CD;&#x542F;&#x3002;
+&#x4FEE;&#x6539;&#x7CFB;&#x7EDF;&#x65F6;&#x95F4;&#x548C;&#x65E5;&#x671F;&#x4E4B;&#x540E;&#xFF0C;&#x90FD;&#x4F1A;&#x5728; wtmp &#x6587;&#x4EF6;&#x4E2D;&#x8FFD;&#x52A0;&#x4E00;&#x6761;&#x8BB0;&#x5F55;&#x3002;</p>
+<p>&#x2003;&#x2003;
+utmp &#x548C; wtmp &#x867D;&#x7136;&#x90FD;&#x662F;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x662F; Linux &#x7CFB;&#x7EDF;&#x4E86;&#x7CFB;&#x7EDF;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x67E5;&#x770B;&#x8FD9;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x5206;&#x522B;&#x662F; who &#x548C; last&#x3002;</p>
 
                     
                     </section>
