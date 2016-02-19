@@ -53,7 +53,7 @@
         data-chapter-title="孤儿进程组"
         data-filepath="s9/9.6.md"
         data-basepath=".."
-        data-revision="Fri Feb 19 2016 13:45:58 GMT+0800 (CST)"
+        data-revision="Fri Feb 19 2016 14:29:50 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,61 @@
                     
                         <h1 id="&#x5B64;&#x513F;&#x8FDB;&#x7A0B;&#x7EC4;">&#x5B64;&#x513F;&#x8FDB;&#x7A0B;&#x7EC4;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5B64;&#x513F;&#x8FDB;&#x7A0B;&#x7EC4;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;&#x8BE5;&#x7EC4;&#x4E2D;&#x6BCF;&#x4E2A;&#x6210;&#x5458;&#x7684;&#x7236;&#x8FDB;&#x7A0B;&#x8981;&#x4E48;&#x662F;&#x8BE5;&#x7EC4;&#x7684;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#xFF0C;&#x8981;&#x4E48;&#x4E0D;&#x662F;&#x8BE5;&#x7EC4;&#x6240;&#x5C5E;&#x4F1A;&#x8BDD;&#x7684;&#x6210;&#x5458;&#x3002;
+&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x8FDB;&#x7A0B;&#x7EC8;&#x6B62;&#xFF0C;&#x4F7F;&#x5F97;&#x67D0;&#x4E2A;&#x8FDB;&#x7A0B;&#x7EC4;&#x6210;&#x4E3A;&#x5B64;&#x513F;&#x8FDB;&#x7A0B;&#x7EC4;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x5411;&#x5B64;&#x513F;&#x8FDB;&#x7A0B;&#x7EC4;&#x91CC;&#x9762;&#x6BCF;&#x4E2A;&#x5904;&#x4E8E;&#x505C;&#x6B62;&#x72B6;&#x6001;&#x8FDB;&#x7A0B;&#x53D1;&#x9001;&#x4E00;&#x4E2A; SIGHUP &#x4FE1;&#x53F7;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x9001; SIGCONT &#x4FE1;&#x53F7;&#x3002;</p>
+<pre><code>#include &lt;unistd.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
 
+static void sig_hup(int signo) {
+    printf(&quot;SIGHUP received, pid=%d\n&quot;, getpid());
+}
+static void pr_ids(const char* name) {
+    printf(&quot;%s:pid=%d, ppid=%d, pgrp=%d, tpgrp=%d\n&quot;,
+           name, getpid(), getppid(), getpgrp(), tcgetpgrp(STDIN_FILENO));
+}
+
+int main() {
+    pr_ids(&quot;parent&quot;);
+    pid_t pid;
+    if((pid = fork()) == 0) {
+        // child
+        pr_ids(&quot;child&quot;);
+        signal(SIGHUP,sig_hup);
+        // sleep(5);
+        kill(getpid(), SIGTSTP);
+        pr_ids(&quot;child&quot;);
+        char c;
+        if(read(STDIN_FILENO, &amp;c, sizeof(c)) == -1){
+            printf(&quot;read from tty error, errno=%m\n&quot;);
+        }
+        exit(0);
+    } else {
+        // wait the child to install signal handler and send signal
+        sleep(3);
+        exit(0);
+        printf(&quot;parent exit\n&quot;);
+    }
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>[zhangyan@tc-cm-et18.tc.baidu.com]$ ./a.out
+parent:pid=26510, ppid=23449, pgrp=26510, tpgrp=26510
+child:pid=26511, ppid=26510, pgrp=26510, tpgrp=26510
+SIGHUP received, pid=26511 // &#x786E;&#x5B9E;&#x63A5;&#x6536;&#x5230;&#x4E86;
+child:pid=26511, ppid=1, pgrp=26510, tpgrp=26510 // &#x4F46;&#x662F; SIGCONT &#x88AB;&#x6362;&#x5230;&#x4E86;&#x524D;&#x53F0;&#x8FDB;&#x7A0B;&#xFF0C;&#x6240;&#x4EE5; tpgrp &#x8FD8;&#x662F; 26510 &#x5E76;&#x4E14;&#x53EF;&#x8BFB;
+</code></pre><p>&#x2003;&#x2003;
+&#x5982;&#x679C;&#x8FD9;&#x91CC;&#x4E0D; kill &#x800C;&#x662F; sleep&#xFF0C;&#x90A3;&#x4E48;&#x4E0D;&#x4F1A;&#x63A5;&#x6536;&#x5230; SIGHUP &#x4FE1;&#x53F7;&#x3002;
+&#x7136;&#x540E;&#x7236;&#x8FDB;&#x7A0B;&#x4F5C;&#x4E3A;&#x8FDB;&#x7A0B;&#x7EC4;&#x5B8C;&#x6210;&#xFF0C;&#x524D;&#x53F0;&#x8FDB;&#x7A0B;&#x5207;&#x6362;&#x5230; shell&#xFF0C;&#x8FD9;&#x6837;&#x4F1A;&#x9020;&#x6210; read &#x5B58;&#x5728;&#x9519;&#x8BEF;&#x3002;</p>
+<pre><code>[zhangyan@tc-cm-et18.tc.baidu.com]$ ./a.out
+parent:pid=27218, ppid=23449, pgrp=27218, tpgrp=27218
+child:pid=27219, ppid=27218, pgrp=27218, tpgrp=27218
+[zhangyan@tc-cm-et18.tc.baidu.com]$ child:pid=27219, ppid=1, pgrp=27218, tpgrp=23449 // tpgrp &#x4E3A; 23449 &#x662F; shell &#x7684; pid
+read from tty error, errno=Input/output error
+</code></pre>
                     
                     </section>
                 
