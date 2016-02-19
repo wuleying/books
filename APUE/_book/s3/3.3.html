@@ -53,7 +53,7 @@
         data-chapter-title="lseek"
         data-filepath="s3/3.3.md"
         data-basepath=".."
-        data-revision="Fri Feb 19 2016 14:29:50 GMT+0800 (CST)"
+        data-revision="Fri Feb 19 2016 14:38:33 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2933,7 +2933,7 @@
 <hr>
 <p>&#x2003;&#x2003;
 lseek &#x5141;&#x8BB8;&#x663E;&#x793A;&#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x5F53;&#x524D;&#x504F;&#x79FB;&#x91CF;&#x3002;
-&#x5982;&#x679C;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x4E00;&#x4E2A;&#x7BA1;&#x9053;&#xFF0C;FIFO &#x6216;&#x8005;&#x662F;&#x7F51;&#x7EDC;&#x5957;&#x63A5;&#x5B57;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x8FD4;&#x56DE; ESPIPE &#x7684;&#x9519;&#x8BEF;&#x3002;
+&#x5982;&#x679C;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x4E00;&#x4E2A;&#x7BA1;&#x9053;&#xFF0C;FIFO &#x6216;&#x8005;&#x662F;&#x7F51;&#x7EDC;&#x5957;&#x63A5;&#x5B57;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x8FD4;&#x56DE; ESPIPE &#x7684;&#x9519;&#x8BEF;&#x3002;
 &#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; lseek &#x4EC5;&#x4EC5;&#x662F;&#x4FEE;&#x6539;&#x8FDB;&#x7A0B;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x8BBF;&#x95EE;&#x903B;&#x8F91;&#x504F;&#x79FB;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x4E0D;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x7269;&#x7406; IO &#x64CD;&#x4F5C;&#x3002;
 &#x4F7F;&#x7528; lseek &#x5141;&#x8BB8;&#x9020;&#x6210;&#x6587;&#x4EF6;&#x7A7A;&#x6D1E; (&#x901A;&#x5E38;&#x89C1;&#x4E8E; core &#x6587;&#x4EF6;)&#xFF0C;&#x7A7A;&#x6D1E;&#x90E8;&#x5206;&#x5E76;&#x4E0D;&#x8981;&#x6C42;&#x5360;&#x7528;&#x78C1;&#x76D8;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x3002;</p>
 <pre><code>#include &lt;fcntl.h&gt;
@@ -2957,7 +2957,7 @@ int main() {
 </code></pre><p>&#x2003;&#x2003;
 &#x5173;&#x4E8E;&#x5360;&#x7528;&#x591A;&#x5C11;&#x771F;&#x5B9E;&#x78C1;&#x76D8;&#x5927;&#x5C0F;&#x662F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6240;&#x5173;&#x5FC3;&#x7684;&#xFF0C;Linux &#x4E0B;&#x9762;&#x4F7F;&#x7528; 20K &#x6765;&#x4FDD;&#x5B58;&#x7A7A;&#x6D1E;&#x6587;&#x4EF6;&#x3002;
 &#x53E6;&#x5916;&#x9700;&#x8981;&#x5173;&#x5FC3; lseek &#x95EE;&#x9898;&#x5C31;&#x662F;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; _FILE_OFFSET_BITS &#x6765;&#x63A7;&#x5236;&#x504F;&#x79FB;&#x91CF;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x5141;&#x8BB8;&#x64CD;&#x4F5C;&#x66F4;&#x5927;&#x7684;&#x6587;&#x4EF6;&#x4E86;&#x3002;
-&#x5982;&#x679C; -D_FILE_OFFSET_BITS=64 &#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x504F;&#x79FB;&#x91CF;&#x5C31;&#x5141;&#x8BB8;&#x5728; 2^64&#xFF0C;&#x8FD9;&#x79CD;&#x89C4;&#x6A21;&#x7684;&#x6587;&#x4EF6;&#x662F;&#x76F8;&#x5F53;&#x5927;&#x7684;&#x4E86;&#x3002;
+&#x5982;&#x679C; -D_FILE_OFFSET_BITS &#x7B49;&#x4E8E; 64&#xFF0C;&#x90A3;&#x4E48;&#x504F;&#x79FB;&#x91CF;&#x5C31;&#x5141;&#x8BB8;&#x5728; 2^64&#xFF0C;&#x8FD9;&#x79CD;&#x89C4;&#x6A21;&#x7684;&#x6587;&#x4EF6;&#x662F;&#x76F8;&#x5F53;&#x5927;&#x7684;&#x4E86;&#x3002;
 &#x5C3D;&#x7BA1;&#x53EF;&#x4EE5;&#x652F;&#x6301; 64 &#x4F4D;&#x6587;&#x4EF6;&#x504F;&#x79FB;&#xFF0C;&#x4F46;&#x662F;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x521B;&#x5EFA;&#x8FD9;&#x4E48;&#x5927;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x8FD8;&#x662F;&#x6700;&#x7EC8;&#x53D6;&#x51B3;&#x4E8E;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x80FD;&#x529B;&#x3002;</p>
 
                     
