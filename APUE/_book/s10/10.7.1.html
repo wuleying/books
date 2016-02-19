@@ -53,7 +53,7 @@
         data-chapter-title="sigprocmask/sigpending"
         data-filepath="s10/10.7.1.md"
         data-basepath=".."
-        data-revision="Fri Feb 19 2016 14:38:33 GMT+0800 (CST)"
+        data-revision="Fri Feb 19 2016 16:16:41 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,41 @@
                     
                         <h1 id="sigprocmasksigpending">sigprocmask/sigpending</h1>
 <hr>
+<p>&#x2003;&#x2003;
+sigprocmask &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x4FE1;&#x53F7;&#x5C4F;&#x853D;&#x5B57;&#xFF0C;sigpending &#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x672A;&#x51B3;&#x4FE1;&#x53F7;&#x96C6;&#x3002;</p>
+<pre><code>#include &lt;unistd.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+void sig_handler(int signo) {
+}
 
+int main() {
+    sigset_t set;
+    sigemptyset(&amp;set);
+    sigaddset(&amp;set, SIGUSR1);
+    sigaddset(&amp;set, SIGUSR2);
+    signal(SIGHUP, sig_handler);
+    sigprocmask(SIG_BLOCK, &amp;set, NULL);
+    pause();
+    sigpending(&amp;set);
+    printf(&quot;pending SIGUSR1=%d\n&quot;, sigismember(&amp;set, SIGUSR1));
+    printf(&quot;pending SIGUSR2=%d\n&quot;, sigismember(&amp;set, SIGUSR2));
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>[dirlt@localhost.localdomain]$ ./a.out &amp;
+[2] 6850
+[dirlt@localhost.localdomain]$ kill -s SIGUSR2 6850
+[dirlt@localhost.localdomain]$ kill -s SIGUSR1 6850
+[dirlt@localhost.localdomain]$ kill -s SIGHUP 6850
+[dirlt@localhost.localdomain]$ pending SIGUSR1=1
+pending SIGUSR2=1
+
+[2]-  Done                    ./a.out
+</code></pre>
                     
                     </section>
                 

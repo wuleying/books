@@ -53,7 +53,7 @@
         data-chapter-title="sigaction"
         data-filepath="s10/10.7.2.md"
         data-basepath=".."
-        data-revision="Fri Feb 19 2016 14:38:33 GMT+0800 (CST)"
+        data-revision="Fri Feb 19 2016 16:16:41 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,137 @@
                     
                         <h1 id="sigaction">sigaction</h1>
 <hr>
+<p>&#x2003;&#x2003;
+sigaction &#x662F; signal &#x7684;&#x66FF;&#x4EE3;&#x54C1;&#xFF0C;&#x4F46;&#x662F;&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x591A;&#x7684;&#x529F;&#x80FD;&#xFF1A;</p>
+<pre><code>// &lt;sys/ucontext.h&gt;
+typedef struct ucontext {
+    unsigned long int uc_flags;
+    struct ucontext *uc_link;
+    stack_t uc_stack;
+    mcontext_t uc_mcontext;
+    __sigset_t uc_sigmask;
+    struct _libc_fpstate __fpregs_mem;
+} ucontext_t;
+
+// &lt;bits/siginfo.h&gt;
+typedef struct siginfo
+  {
+    int si_signo;               /* Signal number.  */
+    int si_errno;               /* If non-zero, an errno value associated with
+                                   this signal, as defined in &lt;errno.h&gt;.  */
+    int si_code;                /* Signal code.  */ //&#x5BF9;&#x4E8E;&#x8FD9;&#x4E2A;&#x90E8;&#x5206;&#xFF0C;&#x53EF;&#x4EE5;&#x67E5;&#x770B;sigaction
+
+    union
+      {
+        int _pad[__SI_PAD_SIZE];
+
+         /* kill().  */
+        struct
+          {
+            __pid_t si_pid;     /* Sending process ID.  */
+            __uid_t si_uid;     /* Real user ID of sending process.  */
+          } _kill;
+
+        /* POSIX.1b timers.  */
+        struct
+          {
+            int si_tid;         /* Timer ID.  */
+            int si_overrun;     /* Overrun count.  */
+            sigval_t si_sigval; /* Signal value.  */
+          } _timer;
+
+        /* POSIX.1b signals.  */
+        struct
+          {
+            __pid_t si_pid;     /* Sending process ID.  */
+            __uid_t si_uid;     /* Real user ID of sending process.  */
+            sigval_t si_sigval; /* Signal value.  */
+          } _rt;
+
+        /* SIGCHLD.  */
+        struct
+          {
+            __pid_t si_pid;     /* Which child.  */
+            __uid_t si_uid;     /* Real user ID of sending process.  */
+            int si_status;      /* Exit value or signal.  */
+            __clock_t si_utime;
+            __clock_t si_stime;
+          } _sigchld;
+
+        /* SIGILL, SIGFPE, SIGSEGV, SIGBUS.  */
+        struct
+          {
+            void *si_addr;      /* Faulting insn/memory ref.  */
+          } _sigfault;
+
+        /* SIGPOLL.  */
+        struct
+          {
+            long int si_band;   /* Band event for SIGPOLL.  */
+            int si_fd;
+          } _sigpoll;
+      } _sifields;
+  } siginfo_t;
+
+struct sigaction {
+    // &#x517C;&#x5BB9;&#x539F;&#x6765;&#x51FD;&#x6570;
+    void (*sa_handler)(int);    
+    // &#x4FE1;&#x53F7;&#x5C4F;&#x853D;&#xFF0C;&#x5728;&#x5904;&#x7406;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5C4F;&#x853D;&#x8FD9;&#x4E9B;&#x4FE1;&#x53F7;&#xFF0C;&#x5904;&#x7406;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x4F1A;&#x6253;&#x5F00;&#x8FD9;&#x4E9B;&#x4FE1;&#x53F7;
+    sigset_t sa_mask;           
+    // &#x5982;&#x679C;&#x5F53; sa_flags &#x91CC;&#x9762;&#x8BBE;&#x7F6E;&#x4E86; SA_SIGINFO&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x8C03;&#x7528; sa_action &#x800C;&#x4E0D;&#x662F; sa_handler
+    int sa_flags;
+    // &#x5176;&#x4E2D; void* &#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x6210;&#x4E3A; ucontext_t&#xFF0C;&#x8868;&#x793A;&#x4FE1;&#x53F7;&#x4F20;&#x9012;&#x65F6;&#x8FDB;&#x7A0B;&#x7684;&#x4E0A;&#x4E0B;&#x6587;
+    // &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5728; siginfo &#x91CC;&#x9762;&#x6709;&#x5F88;&#x591A;&#x4FE1;&#x606F;&#x53EF;&#x7528;&#xFF0C;&#x6BD4;&#x5982; SIGSEGV&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x9020;&#x6210;&#x6BB5;&#x9519;&#x8BEF;&#x7684;&#x5177;&#x4F53;&#x5730;&#x5740;&#x5728;&#x54EA;&#x91CC;
+    void (*sa_action)(int, siginfo_t*, void*);
+};
+
+// signo &#x8BBE;&#x7F6E;&#x4FE1;&#x53F7;&#xFF0C;&#x8BBE;&#x7F6E;&#x65B0;&#x7684; handler &#x8FD4;&#x56DE;&#x8001;&#x7684; handler
+int sigaction(int signo, const struct sigaction* restrict act, struct sigaction* restrict oact);
+</code></pre><p>&#x2003;&#x2003;
+&#x901A;&#x5E38;&#x8FD8;&#x662F;&#x4F7F;&#x7528; sa_handler &#x6765;&#x5904;&#x7406;&#x4FE1;&#x53F7;&#x3002;
+&#x5173;&#x4E8E; sa_flags &#x53EF;&#x4EE5;&#x770B;&#x770B;&#x9009;&#x9879;&#x6709;&#x54EA;&#x4E9B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x9009;&#x9879;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SA_INTERRUPT</td>
+<td>&#x4FE1;&#x53F7;&#x4E2D;&#x65AD;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x91CD;&#x542F;</td>
+</tr>
+<tr>
+<td>SA_NOCLDSTOP</td>
+<td>&#x5982;&#x679C; signo &#x7B49;&#x4E8E; SIGCHLD&#xFF0C;&#x5B50;&#x8FDB;&#x7A0B;&#x505C;&#x6B62;&#x65F6;&#x4E0D;&#x4EA7;&#x751F;&#x6B64;&#x4FE1;&#x53F7;&#xFF0C;&#x4F46;&#x662F;&#x7EC8;&#x6B62;&#x65F6;&#x4F1A;&#x4EA7;&#x751F;</td>
+</tr>
+<tr>
+<td>SA_NOCLDWAIIT</td>
+<td>&#x5982;&#x679C; signo &#x7B49;&#x4E8E; SIGCHLD&#xFF0C;&#x5B50;&#x8FDB;&#x7A0B;&#x7EC8;&#x6B62;&#x65F6;&#x4E0D;&#x521B;&#x5EFA;&#x50F5;&#x6B7B;&#x8FDB;&#x7A0B;&#x3002;&#x548C;&#x5C06; SIGCHLD &#x5904;&#x7406;&#x8BBE;&#x7F6E;&#x4E3A;&#x5FFD;&#x7565;&#x6548;&#x679C;&#x76F8;&#x540C;</td>
+</tr>
+<tr>
+<td>SA_NODEFER</td>
+<td>&#x5982;&#x679C;&#x6355;&#x6349;&#x5230;&#x6B64;&#x4FE1;&#x53F7;&#xFF0C;&#x5728;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x65F6;&#x5019;&#x5E76;&#x4E0D;&#x5C4F;&#x853D;&#x8FD9;&#x4E2A;&#x4FE1;&#x53F7;</td>
+</tr>
+<tr>
+<td>SA_ONSTACK</td>
+<td>&#x6355;&#x6349;&#x5230;&#x4FE1;&#x53F7;&#x65F6;&#xFF0C;&#x4F1A;&#x5C06;&#x4FE1;&#x53F7;&#x4F20;&#x9012;&#x5230;&#x4F7F;&#x7528;&#x4E86; sigaltstack &#x66FF;&#x6362;&#x6808;&#x4E0A;&#x7684;&#x8FDB;&#x7A0B;</td>
+</tr>
+<tr>
+<td>SA_RESETHAND</td>
+<td>&#x6355;&#x6349;&#x5230;&#x4FE1;&#x53F7;&#x8C03;&#x7528;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x5C06;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x590D;&#x4F4D;</td>
+</tr>
+<tr>
+<td>SA_RESTART</td>
+<td>&#x4FE1;&#x53F7;&#x4E2D;&#x65AD;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4F1A;&#x81EA;&#x52A8;&#x91CD;&#x542F;</td>
+</tr>
+<tr>
+<td>SA_SIGINFO</td>
+<td>&#x4F7F;&#x7528; sa_action &#x800C;&#x4E0D;&#x662F; sa_handler &#x6765;&#x5904;&#x7406;</td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>

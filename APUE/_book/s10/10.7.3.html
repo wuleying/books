@@ -53,7 +53,7 @@
         data-chapter-title="sigsetjmp/siglongjmp"
         data-filepath="s10/10.7.3.md"
         data-basepath=".."
-        data-revision="Fri Feb 19 2016 14:38:33 GMT+0800 (CST)"
+        data-revision="Fri Feb 19 2016 16:16:41 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,59 @@
                     
                         <h1 id="sigsetjmpsiglongjmp">sigsetjmp/siglongjmp</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5BF9;&#x4E8E; setjmp &#x548C; longjmp &#x5E76;&#x6CA1;&#x6709;&#x89C4;&#x5B9A;&#x5982;&#x4F55;&#x6765;&#x5904;&#x7406;&#x4FE1;&#x53F7;&#x5C4F;&#x853D;&#x5B57;&#x3002;</p>
+<pre><code>int sigsetjmp(sigjmp_buf env, int savemask); // &#x662F;&#x5426;&#x4FDD;&#x5B58;&#x4FE1;&#x53F7;&#x5C4F;&#x853D;&#x5B57;
+int siglongjmp(sigjmp_buf, int val);
+#include &lt;unistd.h&gt;
+#include &lt;setjmp.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
 
+jmp_buf env;
+void handler(int signo) {
+    longjmp(env, 1);
+}
+
+int main() {
+    if(setjmp(env) == 1) {
+        sigset_t nowmask;
+        sigprocmask(SIG_BLOCK, NULL, &amp;nowmask);
+        printf(&quot;SIGUSR1 masked=%d\n&quot;, sigismember(&amp;nowmask, SIGUSR1));
+        exit(0);
+    }
+    signal(SIGUSR1, handler);
+    pause();
+    return 0;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>[zhangyan@tc-cm-et18.tc.baidu.com]$ kill -s SIGUSR1 28591
+SIGUSR1 masked=1
+</code></pre><p>&#x2003;&#x2003;
+&#x5982;&#x679C;&#x4FEE;&#x6539;&#x79F0;&#x4E3A; sig &#x7248;&#x672C;&#xFF1A;</p>
+<pre><code>sigjmp_buf env;
+void handler(int signo){
+    siglongjmp(env, 1);
+}
+
+int main() {
+    if(sigsetjmp(env, 1) == 1) {
+        sigset_t nowmask;
+        sigprocmask(SIG_BLOCK, NULL, &amp;nowmask);
+        printf(&quot;SIGUSR1 masked=%d\n&quot;, sigismember(&amp;nowmask, SIGUSR1));
+        exit(0);
+    }
+    signal(SIGUSR1, handler);
+    pause();
+    return 0;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>[zhangyan@tc-cm-et18.tc.baidu.com]$ kill -s SIGUSR1 29846
+SIGUSR1 masked=0
+</code></pre>
                     
                     </section>
                 

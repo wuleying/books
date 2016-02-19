@@ -53,7 +53,7 @@
         data-chapter-title="其他函数"
         data-filepath="s10/10.8.6.md"
         data-basepath=".."
-        data-revision="Fri Feb 19 2016 14:38:33 GMT+0800 (CST)"
+        data-revision="Fri Feb 19 2016 16:16:41 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,12 @@
                     
                         <h1 id="&#x5176;&#x4ED6;&#x51FD;&#x6570;">&#x5176;&#x4ED6;&#x51FD;&#x6570;</h1>
 <hr>
-
+<p>&#x2003;&#x2003;
+&#x548C; errno &#x5BF9;&#x5E94;&#x7684; strerror &#x4EE5;&#x53CA; perror &#x4E00;&#x6837;&#xFF0C;&#x5BF9;&#x4E8E;&#x4FE1;&#x53F7;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x76F8;&#x5E94;&#x7684;&#x65B9;&#x4FBF;&#x6253;&#x5370;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code>#include &lt;signal.h&gt;
+void psignal(int signo, const char* msg);
+const char* strsignal(int signo);
+</code></pre>
                     
                     </section>
                 

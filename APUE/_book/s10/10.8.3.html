@@ -53,7 +53,7 @@
         data-chapter-title="alarm/pause"
         data-filepath="s10/10.8.3.md"
         data-basepath=".."
-        data-revision="Fri Feb 19 2016 14:38:33 GMT+0800 (CST)"
+        data-revision="Fri Feb 19 2016 16:16:41 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,36 @@
                     
                         <h1 id="alarmpause">alarm/pause</h1>
 <hr>
-
+<pre><code>#include &lt;unistd.h&gt;
+unsigned int alarm(unsigned int secs);
+int pause();
+</code></pre><p>&#x2003;&#x2003;
+alarm &#x8BBE;&#x7F6E;&#x95F9;&#x949F;&#xFF0C;&#x5982;&#x679C;&#x63D0;&#x524D;&#x8FD4;&#x56DE;&#x7684;&#x8BDD;&#x90A3;&#x4E48;&#x8FD4;&#x56DE;&#x5269;&#x4F59;&#x65F6;&#x95F4;&#xFF0C;&#x540C;&#x65F6;&#x89E6;&#x53D1;&#x4E00;&#x4E2A; SIGALRM &#x4FE1;&#x53F7;&#x3002;
+&#x5982;&#x679C;&#x672C;&#x6B21;&#x95F9;&#x949F;&#x65F6;&#x95F4;&#x4E3A; 0&#xFF0C;&#x90A3;&#x4E48;&#x53D6;&#x6D88;&#x4E4B;&#x524D;&#x767B;&#x8BB0;&#x7684;&#x4F46;&#x662F;&#x5C1A;&#x672A;&#x8D85;&#x8FC7;&#x7684;&#x95F9;&#x949F;&#x65F6;&#x949F;&#xFF0C;&#x5E76;&#x4E14;&#x8FD4;&#x56DE;&#x4E0A;&#x6B21;&#x5269;&#x4F59;&#x65F6;&#x95F4;&#x3002;
+pause &#x4F1A;&#x7B49;&#x5F85;&#x4E00;&#x4E2A;&#x4FE1;&#x53F7;&#x89E6;&#x53D1;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE; -1 &#x5E76;&#x4E14; errno &#x7B49;&#x4E8E; EINTR&#x3002;</p>
+<pre><code>#include &lt;unistd.h&gt;
+#include &lt;sys/wait.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+void sig_handler(int signo) {
+    printf(&quot;%s received\n&quot;, strsignal(signo));
+}
+int main() {
+    signal(SIGALRM, sig_handler);
+    alarm(5);
+    int ret = pause();
+    printf(&quot;%d errno=%m\n&quot;, ret);
+    return 0;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>[dirlt@localhost.localdomain]$ ./a.out
+Alarm clock received
+-1 errno=Interrupted system call
+</code></pre>
                     
                     </section>
                 
