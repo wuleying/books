@@ -53,7 +53,7 @@
         data-chapter-title="进程时间"
         data-filepath="s8/8.10.md"
         data-basepath=".."
-        data-revision="Thu Feb 18 2016 15:53:12 GMT+0800 (CST)"
+        data-revision="Fri Feb 19 2016 13:45:58 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,19 @@
                     
                         <h1 id="&#x8FDB;&#x7A0B;&#x65F6;&#x95F4;">&#x8FDB;&#x7A0B;&#x65F6;&#x95F4;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF1A;</p>
+<pre><code>#include &lt;unistd.h&gt;
+struct tms {
+    clock_t tms_utime;  /* user time */
+    clock_t tms_stime;  /* system time */
+    clock_t tms_cutime; /* user time of children */
+    clock_t tms_cstime; /* system time of children */
+};
+
+clock_t times(struct tms* buf); // &#x8FD4;&#x56DE; wall clock time&#xFF0C;&#x4F46;&#x662F;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5DEE;&#x503C;&#x6765;&#x53CD;&#x6620;
+</code></pre><p>&#x2003;&#x2003;
+&#x4E3A;&#x4E86;&#x8F6C;&#x6362;&#x6210;&#x4E3A;&#x79D2;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528; sysconf(_SC_CLK_TCK) &#x5F97;&#x5230;&#x6BCF;&#x79D2;&#x949F;&#x591A;&#x5C11;&#x4E2A;&#x6EF4;&#x7B54;&#x6570;&#x3002;</p>
 
                     
                     </section>

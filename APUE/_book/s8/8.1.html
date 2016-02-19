@@ -53,7 +53,7 @@
         data-chapter-title="进程标识符"
         data-filepath="s8/8.1.md"
         data-basepath=".."
-        data-revision="Thu Feb 18 2016 15:53:12 GMT+0800 (CST)"
+        data-revision="Fri Feb 19 2016 13:45:58 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,23 @@
                     
                         <h1 id="&#x8FDB;&#x7A0B;&#x6807;&#x8BC6;&#x7B26;">&#x8FDB;&#x7A0B;&#x6807;&#x8BC6;&#x7B26;</h1>
 <hr>
-
+<p>&#x2003;&#x2003;
+&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x975E;&#x8D1F;&#x6574;&#x6570;&#x7684;&#x552F;&#x4E00;&#x8FDB;&#x7A0B; ID&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E2A; ID &#x662F;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x7684;&#x3002;
+Unix &#x63D0;&#x4F9B;&#x91C7;&#x7528;&#x5EF6;&#x8FDF;&#x91CD;&#x7528;&#x7B97;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;&#x9891;&#x7E41;&#xFF0C;ID &#x5F88;&#x5FEB;&#x5C31;&#x4F1A;&#x88AB;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x6709;&#x4E00;&#x4E9B;&#x4E13;&#x7528;&#x7684;&#x8FDB;&#x7A0B;&#x3002;
+ID &#x7B49;&#x4E8E; 0 &#x7684;&#x8FDB;&#x7A0B;&#x901A;&#x5E38;&#x662F;&#x8C03;&#x5EA6;&#x8FDB;&#x7A0B; (swapper) &#x662F;&#x5185;&#x6838;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5E76;&#x4E0D;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x78C1;&#x76D8;&#x4E0A;&#x7684;&#x7A0B;&#x5E8F;&#x3002;
+ID &#x7B49;&#x4E8E; 1 &#x7684;&#x8FDB;&#x7A0B;&#x662F; init &#x8FDB;&#x7A0B;&#xFF0C;&#x5728;&#x81EA;&#x4E3E;&#x8FC7;&#x7A0B;&#x7ED3;&#x675F;&#x65F6;&#x7531;&#x5185;&#x6838;&#x8C03;&#x7528;&#xFF0C;&#x8D1F;&#x8D23;&#x5728;&#x81EA;&#x4E3E;&#x5185;&#x6838;&#x540E;&#x542F;&#x52A8;&#x4E00;&#x4E2A; Unix &#x7CFB;&#x7EDF;&#xFF0C;&#x65E9;&#x671F;&#x7248;&#x672C;&#x662F; /etc/init &#xFF0C;&#x8F83;&#x65B0;&#x7248;&#x672C;&#x662F; /sbin/init&#xFF0C;&#x4F1A;&#x8BFB;&#x53D6; /etc/rc* &#x548C; /etc/inittab &#x4EE5;&#x53CA; /etc/init.d &#x4E2D;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x7CFB;&#x7EDF;&#x5F15;&#x5165;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x3002;
+ID &#x7B49;&#x4E8E; 2 &#x662F;&#x9875;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B; (page daemon)&#xFF0C;&#x8D1F;&#x8D23;&#x652F;&#x6301;&#x865A;&#x62DF;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x7684;&#x5206;&#x9875;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x8FDB;&#x7A0B;&#x6807;&#x8BC6;&#x7B26;&#x63A5;&#x53E3;&#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#xFF1A;</p>
+<pre><code>getpid  // pid
+getppid // parent pid
+getuid  // &#x5B9E;&#x9645;&#x7528;&#x6237; id
+geteuid // &#x6709;&#x6548;&#x7528;&#x6237; id
+getgid  // &#x5B9E;&#x9645;&#x7EC4; id
+getegid // &#x6709;&#x6548;&#x7EC4; id
+</code></pre>
                     
                     </section>
                 
