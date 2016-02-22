@@ -53,7 +53,7 @@
         data-chapter-title="互斥锁"
         data-filepath="s11/11.4.1.md"
         data-basepath=".."
-        data-revision="Fri Feb 19 2016 16:16:41 GMT+0800 (CST)"
+        data-revision="Mon Feb 22 2016 15:39:53 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,19 @@
                     
                         <h1 id="&#x4E92;&#x65A5;&#x9501;">&#x4E92;&#x65A5;&#x9501;</h1>
 <hr>
-
+<p>&#x2003;&#x2003;
+&#x4E92;&#x65A5;&#x9501;&#x53EF;&#x4EE5;&#x786E;&#x4FDD;&#x540C;&#x4E00;&#x65F6;&#x95F4;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x8BBF;&#x95EE;&#x6570;&#x636E;&#xFF1A;</p>
+<pre><code>// &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;
+int pthread_mutex_init(pthread_mutex_t* restrict mutex, const pthread_mutexattr_t* restrict attr);
+int pthread_mutex_destroy(pthread_mutex_t* mutex);
+</code></pre><p>&#x2003;&#x2003;
+&#x4E92;&#x65A5;&#x9501;&#x53EF;&#x4EE5;&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;&#x4E3A; PTHREAD_MUTEX_INITIALIZER&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8C03;&#x7528; init &#x6765;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x4E92;&#x65A5;&#x9501;&#x64CD;&#x4F5C;&#x4E0A;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF0C;&#x5305;&#x62EC;&#x52A0;&#x9501;&#xFF0C;&#x89E3;&#x9501;&#x548C;&#x5C1D;&#x8BD5;&#x52A0;&#x9501; (&#x975E;&#x963B;&#x585E;&#x884C;&#x4E3A;):</p>
+<pre><code>int pthread_mutex_lock(pthread_mutex_t* mutex);
+int pthread_mutex_unlock(pthread_mutex_t* mutex);
+int pthread_mutex_trylock(pthread_mutex_t* mutex);
+</code></pre>
                     
                     </section>
                 

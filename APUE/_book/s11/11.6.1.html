@@ -53,7 +53,7 @@
         data-chapter-title="分离状态"
         data-filepath="s11/11.6.1.md"
         data-basepath=".."
-        data-revision="Fri Feb 19 2016 16:16:41 GMT+0800 (CST)"
+        data-revision="Mon Feb 22 2016 15:39:53 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,14 @@
                     
                         <h1 id="&#x5206;&#x79BB;&#x72B6;&#x6001;">&#x5206;&#x79BB;&#x72B6;&#x6001;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+detachstate &#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x7EBF;&#x7A0B;&#x542F;&#x52A8;&#x65F6;&#x5019;&#x5C5E;&#x6027;&#x662F;&#x5206;&#x79BB;&#x8FD8;&#x662F;&#x53EF;&#x4EE5; join &#x7684;&#x3002;
+&#x5982;&#x679C;&#x4E0D;&#x8BBE;&#x7F6E;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F; joinable&#x3002;
+&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; pthread_detach &#x6765;&#x5C06;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x5C5E;&#x6027;&#x4FEE;&#x6539;&#x6210;&#x4E3A;&#x5206;&#x79BB;&#x72B6;&#x6001;&#x3002;</p>
+<pre><code>int pthread_attr_getdetachstate(const pthread_attr_t* restrict attr, int* detachstate);
+int pthread_attr_setdetachstate(pthread_attr_t* attr, int detachstate);
+</code></pre><p>&#x2003;&#x2003;
+&#x5176;&#x4E2D; detachstate &#x4E3A; PTHREAD_CREATE_DETACHED &#x6216;&#x8005;&#x662F; PTHREAD_CREATE_JOINABLE&#x3002;</p>
 
                     
                     </section>

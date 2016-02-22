@@ -53,7 +53,7 @@
         data-chapter-title="sync"
         data-filepath="s11/11.14.2.md"
         data-basepath=".."
-        data-revision="Fri Feb 19 2016 16:16:41 GMT+0800 (CST)"
+        data-revision="Mon Feb 22 2016 15:39:53 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,83 @@
                     
                         <h1 id="sync">sync</h1>
 <hr>
+<p>&#x2003;&#x2003;
+<strong>(1) mutex</strong></p>
+<pre><code>pthread_mutex_init
+pthread_mutex_destroy
+pthread_mutex_lock
+pthread_mutex_timedlock
+pthread_mutex_trylock
+pthread_mutex_unlock
+pthread_mutex_getprioceiling        // priority ceiling
+pthread_mutex_setprioceiling
+pthread_mutexattr_init
+pthread_mutexattr_destroy
+pthread_mutexattr_getprioceiling
+pthread_mutexattr_setprioceiling
+pthread_mutexattr_getprotocol       // protocol
+pthread_mutexattr_setprotocol
+pthread_mutexattr_getpshared
+pthread_mutexattr_setpshared
+pthread_mutexattr_gettype
+pthread_mutexattr_settype
+</code></pre><p>&#x2003;&#x2003;
+shared &#x5141;&#x8BB8;&#x5728;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x4E92;&#x65A5;&#x9501;&#x72B6;&#x6001;&#xFF0C;&#x8FD9;&#x6837;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E92;&#x65A5;&#x9501;</p>
+<pre><code>PTHREAD_PROCESS_SHARED
+PTHREAD_PROCESS_PRIVATE             // &#x9ED8;&#x8BA4;&#x503C;
+</code></pre><p>&#x2003;&#x2003;
+type&#x662F;&#x9501;&#x7684;&#x7C7B;&#x578B;&#x5305;&#x62EC;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;</p>
+<pre><code>PTHREAD_MUTEX_NORMAL                // &#x6700;&#x5E38;&#x7528;&#x7684;
+PTHREAD_MUTEX_ERRORCHECK            // &#x540C;&#x4E00;&#x7EBF;&#x7A0B;&#x5C1D;&#x8BD5;&#x9501;&#x591A;&#x6B21;&#x4F1A; error&#xFF0C;&#x8FD9;&#x6837;&#x60C5;&#x51B5;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x65F6;&#x5019;&#x51FA;&#x73B0;
+PTHREAD_MUTEX_RECURSIVE             // &#x9012;&#x5F52;&#x9501;&#xFF0C;&#x5141;&#x8BB8;&#x591A;&#x6B21;&#x52A0;&#x9501;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x9700;&#x8981;&#x540C;&#x6837;&#x6B21;&#x6570;&#x89E3;&#x9501;
+PTHREAD_MUTEX_DEFAULT               // &#x9ED8;&#x8BA4;&#x9501;
+</code></pre><p>&#x2003;&#x2003;
+<strong>(2) cond</strong></p>
+<pre><code>pthread_cond_init
+pthread_cond_destroy
+pthread_cond_signal
+pthread_cond_broadcast
+pthread_cond_timedwait
+pthread_cond_wait
+pthread_condattr_init
+pthread_condattr_destroy
+pthread_condattr_getclock           // clock_id
+pthread_condattr_setclock
+pthread_condattr_getpshared
+pthread_condattr_setpshared
+</code></pre><p>&#x2003;&#x2003;
+<strong>(3) rwlock</strong></p>
+<pre><code>pthread_rwlock_init
+pthread_rwlock_destroy
+pthread_rwlock_rdlock
+pthread_rwlock_timedrdlock
+pthread_rwlock_tryrdlock
+pthread_rwlock_wrlock
+pthread_rwlock_timedwrlock
+pthread_rwlock_trywrlock
+pthread_rwlock_unlock
+pthread_rwlockattr_init
+pthread_rwlockattr_destroy
+pthread_rwlockattr_getpshared
+pthread_rwlockattr_setpshared
+</code></pre><p>&#x2003;&#x2003;
+<strong>(4) spinlock</strong></p>
+<pre><code>pthread_spin_init
+pthread_spin_destroy
+pthread_spin_lock
+pthread_spin_trylock
+pthread_spin_unlock
+</code></pre><p>&#x2003;&#x2003;
+<strong>(5) barrier</strong></p>
+<pre><code>pthread_barrier_init                // &#x4EE5; count &#x521D;&#x59CB;&#x5316;&#xFF0C;&#x8868;&#x660E;&#x6709;&#x591A;&#x5C11;&#x4E2A;&#x7EBF;&#x7A0B;&#x9700;&#x8981;&#x540C;&#x6B65;
+pthread_barrier_destroy
+pthread_barrier_wait                // &#x540C;&#x6B65;&#x70B9;&#xFF0C;&#x76F4;&#x5230;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x90FD;&#x5230;&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x7136;&#x540E;&#x7EE7;&#x7EED;
+pthread_barrierattr_init
+pthread_barrierattr_destroy
+pthread_barrierattr_getpshared
+pthread_barrierattr_setpshared
+</code></pre><p>&#x2003;&#x2003;
+barrier &#x7C7B;&#x4F3C;&#x4E8E; muduo &#x91CC;&#x7684; countdownlatch &#x673A;&#x5236;</p>
 
                     
                     </section>
