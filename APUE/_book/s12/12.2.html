@@ -53,7 +53,7 @@
         data-chapter-title="出错处理"
         data-filepath="s12/12.2.md"
         data-basepath=".."
-        data-revision="Mon Feb 22 2016 15:39:53 GMT+0800 (CST)"
+        data-revision="Mon Feb 22 2016 17:03:29 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,7 +2931,137 @@
                     
                         <h1 id="&#x51FA;&#x9519;&#x5904;&#x7406;">&#x51FA;&#x9519;&#x5904;&#x7406;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5047;&#x8BBE; daemon &#x4E0D;&#x4F1A;&#x5C06;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x8F93;&#x51FA;&#x5230;&#x7EC8;&#x7AEF;&#x4E0A;&#xFF0C;&#x5982;&#x679C;&#x53EA;&#x662F;&#x5199;&#x5230;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x975E;&#x5E38;&#x96BE;&#x4EE5;&#x7BA1;&#x7406;&#xFF0C;&#x6240;&#x4EE5;&#x6709;&#x5FC5;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x96C6;&#x4E2D;&#x8BBE;&#x65BD;&#x6765;&#x7BA1;&#x7406;&#x51FA;&#x9519;&#x8BB0;&#x5F55;&#x3002;
+BSD &#x7684; syslog &#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x96C6;&#x4E2D;&#x8BBE;&#x65BD;&#xFF0C;&#x8BBE;&#x65BD;&#x5927;&#x4F53;&#x5206;&#x5E03;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<ul>
+<li>syslogd &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x4E13;&#x95E8;&#x63A5;&#x53D7;&#x8BB0;&#x5F55;&#xFF0C;&#x7136;&#x540E;&#x51B3;&#x5B9A;&#x5199;&#x6587;&#x4EF6;&#xFF0C;&#x672C;&#x5730;&#x6216;&#x8005;&#x53D1;&#x9001;&#x5230;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;&#x3002;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x662F; /etc/syslog.conf</li>
+<li>&#x7528;&#x6237;&#x8FDB;&#x7A0B;&#x901A;&#x8FC7; syslog &#x4F20;&#x9012;&#x5230; syslogd&#xFF0C;&#x901A;&#x4FE1;&#x673A;&#x5236;&#x662F; unix domain socket&#xFF0C;&#x6587;&#x4EF6;&#x662F; /dev/log</li>
+<li>TCP/IP &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBF;&#x95EE; UDP 514 &#x7AEF;&#x53E3;&#x548C; syslogd &#x901A;&#x4FE1;&#x63D0;&#x4EA4;&#x65E5;&#x5FD7;</li>
+<li>&#x5185;&#x6838;&#x4F8B;&#x7A0B;&#x901A;&#x8FC7; log &#x51FD;&#x6570;&#x4F20;&#x9012;&#x5230; syslogd&#xFF0C;&#x901A;&#x4FE1;&#x673A;&#x5236;&#x4E5F;&#x662F; unix domain socket&#xFF0C;&#x6587;&#x4EF6;&#x662F; /dev/klog</li>
+</ul>
+<p>&#x2003;&#x2003;
+syslog &#x7684;&#x8BBE;&#x65BD;&#x63A5;&#x53E3;&#xFF1A;</p>
+<pre><code>#include &lt;syslog.h&gt;
+void openlog(const char* ident, int option, int facility);  // facility &#x901A;&#x5E38;&#x4E3A; LOG_USER
+void syslog(int priority, const char* format, ...);         // priority &#x662F; facility &#x548C; level &#x7684;&#x7EC4;&#x5408;
+void closelog();
+int setlogmask(int maskpri);                                // &#x5C4F;&#x853D;&#x7684; priority
+</code></pre><p>&#x2003;&#x2003;
+&#x5982;&#x679C;&#x76F4;&#x63A5;&#x4F7F;&#x7528; syslog &#x4E5F;&#x53EF;&#x4EE5;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x4F1A;&#x635F;&#x5931;&#x5F88;&#x591A;&#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x662F;&#x5F88;&#x63A8;&#x8350;&#x4F7F;&#x7528; openlog &#x9996;&#x5148;&#x6253;&#x5F00;&#xFF0C;&#x7136;&#x540E;&#x518D; syslog &#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LOG_CONS</td>
+<td>&#x5982;&#x679C;&#x4E0D;&#x80FD;&#x591F;&#x901A;&#x8FC7; unix domain socket &#x4F20;&#x9012;&#x5230; syslogd&#xFF0C;&#x90A3;&#x4E48;&#x76F4;&#x63A5;&#x8F93;&#x51FA;&#x5230;&#x63A7;&#x5236;&#x53F0;</td>
+</tr>
+<tr>
+<td>LOG_NDELAY</td>
+<td>&#x7ACB;&#x5373;&#x6253;&#x5F00;&#x81F3; syslogd &#x7684; unix domain socket&#xFF0C;&#x901A;&#x5E38;&#x6765;&#x8BF4;&#x9ED8;&#x8BA4;&#x662F; syslog &#x7B2C;&#x4E00;&#x6761;&#x8BB0;&#x5F55;&#x4E4B;&#x540E;&#x518D;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</td>
+</tr>
+<tr>
+<td>LOG_ODELAY</td>
+<td>&#x4E0D;&#x7ACB;&#x5373;&#x6253;&#x5F00;&#x81F3; syslogd &#x7684; uds</td>
+</tr>
+<tr>
+<td>LOG_PERROR</td>
+<td>&#x65E5;&#x5FD7;&#x6D88;&#x606F;&#x4E0D;&#x4EC5;&#x4EC5;&#x53D1;&#x9001;&#x7ED9; syslog&#xFF0C;&#x540C;&#x65F6;&#x5199;&#x5230;&#x6807;&#x51C6;&#x9519;&#x8BEF;&#x4E0A;</td>
+</tr>
+<tr>
+<td>LOG_PID</td>
+<td>&#x6BCF;&#x4E2A;&#x6D88;&#x606F;&#x90FD;&#x5305;&#x542B; pid</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+&#x65E5;&#x5FD7;&#x7EA7;&#x522B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>level</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LOG_EMERG</td>
+<td>&#x7D27;&#x6025;&#x72B6;&#x6001; (&#x7CFB;&#x7EDF;&#x4E0D;&#x53EF;&#x4F7F;&#x7528;)&#xFF0C;&#x6700;&#x9AD8;&#x4F18;&#x5148;&#x7EA7;</td>
+</tr>
+<tr>
+<td>LOG_ALERT</td>
+<td>&#x5FC5;&#x987B;&#x7ACB;&#x5373;&#x4FEE;&#x590D;&#x7684;&#x72B6;&#x6001;</td>
+</tr>
+<tr>
+<td>LOG_CRIT</td>
+<td>&#x4E25;&#x91CD;&#x72B6;&#x6001;</td>
+</tr>
+<tr>
+<td>LOG_ERR</td>
+<td>&#x51FA;&#x9519;&#x72B6;&#x6001;</td>
+</tr>
+<tr>
+<td>LOG_WARNING</td>
+<td>&#x8B66;&#x544A;&#x72B6;&#x6001;</td>
+</tr>
+<tr>
+<td>LOG_NOTICE</td>
+<td>&#x6B63;&#x5E38;&#x72B6;&#x6001;</td>
+</tr>
+<tr>
+<td>LOG_INFO</td>
+<td>&#x4FE1;&#x606F;&#x6027;&#x6D88;&#x606F;</td>
+</tr>
+<tr>
+<td>LOG_DEBUG</td>
+<td>&#x8C03;&#x8BD5;&#x6D88;&#x606F;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+&#x770B;&#x5B8C;&#x8FD9;&#x4E2A;&#x4E4B;&#x540E;&#x770B;&#x770B;&#x4E00;&#x4EFD; syslog.conf &#x7684;&#x6837;&#x4F8B;&#x914D;&#x7F6E;</p>
+<pre><code># Log all kernel messages to the console.
+# Logging much else clutters up the screen.
+#kern.*                            /dev/console
+kern.*                                                  /var/log/kernel
+# Log anything (except mail) of level info or higher.
+# Don&apos;t log private authentication messages!
+*.info;mail.none;authpriv.none;cron.none        /var/log/messages
 
+# The authpriv file has restricted access.
+authpriv.*                        /var/log/secure
+
+# Log all the mail messages in one place.
+mail.*                            -/var/log/maillog
+
+
+# Log cron stuff
+cron.*                            /var/log/cron
+
+# Everybody gets emergency messages
+*.emerg                            *
+
+# Save news errors of level crit and higher in a special file.
+uucp,news.crit                        /var/log/spooler
+
+# Save boot messages also to boot.log
+local7.*                        /var/log/boot.log
+*.*             @tc-sys00.tc.baidu.com
+</code></pre><p>&#x2003;&#x2003;
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6BCF;&#x4E2A;&#x9879;&#x5206;&#x4E24;&#x4E2A;&#x90E8;&#x5206;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x662F; priority&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x5C31;&#x662F;&#x5199;&#x7684;&#x4F4D;&#x7F6E;&#x3002;
+&#x5982;&#x679C; * &#x90A3;&#x4E48;&#x90FD;&#x4F1A;&#x6536;&#x5230;&#x8FD9;&#x4E2A; message&#x3002;</p>
+<pre><code>#include &lt;syslog.h&gt;
+int main() {
+    openlog(&quot;xxxx&quot;, 0, LOG_EMERG);
+    syslog(0, &quot;%s\n&quot;, &quot;xxxx!!!!&quot;);
+    closelog();
+}
+</code></pre>
                     
                     </section>
                 
