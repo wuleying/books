@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>fcntl | APUE</title>
+        <title>进程 pthread 锁 | APUE</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.2">
@@ -37,10 +37,8 @@
         
     
     
-    <link rel="next" href="../s3/3.11.html" />
     
-    
-    <link rel="prev" href="../s3/3.9.html" />
+    <link rel="prev" href="../s14/14.7.html" />
     
 
         
@@ -49,9 +47,9 @@
         
         
     <div class="book"
-        data-level="3.10"
-        data-chapter-title="fcntl"
-        data-filepath="s3/3.10.md"
+        data-level="14.8"
+        data-chapter-title="进程 pthread 锁"
+        data-filepath="s14/14.8.md"
         data-basepath=".."
         data-revision="Tue Feb 23 2016 15:33:06 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -587,7 +585,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.10" data-path="s3/3.10.html">
+        <li class="chapter " data-level="3.10" data-path="s3/3.10.html">
             
                 
                     <a href="../s3/3.10.html">
@@ -2891,7 +2889,7 @@
             
         </li>
     
-        <li class="chapter " data-level="14.8" data-path="s14/14.8.html">
+        <li class="chapter active" data-level="14.8" data-path="s14/14.8.html">
             
                 
                     <a href="../s14/14.8.html">
@@ -2944,15 +2942,70 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="fcntl">fcntl</h1>
+                        <h1 id="&#x8FDB;&#x7A0B;-pthread-&#x9501;">&#x8FDB;&#x7A0B; pthread &#x9501;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x5168;&#x79F0;&#x662F; file control&#xFF0C;&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#x5DF2;&#x7ECF;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x7684;&#x6027;&#x8D28;&#xFF0C;&#x5171;&#x6709;&#x4E0B;&#x9762; 5 &#x79CD;&#x529F;&#x80FD;&#xFF1A;</p>
-<pre><code>F_DUPFD                     // &#x590D;&#x5236;&#x73B0;&#x6709;&#x63CF;&#x8FF0;&#x7B26;&#x3002;
-F_GETFD/F_SETFD             // &#x83B7;&#x5F97;/&#x8BBE;&#x7F6E;&#x73B0;&#x6709;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x6807;&#x8BB0; (&#x73B0;&#x53EA;&#x6709; FD_CLOEXEC)
-F_SETFL/F_GETFL             // &#x83B7;&#x5F97;/&#x8BBE;&#x7F6E;&#x73B0;&#x6709;&#x6587;&#x4EF6;&#x72B6;&#x6001;&#x6807;&#x8BB0;
-F_GETOWN/F_SETOWN           // &#x83B7;&#x5F97;/&#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x63A5;&#x53D7; SIGIO &#x548C; SIGURG &#x4FE1;&#x53F7;&#x7684;&#x8FDB;&#x7A0B;ID&#x548C;&#x8FDB;&#x7A0B;&#x7EC4; ID (&#x8BBE;&#x7F6E;&#x5F02;&#x6B65; IO &#x6240;&#x6709;&#x6743;)
-F_GETLK/F_SETLK/F_SETLKW    // &#x83B7;&#x5F97;/&#x8BBE;&#x7F6E;&#x8BB0;&#x5F55;&#x9501;
+pthread &#x7684;&#x540C;&#x6B65;&#x673A;&#x5236;&#x5141;&#x8BB8;&#x8BBE;&#x7F6E;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5171;&#x4EAB;&#x5C5E;&#x6027;&#x3002;
+&#x901A;&#x8FC7; pthread &#x7684;&#x540C;&#x6B65;&#x673A;&#x5236;&#x662F;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#x9762;&#x5F00;&#x8F9F;&#x5E76;&#x4E14;&#x8BBE;&#x7F6E;&#x4E86;&#x5171;&#x4EAB;&#x5C5E;&#x6027;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x5141;&#x8BB8; pthread &#x6765;&#x534F;&#x8C03;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x540C;&#x6B65;&#x3002;</p>
+<pre><code>#include &lt;unistd.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;sys/mman.h&gt;
+#include &lt;sys/wait.h&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+int main() {
+    void* addr = (void*) mmap(0, 1024, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANON, -1, 0);
+
+    // &#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#x9762;&#x5F00;&#x8F9F;&#x51FA;&#x4E92;&#x65A5;&#x9501;&#x548C;&#x6761;&#x4EF6;&#x53D8;&#x91CF;
+    pthread_mutexattr_t attr;
+    pthread_mutexattr_init(&amp;attr);
+    pthread_mutexattr_setpshared(&amp;attr, 1);
+    pthread_mutex_t* mutex = (pthread_mutex_t*) addr;
+    pthread_mutex_init(mutex, &amp;attr);
+
+    pthread_condattr_t attr2;
+    pthread_condattr_init(&amp;attr2);
+    pthread_condattr_setpshared(&amp;attr2, 1);
+    pthread_cond_t* cond = (pthread_cond_t*) ((char*) addr + sizeof(pthread_mutex_t));
+    pthread_cond_init(cond, &amp;attr2);
+
+    if(fork() == 0) {
+        // child
+        printf(&quot;child wait to exit\n&quot;);
+        pthread_mutex_lock(mutex);
+        pthread_cond_wait(cond, mutex);
+        pthread_mutex_unlock(mutex);
+        printf(&quot;child about to exit\n&quot;);
+        munmap(addr, 1024);
+        return 0;
+    }
+
+    sleep(1);
+    pthread_cond_signal(cond);
+    printf(&quot;parent waiting\n&quot;);
+    wait(NULL);
+    // fini &#x53EA;&#x9700;&#x8981;&#x9500;&#x6BC1;&#x4E00;&#x6B21;
+    int err = 0;
+    err = pthread_mutex_destroy(mutex);
+    if(err != 0) {
+        printf(&quot;mutex destroy:%s\n&quot;, strerror(err));
+    }
+
+    err = pthread_cond_destroy(cond);
+    if(err != 0) {
+        printf(&quot;cond destroy:%s\n&quot;, strerror(err));
+    }
+
+    munmap(addr, 1024);
+    return 0;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>[dirlt@localhost.localdomain]$ ./a.out
+child wait to exit
+parent waiting
+child about to exit
 </code></pre>
                     
                     </section>
@@ -2963,10 +3016,8 @@ F_GETLK/F_SETLK/F_SETLKW    // &#x83B7;&#x5F97;/&#x8BBE;&#x7F6E;&#x8BB0;&#x5F55;
         </div>
 
         
-        <a href="../s3/3.9.html" class="navigation navigation-prev " aria-label="Previous page: sync/fsync/fdatasync"><i class="fa fa-angle-left"></i></a>
+        <a href="../s14/14.7.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: mmap 共享内存"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../s3/3.11.html" class="navigation navigation-next " aria-label="Next page: ioctl"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

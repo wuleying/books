@@ -53,7 +53,7 @@
         data-chapter-title="权限结构"
         data-filepath="s14/14.3.2.md"
         data-basepath=".."
-        data-revision="Tue Feb 23 2016 11:27:53 GMT+0800 (CST)"
+        data-revision="Tue Feb 23 2016 15:33:06 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2891,6 +2891,21 @@
             
         </li>
     
+        <li class="chapter " data-level="14.8" data-path="s14/14.8.html">
+            
+                
+                    <a href="../s14/14.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.8.</b>
+                        
+                        进程 pthread 锁
+                    </a>
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -2931,6 +2946,27 @@
                     
                         <h1 id="&#x6743;&#x9650;&#x7ED3;&#x6784;">&#x6743;&#x9650;&#x7ED3;&#x6784;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A; IPC &#x7ED3;&#x6784;&#x90FD;&#x8BBE;&#x7F6E;&#x4E86; ipc_perm &#x7ED3;&#x6784;&#xFF0C;&#x89C4;&#x5B9A;&#x4E86;&#x6743;&#x9650;&#x548C;&#x6240;&#x6709;&#x8005;&#xFF1A;</p>
+<pre><code>#include &lt;sys/ipc.h&gt;
+/* Data structure used to pass permission information to IPC operations.  */
+struct ipc_perm {
+    __key_t __key;                      /* Key.  */
+    __uid_t uid;                        /* Owner&apos;s user ID.  */
+    __gid_t gid;                        /* Owner&apos;s group ID.  */
+    __uid_t cuid;                       /* Creator&apos;s user ID.  */
+    __gid_t cgid;                       /* Creator&apos;s group ID.  */
+    unsigned short int mode;            /* Read/write permission.  */
+    unsigned short int __pad1;
+    unsigned short int __seq;           /* Sequence number.  */
+    unsigned short int __pad2;
+    unsigned long int __unused1;
+    unsigned long int __unused2;
+};
+</code></pre><p>&#x2003;&#x2003;
+&#x5BF9;&#x4E8E; uid &#x548C; gid &#x90FD;&#x662F;&#x6709;&#x6548;&#x7684; uid &#x548C; gid&#x3002;
+&#x901A;&#x5E38;&#x53EA;&#x9700;&#x8981; uid &#x548C; gid&#xFF0C;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x7CFB;&#x7EDF;&#x6CA1;&#x6709;&#x5185;&#x7F6E;&#x4FDD;&#x5B58;&#x8BBE;&#x7F6E; uid &#x548C; gid&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x6743;&#x9650;&#x7ED3;&#x6784;&#x91CC;&#x663E;&#x793A;&#x5B58;&#x5728;&#x8FD9;&#x6837;&#x7684; cuid &#x548C; cgid &#x5B57;&#x6BB5;&#x3002;
+&#x901A;&#x5E38;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x7684;&#x5C31;&#x662F; uid&#x3001;gid &#x4EE5;&#x53CA; mode&#xFF0C;&#x548C; chown/chmod &#x5BF9;&#x5E94;&#x3002;</p>
 
                     
                     </section>

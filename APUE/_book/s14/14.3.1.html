@@ -53,7 +53,7 @@
         data-chapter-title="创建标识"
         data-filepath="s14/14.3.1.md"
         data-basepath=".."
-        data-revision="Tue Feb 23 2016 11:27:53 GMT+0800 (CST)"
+        data-revision="Tue Feb 23 2016 15:33:06 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2891,6 +2891,21 @@
             
         </li>
     
+        <li class="chapter " data-level="14.8" data-path="s14/14.8.html">
+            
+                
+                    <a href="../s14/14.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.8.</b>
+                        
+                        进程 pthread 锁
+                    </a>
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -2931,6 +2946,27 @@
                     
                         <h1 id="&#x521B;&#x5EFA;&#x6807;&#x8BC6;">&#x521B;&#x5EFA;&#x6807;&#x8BC6;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x548C;&#x6587;&#x4EF6;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7C7B;&#x4F3C;&#xFF0C;IPC &#x4E5F;&#x662F;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x975E;&#x8D1F;&#x6574;&#x6570;&#x6765;&#x8868;&#x793A;&#x4E00;&#x4E2A; IPC &#x8D44;&#x6E90;&#x7684;&#xFF0C;&#x4E4B;&#x540E;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x9488;&#x5BF9;&#x8FD9;&#x4E2A; id &#x6765;&#x5F15;&#x7528; ipc &#x8D44;&#x6E90;&#x3002;
+&#x4F46;&#x662F;&#x5FC5;&#x987B;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x8FD9;&#x4E2A;&#x975E;&#x8D1F;&#x6574;&#x6570;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x5F88;&#x5C0F;&#xFF0C;&#x867D;&#x7136;&#x83B7;&#x5F97;&#x8FD9;&#x4E2A;&#x6574;&#x6570;&#x4E5F;&#x662F;&#x901A;&#x8FC7; +1 &#x6765;&#x5F97;&#x5230;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6CE8;&#x610F; IPC &#x8D44;&#x6E90;&#x662F;&#x5168;&#x5C40;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x5F97;&#x5230;&#x8FD9;&#x4E2A;&#x6574;&#x6570;&#x4E4B;&#x524D;&#x53EF;&#x80FD;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x591A;&#x6B21;&#x4E86; IPC &#x8D44;&#x6E90;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x6587;&#x4EF6;&#x7684; open &#x5BF9;&#x8C61;&#x9700;&#x8981;&#x6253;&#x5F00;&#x67D0;&#x4E2A;&#x4E1C;&#x897F;&#x624D;&#x80FD;&#x591F;&#x83B7;&#x5F97;&#x8FD9;&#x4E2A; IPC &#x6807;&#x8BC6;&#x3002;
+&#x5728;&#x6587;&#x4EF6;&#x4E0B;&#x9762;&#x662F;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF0C;&#x5728; IPC &#x4E0B;&#x662F; key_t, &#x5728; &lt;sys/types.h&gt; &#x91CC;&#x5B9A;&#x4E49;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x3002;
+&#x4ECE; key_t &#x5230; IPC &#x6807;&#x8BC6;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x7531;&#x5185;&#x6838;&#x6765;&#x5B8C;&#x6210;&#xFF0C;&#x63A5;&#x53E3;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>int xxxget(key_t key, int flag); // &#x8FD4;&#x56DE; IPC &#x6807;&#x8BC6;
+</code></pre><p>&#x2003;&#x2003;
+key_t &#x5982;&#x4F55;&#x6307;&#x5B9A;&#x6709;&#x51E0;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>key_t&#x6307;&#x5B9A;&#x4E3A; IPC_PRIVATE&#xFF0C;&#x90A3;&#x4E48;&#x6BCF;&#x6B21;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0; IPC &#x6807;&#x8BC6;</li>
+<li>&#x901A;&#x8FC7; ftok &#x51FD;&#x6570;&#x6765;&#x751F;&#x6210;&#x4E00;&#x4E2A; key_t</li>
+</ul>
+<pre><code>#include &lt;sys/ipc.h&gt;
+key_t ftok(const char* path, int id); // id &#x5728;[0,255]
+</code></pre><p>&#x2003;&#x2003;
+ftok &#x5FC5;&#x987B;&#x5F15;&#x7528;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x8DEF;&#x5F84;&#x3002;
+&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x53EF;&#x80FD;&#x662F;&#x5F97;&#x5230; path &#x7684; st_dev &#x548C; st_ino &#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#xFF0C;&#x7136;&#x540E;&#x914D;&#x5408; id &#x6765;&#x751F;&#x6210; key_t&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x91CD;&#x590D;&#x3002;
+&#x5BF9;&#x4E8E; IPC_PRIVATE &#x6765;&#x8BF4;&#x6BCF;&#x6B21;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#xFF0C;&#x800C;&#x5BF9;&#x4E8E; ftok&#xFF0C;flag &#x6709; IPC_CREATE | IPC_EXCL &#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x548C; open &#x7C7B;&#x4F3C;&#xFF0C;&#x6765;&#x83B7;&#x53D6;&#x5F53;&#x524D; IPC &#x6807;&#x8BC6;&#x6216;&#x8005;&#x662F;&#x521B;&#x5EFA;&#x3002;
+&#x540C;&#x65F6;&#x8FD8;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;flag &#x7684;&#x4F4E; 9 &#x4F4D;&#x662F;&#x8868;&#x793A;&#x6743;&#x9650;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5141;&#x8BB8;&#x8BFB;&#x5199;&#xFF0C;&#x90A3;&#x4E48;&#x5FC5;&#x987B;&#x6307;&#x5B9A; 0666&#x3002;</p>
 
                     
                     </section>

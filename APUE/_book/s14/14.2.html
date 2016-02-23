@@ -53,7 +53,7 @@
         data-chapter-title="fifo"
         data-filepath="s14/14.2.md"
         data-basepath=".."
-        data-revision="Tue Feb 23 2016 11:27:53 GMT+0800 (CST)"
+        data-revision="Tue Feb 23 2016 15:33:06 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2891,6 +2891,21 @@
             
         </li>
     
+        <li class="chapter " data-level="14.8" data-path="s14/14.8.html">
+            
+                
+                    <a href="../s14/14.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.8.</b>
+                        
+                        进程 pthread 锁
+                    </a>
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -2931,7 +2946,37 @@
                     
                         <h1 id="fifo">fifo</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x8FD9;&#x91CC;&#x7684; fifo &#x662F;&#x6307;&#x547D;&#x540D; fifo&#x3002;
+&#x548C;&#x7BA1;&#x9053;&#x7279;&#x5F81;&#x4E00;&#x6837;&#xFF0C;&#x4E00;&#x6B21;&#x5B57;&#x8282;&#x5C0F;&#x4E8E; PIPE_BUF &#x4FDD;&#x8BC1;&#x4E0D;&#x4F1A;&#x7A7F;&#x63D2;&#xFF0C;&#x5E76;&#x4E14;&#x6CA1;&#x6709;&#x5199;&#x7AEF;&#x8BFB;&#x7AEF;&#x8FD4;&#x56DE; 0&#xFF0C;&#x6CA1;&#x6709;&#x8BFB;&#x7AEF;&#x3001;&#x5199;&#x7AEF;&#x4EA7;&#x751F; SIGPIPE &#x5E76;&#x4E14;&#x8FD4;&#x56DE; EPIPE &#x9519;&#x8BEF;&#xFF0C;&#x6D4B;&#x8BD5;&#x7C7B;&#x578B;&#x4E3A; S_ISFIFO&#x3002;
+&#x547D;&#x540D; fifo &#x4F9D;&#x8D56;&#x4E8E;&#x7279;&#x6B8A;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x8BFB;&#x5199;&#x6587;&#x4EF6;&#x6765;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4F20;&#x9012;&#x3002;</p>
+<pre><code>#include &lt;sys/stat.h&gt;
+int mkfifo(const char* pathname, mode_t mode);
+</code></pre><p>&#x2003;&#x2003;
+&#x5982;&#x679C;&#x53EA;&#x8BFB;&#x6253;&#x5F00;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x7B49;&#x5F85;&#x76F4;&#x5230;&#x67D0;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E3A;&#x5199;&#x6253;&#x5F00; fifo&#x3002;
+&#x5982;&#x679C;&#x8BBE;&#x7F6E; O_NONBLOCK &#x6253;&#x5F00;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x6CA1;&#x6709;&#x9519;&#x8BEF;&#x3002;
+&#x5982;&#x679C;&#x53EA;&#x5199;&#x6253;&#x5F00;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x7B49;&#x5F85;&#x76F4;&#x5230;&#x67D0;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E3A;&#x8BFB;&#x6253;&#x5F00; fifo&#x3002;
+&#x5982;&#x679C;&#x8BBE;&#x7F6E; O_NNOBLOCK &#x6253;&#x5F00;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x9519;&#x8BEF; ENXIO&#x3002;</p>
+<pre><code>int main() {
+    mkfifo(&quot;./fifo&quot;, 0666);
+    pid_t pid = fork();
+    if(pid == 0) {
+        int fd = open(&quot;./fifo&quot;, O_RDONLY);
+        char buf[1024];
+        read(fd,buf, sizeof(buf));
+        printf(&quot;%s\n&quot;, buf);
+        close(fd);
+        exit(0);
+    }
 
+    int fd = open(&quot;./fifo&quot;, O_WRONLY);
+    write(fd, &quot;hello,world&quot;, strlen(&quot;hello, world&quot;) + 1);
+    close(fd);
+    wait(NULL);
+    unlink(&quot;./fifo&quot;);
+    return 0;
+}
+</code></pre>
                     
                     </section>
                 
