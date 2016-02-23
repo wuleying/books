@@ -53,7 +53,7 @@
         data-chapter-title="存储映射 IO"
         data-filepath="s13/13.6.md"
         data-basepath=".."
-        data-revision="Mon Feb 22 2016 17:08:04 GMT+0800 (CST)"
+        data-revision="Tue Feb 23 2016 11:27:53 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,146 @@
                     
                         <h1 id="&#x5B58;&#x50A8;&#x6620;&#x5C04;-io">&#x5B58;&#x50A8;&#x6620;&#x5C04; IO</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5B58;&#x50A8;&#x6620;&#x5C04; IO (memoryy-mapped IO) &#x4F7F;&#x5F97;&#x4E00;&#x4E2A;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x4E8E;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#x76F8;&#x6620;&#x5C04;&#x3002;
+&#x8FD9;&#x6837;&#x8BFB;&#x53D6;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x5185;&#x5BB9;&#x5C31;&#x76F8;&#x5F53;&#x8BFB;&#x53D6;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x540C;&#x6837;&#x5982;&#x679C;&#x5199;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x3002;
+&#x6620;&#x5C04;&#x533A;&#x57DF;&#x548C;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x76F8;&#x5173;&#xFF0C;&#x4F46;&#x662F;&#x901A;&#x5E38;&#x6620;&#x5C04;&#x5728;&#x5806;&#x6808;&#x4E4B;&#x95F4;&#x7684;&#x5B58;&#x50A8;&#x533A;&#x57DF;&#x5185;&#x90E8;&#x3002;</p>
+<pre><code>#include &lt;sys/mman.h&gt;
+
+/* Map addresses starting near ADDR and extending for LEN bytes.  from
+   OFFSET into the file FD describes according to PROT and FLAGS.  If ADDR
+   is nonzero, it is the desired mapping address.  If the MAP_FIXED bit is
+   set in FLAGS, the mapping will be at ADDR exactly (which must be
+   page-aligned); otherwise the system chooses a convenient nearby address.
+   The return value is the actual mapping address chosen or MAP_FAILED
+   for errors (in which case `errno&apos; is set).  A successful `mmap&apos; call
+   deallocates any previous mapping for the affected region.  */
+extern void *mmap (void *__addr, size_t __len, int __prot,
+                   int __flags, int __fd, __off_t __offset) __THROW;
+
+/* Deallocate any mapping for the region starting at ADDR and extending LEN
+   bytes.  Returns 0 if successful, -1 for errors (and sets errno).  */
+extern int munmap (void *__addr, size_t __len) __THROW;
+
+/* Change the memory protection of the region starting at ADDR and
+   extending LEN bytes to PROT.  Returns 0 if successful, -1 for errors
+   (and sets errno).  */
+extern int mprotect (void *__addr, size_t __len, int __prot) __THROW;
+
+/* Synchronize the region starting at ADDR and extending LEN bytes with the
+   file it maps.  Filesystem operations on a file being mapped are
+   unpredictable before this is done.  Flags are from the MS_* set.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */
+extern int msync (void *__addr, size_t __len, int __flags);
+</code></pre><p>&#x2003;&#x2003;
+&#x5BF9;&#x4E8E; mmap&#xFF1A;</p>
+<ul>
+<li>addr &#x8868;&#x793A;&#x5E0C;&#x671B;&#x6620;&#x5C04;&#x5230;&#x4EC0;&#x4E48;&#x5730;&#x5740;&#x4E0A;&#xFF0C;&#x8FD9;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x5EFA;&#x8BAE;&#x901A;&#x5E38;&#x8BBE;&#x7F6E;&#x4E3A; 0 &#x5373;&#x53EF;</li>
+<li>fd &#x5C31;&#x662F;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;offset &#x8868;&#x793A;&#x504F;&#x79FB;&#x4F4D;&#x7F6E;&#xFF0C;len &#x8868;&#x793A;&#x5F00;&#x8F9F;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;</li>
+</ul>
+<p>&#x2003;&#x2003;
+prot (protection) &#x6709;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x503C;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>prot</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PROT_READ</td>
+<td>&#x6620;&#x5C04;&#x533A;&#x53EF;&#x8BFB;</td>
+</tr>
+<tr>
+<td>PROT_WRITE</td>
+<td>&#x6620;&#x5C04;&#x533A;&#x53EF;&#x5199;</td>
+</tr>
+<tr>
+<td>PROT_EXEC</td>
+<td>&#x6620;&#x5C04;&#x533A;&#x53EF;&#x6267;&#x884C;</td>
+</tr>
+<tr>
+<td>PROT_NONE</td>
+<td>&#x6620;&#x5C04;&#x533A;&#x4E0D;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+flag &#x6709;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x503C;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>flag</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MAP_FIXED</td>
+<td>&#x8BF4;&#x660E;&#x5730;&#x5740;&#x5FC5;&#x987B;&#x4E3A; addr&#xFF0C;&#x8FD9;&#x6837;&#x5BB9;&#x6613;&#x9020;&#x6210;&#x4E0D;&#x53EF;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x4F7F;&#x7528;</td>
+</tr>
+<tr>
+<td>MAP_SHARED</td>
+<td>&#x6807;&#x8BB0;&#x5982;&#x679C;&#x4FEE;&#x6539;&#xFF0C;&#x90A3;&#x4E48;&#x4FEE;&#x6539;&#x5BF9;&#x5E94;&#x78C1;&#x76D8;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td>MAP_PRIVATE</td>
+<td>&#x6807;&#x8BB0;&#x5982;&#x679C;&#x4FEE;&#x6539;&#xFF0C;&#x90A3;&#x4E48;&#x53EA;&#x662F;&#x4FEE;&#x6539;&#x672C;&#x5730;&#x7684;&#x526F;&#x672C;&#x800C;&#x4E0D;&#x4F1A;&#x4FEE;&#x6539;&#x5230;&#x78C1;&#x76D8;&#x6587;&#x4EF6;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+&#x901A;&#x5E38; mmap &#x5206;&#x914D;&#x51FA;&#x7684;&#x5185;&#x5B58;&#x548C;&#x5927;&#x5C0F;&#x662F;&#x6309;&#x7167; _SC_PAGE_SIZE &#x6765;&#x5BF9;&#x9F50;&#x7684;&#x3002;
+&#x4E0E; mmap &#x76F8;&#x5173;&#x7684;&#x4E24;&#x4E2A;&#x4FE1;&#x53F7;&#x662F; SIGSEGV &#x548C; SIGBUS&#x3002;
+&#x5982;&#x679C;&#x6620;&#x5C04;&#x6587;&#x4EF6;&#x4E3A; 1K&#xFF0C;_SC_PAGE_SIZE &#x4E3A; 4K&#xFF0C;&#x90A3;&#x4E48;&#x8BBF;&#x95EE;&#x5BF9;&#x5E94; 1K &#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x95EE;&#x9898;&#x3002;
+&#x5982;&#x679C;&#x8BBF;&#x95EE; 1K &#x4EE5;&#x5916; 4K &#x4EE5;&#x5185;&#xFF0C;&#x56E0;&#x4E3A;&#x5185;&#x5B58;&#x5206;&#x914D;&#x51FA;&#x6765;&#x4E86;&#x6240;&#x4EE5;&#x8BBF;&#x95EE;&#x4E5F;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x6587;&#x4EF6;&#x6240;&#x4EE5;&#x8FD4;&#x56DE; SIGBUS&#x3002;
+&#x5982;&#x679C;&#x8BBF;&#x95EE; 4K &#x4EE5;&#x5916;&#xFF0C;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x5206;&#x914D;&#x5185;&#x5B58;&#x90A3;&#x4E48;&#x8FD4;&#x56DE; SIGSEGV&#x3002;</p>
+<pre><code>#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;sys/mman.h&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+#include &lt;signal.h&gt;
+
+void signal_handler(int signo) {
+    printf(&quot;%s received\n&quot;, strsignal(signo));
+    exit(0);
+}
+
+int main() {
+    signal(SIGSEGV, signal_handler);
+    signal(SIGBUS, signal_handler);
+    struct stat stat_buf;
+    stat(&quot;main.cc&quot;, &amp;stat_buf);
+    int fd=open(&quot;main.cc&quot;, O_RDWR);
+    char* addr = (char*) mmap(NULL, stat_buf.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    close(fd);
+    getchar(); // &#x8FD9;&#x4E2A;&#x5730;&#x65B9;&#x5C06; main.cc &#x5220;&#x9664;&#x6389;
+    printf(&quot;change last one byte\n&quot;);
+    addr[stat_buf.st_size - 1] = &apos;x&apos;;
+    msync(addr, stat_buf.st_size, MS_SYNC); // &#x6700;&#x540E;&#x8FD8;&#x5C1D;&#x8BD5;&#x8FDB;&#x884C;&#x540C;&#x6B65;
+    munmap(addr, stat_buf.st_size);
+    return 0;
+}
+</code></pre><p>&#x2003;&#x2003;
+&#x8FD9;&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x590D;&#x73B0; SIGBUS &#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x4E14;&#x5C1D;&#x8BD5;&#x4E86;&#x5F88;&#x591A;&#x60C5;&#x51B5;&#x4E5F;&#x6CA1;&#x6709; SIGBUS &#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;
+&#x5982;&#x679C;&#x5DF2;&#x7ECF;&#x5206;&#x914D;&#x51FA;&#x6765;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x4E0A;&#x9762;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x5141;&#x8BB8;&#x7684;&#x3002;
+&#x5982;&#x679C;&#x5E95;&#x5C42;&#x6CA1;&#x6709;&#x6587;&#x4EF6;&#x5BF9;&#x5E94;&#xFF0C;&#x90A3;&#x4E48;&#x5199;&#x5C31;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x6548;&#x679C;&#x3002;</p>
+<p>&#x2003;&#x2003;
+mprotect &#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x5185;&#x5B58;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#xFF0C;prot &#x5B57;&#x6BB5;&#x548C; mmap &#x7684; prot &#x5B57;&#x6BB5;&#x542B;&#x4E49;&#x5BF9;&#x5E94;&#x3002;
+msync &#x7684; flags &#x6709;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#xFF1A;</p>
+<ul>
+<li>MS_SYNC &#x5C06;&#x9875;&#x9762;&#x51B2;&#x6D17;&#x5230;&#x88AB;&#x6620;&#x5C04;&#x7684;&#x6587;&#x4EF6;&#x540C;&#x6B65;&#x8FD4;&#x56DE;</li>
+<li>MS_ASYNC &#x5C06;&#x9875;&#x9762;&#x51B2;&#x6D17;&#x5230;&#x88AB;&#x6620;&#x5C04;&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#x5F02;&#x6B65;&#x8FD4;&#x56DE;</li>
+<li>MS_INVALIDATE &#x901A;&#x77E5;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E22;&#x5F03;&#x4E0E;&#x5E95;&#x5C42;&#x5B58;&#x50A8;&#x5668;&#x6CA1;&#x6709;&#x540C;&#x6B65;&#x7684;&#x4EFB;&#x4F55;&#x9875;</li>
+</ul>
+<p>&#x2003;&#x2003;
+munmap &#x4E0D;&#x4F1A;&#x4F7F;&#x5F97;&#x6620;&#x5C04;&#x533A;&#x7684;&#x5185;&#x5BB9;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x4E0A;&#xFF0C;MAP_SHARED &#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x7684;&#x66F4;&#x65B0;&#x662F;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x81EA;&#x5E26;&#x7684;&#x865A;&#x5B58;&#x7B97;&#x6CD5;&#x6765;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x66F4;&#x65B0;&#x7684;&#xFF0C;&#x800C;&#x5BF9;&#x4E8E; MAP_PRIVATE &#x7684;&#x5B58;&#x50A8;&#x533A;&#x57DF;&#x5C31;&#x76F4;&#x63A5;&#x4E22;&#x5F03;&#x3002;</p>
 
                     
                     </section>

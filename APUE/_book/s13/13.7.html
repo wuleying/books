@@ -53,7 +53,7 @@
         data-chapter-title="linux aio"
         data-filepath="s13/13.7.md"
         data-basepath=".."
-        data-revision="Mon Feb 22 2016 17:08:04 GMT+0800 (CST)"
+        data-revision="Tue Feb 23 2016 11:27:53 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,148 @@
                     
                         <h1 id="linux-aio">linux aio</h1>
 <hr>
+<p>&#x2003;&#x2003;
+linux aio &#x7684; API &#x5305;&#x62EC;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#xFF1A;</p>
+<pre><code>// #include &lt;libaio.h&gt;
+io_setup        // create aio context
+io_submit       // submit aio task
+io_getevents    // poll aio completion
+io_destroy      // destroy aio context
+io_cancel       // cancel aio task
+</code></pre><p>&#x2003;&#x2003;
+&#x8FD9;&#x4E2A; API &#x63A5;&#x53E3;&#x53EA;&#x80FD;&#x591F;&#x7528;&#x4E8E; disk IO &#x800C;&#x4E0D;&#x80FD;&#x591F;&#x7528;&#x4E8E; network IO&#x3002;</p>
+<pre><code>int io_setup(unsigned nr_events, aio_context_t *ctxp);
+int io_destroy(aio_context_t ctx);
+</code></pre><p>&#x2003;&#x2003;
+&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1; aio context &#x975E;&#x5E38;&#x7B80;&#x5355;&#x65E0;&#x987B;&#x591A;&#x8A00;&#x3002;</p>
+<pre><code>int io_submit(aio_context_t ctx_id, long nr, struct iocb **iocbpp);
+</code></pre><p>&#x2003;&#x2003;
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x53EF;&#x4EE5;&#x63D0;&#x4EA4;&#x591A;&#x4E2A; task&#x3002;
+&#x5177;&#x4F53;&#x6BCF;&#x4E2A; task &#x90FD;&#x662F;&#x901A;&#x8FC7; struct iocb &#x6765;&#x6307;&#x5B9A;&#x7684;&#x3002;
+&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x53EF;&#x4EE5;&#x5728; /usr/include/linux/aio_abi.h &#x91CC;&#x627E;&#x5230;&#x3002;</p>
+<pre><code>/* include/linux/aio_abi.h
+ *
+ * Copyright 2000,2001,2002 Red Hat.
+ *
+ * Written by Benjamin LaHaise &lt;bcrl@kvack.org&gt;
+ *
+ * Distribute under the terms of the GPLv2 (see ../../COPYING) or under 
+ * the following terms.
+ *
+ * Permission to use, copy, modify, and distribute this software and its
+ * documentation is hereby granted, provided that the above copyright
+ * notice appears in all copies.  This software is provided without any
+ * warranty, express or implied.  Red Hat makes no representations about
+ * the suitability of this software for any purpose.
+ *
+ * IN NO EVENT SHALL RED HAT BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT,
+ * SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OF
+ * THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF RED HAT HAS BEEN ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * RED HAT DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS ON AN &quot;AS IS&quot; BASIS, AND
+ * RED HAT HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
+ * ENHANCEMENTS, OR MODIFICATIONS.
+ */
+#ifndef __LINUX__AIO_ABI_H
+#define __LINUX__AIO_ABI_H
+
+#include &lt;linux/types.h&gt;
+#include &lt;asm/byteorder.h&gt;
+
+typedef unsigned long   aio_context_t;
+
+enum {
+    IOCB_CMD_PREAD = 0,
+    IOCB_CMD_PWRITE = 1,
+    IOCB_CMD_FSYNC = 2,
+    IOCB_CMD_FDSYNC = 3,
+    /* These two are experimental.
+     * IOCB_CMD_PREADX = 4,
+     * IOCB_CMD_POLL = 5,
+     */
+    IOCB_CMD_NOOP = 6,
+    IOCB_CMD_PREADV = 7,
+    IOCB_CMD_PWRITEV = 8,
+};
+
+/*
+ * Valid flags for the &quot;aio_flags&quot; member of the &quot;struct iocb&quot;.
+ *
+ * IOCB_FLAG_RESFD - Set if the &quot;aio_resfd&quot; member of the &quot;struct iocb&quot;
+ *                   is valid.
+ */
+#define IOCB_FLAG_RESFD         (1 &lt;&lt; 0)
+
+/* read() from /dev/aio returns these structures. */
+struct io_event {
+    __u64           data;           /* the data field from the iocb */
+    __u64           obj;            /* what iocb this event came from */
+    __s64           res;            /* result code for this event */
+    __s64           res2;           /* secondary result */
+};
+
+#if defined(__LITTLE_ENDIAN)
+#define PADDED(x,y)     x, y
+#elif defined(__BIG_ENDIAN)
+#define PADDED(x,y)     y, x
+#else
+#error edit for your odd byteorder.
+#endif
+
+/*
+ * we always use a 64bit off_t when communicating
+ * with userland.  its up to libraries to do the
+ * proper padding and aio_error abstraction
+ */
+
+struct iocb {
+    /* these are internal to the kernel/libc. */
+    __u64   aio_data;       /* data to be returned in event&apos;s data */
+    __u32   PADDED(aio_key, aio_reserved1);
+                            /* the kernel sets aio_key to the req # */
+
+    /* common fields */
+    __u16   aio_lio_opcode; /* see IOCB_CMD_ above */
+    __s16   aio_reqprio;
+    __u32   aio_fildes; // &#x6587;&#x4EF6;fd
+
+    __u64   aio_buf; // buffer&#x5730;&#x5740;
+    __u64   aio_nbytes; // &#x5B57;&#x8282;&#x6570; 
+    __s64   aio_offset; // &#x504F;&#x79FB;
+
+    /* extra parameters */
+    __u64   aio_reserved2;  /* TODO: use this for a (struct sigevent *) */
+
+    /* flags for the &quot;struct iocb&quot; */
+    __u32   aio_flags;
+
+    /*
+     * if the IOCB_FLAG_RESFD flag of &quot;aio_flags&quot; is set, this is an
+     * eventfd to signal AIO readiness to
+     */
+    __u32   aio_resfd; // &#x5982;&#x679C;&#x8BBE;&#x7F6E; RESFD &#x6807;&#x8BB0;&#xFF0C;&#x90A3;&#x4E48;&#x5F53;&#x5B8C;&#x6210;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x4E5F;&#x4F1A;&#x901A;&#x77E5;&#x8FD9;&#x4E2A; fd&#x3002;
+}; /* 64 bytes */
+
+#undef IFBIG
+#undef IFLITTLE
+
+#endif /* __LINUX__AIO_ABI_H */
+</code></pre><p>&#x2003;&#x2003;
+&#x6700;&#x5E38;&#x7528;&#x7684;&#x5927;&#x6982;&#x5C31;&#x662F; pread &#x548C; pwrite &#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x53D1;&#x8D77;&#x4E4B;&#x540E;&#x53EF;&#x4EE5;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x5F97;&#x5230;&#x901A;&#x77E5;&#xFF1A;&#x4F7F;&#x7528; RESFD &#x6216; io_getevents&#x3002;
+&#x4E3B;&#x8981;&#x770B;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x770B;&#x770B; API&#xFF1A;</p>
+<pre><code>int io_getevents(aio_context_t ctx_id, long min_nr, long nr,
+                 struct io_event *events, struct timespec *timeout);
+int io_cancel(aio_context_t ctx_id, struct iocb *iocb,
+                 struct io_event *result);
+</code></pre><p>&#x2003;&#x2003;
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x975E;&#x5E38;&#x7C7B;&#x4F3C; epoll &#x7684;&#x8FD4;&#x56DE;&#xFF0C;&#x8FD4;&#x56DE;&#x63A5;&#x53E3;&#x662F; io_event (&#x5728;&#x4E0A;&#x9762;&#x6709;&#x8BF4;&#x660E;&#xFF0C;&#x5404;&#x4E2A;&#x5B57;&#x6BB5;&#x542B;&#x4E49;&#x4E5F;&#x5F88;&#x660E;&#x786E;)&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x76F8;&#x5173;&#x6587;&#x7AE0;&#xFF1A;<a href="http://www.kernel.org/doc/man-pages/online/pages/man2/io_setup.2.html" target="_blank">io_setup(2) - Linux manual page</a></p>
 
                     
                     </section>

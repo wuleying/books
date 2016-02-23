@@ -53,7 +53,7 @@
         data-chapter-title="readv/writev"
         data-filepath="s13/13.5.md"
         data-basepath=".."
-        data-revision="Mon Feb 22 2016 17:08:04 GMT+0800 (CST)"
+        data-revision="Tue Feb 23 2016 11:27:53 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,38 @@
                     
                         <h1 id="readvwritev">readv/writev</h1>
 <hr>
+<p>&#x2003;&#x2003;
+readv &#x548C; writev &#x80FD;&#x591F;&#x5C06;&#x5206;&#x6563;&#x7684;&#x591A;&#x5757;&#x7F13;&#x51B2;&#x533A;&#x4E00;&#x6B21;&#x6027;&#x8BFB;&#x51FA;&#x548C;&#x5199;&#x5165;&#xFF0C;&#x800C;&#x4EC5;&#x4EC5;&#x662F;&#x4F7F;&#x7528;&#x4E00;&#x6B21;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x3002;</p>
+<pre><code>#include &lt;sys/uio.h&gt;
+
+/* Structure for scatter/gather I/O.  */
+struct iovec {
+    void *iov_base;     /* Pointer to data.  */
+    size_t iov_len;     /* Length of data.  */
+};
+
+/* Read data from file descriptor FD, and put the result in the
+   buffers described by IOVEC, which is a vector of COUNT `struct iovec&apos;s.
+   The buffers are filled in the order specified.
+   Operates just like `read&apos; (see &lt;unistd.h&gt;) except that data are
+   put in IOVEC instead of a contiguous buffer.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */
+extern ssize_t readv (int __fd, __const struct iovec *__iovec, int __count);
+
+/* Write data pointed by the buffers described by IOVEC, which
+   is a vector of COUNT `struct iovec&apos;s, to file descriptor FD.
+   The data is written in the order specified.
+   Operates just like `write&apos; (see &lt;unistd.h&gt;) except that the data
+   are taken from IOVEC instead of a contiguous buffer.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */
+extern ssize_t writev (int __fd, __const struct iovec *__iovec, int __count);
+</code></pre><p>&#x2003;&#x2003;
+&#x8BFB;&#x53D6;&#x65F6;&#x9996;&#x5148;&#x586B;&#x6EE1;&#x7B2C;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x7136;&#x540E;&#x586B;&#x5199;&#x7B2C;&#x4E8C;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#x3002;
+&#x5199;&#x5165;&#x65F6;&#x4E5F;&#x662F;&#x6309;&#x7167; iovec &#x7684;&#x987A;&#x5E8F;&#x6765;&#x5199;&#x5165;&#x3002;</p>
 
                     
                     </section>

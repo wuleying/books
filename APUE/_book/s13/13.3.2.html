@@ -53,7 +53,7 @@
         data-chapter-title="poll/ppoll"
         data-filepath="s13/13.3.2.md"
         data-basepath=".."
-        data-revision="Mon Feb 22 2016 17:08:04 GMT+0800 (CST)"
+        data-revision="Tue Feb 23 2016 11:27:53 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2931,6 +2931,114 @@
                     
                         <h1 id="pollppoll">poll/ppoll</h1>
 <hr>
+<pre><code>#include &lt;poll.h&gt;
+/* Type used for the number of file descriptors.  */
+typedef unsigned long int nfds_t;
+
+/* Data structure describing a polling request.  */
+struct pollfd {
+    int fd;                     /* File descriptor to poll.  */
+    short int events;           /* Types of events poller cares about.  */
+    short int revents;          /* Types of events that actually occurred.  */
+};
+
+/* Poll the file descriptors described by the NFDS structures starting at
+   FDS.  If TIMEOUT is nonzero and not -1, allow TIMEOUT milliseconds for
+   an event to occur; if TIMEOUT is -1, block until an event occurs.
+   Returns the number of file descriptors with events, zero if timed out,
+   or -1 for errors.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */
+extern int poll (struct pollfd *__fds, nfds_t __nfds, int __timeout);
+
+#ifdef __USE_GNU
+/* Like poll, but before waiting the threads signal mask is replaced
+   with that specified in the fourth parameter.  For better usability,
+   the timeout value is specified using a TIMESPEC object.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */
+extern int ppoll (struct pollfd *__fds, nfds_t __nfds,
+                  __const struct timespec *__timeout,
+                  __const __sigset_t *__ss);
+</code></pre><p>&#x2003;&#x2003;&#x548C; select/pselect &#x4E00;&#x6837;&#xFF0C;pool &#x63D0;&#x4F9B;&#x4E86;&#x63A5;&#x53E3;&#x3002;
+&#x5176;&#x4E2D; nfds &#x8868;&#x793A; fds &#x6570;&#x7EC4;&#x6570;&#x91CF;&#x3002;
+timeout &#x5728;&#x8FD9;&#x91CC;&#x5355;&#x4F4D;&#x662F;&#x5FAE;&#x79D2;&#x3002;
+&#x548C; select/pselect &#x6700;&#x5927;&#x7684;&#x4E0D;&#x540C;&#x662F;&#xFF0C;&#x8FD4;&#x56DE;&#x4E4B;&#x540E;&#x5E76;&#x4E0D;&#x4F1A;&#x4FEE;&#x6539; fds &#x91CC; fd &#x548C; events &#x5B57;&#x6BB5;&#x5185;&#x5BB9;&#xFF0C;&#x4EA7;&#x751F;&#x7684;&#x4E8B;&#x4EF6;&#x76F4;&#x63A5;&#x5199;&#x5728; revent &#x5B57;&#x6BB5;&#x91CC;&#x3002;
+&#x53EF;&#x4EE5;&#x770B;&#x770B; poll &#x652F;&#x6301;&#x7684;&#x4E8B;&#x4EF6;&#x6709;&#x54EA;&#x4E9B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x6807;&#x8BC6;&#x540D;</th>
+<th>events</th>
+<th>revents</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POLLIN</td>
+<td>y</td>
+<td>y</td>
+<td>&#x53EF;&#x4EE5;&#x4E0D;&#x963B;&#x585E;&#x5730;&#x8BFB;&#x53D6;&#x51FA;&#x9AD8;&#x4F18;&#x5148;&#x7EA7;&#x4E4B;&#x5916;&#x7684;&#x6570;&#x636E; (&#x7B49;&#x6548;&#x4E8E; PLLRDNORM &amp; POLLRDBAND)</td>
+</tr>
+<tr>
+<td>POLLRDNORM</td>
+<td>y</td>
+<td>y</td>
+<td>&#x4E0D;&#x963B;&#x585E;&#x5730;&#x8BFB;&#x53D6;&#x666E;&#x901A;&#x6570;&#x636E; (&#x4F18;&#x5148;&#x7EA7;&#x4E3A; 0 &#x6CE2;&#x6BB5;&#x6570;&#x636E;)</td>
+</tr>
+<tr>
+<td>POLLRDBAND</td>
+<td>y</td>
+<td>y</td>
+<td>&#x4E0D;&#x963B;&#x585E;&#x5730;&#x8BFB;&#x53D6;&#x975E; 0 &#x4F18;&#x5148;&#x7EA7;&#x6CE2;&#x6BB5;&#x6570;&#x636E;</td>
+</tr>
+<tr>
+<td>POLLPRI</td>
+<td>y</td>
+<td>y</td>
+<td>&#x4E0D;&#x963B;&#x585E;&#x5730;&#x8BFB;&#x53D6;&#x9AD8;&#x4F18;&#x5148;&#x7EA7;&#x6570;&#x636E;</td>
+</tr>
+<tr>
+<td>POLLOUT</td>
+<td>y</td>
+<td>y</td>
+<td>&#x4E0D;&#x963B;&#x585E;&#x5730;&#x5199;&#x666E;&#x901A;&#x6570;&#x636E;</td>
+</tr>
+<tr>
+<td>POLLWRNORM</td>
+<td>y</td>
+<td>y</td>
+<td>&#x548C; POLLOUT &#x76F8;&#x540C;</td>
+</tr>
+<tr>
+<td>POLLWRBAND</td>
+<td>y</td>
+<td>y</td>
+<td>&#x4E0D;&#x963B;&#x585E;&#x5730;&#x5199;&#x975E; 0 &#x4F18;&#x5148;&#x7EA7;&#x6CE2;&#x6BB5;&#x6570;&#x636E;</td>
+</tr>
+<tr>
+<td>POLLERR</td>
+<td></td>
+<td>y</td>
+<td>&#x5DF2;&#x7ECF;&#x51FA;&#x9519;</td>
+</tr>
+<tr>
+<td>POLLHUP</td>
+<td></td>
+<td>y</td>
+<td>&#x5DF2;&#x7ECF;&#x6302;&#x65AD;</td>
+</tr>
+<tr>
+<td>POLLNVAL</td>
+<td></td>
+<td>y</td>
+<td>&#x63CF;&#x8FF0;&#x7B26;&#x65E0;&#x6548;</td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>
