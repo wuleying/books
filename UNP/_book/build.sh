@@ -14,14 +14,7 @@ do
     #page=`echo $line | awk 'BEGIN{FS="(";RS=")"} NF>1 {print $NF}'`
     page=`echo $line | grep -Eo '\([^\)]*\)' | tail -1 | sed -e 's/(//g;s/)//g'`
 
-    # 修改字符串分隔符
-    OLD_IFS="$IFS"
-    IFS="/"
-
-    array=($page)
-
-    # 将字符串分隔符恢复
-    IFS="$OLD_IFS"
+    array=(${page//// })
 
     # 目录名称
     dir_name=${array[0]}
@@ -29,9 +22,9 @@ do
     file_name=${array[1]}
 
     # 目录名称校验
-    if [[ $dir_name =~ ^s[0-9]+ ]];then
+    if [[ $dir_name =~ ^s[0-9]+ ]]; then
         # 判断目录是否存在 不存在生成目录
-        if [ ! -d "$dir_name" ];then
+        if [ ! -d "$dir_name" ]; then
             mkdir "$dir_name"
 
             # 生成README.md文件
