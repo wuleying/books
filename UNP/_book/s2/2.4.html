@@ -53,7 +53,7 @@
         data-chapter-title="bind"
         data-filepath="s2/2.4.md"
         data-basepath=".."
-        data-revision="Thu Feb 25 2016 15:47:54 GMT+0800 (CST)"
+        data-revision="Thu Feb 25 2016 18:18:49 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,7 +1701,33 @@
                     
                         <h1 id="bind">bind</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5C06;&#x5957;&#x63A5;&#x5B57;&#x548C;&#x4E00;&#x4E2A;&#x672C;&#x5730;&#x534F;&#x8BAE;&#x5730;&#x5740;&#x8FDB;&#x884C;&#x7ED1;&#x5B9A;&#x3002;</p>
+<pre><code>// #include &lt;sys/socket.h&gt;
+/* Give the socket FD the local address ADDR (which is LEN bytes long).  */
+extern int bind (int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len)
+     __THROW;
+</code></pre><p>&#x2003;&#x2003;
+&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x5F85;&#x7ED1;&#x5B9A;&#x7684;&#x5957;&#x63A5;&#x5B57;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x5957;&#x63A5;&#x5B57;&#x5730;&#x5740;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x5957;&#x63A5;&#x5B57;&#x5730;&#x5740;&#x957F;&#x5EA6;&#x3002;
+&#x56E0;&#x4E3A;&#x6700;&#x5E38;&#x7528;&#x7684;&#x534F;&#x8BAE;&#x8FD8;&#x662F; IP &#x5305;&#x62EC; IPv4 &#x548C; IPv6&#xFF0C;&#x6240;&#x4EE5;&#x5957;&#x63A5;&#x5B57;&#x5730;&#x5740;&#x5C31;&#x6D89;&#x53CA;&#x5230; IP &#x548C; port &#x8FD9;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x8BBE;&#x7F6E;&#x3002;
+&#x5982;&#x679C; IP &#x9009;&#x62E9;&#x901A;&#x914D;&#x5730;&#x5740;&#xFF0C;&#x90A3;&#x4E48;&#x5185;&#x6838;&#x81EA;&#x5DF1;&#x9009;&#x62E9; IP &#x5730;&#x5740;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x662F;&#x8FDB;&#x7A0B;&#x6307;&#x5B9A;&#x3002;
+&#x5BF9;&#x4E8E; port&#xFF0C;&#x5982;&#x679C; port &#x7B49;&#x4E8E; 0&#xFF0C;&#x5185;&#x6838;&#x81EA;&#x5DF1;&#x9009;&#x62E9; port&#xFF0C;&#x5426;&#x5219;&#x662F;&#x8FDB;&#x7A0B;&#x6307;&#x5B9A; port&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5BF9;&#x4E8E; IP &#x7684;&#x901A;&#x914D;&#x5730;&#x5740;&#xFF0C;IPv4 &#x4F7F;&#x7528; INADDR_ANY&#xFF0C;&#x800C; IPv6 &#x4F7F;&#x7528; in6addr_any&#x3002;</p>
+<pre><code>// #include &lt;netinet/in.h&gt;
 
+/* Address to accept any incoming messages.  */
+#define INADDR_ANY              ((in_addr_t) 0x00000000)
+/* Address to loopback in software to local host.  */
+#ifndef INADDR_LOOPBACK
+# define INADDR_LOOPBACK        ((in_addr_t) 0x7f000001) /* Inet 127.0.0.1.  */
+#endif
+
+extern const struct in6_addr in6addr_any;        /* :: */
+extern const struct in6_addr in6addr_loopback;   /* ::1 */
+#define IN6ADDR_ANY_INIT { { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } } }
+#define IN6ADDR_LOOPBACK_INIT { { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 } } }
+</code></pre>
                     
                     </section>
                 

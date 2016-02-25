@@ -53,7 +53,7 @@
         data-chapter-title="ECONNREFUSED"
         data-filepath="s2/2.3.5.md"
         data-basepath=".."
-        data-revision="Thu Feb 25 2016 15:47:54 GMT+0800 (CST)"
+        data-revision="Thu Feb 25 2016 18:18:49 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,6 +1701,20 @@
                     
                         <h1 id="econnrefused">ECONNREFUSED</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5982;&#x679C; SYN &#x5206;&#x8282;&#x53D1;&#x7ED9;&#x4E00;&#x4E2A;&#x5728;&#x8DEF;&#x7531;&#x5668;&#x4E2D;&#x5B58;&#x5728;&#x8868;&#x9879;&#x5E76;&#x4E14;&#x4E3B;&#x673A;&#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x662F;&#x4E3B;&#x673A;&#x7AEF;&#x53E3;&#x5E76;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#xFF0C;&#x8FD4;&#x56DE; RST &#x5206;&#x8282;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x8FD4;&#x56DE; ECONNREFUSED &#x7684;&#x9519;&#x8BEF;&#x3002;
+&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x672C;&#x5730;&#x4E3B;&#x673A; ip&#xFF0C;&#x7136;&#x540E;&#x8BBF;&#x95EE;&#x7AEF;&#x53E3; 1&#xFF0C;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x80AF;&#x5B9A;&#x662F;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x3002;</p>
+<pre><code>[dirlt@localhost.localdomain]$  ./connect -b 44567 192.168.189.128 1
+bind (0.0.0.0:44567)
+connect (192.168.189.128,1)...
+connect failed:Connection refused
+</code></pre><p>&#x2003;&#x2003;
+&#x4F7F;&#x7528; tcpdump &#x89C2;&#x5BDF;&#x7ED3;&#x679C;&#x662F;&#xFF1A;</p>
+<pre><code>// tcpdump tcp port 44567 -ttt -i lo &#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x8D70;&#x7684;&#x662F; loopback &#x63A5;&#x53E3;
+00:00:00.000000 IP 192.168.189.128.44567 &gt; 192.168.189.128.tcpmux: Flags [S], seq 1074623492, win 32792, options [mss 16396,sackOK,TS val 36551959 ecr 0,nop,wscale 4], length 0
+00:00:00.000031 IP 192.168.189.128.tcpmux &gt; 192.168.189.128.44567: Flags [R.], seq 0, ack 1074623493, win 0, length 0
+</code></pre><p>&#x2003;&#x2003;
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A; RST &#x5206;&#x8282;&#x3002;</p>
 
                     
                     </section>

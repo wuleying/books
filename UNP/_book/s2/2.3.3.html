@@ -53,7 +53,7 @@
         data-chapter-title="三次握手"
         data-filepath="s2/2.3.3.md"
         data-basepath=".."
-        data-revision="Thu Feb 25 2016 15:47:54 GMT+0800 (CST)"
+        data-revision="Thu Feb 25 2016 18:18:49 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,7 +1701,19 @@
                     
                         <h1 id="&#x4E09;&#x6B21;&#x63E1;&#x624B;">&#x4E09;&#x6B21;&#x63E1;&#x624B;</h1>
 <hr>
-
+<pre><code>[dirlt@localhost.localdomain]$ ./connect -b 44567 61.135.169.105 80
+bind (0.0.0.0:44557)
+connect (61.135.169.105,80)...
+connect succeed
+</code></pre><p>&#x2003;&#x2003;
+&#x4F7F;&#x7528; tcpdump &#x89C2;&#x5BDF;&#x7ED3;&#x679C;&#x662F;&#xFF1A;</p>
+<pre><code>// tcpdump tcp port 44567 -ttt
+00:00:00.000000 IP 192.168.189.128.44567 &gt; 61.135.169.105.http: Flags [S], seq 4248773398, win 5840, options [mss 1460,sackOK,TS val 30454000 ecr 0,nop,wscale 4], length 0
+00:00:00.006770 IP 61.135.169.105.http &gt; 192.168.189.128.44567: Flags [S.], seq 127082468, ack 4248773399, win 64240, options [mss 1460], length 0
+00:00:00.000057 IP 192.168.189.128.44567 &gt; 61.135.169.105.http: Flags [.], ack 1, win 5840, length 0
+00:00:00.000537 IP 192.168.189.128.44567 &gt; 61.135.169.105.http: Flags [F.], seq 1, ack 1, win 5840, length 0
+00:00:00.000212 IP 61.135.169.105.http &gt; 192.168.189.128.44567: Flags [.], ack 2, win 64239, length 0
+</code></pre>
                     
                     </section>
                 

@@ -53,7 +53,7 @@
         data-chapter-title="socket"
         data-filepath="s2/2.2.md"
         data-basepath=".."
-        data-revision="Thu Feb 25 2016 15:47:54 GMT+0800 (CST)"
+        data-revision="Thu Feb 25 2016 18:18:49 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,6 +1701,85 @@
                     
                         <h1 id="socket">socket</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x83B7;&#x5F97;&#x64CD;&#x4F5C;&#x7F51;&#x7EDC; IO &#x7684;&#x5957;&#x63A5;&#x5B57;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF1A;</p>
+<pre><code>// #include &lt;sys/socket.h&gt;
+/* Create a new socket of type TYPE in domain DOMAIN, using
+   protocol PROTOCOL.  If PROTOCOL is zero, one is chosen automatically.
+   Returns a file descriptor for the new socket, or -1 for errors.  */
+extern int socket (int __domain, int __type, int __protocol) __THROW;
+</code></pre><p>&#x2003;&#x2003;
+domain &#x53D6;&#x503C;&#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>domain</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AF_INET</td>
+<td>IPv4 &#x534F;&#x8BAE;</td>
+</tr>
+<tr>
+<td>AF_INET6</td>
+<td>IPv6 &#x534F;&#x8BAE;</td>
+</tr>
+<tr>
+<td>AF_LOCAL</td>
+<td>Unix &#x57DF;&#x534F;&#x8BAE;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+&#x4E5F;&#x53EF;&#x4EE5;&#x5199;&#x5BF9;&#x5E94;&#x7684; PF_xxx &#x7248;&#x672C; (&#x66F4;&#x52A0;&#x7B26;&#x5408;&#x672C;&#x610F;&#xFF0C;PF &#x610F;&#x601D;&#x662F; protocol family)&#xFF0C;&#x5386;&#x53F2;&#x539F;&#x56E0;&#x51FA;&#x73B0; AF_xxx &#x548C; PF_xxx&#xFF0C;&#x4E0D;&#x8FC7;&#x73B0;&#x5728;&#x57FA;&#x672C;&#x4E0A;&#x6240;&#x6709;&#x7684;&#x5B9E;&#x73B0; PF_xxx &#x7684;&#x503C;&#x548C; AF_xxx &#x7684;&#x503C;&#x90FD;&#x662F;&#x76F8;&#x7B49;&#x7684;&#x3002;</p>
+<p>&#x2003;&#x2003;
+type &#x53D6;&#x503C;&#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOCK_STREAM</td>
+<td>&#x5B57;&#x8282;&#x6D41;&#x5957;&#x63A5;&#x5B57;</td>
+</tr>
+<tr>
+<td>SOCK_DGRAM</td>
+<td>&#x6570;&#x636E;&#x62A5;&#x5957;&#x63A5;&#x5B57;</td>
+</tr>
+<tr>
+<td>SOCK_RAW</td>
+<td>&#x539F;&#x59CB;&#x5957;&#x63A5;&#x5B57;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+protocol &#x53D6;&#x503C;&#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IPPROTO_TCP</td>
+<td>TCP &#x4F20;&#x8F93;&#x534F;&#x8BAE;</td>
+</tr>
+<tr>
+<td>IPPROTO_UDP</td>
+<td>UDP &#x4F20;&#x8F93;&#x534F;&#x8BAE;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+&#x901A;&#x5E38;&#x6765;&#x8BF4;&#x6307;&#x5B9A;&#x4E86; domain&#x3001;type &#x5E76;&#x4E14; protocol &#x7B49;&#x4E8E; 0 &#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x9009;&#x62E9;&#x4F7F;&#x7528;&#x5177;&#x4F53;&#x7684;&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#x4E86;&#x3002;</p>
 
                     
                     </section>

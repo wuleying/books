@@ -53,7 +53,7 @@
         data-chapter-title="使用说明"
         data-filepath="s2/2.3.1.md"
         data-basepath=".."
-        data-revision="Thu Feb 25 2016 15:47:54 GMT+0800 (CST)"
+        data-revision="Thu Feb 25 2016 18:18:49 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,6 +1701,21 @@
                     
                         <h1 id="&#x4F7F;&#x7528;&#x8BF4;&#x660E;">&#x4F7F;&#x7528;&#x8BF4;&#x660E;</h1>
 <hr>
+<pre><code>// #include &lt;sys/socket.h&gt;
+/* Open a connection on socket FD to peer at ADDR (which LEN bytes long).
+   For connectionless socket types, just set the default address to send to
+   and the only address from which to accept transmissions.
+   Return 0 on success, -1 for errors.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */
+extern int connect (int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len);
+</code></pre><p>&#x2003;&#x2003;
+&#x5BF9;&#x4E8E; addr &#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x5957;&#x63A5;&#x5B57;&#x5730;&#x5740;&#x7ED3;&#x6784;&#xFF0C;len &#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x5957;&#x63A5;&#x5B57;&#x5730;&#x5740;&#x7ED3;&#x6784;&#x957F;&#x5EA6;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x8C03;&#x7528; connect &#x4E4B;&#x524D;&#x4E0D;&#x4E00;&#x5B9A;&#x9700;&#x8981;&#x8FDB;&#x884C; bind&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FDB;&#x884C; bind &#x5185;&#x6838;&#x4F1A;&#x786E;&#x5B9A;&#x6E90; IP &#x5730;&#x5740;&#xFF0C;&#x540C;&#x65F6;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x7AEF;&#x53E3;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x3002;
+&#x5982;&#x679C;&#x662F; TCP &#x534F;&#x8BAE;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5F00;&#x59CB;&#x8FDB;&#x884C;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x3002;
+&#x4ECE; TCP &#x72B6;&#x6001;&#x8FC1;&#x79FB;&#x56FE;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5982;&#x679C; connect &#x4E4B;&#x540E;&#x4F1A;&#x8FDB;&#x5165; SYN_SENT &#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x5931;&#x8D25;&#x5C06;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x5FC5;&#x987B;&#x5148; close &#x518D;&#x91CD;&#x65B0; socket&#x3002;</p>
 
                     
                     </section>
