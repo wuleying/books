@@ -5,7 +5,6 @@ cat SUMMARY.md | grep -v ^$ | while read line
 do
     title=`echo $line | awk 'BEGIN{FS="[";RS="]"} NF>1 {print $NF}'`
     #page=`echo $line | awk 'BEGIN{FS="(";RS=")"} NF>1 {print $NF}'`
-
     page=`echo $line | grep -Eo '\([^\)]*\)' | tail -1 | sed -e 's/(//g;s/)//g'`
 
     # 修改字符串分隔符

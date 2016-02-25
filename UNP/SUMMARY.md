@@ -35,7 +35,7 @@
     * [backlog](s2/2.5.2.md)
   * [accept](s2/2.6.md)
     * [使用说明](s2/2.6.1.md)
-    * [惊群效应(thundering herd)](s2/2.6.2.md)
+    * [惊群效应 (thundering herd)](s2/2.6.2.md)
     * [非阻塞](s2/2.6.3.md)
     * [ECONNABORTED/EPROTO](s2/2.6.4.md)
     * [EPIPE](s2/2.6.5.md)
