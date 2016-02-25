@@ -53,7 +53,7 @@
         data-chapter-title="IPv4 地址结构"
         data-filepath="s2/2.1.2.md"
         data-basepath=".."
-        data-revision="Thu Feb 25 2016 15:18:20 GMT+0800 (CST)"
+        data-revision="Thu Feb 25 2016 15:47:54 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,7 +1701,24 @@
                     
                         <h1 id="ipv4-&#x5730;&#x5740;&#x7ED3;&#x6784;">IPv4 &#x5730;&#x5740;&#x7ED3;&#x6784;</h1>
 <hr>
+<pre><code>//==============================
+// #include &lt;netinet/in.h&gt;
+struct in_addr {
+    in_addr_t s_addr;
+};
 
+struct sockaddr_in {
+    __SOCKADDR_COMMON (sin_);           /* AF_INET */
+    in_port_t sin_port;                 /* Port number.  */
+    struct in_addr sin_addr;            /* Internet address.  */
+
+    /* Pad to size of `struct sockaddr&apos;.  */
+    unsigned char sin_zero[sizeof (struct sockaddr) -
+                           __SOCKADDR_COMMON_SIZE -
+                           sizeof (in_port_t) -
+                           sizeof (struct in_addr)];
+};
+</code></pre>
                     
                     </section>
                 
