@@ -1,7 +1,14 @@
 #!/bin/sh
 # eg. sh ./build.sh
 
-cat SUMMARY.md | grep -v ^$ | while read line
+summary_file="SUMMARY.md"
+
+if [ ! -f $summary_file ]; then
+    echo "Error: SUMMARY.md is not exist"
+    exit 1;
+fi
+
+cat $summary_file | grep -v ^$ | while read line
 do
     title=`echo $line | awk 'BEGIN{FS="[";RS="]"} NF>1 {print $NF}'`
     #page=`echo $line | awk 'BEGIN{FS="(";RS=")"} NF>1 {print $NF}'`
