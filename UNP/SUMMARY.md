@@ -105,5 +105,3 @@
   * [viewsockopt.cc](s6/6.3.md)
   * [name2addr.cc](s6/6.4.md)
   * [addr2name.cc](s6/6.5.md)
-  
-  

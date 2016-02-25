@@ -3,8 +3,9 @@
 
 cat SUMMARY.md | grep -v ^$ | while read line
 do
-    title=`echo $line | cut -d '[' -f2|cut -d ']' -f1`
-    page=`echo $line | awk 'BEGIN{FS="(";RS=")"} NF=2 {print $NF}'`
+    title=`echo $line | awk 'BEGIN{FS="[";RS="]"} NF>1 {print $NF}'`
+    #page=`echo $line | awk 'BEGIN{FS="(";RS=")"} NF>1 {print $NF}'`
+    page=`echo $line | grep -Eo '\([^\)]*\)' | tail -1 | sed -e 's/(//g;s/)//g'`
 
     # 修改字符串分隔符
     OLD_IFS="$IFS"
