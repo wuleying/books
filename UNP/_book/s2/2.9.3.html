@@ -53,7 +53,7 @@
         data-chapter-title="SO_KEEPALIVE"
         data-filepath="s2/2.9.3.md"
         data-basepath=".."
-        data-revision="Thu Feb 25 2016 18:18:49 GMT+0800 (CST)"
+        data-revision="Fri Feb 26 2016 17:03:19 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,6 +1701,18 @@
                     
                         <h1 id="sokeepalive">SO_KEEPALIVE</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x670D;&#x52A1;&#x7AEF;&#x4E4B;&#x540E;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x5B95;&#x673A;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x4E0D;&#x77E5;&#x9053;&#x5BA2;&#x6237;&#x7AEF;&#x5DF2;&#x7ECF;&#x5B95;&#x673A;&#x7EE7;&#x7EED;&#x7EF4;&#x6301;&#x8FDE;&#x63A5;&#xFF0C;&#x79F0;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E3A;&#x534A;&#x5F00;&#x8FDE;&#x63A5; (half-open connection)&#x3002;
+&#x5982;&#x679C;&#x670D;&#x52A1;&#x7AEF;&#x4E0D;&#x68C0;&#x6D4B;&#x51FA;&#x534A;&#x5F00;&#x8FDE;&#x63A5;&#x5C31;&#x4F1A;&#x7EF4;&#x6301;&#x8FDE;&#x63A5;&#x6700;&#x7EC8;&#x8017;&#x5C3D;&#x8D44;&#x6E90;&#x3002;
+&#x5F53;&#x7136;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x670D;&#x52A1;&#x7AEF;&#x53EF;&#x81EA;&#x5DF1;&#x6765;&#x8FDB;&#x884C;&#x8FD9;&#x4E2A;&#x4FDD;&#x6D3B; (keepalive) &#x673A;&#x5236;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4F46;&#x662F; TCP &#x5185;&#x90E8;&#x4E5F;&#x81EA;&#x5E26;&#x8FD9;&#x6837;&#x7684;&#x673A;&#x5236;&#x3002;
+&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x5957;&#x63A5;&#x5B57;&#x4EFB;&#x4E00;&#x65B9;&#x5411;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x4EA4;&#x6362;&#xFF0C;TCP &#x4F1A;&#x81EA;&#x52A8;&#x7ED9;&#x5BF9;&#x7AEF;&#x53D1;&#x9001;&#x4FDD;&#x6301;&#x5B58;&#x6D3B;&#x63A2;&#x6D4B;&#x5206;&#x8282; (keep-alive probe)&#xFF0C;&#x8FD9;&#x4E2A;&#x5206;&#x8282;&#x5BF9;&#x7AEF;&#x5FC5;&#x987B;&#x76F8;&#x5E94;&#xFF0C;&#x7ED3;&#x679C;&#x4F1A;&#x6709;&#x4E09;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ul>
+<li>&#x54CD;&#x5E94; ACK&#xFF0C;&#x5BF9;&#x7AEF;&#x5B58;&#x6D3B;</li>
+<li>&#x54CD;&#x5E94; RST&#xFF0C;&#x5BF9;&#x7AEF;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x5D29;&#x6E83;&#x91CD;&#x542F;&#xFF0C;so_error &#x7F6E;&#x4E3A; ECONNRESET</li>
+<li>&#x5BF9;&#x7AEF;&#x6CA1;&#x6709;&#x54CD;&#x5E94;&#xFF0C;&#x90A3;&#x4E48;&#x6309;&#x7167; TCP &#x91CD;&#x4F20;&#x673A;&#x5236;&#x91CD;&#x4F20;&#xFF0C;&#x6700;&#x7EC8;&#x9519;&#x8BEF;&#x53EF;&#x80FD;&#x4E3A; ETIMEOUT (&#x8D85;&#x65F6;)&#xFF0C;ENETUNREACH (&#x8DEF;&#x7531;&#x9519;&#x8BEF;)</li>
+</ul>
+<p>&#x2003;&#x2003;
+&#x5982;&#x679C;&#x4EA7;&#x751F;&#x9519;&#x8BEF;&#x5E76;&#x4E14;&#x4F7F;&#x7528; IO &#x590D;&#x7528;/&#x4FE1;&#x53F7;&#x9A71;&#x52A8; IO&#xFF0C;&#x53EF;&#x4EE5;&#x7ACB;&#x523B;&#x68C0;&#x6D4B;&#x5230;&#x5E76;&#x4E14;&#x8FDB;&#x884C;&#x54CD;&#x5E94;&#x5904;&#x7406;&#x3002;</p>
 
                     
                     </section>

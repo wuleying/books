@@ -53,7 +53,7 @@
         data-chapter-title="使用说明"
         data-filepath="s2/2.6.1.md"
         data-basepath=".."
-        data-revision="Thu Feb 25 2016 18:18:49 GMT+0800 (CST)"
+        data-revision="Fri Feb 26 2016 17:03:19 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,6 +1701,15 @@
                     
                         <h1 id="&#x4F7F;&#x7528;&#x8BF4;&#x660E;">&#x4F7F;&#x7528;&#x8BF4;&#x660E;</h1>
 <hr>
+<pre><code>// #include &lt;sys/socket.h&gt;
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */
+extern int accept (int __fd, __SOCKADDR_ARG __addr,
+                   socklen_t *__restrict __addr_len);
+</code></pre><p>&#x2003;&#x2003;
+&#x8FD9;&#x91CC;&#x7684; fd &#x5C31;&#x662F;&#x4E4B;&#x524D; listen &#x5904;&#x7406;&#x88AB;&#x52A8;&#x72B6;&#x6001;&#x7684;&#x76D1;&#x542C;&#x5957;&#x63A5;&#x5B57;&#xFF0C;addr &#x548C; addr_len &#x8868;&#x793A;&#x5904;&#x7406;&#x8FDE;&#x63A5;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x5730;&#x5740;&#x3002;
+&#x8FD4;&#x56DE;&#x503C;&#x8868;&#x793A;&#x8FDE;&#x63A5;&#x7684;&#x5957;&#x63A5;&#x5B57;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5957;&#x63A5;&#x5B57;&#x53EF;&#x4EE5;&#x548C;&#x8FDE;&#x63A5;&#x4E0A;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x3002;
+&#x9700;&#x8981;&#x63D0;&#x4F9B; fd &#x7684;&#x539F;&#x56E0;&#x53EF;&#x80FD;&#x662F;&#x56E0;&#x4E3A;&#x5E95;&#x5C42; tcp &#x5B9E;&#x73B0;&#x662F;&#x4E0D;&#x540C;&#x7684; fd &#x5BF9;&#x5E94;&#x4E0D;&#x540C;&#x7684;&#x5904;&#x7406;&#x961F;&#x5217;&#xFF0C;&#x6240;&#x4EE5;&#x5FC5;&#x987B;&#x63D0;&#x4F9B; fd &#x6765;&#x67E5;&#x627E;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x5904;&#x7406;&#x961F;&#x5217;&#xFF0C;&#x7136;&#x540E;&#x4ECE;&#x961F;&#x5217;&#x4E2D;&#x53D6;&#x51FA;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x7684;&#x8FDE;&#x63A5;&#x3002;</p>
 
                     
                     </section>

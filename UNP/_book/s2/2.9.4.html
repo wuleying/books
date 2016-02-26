@@ -53,7 +53,7 @@
         data-chapter-title="SO_LINGER"
         data-filepath="s2/2.9.4.md"
         data-basepath=".."
-        data-revision="Thu Feb 25 2016 18:18:49 GMT+0800 (CST)"
+        data-revision="Fri Feb 26 2016 17:03:19 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,6 +1701,26 @@
                     
                         <h1 id="solinger">SO_LINGER</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B; close &#x7684;&#x52A8;&#x4F5C;&#x662F;&#x53D1;&#x9001;&#x5B8C;&#x6210;&#x7F13;&#x51B2;&#x533A;&#x5185;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4E14;&#x53D1;&#x9001; FIN &#x5206;&#x8282;&#x4E4B;&#x540E;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x3002;
+&#x8FD4;&#x56DE;&#x4E4B;&#x540E;&#x5982;&#x679C;&#x6570;&#x636E;&#x6216;&#x8005;&#x662F; FIN &#x5206;&#x8282;&#x6CA1;&#x6709;&#x786E;&#x8BA4;&#xFF0C;tcp &#x5B9E;&#x73B0;&#x4F1A;&#x81EA;&#x52A8;&#x8FDB;&#x884C;&#x91CD;&#x4F20;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x91CD;&#x4F20;&#x5931;&#x8D25;&#x4E5F;&#x662F;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x77E5;&#x9053;&#x7684;&#x3002;
+&#x4F7F;&#x7528; SO_LINGER &#x9009;&#x9879;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x5B9A;&#x957F;&#x5EA6;&#x4E0A;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;
+SO_LINGER &#x4F7F;&#x7528;&#x7684;&#x503C;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#xFF0C;&#x5982;&#x679C; l_onoff &#x7B49;&#x4E8E; 0 &#x5C31;&#x6309;&#x7167;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x5904;&#x7406;&#x3002;
+&#x4E0B;&#x9762;&#x8BA8;&#x8BBA; l_onoff &#x7B49;&#x4E8E; 1 &#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<pre><code>// #include &lt;bits/socket.h&gt;
+/* Structure used to manipulate the SO_LINGER option.  */
+struct linger {
+    int l_onoff;                /* Nonzero to linger on close.  */
+    int l_linger;               /* Time to linger.  */
+};
+</code></pre><p>&#x2003;&#x2003;
+&#x5982;&#x679C; l_linger &#x7B49;&#x4E8E; 0&#xFF0C;close &#x4F1A;&#x7ACB;&#x523B;&#x4E22;&#x5F03;&#x7F13;&#x51B2;&#x533A;&#x5185;&#x90E8;&#x6570;&#x636E;&#x5E76;&#x4E14;&#x53D1;&#x9001; RST &#x5206;&#x8282;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x8D70;&#x6B63;&#x5E38;&#x7684;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x8FC7;&#x7A0B;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x907F;&#x514D; TIME_WAIT &#x72B6;&#x6001;&#x3002;
+&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x5E76;&#x4E0D;&#x63A8;&#x8350;&#x8FD9;&#x4E48;&#x4F7F;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x5982;&#x679C;&#x8FD8;&#x6CA1;&#x6709;&#x53D1;&#x51FA;&#x6570;&#x636E;&#x5C31;&#x90FD;&#x4F1A;&#x88AB;&#x4E22;&#x5F03;&#xFF0C;&#x800C;&#x4E14;&#x5BF9;&#x7AEF;&#x4F1A;&#x8BA4;&#x4E3A;&#x672C;&#x7AEF;&#x53EF;&#x80FD;&#x662F;&#x56E0;&#x4E3A;&#x72B6;&#x6001;&#x51FA;&#x9519;&#x7B49;&#x5176;&#x4ED6;&#x539F;&#x56E0;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#xFF0C;&#x800C;&#x975E;&#x4E3B;&#x52A8;&#x65AD;&#x5F00;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x5982;&#x679C; l_linger &#x4E0D;&#x7B49;&#x4E8E; 0&#xFF0C;close &#x4F1A;&#x7B49;&#x5F85; l_linger (&#x5355;&#x4F4D; s) &#x7684;&#x65F6;&#x95F4;&#x6216;&#x8005;&#x662F;&#x7B49;&#x5F85;&#x5230;&#x6700;&#x540E;&#x6570;&#x636E;&#x548C; FIN &#x7684; ACK &#x8FD4;&#x56DE;&#x4E3A;&#x6B62;&#x3002;
+&#x4E0D;&#x8FC7;&#x5982;&#x679C; close &#x8BBE;&#x7F6E;&#x79F0;&#x4E3A;&#x975E;&#x963B;&#x585E;&#xFF0C;&#x8FD8;&#x662F;&#x4F1A;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x3002;
+&#x5982;&#x679C; close &#x8FD4;&#x56DE;&#x7684;&#x539F;&#x56E0;&#x662F;&#x56E0;&#x4E3A;&#x7B49;&#x5F85;&#x5230;&#x4E86;&#x6700;&#x540E;&#x7684;&#x6570;&#x636E;&#x548C; FIN &#x7684; ACK&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x4E3A; 0&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE; -1&#xFF0C;errno &#x4E3A; EWOULDBLOCK&#x3002;
+&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A; l_linger &#x662F;&#x4E00;&#x4E2A;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x5728;&#x8FD9;&#x4E48;&#x957F;&#x65F6;&#x95F4;&#x5185;&#x7B49;&#x5F85;&#x5269;&#x4F59;&#x6570;&#x636E;&#x548C; FIN &#x7684;&#x786E;&#x8BA4;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E86;&#x89E3;&#x5230;&#x6700;&#x540E;&#x65AD;&#x5F00;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
 
                     
                     </section>

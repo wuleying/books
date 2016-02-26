@@ -53,7 +53,7 @@
         data-chapter-title="概览"
         data-filepath="s2/2.9.1.md"
         data-basepath=".."
-        data-revision="Thu Feb 25 2016 18:18:49 GMT+0800 (CST)"
+        data-revision="Fri Feb 26 2016 17:03:19 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,7 +1701,144 @@
                     
                         <h1 id="&#x6982;&#x89C8;">&#x6982;&#x89C8;</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5BF9;&#x4E8E;&#x5957;&#x63A5;&#x5B57;&#x9009;&#x9879;&#x7684;&#x83B7;&#x53D6;&#x548C;&#x8BBE;&#x7F6E;&#xFF0C;&#x6700;&#x5E38;&#x7528;&#x7684;&#x51FD;&#x6570;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li>getsockopt/setsockopt</li>
+<li>fcntl</li>
+<li>ioctl</li>
+</ul>
+<p>&#x2003;&#x2003;
+&#x672C;&#x8282;&#x8BA8;&#x8BBA;&#x7684;&#x6240;&#x6709;&#x9009;&#x9879;&#x90FD;&#x662F;&#x901A;&#x8FC7; getsockopt/setsockopt &#x6765;&#x64CD;&#x4F5C;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E; fcntl/ioctl &#x4F1A;&#x5728;&#x5176;&#x4ED6;&#x5730;&#x65B9;&#x8FDB;&#x884C;&#x8BA8;&#x8BBA;&#x3002;</p>
+<pre><code>// #include &lt;sys/socket.h&gt;
+/* Put the current value for socket FD&apos;s option OPTNAME at protocol level LEVEL
+   into OPTVAL (which is *OPTLEN bytes long), and set *OPTLEN to the value&apos;s
+   actual length.  Returns 0 on success, -1 for errors.  */
+extern int getsockopt (int __fd, int __level, int __optname,
+                       void *__restrict __optval,
+                       socklen_t *__restrict __optlen) __THROW;
 
+/* Set socket FD&apos;s option OPTNAME at protocol level LEVEL
+   to *OPTVAL (which is OPTLEN bytes long).
+   Returns 0 on success, -1 for errors.  */
+extern int setsockopt (int __fd, int __level, int __optname,
+                       __const void *__optval, socklen_t __optlen) __THROW;
+</code></pre><p>&#x2003;&#x2003;
+&#x9996;&#x5148;&#x5217;&#x51FA;&#x672C;&#x8282;&#x8BA8;&#x8BBA;&#x7684;&#x9009;&#x9879;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x6BCF;&#x4E2A;&#x5B50;&#x7AE0;&#x8282;&#x5355;&#x72EC;&#x4ECB;&#x7ECD;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>level</th>
+<th>optname</th>
+<th>&#x8BF4;&#x660E;</th>
+<th>&#x6570;&#x636E;&#x7C7B;&#x578B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOL_SOCKET</td>
+<td>SO_ERROR</td>
+<td>&#x83B7;&#x53D6;&#x5F85;&#x5904;&#x7406;&#x9519;&#x8BEF;&#x5E76;&#x4E14;&#x6E05;&#x695A;</td>
+<td>int</td>
+</tr>
+<tr>
+<td></td>
+<td>SO_KEEPALIVE</td>
+<td>&#x5468;&#x671F;&#x6027;&#x6D4B;&#x8BD5;&#x8FDE;&#x63A5;&#x662F;&#x5426;&#x4ECD;&#x7136;&#x5B58;&#x6D3B;</td>
+<td>int</td>
+</tr>
+<tr>
+<td></td>
+<td>SO_LINGER</td>
+<td>&#x82E5;&#x6709;&#x6570;&#x636E;&#x5F85;&#x53D1;&#x5EF6;&#x8FDF;&#x5173;&#x95ED;</td>
+<td>linger{}</td>
+</tr>
+<tr>
+<td></td>
+<td>SO_RCVBUF</td>
+<td>&#x63A5;&#x6536;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;</td>
+<td>int</td>
+</tr>
+<tr>
+<td></td>
+<td>SO_SNDBUF</td>
+<td>&#x53D1;&#x9001;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;</td>
+<td>int</td>
+</tr>
+<tr>
+<td></td>
+<td>SO_RCVLOWAT</td>
+<td>&#x63A5;&#x6536;&#x7F13;&#x51B2;&#x533A;&#x4F4E;&#x6C34;&#x4F4D;&#x6807;&#x8BB0;</td>
+<td>int</td>
+</tr>
+<tr>
+<td></td>
+<td>SO_SNDLOWAT</td>
+<td>&#x53D1;&#x9001;&#x7F13;&#x51B2;&#x533A;&#x4F4E;&#x6C34;&#x4F4D;&#x6807;&#x8BB0;</td>
+<td>int</td>
+</tr>
+<tr>
+<td></td>
+<td>SO_RCVTIMEO</td>
+<td>&#x63A5;&#x6536;&#x8D85;&#x65F6;</td>
+<td>timeval</td>
+</tr>
+<tr>
+<td></td>
+<td>SO_SNDTIMEO</td>
+<td>&#x53D1;&#x9001;&#x8D85;&#x65F6;</td>
+<td>timeval</td>
+</tr>
+<tr>
+<td></td>
+<td>SO_REUSEADDR</td>
+<td>&#x5141;&#x8BB8;&#x91CD;&#x7528;&#x672C;&#x5730;&#x5730;&#x5740;</td>
+<td>int</td>
+</tr>
+<tr>
+<td>IPPROTO_TCP</td>
+<td>TCP_MAXSEG</td>
+<td>TCP &#x6700;&#x5927;&#x5206;&#x7247;&#x5927;&#x5C0F;</td>
+<td>int</td>
+</tr>
+<tr>
+<td></td>
+<td>TCP_NODELAY</td>
+<td>&#x7981;&#x6B62; nagle &#x7B97;&#x6CD5;</td>
+<td>int</td>
+</tr>
+<tr>
+<td></td>
+<td>TCP_QUICKACK</td>
+<td>&#x5FEB;&#x901F; ACK &#x7B97;&#x6CD5;</td>
+<td>int</td>
+</tr>
+<tr>
+<td></td>
+<td>TCP_CORK</td>
+<td>&#x963B;&#x585E; TCP &#x53D1;&#x9001;</td>
+<td>int</td>
+</tr>
+</tbody>
+</table>
+<p>&#x2003;&#x2003;
+&#x53EF;&#x4EE5;&#x4F7F;&#x7528; viewsockopt.cc &#x6765;&#x67E5;&#x770B;&#x8FD9;&#x4E9B;&#x9009;&#x9879;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x3002;</p>
+<pre><code>[dirlt@localhost.localdomain]$ ./viewsockopt
+SO_ERROR:0
+SO_KEEPALIVE:off
+SO_LINGER:l_onoff=off,l_linger=0
+SO_RCVBUF:87380
+SO_SNDBUF:16384
+SO_RCVLOWAT:1
+SO_SNDLOWAT:1
+SO_RCVTIMEO:(0,0)
+SO_SNDTIMEO:(0,0)
+SO_REUSEADDR:off
+TCP_MAXSEG:536
+TCP_NODELAY:off
+TCP_QUICKACK:on
+TCP_CORK:off
+</code></pre>
                     
                     </section>
                 

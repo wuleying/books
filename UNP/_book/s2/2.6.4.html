@@ -53,7 +53,7 @@
         data-chapter-title="ECONNABORTED/EPROTO"
         data-filepath="s2/2.6.4.md"
         data-basepath=".."
-        data-revision="Thu Feb 25 2016 18:18:49 GMT+0800 (CST)"
+        data-revision="Fri Feb 26 2016 17:03:19 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,6 +1701,31 @@
                     
                         <h1 id="econnabortedeproto">ECONNABORTED/EPROTO</h1>
 <hr>
+<p>&#x2003;&#x2003;
+&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x5728; accept &#x4E4B;&#x524D;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x53D6;&#x6D88;&#x8FDE;&#x63A5;&#x53D1;&#x9001; RST &#x5206;&#x8282;&#xFF0C;accept &#x5F97;&#x5230;&#x7684;&#x5C31;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x5957;&#x63A5;&#x5B57;&#x4E86;&#x3002;
+&#x7CFB;&#x7EDF;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x5728; accept &#x5185;&#x90E8;&#x5B8C;&#x6210;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x4EA4;&#x7ED9;&#x7528;&#x6237;&#x6765;&#x5B8C;&#x6210;&#x3002;
+POSIX &#x89C4;&#x5B9A;&#x662F;&#x8FD4;&#x56DE; ECONNABORTED &#x9519;&#x8BEF; (BSD &#x8FD4;&#x56DE; EPROTO)&#xFF0C;&#x7136;&#x540E;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x4E0A;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5FFD;&#x7565;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x4E0B;&#x4E00;&#x6B21; accept&#x3002;
+&#x53EF;&#x4EE5;&#x6A21;&#x62DF;&#x8FD9;&#x4E2A;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86;&#x5957;&#x63A5;&#x5B57; SO_LINGER &#x5E76;&#x4E14; linger_time &#x4E3A; 0&#xFF0C;&#x5728;&#x5173;&#x95ED;&#x7684;&#x65F6;&#x5019;&#x5E76;&#x4E0D;&#x4F1A;&#x53D1;&#x9001; FIN &#x5206;&#x8282;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x53D1;&#x9001; RST &#x5206;&#x8282;&#x3002;</p>
+<pre><code>[dirlt@localhost.localdomain]$ ./connect -l -b 44568 127.0.0.1 44567
+setsockopt SO_LINGER
+bind (0.0.0.0:44568)
+connect 127.0.0.1:44567 ...
+connect succeed
+[dirlt@localhost.localdomain]$ ./server -d 10 44567
+bind (0.0.0.0:44567)
+listen 5
+accept ...
+client (127.0.0.1:44568)
+accept ...
+</code></pre><p>&#x2003;&#x2003;
+&#x4F3C;&#x4E4E;&#x5E76;&#x6CA1;&#x6709;&#x8FD4;&#x56DE; ECONNABORTED &#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x4E14;&#x8FD9;&#x4E2A;&#x8FDE;&#x63A5;&#x6B63;&#x5E38;&#x8FD4;&#x56DE;&#x4E86;&#x3002;
+&#x7136;&#x540E;&#x770B;&#x770B; tcpdump &#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>00:00:00.000000 IP localhost.localdomain.44568 &gt; localhost.localdomain.44567: Flags [S], seq 1612964784, win 32792, options [mss 16396,sackOK,TS val 86983449 ecr 0,nop,wscale 4], length 0
+00:00:00.000158 IP localhost.localdomain.44567 &gt; localhost.localdomain.44568: Flags [S.], seq 1610609404, ack 1612964785, win 32768, options [mss 16396,sackOK,TS val 86983449 ecr 86983449,nop,wscale 4], length 0
+00:00:00.000050 IP localhost.localdomain.44568 &gt; localhost.localdomain.44567: Flags [.], ack 1, win 2050, options [nop,nop,TS val 86983449 ecr 86983449], length 0
+00:00:00.002227 IP localhost.localdomain.44568 &gt; localhost.localdomain.44567: Flags [R.], seq 1, ack 1, win 2050, options [nop,nop,TS val 86983451 ecr 86983449], length 0
+</code></pre><p>&#x2003;&#x2003;
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x4E4B;&#x540E;&#x786E;&#x5B9E;&#x53D1;&#x9001;&#x4E86; RST &#x5206;&#x8282;&#x3002;</p>
 
                     
                     </section>
