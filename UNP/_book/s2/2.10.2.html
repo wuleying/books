@@ -53,7 +53,7 @@
         data-chapter-title="非阻塞 IO (nonblocking IO)"
         data-filepath="s2/2.10.2.md"
         data-basepath=".."
-        data-revision="Fri Feb 26 2016 17:03:19 GMT+0800 (CST)"
+        data-revision="Fri Feb 26 2016 18:53:50 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,7 +1701,35 @@
                     
                         <h1 id="&#x975E;&#x963B;&#x585E;-io-nonblocking-io">&#x975E;&#x963B;&#x585E; IO (nonblocking IO)</h1>
 <hr>
-
+<p>&#x2003;&#x2003;
+&#x975E;&#x963B;&#x585E; IO &#x548C;&#x963B;&#x585E; IO &#x6267;&#x884C;&#x903B;&#x8F91;&#x4E0A;&#x975E;&#x5E38;&#x76F8;&#x4F3C;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x5728;&#x7B49;&#x5F85;&#x6570;&#x636E;/&#x7A7A;&#x95F4;&#x65F6;&#x5019;&#x903B;&#x8F91;&#x7A0D;&#x6709;&#x4E0D;&#x540C;&#x3002;
+read(buf, x) &#x884C;&#x4E3A;&#x662F;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x6237;&#x8C03;&#x7528; read(buf, x) &#x963B;&#x585E;</li>
+<li>&#x7CFB;&#x7EDF;&#x8C03;&#x7528; sysread</li>
+<li>&#x5982;&#x679C; kernel_buffer &#x6CA1;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x8FD4;&#x56DE; EWOULDBLOCK/EAGAIN</li>
+<li>&#x5F53;&#x6709;&#x6570;&#x636E;&#x4EA7;&#x751F;&#x5047;&#x8BBE; y &#x4E2A;&#x5B57;&#x8282;&#xFF0C;z = y &gt; x ? x : y&#xFF0C;&#x7136;&#x540E; memcopy(buf, kernel_buffer, z)</li>
+<li>&#x7CFB;&#x7EDF;&#x8C03;&#x7528; sysread &#x8FD4;&#x56DE;&#xFF0C;&#x8BFB;&#x53D6; z &#x4E2A;&#x5B57;&#x8282;</li>
+<li>&#x7528;&#x6237;&#x8C03;&#x7528; read(buf, x) &#x8FD4;&#x56DE;</li>
+</ul>
+<p>&#x2003;&#x2003;
+&#x800C; write(buf, x) &#x884C;&#x4E3A;&#x662F;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x6237;&#x8C03;&#x7528; write(buf, x) &#x963B;&#x585E;</li>
+<li>&#x7CFB;&#x7EDF;&#x8C03;&#x7528; syswrite</li>
+<li>&#x5982;&#x679C; kernel buffer &#x6CA1;&#x6709;&#x7A7A;&#x95F4;&#xFF0C;&#x8FD4;&#x56DE; EWOULDBLOCK/EAGAIN</li>
+<li>&#x5047;&#x8BBE;&#x6709; y &#x4E2A;&#x5B57;&#x8282;&#x7684;&#x53EF;&#x7528;&#xFF0C;z = y &gt; x ? x : y&#xFF0C;&#x7136;&#x540E; memcopy(kernel_buffer, buf, z)</li>
+<li>&#x7CFB;&#x7EDF;&#x8C03;&#x7528; sywrite &#x8FD4;&#x56DE;&#xFF0C;&#x5199;&#x5165; z &#x4E2A;&#x5B57;&#x8282;</li>
+<li>&#x7528;&#x6237;&#x8C03;&#x7528; write(buf, x) &#x8FD4;&#x56DE;</li>
+</ul>
+<p>&#x2003;&#x2003;
+&#x7136;&#x540E;&#x4E0A;&#x5C42;&#x8FDB;&#x884C;&#x8F6E;&#x8BE2;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6709;&#x6570;&#x636E;&#x53EF;&#x8BFB;&#x6216;&#x8005;&#x662F;&#x7A7A;&#x95F4;&#x53EF;&#x7528;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x8BBE;&#x7F6E;&#x975E;&#x963B;&#x585E; IO &#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>int flags = fcntl(fd, F_GETFL, 0);
+flags |= O_NONBLOCK;
+fcntl(fd, F_SETFL, flags);
+</code></pre>
                     
                     </section>
                 
