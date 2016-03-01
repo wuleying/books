@@ -53,7 +53,7 @@
         data-chapter-title="viewsockopt.cc"
         data-filepath="s6/6.3.md"
         data-basepath=".."
-        data-revision="Mon Feb 29 2016 18:47:17 GMT+0800 (CST)"
+        data-revision="Tue Mar 01 2016 11:32:58 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,7 +1701,102 @@
                     
                         <h1 id="viewsockoptcc">viewsockopt.cc</h1>
 <hr>
+<pre><code>/***************************************************************************
+ *
+ * Copyright (c) Baidu.com, Inc. All Rights Reserved
+ *
+ **************************************************************************/
 
+/**
+ * @author zhangyan04(@baidu.com)
+ * @brief
+ *
+ */
+#include &lt;unistd.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;netinet/tcp.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;cstdio&gt;
+
+union val{
+    int i;
+    struct linger l;
+    struct timeval t;
+};
+
+static const char* sock_str_flag(union val* v){
+    static char buf[1024];
+    snprintf(buf,sizeof(buf),&quot;%s&quot;,v-&gt;i?&quot;on&quot;:&quot;off&quot;);
+    return buf;
+}
+static const char* sock_str_value(union val* v){
+    static char buf[1024];
+    snprintf(buf,sizeof(buf),&quot;%d&quot;,v-&gt;i);
+    return buf;
+}
+static const char* sock_str_linger(union val* v){
+    static char buf[1024];
+    snprintf(buf,sizeof(buf),&quot;l_onoff=%s,l_linger=%d&quot;,
+             v-&gt;l.l_onoff?&quot;on&quot;:&quot;off&quot;,
+             v-&gt;l.l_linger);
+    return buf;
+}
+static const char* sock_str_timeval(union val* v){
+    static char buf[1024];
+    snprintf(buf,sizeof(buf),&quot;(%d,%d)&quot;,
+             v-&gt;t.tv_sec,
+             v-&gt;t.tv_usec);
+    return buf;
+}
+
+static struct sock_opt{
+    const char* opt_str;
+    int opt_level;
+    int opt_name;
+    const char* (*func)(union val* v);
+} sock_opts[]={
+    {&quot;SO_ERROR&quot;,SOL_SOCKET,SO_ERROR,sock_str_value},
+    {&quot;SO_KEEPALIVE&quot;,SOL_SOCKET,SO_KEEPALIVE,sock_str_flag},
+    {&quot;SO_LINGER&quot;,SOL_SOCKET,SO_LINGER,sock_str_linger},
+    {&quot;SO_RCVBUF&quot;,SOL_SOCKET,SO_RCVBUF,sock_str_value},
+    {&quot;SO_SNDBUF&quot;,SOL_SOCKET,SO_SNDBUF,sock_str_value},
+    {&quot;SO_RCVLOWAT&quot;,SOL_SOCKET,SO_RCVLOWAT,sock_str_value},
+    {&quot;SO_SNDLOWAT&quot;,SOL_SOCKET,SO_SNDLOWAT,sock_str_value},
+    {&quot;SO_RCVTIMEO&quot;,SOL_SOCKET,SO_RCVTIMEO,sock_str_timeval},
+    {&quot;SO_SNDTIMEO&quot;,SOL_SOCKET,SO_SNDTIMEO,sock_str_timeval},
+    {&quot;SO_REUSEADDR&quot;,SOL_SOCKET,SO_REUSEADDR,sock_str_flag},
+    {&quot;TCP_MAXSEG&quot;,IPPROTO_TCP,TCP_MAXSEG,sock_str_value},
+    {&quot;TCP_NODELAY&quot;,IPPROTO_TCP,TCP_NODELAY,sock_str_flag},
+    {&quot;TCP_QUICKACK&quot;,IPPROTO_TCP,TCP_QUICKACK,sock_str_flag},
+    {&quot;TCP_CORK&quot;,IPPROTO_TCP,TCP_CORK,sock_str_flag},
+    {NULL,0,0,NULL}
+};
+
+int main(){
+    for(int i=0;sock_opts[i].opt_str;i++){
+        printf(&quot;%s:&quot;,sock_opts[i].opt_str);
+        int fd=-1;
+        switch(sock_opts[i].opt_level){
+            case SOL_SOCKET:
+            case IPPROTO_TCP:
+                fd=socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
+                break;
+            default:
+                continue;
+        }
+        union val v;
+        socklen_t size=sizeof(v);
+        getsockopt(fd,
+                   sock_opts[i].opt_level,
+                   sock_opts[i].opt_name,
+                   &amp;v,&amp;size);
+        printf(&quot;%s\n&quot;,sock_opts[i].func(&amp;v));
+        close(fd);
+    }
+    return 0;
+}
+</code></pre>
                     
                     </section>
                 

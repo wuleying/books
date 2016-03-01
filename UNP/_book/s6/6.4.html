@@ -53,7 +53,7 @@
         data-chapter-title="name2addr.cc"
         data-filepath="s6/6.4.md"
         data-basepath=".."
-        data-revision="Mon Feb 29 2016 18:47:17 GMT+0800 (CST)"
+        data-revision="Tue Mar 01 2016 11:32:58 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,7 +1701,80 @@
                     
                         <h1 id="name2addrcc">name2addr.cc</h1>
 <hr>
+<pre><code>/***************************************************************************
+ *
+ * Copyright (c) Baidu.com, Inc. All Rights Reserved
+ *
+ **************************************************************************/
 
+/**
+ * @author zhangyan04(@baidu.com)
+ * @brief
+ *
+ */
+#include &lt;netdb.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;arpa/inet.h&gt;
+#include &lt;cstdio&gt;
+
+static void print_hostent(const char* s,const struct hostent* p){
+    printf(&quot;====================%s====================\n&quot;,s);
+    if(p-&gt;h_name){
+        printf(&quot;hostname:%s\n&quot;,p-&gt;h_name);
+    }
+    if(p-&gt;h_aliases &amp;&amp; p-&gt;h_aliases[0]){
+        printf(&quot;alias:\n&quot;);
+        for(int i=0;p-&gt;h_aliases[i];i++){
+            printf(&quot;\t%s\n&quot;,p-&gt;h_aliases[i]);
+        }
+    }
+    if(p-&gt;h_addr_list &amp;&amp; p-&gt;h_addr_list[0]){
+        printf(&quot;ip:\n&quot;);
+        for(int i=0;p-&gt;h_addr_list[i];i++){
+            char ip[INET6_ADDRSTRLEN];
+            inet_ntop(p-&gt;h_addrtype,p-&gt;h_addr_list[i],ip,sizeof(ip));
+            printf(&quot;\t%s\n&quot;,ip);
+        }
+    }
+}
+
+int main(int argc,char* const argv[]){
+    if(argc!=2){
+        fprintf(stderr,&quot;usage:%s hostname\n&quot;,argv[0]);
+        return -1;
+    }
+    const char* hostname=argv[1];
+    char buf[16*1024];
+    struct hostent ent;
+    struct hostent* entp;
+    int herrno=0;
+    {
+        //AF_INET
+        gethostbyname2_r(hostname,AF_INET,&amp;ent,buf,sizeof(buf),&amp;entp,&amp;herrno);
+        if(!entp){
+            fprintf(stderr,&quot;gethostbyname2_r(%s,AF_INET) failed:%s\n&quot;,
+                    hostname,hstrerror(herrno));
+            goto next1;
+        }else{
+            print_hostent(&quot;IPv4&quot;,entp);
+        }
+    }
+next1:
+    {
+        //AF_INET6
+        gethostbyname2_r(hostname,AF_INET6,&amp;ent,buf,sizeof(buf),&amp;entp,&amp;herrno);
+        if(!entp){
+            fprintf(stderr,&quot;gethostbyname2_r(%s,AF_INET6) failed:%s\n&quot;,
+                    hostname,hstrerror(herrno));
+            goto next2;
+        }else{
+            print_hostent(&quot;IPv6&quot;,entp);
+        }
+    }
+next2:
+    return 0;
+}
+</code></pre>
                     
                     </section>
                 

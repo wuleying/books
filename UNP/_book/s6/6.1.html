@@ -53,7 +53,7 @@
         data-chapter-title="connect.cc"
         data-filepath="s6/6.1.md"
         data-basepath=".."
-        data-revision="Mon Feb 29 2016 18:47:17 GMT+0800 (CST)"
+        data-revision="Tue Mar 01 2016 11:32:58 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1701,7 +1701,162 @@
                     
                         <h1 id="connectcc">connect.cc</h1>
 <hr>
+<pre><code>/***************************************************************************
+ *
+ * Copyright (c) Baidu.com, Inc. All Rights Reserved
+ *
+ **************************************************************************/
 
+/**
+ * @author zhangyan04(@baidu.com)
+ * @brief
+ *
+ */
+#include &lt;unistd.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;string&gt;
+#include &lt;signal.h&gt;
+
+static const char* prog=0;
+static std::string connect_ip;
+static int connect_port=0;
+static int bind_port=0;
+static bool linger=false;
+static bool reuseaddr=false;
+static bool half_close=false;
+
+static void usage() {
+    fprintf(stderr, &quot;usage:%s [-b port] [-l] [-r] [-H] ip port\n&quot;, prog);
+}
+
+static void signal_handler(int signo) {
+    printf(&quot;caught signal:%s\n&quot;, strsignal(signo));
+}
+
+int main(int argc, char* const argv[]) {
+    prog = argv[0];
+    bool except = true;
+    for(int i=1; i&lt;argc; i++) {
+        if(argv[i][0] == &apos;-&apos;) {
+            switch(argv[i][1]) {
+                case &apos;h&apos;:
+                    usage();
+                    return 0;
+                case &apos;b&apos;:
+                    bind_port = atoi(argv[i + 1]);
+                    i++;
+                    break;
+                case &apos;l&apos;:
+                    linger = true;
+                    break;
+                case &apos;r&apos;:
+                    reuseaddr = true;
+                    break;
+                case &apos;H&apos;:
+                    half_close = true;
+                    break;
+                default:
+                    fprintf(stderr, &quot;%s:unknown option &apos;%s&apos;\n&quot;, prog, argv[i]);
+                    usage();
+                    return -1;
+            }
+        } else {
+            connect_ip = argv[i];
+            connect_port = atoi(argv[i + 1]);
+            except = false;
+            break;
+        }
+    }
+
+    if(except) {
+        usage();
+        return -1;
+    }
+
+    int fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if(fd == -1) {
+        printf(&quot;socket failed:%m\n&quot;);
+        return -1;
+    }
+
+    if(reuseaddr) {
+        int ok = 1;
+        printf(&quot;setsockopt SO_REUSEADDR\n&quot;);
+        if(setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &amp;ok, sizeof(ok)) == -1) {
+            fprintf(stderr, &quot;setsockopt SO_REUSEADDR failed:%m\n&quot;);
+            return -1;
+        }
+    }
+
+    if(linger) {
+        struct linger val;
+        val.l_onoff = 1;
+        val.l_linger = 0;
+        printf(&quot;setsockopt SO_LINGER\n&quot;);
+        if(setsockopt(fd, SOL_SOCKET, SO_LINGER, &amp;val, sizeof(val)) == -1) {
+            fprintf(stderr, &quot;setsockopt SO_LINGER failed:%m\n&quot;);
+            return -1;
+        }
+    }
+
+    if(bind_port) {
+        sockaddr_in addr;
+        memset(&amp;addr, 0, sizeof(addr));
+        addr.sin_family = AF_INET;
+        addr.sin_addr.s_addr = INADDR_ANY;
+        addr.sin_port = htons(bind_port);
+        printf(&quot;bind (0.0.0.0:%d)\n&quot;, bind_port);
+        if(bind(fd, (struct sockaddr*)&amp;addr, sizeof(addr)) == -1) {
+            printf(&quot;bind failed:%m\n&quot;);
+            return -1;
+        }
+    }
+
+    sockaddr_in addr;
+    memset(&amp;addr, 0, sizeof(addr));
+    addr.sin_family = AF_INET;
+    inet_pton(AF_INET, connect_ip.c_str(), &amp;(addr.sin_addr));
+    addr.sin_port = htons(connect_port);
+    printf(&quot;connect %s:%d ...\n&quot;, connect_ip.c_str(), connect_port);
+    if(connect(fd, (struct sockaddr*)&amp;addr, sizeof(addr)) == -1) {
+        printf(&quot;connect failed:%m\n&quot;);
+        return -1;
+    } else {
+        printf(&quot;connect succeed\n&quot;);
+    }
+
+    signal(SIGPIPE, signal_handler);
+    if(half_close) {
+        char data[1];
+        int ret = 0;
+
+        // SHUT_RD
+        shutdown(fd, SHUT_RD);
+        ret = read(fd, data, sizeof(data));
+        if(ret == -1) {
+            printf(&quot;read failed:%m\n&quot;);
+        } else {
+            printf(&quot;read succeed=%d\n&quot;,ret);
+        }
+
+        // SHUT_WR
+        shutdown(fd, SHUT_WR);
+        ret = write(fd, data, sizeof(data));
+        if(ret == -1) {
+            printf(&quot;write failed:%m\n&quot;);
+        } else {
+            printf(&quot;write succeed=%d\n&quot;, ret);
+        }
+    }
+
+    return 0;
+}
+</code></pre>
                     
                     </section>
                 
