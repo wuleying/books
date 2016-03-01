@@ -53,7 +53,7 @@
         data-chapter-title="connect.cc"
         data-filepath="s6/6.1.md"
         data-basepath=".."
-        data-revision="Tue Mar 01 2016 11:32:58 GMT+0800 (CST)"
+        data-revision="Tue Mar 01 2016 16:54:56 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1722,13 +1722,13 @@
 #include &lt;string&gt;
 #include &lt;signal.h&gt;
 
-static const char* prog=0;
+static const char* prog = 0;
 static std::string connect_ip;
-static int connect_port=0;
-static int bind_port=0;
-static bool linger=false;
-static bool reuseaddr=false;
-static bool half_close=false;
+static int connect_port = 0;
+static int bind_port = 0;
+static bool linger = false;
+static bool reuseaddr = false;
+static bool half_close = false;
 
 static void usage() {
     fprintf(stderr, &quot;usage:%s [-b port] [-l] [-r] [-H] ip port\n&quot;, prog);
@@ -1741,7 +1741,7 @@ static void signal_handler(int signo) {
 int main(int argc, char* const argv[]) {
     prog = argv[0];
     bool except = true;
-    for(int i=1; i&lt;argc; i++) {
+    for(int i = 1; i &lt; argc; i++) {
         if(argv[i][0] == &apos;-&apos;) {
             switch(argv[i][1]) {
                 case &apos;h&apos;:
@@ -1823,6 +1823,7 @@ int main(int argc, char* const argv[]) {
     inet_pton(AF_INET, connect_ip.c_str(), &amp;(addr.sin_addr));
     addr.sin_port = htons(connect_port);
     printf(&quot;connect %s:%d ...\n&quot;, connect_ip.c_str(), connect_port);
+
     if(connect(fd, (struct sockaddr*)&amp;addr, sizeof(addr)) == -1) {
         printf(&quot;connect failed:%m\n&quot;);
         return -1;
@@ -1831,6 +1832,7 @@ int main(int argc, char* const argv[]) {
     }
 
     signal(SIGPIPE, signal_handler);
+
     if(half_close) {
         char data[1];
         int ret = 0;
