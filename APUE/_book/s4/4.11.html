@@ -53,7 +53,7 @@
         data-chapter-title="特殊设备文件"
         data-filepath="s4/4.11.md"
         data-basepath=".."
-        data-revision="Wed Mar 02 2016 14:58:20 GMT+0800 (CST)"
+        data-revision="Wed Mar 02 2016 16:21:27 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2948,27 +2948,27 @@
 <hr>
 <p>&#x2003;&#x2003;
 st_dev &#x662F;&#x8BBE;&#x5907;&#x53F7;&#xFF0C;&#x5206;&#x4E3A;&#x4E3B;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#xFF1A;</p>
-<pre><code>major(buf.st_dev) //&#x4E3B;&#x8BBE;&#x5907;&#x53F7;
-minor(buf.st_dev) //&#x6B21;&#x8BBE;&#x5907;&#x53F7;
+<pre><code>major(buf.st_dev) // &#x4E3B;&#x8BBE;&#x5907;&#x53F7;
+minor(buf.st_dev) // &#x6B21;&#x8BBE;&#x5907;&#x53F7;
 </code></pre><p>&#x2003;&#x2003;
 &#x4E3B;&#x8BBE;&#x5907;&#x53F7;&#x8868;&#x793A;&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#xFF0C;&#x800C;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x8868;&#x793A;&#x7279;&#x5B9A;&#x7684;&#x5B50;&#x8BBE;&#x5907;&#x3002;
-&#x6BD4;&#x5982;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x78C1;&#x76D8;&#x4E0A;&#x9762;&#x4E0D;&#x540C;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x4E0D;&#x540C;&#x3002;</p>
+&#x6BD4;&#x5982;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x78C1;&#x76D8;&#x4E0A;&#x4E0D;&#x540C;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x6B21;&#x8BBE;&#x5907;&#x53F7;&#x4E0D;&#x540C;&#x3002;</p>
 <p>&#x2003;&#x2003;
-st_rdev &#x53EA;&#x6709;&#x5B57;&#x7B26;&#x7279;&#x6B8A;&#x6587;&#x4EF6;&#x548C;&#x5757;&#x7279;&#x6B8A;&#x6587;&#x4EF6;&#x624D;&#x6709;&#x8FD9;&#x4E2A;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x5B9E;&#x9645;&#x8BBE;&#x5907;&#x7684;&#x8BBE;&#x5907;&#x7F16;&#x53F7;&#x3002;</p>
+st_rdev &#x53EA;&#x6709;&#x5B57;&#x7B26;&#x7279;&#x6B8A;&#x6587;&#x4EF6;&#x548C;&#x5757;&#x7279;&#x6B8A;&#x6587;&#x4EF6;&#x624D;&#x4F1A;&#x6709;&#x8FD9;&#x4E2A;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x5B9E;&#x9645;&#x8BBE;&#x5907;&#x7684;&#x8BBE;&#x5907;&#x7F16;&#x53F7;&#x3002;</p>
 <pre><code>#include &lt;sys/types.h&gt;
 #include &lt;sys/stat.h&gt;
 #include &lt;cstdio&gt;
 int main(int argc, char * const* argv) {
-    for(int i=1; i&lt;argc; i++){
+    for(int i = 1; i &lt; argc; i++){
         struct stat buf;
         stat(argv[i], &amp;buf);
         printf(&quot;%s dev=%d/%d&quot;, argv[i],
                major(buf.st_dev), minor(buf.st_dev));
 
-        if(S_ISCHR(buf.st_mode) || S_ISBLK(buf.st_mode)){
-            if(S_ISCHR(buf.st_mode)){
+        if(S_ISCHR(buf.st_mode) || S_ISBLK(buf.st_mode)) {
+            if(S_ISCHR(buf.st_mode)) {
                 printf(&quot; (character)&quot;);
-            }else if(S_ISBLK(buf.st_mode)){
+            } else if(S_ISBLK(buf.st_mode)) {
                 printf(&quot; (block)&quot;);
             }
             printf(&quot; rdev=%d/%d&quot;,

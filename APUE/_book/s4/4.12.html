@@ -53,7 +53,7 @@
         data-chapter-title="inotify"
         data-filepath="s4/4.12.md"
         data-basepath=".."
-        data-revision="Wed Mar 02 2016 14:58:20 GMT+0800 (CST)"
+        data-revision="Wed Mar 02 2016 16:21:27 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2953,7 +2953,7 @@ inotify &#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x76D1;&#x63A7;&#x6587;&#x4EF6;&#x4EE5;
 // inotify_init1(0);
 int inotify_init(void); 
 
-// IN_NONBLOCK   &#x5728;&#x8BBF;&#x95EE;&#x4E8B;&#x4EF6;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x963B;&#x585E;&#x8BFB;&#x53D6;
+// IN_NONBLOCK   &#x5728;&#x8BBF;&#x95EE;&#x4E8B;&#x4EF6;&#x65F6;&#x4F7F;&#x7528;&#x963B;&#x585E;&#x8BFB;&#x53D6;
 // IN_CLOEXEC    &#x5728; exec &#x65F6;&#x5019;&#x5173;&#x95ED;
 // return a new file descriptor
 int inotify_init1(int flags);
@@ -2965,19 +2965,19 @@ int inotify_add_watch(int fd, const char *pathname, uint32_t mask);
 
 int inotify_rm_watch(int fd, int wd);
 </code></pre><p>&#x2003;&#x2003;
-&#x6574;&#x4E2A;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x9996;&#x5148;&#x901A;&#x8FC7; init &#x521B;&#x5EFA; fd, &#x7136;&#x540E;&#x5C06;&#x9700;&#x8981;&#x76D1;&#x63A7;&#x7684;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x8FDB;&#x6765;&#x6216;&#x8005;&#x662F;&#x79FB;&#x9664;&#xFF0C;&#x4E4B;&#x540E;&#x5728; read &#x65F6;&#x5019;&#x8BFB;&#x53D6;&#x76D1;&#x63A7;&#x4E8B;&#x4EF6;&#x3002;
-fd &#x53EF;&#x4EE5;&#x653E;&#x5728; epoll &#x91CC;&#x9762;&#x8FDB;&#x884C;&#x76D1;&#x63A7;&#x3002;
+&#x6574;&#x4E2A;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x9996;&#x5148;&#x901A;&#x8FC7; init &#x521B;&#x5EFA; fd, &#x7136;&#x540E;&#x5C06;&#x9700;&#x8981;&#x76D1;&#x63A7;&#x7684;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x8FDB;&#x6765;&#x6216;&#x662F;&#x79FB;&#x9664;&#xFF0C;&#x6700;&#x540E;&#x5728; read &#x65F6;&#x8BFB;&#x53D6;&#x76D1;&#x63A7;&#x4E8B;&#x4EF6;&#x3002;
+fd &#x53EF;&#x4EE5;&#x653E;&#x5728; epoll &#x91CC;&#x8FDB;&#x884C;&#x76D1;&#x63A7;&#x3002;
 &#x76D1;&#x63A7;&#x4E8B;&#x4EF6;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code>/* Structure describing an inotify event.  */
+<pre><code>/* Structure describing an inotify event. */
 struct inotify_event {
-  int wd;               /* Watch descriptor.  */
-  uint32_t mask;        /* Watch mask.  */
-  uint32_t cookie;      /* Cookie to synchronize two events.  */
-  uint32_t len;         /* Length (including NULs) of name.  */
-  char name __flexarr;  /* Name.  */
+  int wd;               /* Watch descriptor. */
+  uint32_t mask;        /* Watch mask. */
+  uint32_t cookie;      /* Cookie to synchronize two events. */
+  uint32_t len;         /* Length (including NULs) of name. */
+  char name __flexarr;  /* Name. */
 };
 </code></pre><p>&#x2003;&#x2003;
-&#x5BF9;&#x4E8E; __flexarr &#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x662F;&#x4E00;&#x4E2A;&#x60AC;&#x6302;&#x6307;&#x9488;&#x8868;&#x793A;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#xFF0C;&#x6587;&#x4EF6;&#x957F;&#x5EA6;&#x901A;&#x8FC7; len &#x8868;&#x793A;&#xFF0C;&#x6240;&#x4EE5;&#x8BFB;&#x53D6;&#x4E00;&#x4E2A; event &#x4E4B;&#x540E;&#x8FD8;&#x9700;&#x8981;&#x5411;&#x524D;&#x79FB;&#x52A8; len &#x4E2A;&#x5B57;&#x8282;&#x624D;&#x80FD;&#x591F;&#x8BFB;&#x53D6;&#x4E0B;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
+__flexarr &#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x662F;&#x4E00;&#x4E2A;&#x60AC;&#x6302;&#x6307;&#x9488;&#xFF0C;&#x8868;&#x793A;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#xFF0C;&#x6587;&#x4EF6;&#x957F;&#x5EA6;&#x901A;&#x8FC7; len &#x8868;&#x793A;&#xFF0C;&#x6240;&#x4EE5;&#x8BFB;&#x53D6;&#x4E00;&#x4E2A; event &#x4E4B;&#x540E;&#x8FD8;&#x9700;&#x8981;&#x5411;&#x524D;&#x79FB;&#x52A8; len &#x4E2A;&#x5B57;&#x8282;&#x624D;&#x80FD;&#x8BFB;&#x53D6;&#x4E0B;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x4E8B;&#x4EF6;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x76D1;&#x63A7;&#x3002;
 &#x4E0B;&#x9762;&#x662F;&#x4EE3;&#x7801;&#xFF1A;</p>
@@ -3022,7 +3022,7 @@ struct inotify_event {
                           | IN_CLOSE_NOWRITE | IN_OPEN | IN_MOVED_FROM        \
                           | IN_MOVED_TO | IN_CREATE | IN_DELETE               \
                           | IN_DELETE_SELF | IN_MOVE_SELF)
-</code></pre><p>&#x2003;&#x2003;<br>man &#x91CC;&#x9762;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x6709;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#xFF1A;</p>
+</code></pre><p>&#x2003;&#x2003;<br>man &#x91CC;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x6709;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#xFF1A;</p>
 <pre><code>inotify events
     The  inotify_add_watch(2) mask argument and the mask field of the inotify_event structure returned when read(2)ing an ino&#x2010;
     tify file descriptor are both bit masks identifying inotify events.  The following bits can  be  specified  in  mask  when
@@ -3075,7 +3075,7 @@ struct inotify_event {
         IN_Q_OVERFLOW     Event queue overflowed (wd is -1 for this event).
         IN_UNMOUNT        File system containing watched object was unmounted.
 </code></pre><p>&#x2003;&#x2003;
-&#x5728; man 7 inotify &#x91CC;&#x9762;&#x7ED9;&#x51FA;&#x4E86;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x5185;&#x6838;&#x53C2;&#x6570;&#xFF1A;</p>
+&#x5728; man 7 inotify &#x91CC;&#x7ED9;&#x51FA;&#x4E86;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x5185;&#x6838;&#x53C2;&#x6570;&#xFF1A;</p>
 <pre><code>/proc interfaces
     The following interfaces can be used to limit the amount of kernel memory consumed by inotify:
 
@@ -3090,8 +3090,8 @@ struct inotify_event {
     /proc/sys/fs/inotify/max_user_watches
            This specifies an upper limit on the number of watches that can be created per real user ID.
 </code></pre><p>&#x2003;&#x2003;
-&#x9650;&#x5236;&#x4E86;&#x521B;&#x5EFA;&#x7684; instance &#x4E2A;&#x6570;&#x5DF2;&#x7ECF; watch &#x6570;&#x76EE;&#xFF0C;&#x4EE5;&#x53CA; event &#x7684;&#x6570;&#x76EE;&#x3002;
-&#x5982;&#x679C; event &#x51FA;&#x73B0;&#x6EA2;&#x51FA;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x4EA7;&#x751F; IN_Q_OVERFLOW &#x4E8B;&#x4EF6;&#x3002;
+&#x9650;&#x5236;&#x4E86;&#x521B;&#x5EFA;&#x7684; instance &#x4E2A;&#x6570;&#x5DF2;&#x7ECF; watch &#x7684;&#x6570;&#x76EE;&#xFF0C;&#x4EE5;&#x53CA; event &#x7684;&#x6570;&#x76EE;&#x3002;
+&#x5982;&#x679C; event &#x51FA;&#x73B0;&#x6EA2;&#x51FA;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F; IN_Q_OVERFLOW &#x4E8B;&#x4EF6;&#x3002;
 &#x901A;&#x5E38;&#x5982;&#x679C;&#x51FA;&#x73B0; overflow &#x4E8B;&#x4EF6;&#x610F;&#x5473;&#x7740;&#x76D1;&#x63A7;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x4E22;&#x5931;&#xFF0C;&#x90A3;&#x4E48;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x4E3B;&#x52A8;&#x8FDB;&#x884C;&#x626B;&#x63CF;&#x3002;</p>
 
                     

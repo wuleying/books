@@ -53,7 +53,7 @@
         data-chapter-title="文件删除和重命名"
         data-filepath="s4/4.8.md"
         data-basepath=".."
-        data-revision="Wed Mar 02 2016 14:58:20 GMT+0800 (CST)"
+        data-revision="Wed Mar 02 2016 16:21:27 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2947,11 +2947,11 @@
                         <h1 id="&#x6587;&#x4EF6;&#x5220;&#x9664;&#x548C;&#x91CD;&#x547D;&#x540D;">&#x6587;&#x4EF6;&#x5220;&#x9664;&#x548C;&#x91CD;&#x547D;&#x540D;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x4E3A;&#x4E86;&#x89E3;&#x9664;&#x786C;&#x94FE;&#x63A5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
+&#x4E3A;&#x4E86;&#x89E3;&#x9664;&#x786C;&#x94FE;&#x63A5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
 <pre><code>int unlink(const char* pathname);
 </code></pre><p>&#x2003;&#x2003;
-&#x56E0;&#x4E3A;&#x6587;&#x4EF6;&#x94FE;&#x63A5;&#x6570;&#x76EE;&#x5982;&#x679C;&#x4E3A; 0 &#xFF0C;&#x90A3;&#x4E48;&#x6587;&#x4EF6;&#x5C31;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x3002;
-&#x89E3;&#x9664;&#x786C;&#x94FE;&#x63A5;&#x5FC5;&#x987B;&#x5305;&#x542B;&#x5BF9;&#x4E8E;&#x76EE;&#x5F55;&#x7684;&#x5199;&#x548C;&#x6267;&#x884C;&#x6743;&#x9650;&#x3002;
+&#x56E0;&#x4E3A;&#x6587;&#x4EF6;&#x94FE;&#x63A5;&#x6570;&#x76EE;&#x4E3A; 0 &#x6587;&#x4EF6;&#x5C31;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x3002;
+&#x89E3;&#x9664;&#x786C;&#x94FE;&#x63A5;&#x5FC5;&#x987B;&#x5305;&#x542B;&#x5BF9;&#x5E94;&#x76EE;&#x5F55;&#x7684;&#x5199;&#x548C;&#x6267;&#x884C;&#x6743;&#x9650;&#x3002;
 &#x5982;&#x679C;&#x6587;&#x4EF6;&#x8BBE;&#x7F6E;&#x4E86;&#x7C98;&#x4F4F;&#x4F4D;&#xFF0C;&#x9664;&#x4E86;&#x5177;&#x6709;&#x5199;&#x6743;&#x9650;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x5FC5;&#x987B;&#x6709;&#x4E0B;&#x9762;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x6761;&#x4EF6;&#xFF1A;</p>
 <ul>
 <li>&#x62E5;&#x6709;&#x8BE5;&#x6587;&#x4EF6;</li>
@@ -2962,7 +2962,7 @@
 &#x5173;&#x4E8E;&#x6587;&#x4EF6;&#x5220;&#x9664;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; remove &#x51FD;&#x6570;&#xFF0C;&#x6548;&#x679C;&#x548C; unlink &#x4E00;&#x6837;&#x3002;
 &#x4E0D;&#x8FC7;&#x5BF9;&#x4E8E;&#x76EE;&#x5F55;&#xFF0C;&#x5185;&#x90E8;&#x8C03;&#x7528; rmdir&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x5728;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x662F;&#x540E;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x5373;&#x4F7F; st_nlink &#x7B49;&#x4E8E; 0&#xFF0C;&#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x4E2D;&#x8FD8;&#x6709;&#x8FDB;&#x7A0B;&#x5728;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x4ECD;&#x7136;&#x4E0D;&#x4F1A;&#x91CA;&#x653E;&#xFF0C;&#x76F4;&#x5230;&#x8FDB;&#x7A0B;&#x5173;&#x95ED;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x91CA;&#x653E;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x3002;
+&#x5728;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x4E4B;&#x540E;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x662F;&#x5373;&#x4F7F; st_nlink &#x7B49;&#x4E8E; 0&#xFF0C;&#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x4E2D;&#x8FD8;&#x6709;&#x8FDB;&#x7A0B;&#x5728;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x4ECD;&#x7136;&#x4E0D;&#x4F1A;&#x91CA;&#x653E;&#xFF0C;&#x76F4;&#x5230;&#x8FDB;&#x7A0B;&#x5173;&#x95ED;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x91CA;&#x653E;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x3002;
 &#x751A;&#x81F3;&#x5982;&#x679C;&#x8FDB;&#x7A0B;&#x6301;&#x6709;&#x8FD9;&#x4E2A; fd&#xFF0C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4F9D;&#x7136;&#x662F;&#x53EF;&#x5199;&#x7684;&#x3002;</p>
 <pre><code>#include &lt;cstdio&gt;
 #include &lt;fcntl.h&gt;
@@ -2975,18 +2975,18 @@ int main(){
     char buf[12];
     buf[0] = 0;
     read(fd, buf, sizeof(buf));
-    //&#x5C3D;&#x7BA1;&#x4E4B;&#x524D; unlink&#x4E86;&#xFF0C;&#x4F9D;&#x7136;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5230; hello
+    // &#x5C3D;&#x7BA1;&#x4E4B;&#x524D; unlink &#x4E86;&#xFF0C;&#x4F9D;&#x7136;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5230; hello
     printf(&quot;%s\n&quot;, buf);
     close(fd);
 }
 </code></pre><p>&#x2003;&#x2003;
 &#x91CD;&#x547D;&#x540D;&#x4F7F;&#x7528;&#x51FD;&#x6570; rename&#x3002;
-&#x5173;&#x4E8E;&#x91CD;&#x547D;&#x540D;&#x4F1A;&#x6D89;&#x53CA;&#x76EE;&#x5F55;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x770B;&#x770B;&#x884C;&#x4E3A;&#xFF1A;</p>
+&#x91CD;&#x547D;&#x540D;&#x4F1A;&#x6D89;&#x53CA;&#x76EE;&#x5F55;&#xFF0C;&#x770B;&#x770B;&#x76F8;&#x5173;&#x884C;&#x4E3A;&#xFF1A;</p>
 <ul>
 <li>oldname &#x662F;&#x6587;&#x4EF6;<ul>
 <li>newname &#x4E0D;&#x80FD;&#x662F;&#x76EE;&#x5F55;</li>
-<li>newname &#x5982;&#x679C;&#x5B58;&#x5728;&#x9996;&#x5148;&#x5220;&#x9664;</li>
-<li>&#x7136;&#x540E;&#x521B;&#x5EFA; newname</li>
+<li>newname &#x5982;&#x679C;&#x5B58;&#x5728;&#x5148;&#x5220;&#x9664;</li>
+<li>&#x518D;&#x521B;&#x5EFA; newname</li>
 </ul>
 </li>
 </ul>
@@ -2994,7 +2994,7 @@ int main(){
 <li>oldname &#x662F;&#x76EE;&#x5F55;<ul>
 <li>newname &#x4E0D;&#x80FD;&#x662F;&#x6587;&#x4EF6;</li>
 <li>newname &#x5982;&#x679C;&#x5B58;&#x5728;&#x5FC5;&#x987B;&#x662F;&#x7A7A;&#x76EE;&#x5F55;&#x7136;&#x540E;&#x5220;&#x9664;</li>
-<li>&#x7136;&#x540E;&#x521B;&#x5EFA; newname</li>
+<li>&#x518D;&#x521B;&#x5EFA; newname</li>
 </ul>
 </li>
 </ul>
