@@ -53,7 +53,7 @@
         data-chapter-title="文件 IO"
         data-filepath="s3/README.md"
         data-basepath=".."
-        data-revision="Wed Mar 02 2016 11:23:19 GMT+0800 (CST)"
+        data-revision="Wed Mar 02 2016 14:58:20 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2958,15 +2958,15 @@
 <p>&#x2003;&#x2003;
 &#x8FD9;&#x91CC; read/write &#x5C31;&#x662F;&#x4E0D;&#x5E26;&#x7F13;&#x51B2;&#x7684; IO&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x800C;&#x4E0D;&#x5728;&#x7528;&#x6237;&#x6001;&#x8FDB;&#x884C;&#x7F13;&#x51B2;&#x3002;
 &#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x6807;&#x51C6; IO&#xFF0C;&#x6807;&#x51C6; IO &#x5728;&#x7528;&#x6237;&#x6001;&#x8FDB;&#x884C;&#x4E86;&#x6570;&#x636E;&#x7F13;&#x51B2;&#x3002;
-&#x4E0D;&#x5E26;&#x7F13;&#x51B2; IO &#x4E0D;&#x662F; ISO C &#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#xFF0C;&#x4F46;&#x662F;&#x5374;&#x662F; POSIX &#x548C; SUS &#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#x3002;</p>
+&#x4E0D;&#x5E26;&#x7F13;&#x51B2; IO &#x4E0D;&#x662F; ISO C &#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#xFF0C;&#x5374;&#x662F; POSIX &#x548C; SUS &#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x5BF9;&#x4E8E;&#x6587;&#x4EF6; IO&#xFF0C;&#x64CD;&#x4F5C;&#x7684;&#x5BF9;&#x8C61;&#x5C31;&#x662F;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x8D1F;&#x6574;&#x6570;&#x3002;
 &#x901A;&#x5E38;&#x7CFB;&#x7EDF;&#x4F1A;&#x4F7F;&#x7528; 0&#x3001;1&#x3001;2 &#x6765;&#x4F5C;&#x4E3A;&#x8FDB;&#x7A0B;&#x7684;&#x6807;&#x51C6;&#x8F93;&#x5165;&#x3001;&#x8F93;&#x51FA;&#x548C;&#x9519;&#x8BEF;&#x3002;
 &#x4F46;&#x662F;&#x6700;&#x597D;&#x4E0D;&#x8981;&#x4F9D;&#x8D56;&#x8FD9;&#x4E2A;&#x884C;&#x4E3A;&#xFF0C;&#x800C;&#x4F7F;&#x7528;&#xFF1A;</p>
 <pre><code>#include &lt;unistd.h&gt;
-#define STDIN_FILENO 0
-#define STDOUT_FILENO 1
-#define STDERR_FILENO 2
+#define STDIN_FILENO    0
+#define STDOUT_FILENO   1
+#define STDERR_FILENO   2
 </code></pre><p>&#x2003;&#x2003;
 &#x540C;&#x65F6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5BF9;&#x4E8E;&#x8FDB;&#x7A0B;&#x6253;&#x5F00;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x5B58;&#x5728;&#x4E0A;&#x9650;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; sysconf &#x5F97;&#x5230;&#x3002;</p>
 

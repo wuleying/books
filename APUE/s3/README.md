@@ -13,7 +13,7 @@
 &emsp;&emsp;
 这里 read/write 就是不带缓冲的 IO，因为它们直接进行系统调用而不在用户态进行缓冲。
 相对应的是标准 IO，标准 IO 在用户态进行了数据缓冲。
-不带缓冲 IO 不是 ISO C 的组成部分，但是却是 POSIX 和 SUS 的组成部分。
+不带缓冲 IO 不是 ISO C 的组成部分，却是 POSIX 和 SUS 的组成部分。
 
 &emsp;&emsp;
 对于文件 IO，操作的对象就是文件描述符，这是一个非负整数。
@@ -21,9 +21,9 @@
 但是最好不要依赖这个行为，而使用：
 
     #include <unistd.h>
-    #define STDIN_FILENO 0
-    #define STDOUT_FILENO 1
-    #define STDERR_FILENO 2
+    #define STDIN_FILENO    0
+    #define STDOUT_FILENO   1
+    #define STDERR_FILENO   2
 
 &emsp;&emsp;
 同时需要注意的是，对于进程打开的文件描述符是存在上限的，可以通过 sysconf 得到。
