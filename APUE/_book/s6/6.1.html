@@ -53,7 +53,7 @@
         data-chapter-title="口令文件"
         data-filepath="s6/6.1.md"
         data-basepath=".."
-        data-revision="Thu Mar 03 2016 11:32:58 GMT+0800 (CST)"
+        data-revision="Thu Mar 03 2016 13:47:33 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2966,9 +2966,9 @@ ftp:x:14:50:FTP User:/:/sbin/nologin
 nobody:x:99:99:Nobody:/:/sbin/nologin
 dbus:x:81:81:System message bus:/:/sbin/nologin
 </code></pre><p>&#x2003;&#x2003;
-&#x4E4B;&#x524D;&#x63D0;&#x5230;&#x8FC7;&#x6BCF;&#x4E2A;&#x5B57;&#x6BB5;&#x542B;&#x4E49;&#x3002;
+&#x4E4B;&#x524D;&#x63D0;&#x5230;&#x8FC7;&#x6BCF;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x542B;&#x4E49;&#x3002;
 &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5BC6;&#x7801;&#x90FD;&#x662F;&#x4F7F;&#x7528; x &#x8868;&#x793A;&#x3002;
-&#x5982;&#x679C;&#x4E0D;&#x5E0C;&#x671B;&#x7528;&#x6237;&#x767B;&#x5F55;&#xFF0C;&#x90A3;&#x4E48;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x4E0D;&#x5B58;&#x5728;&#x7684; shell &#x6BD4;&#x5982; /sbin/noshell &#x6216;&#x8005;&#x662F; /sbin/nologin&#x3002;</p>
+&#x5982;&#x679C;&#x4E0D;&#x5E0C;&#x671B;&#x7528;&#x6237;&#x767B;&#x5F55;&#xFF0C;&#x90A3;&#x4E48;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x4E0D;&#x5B58;&#x5728;&#x7684; shell &#x6BD4;&#x5982; /sbin/noshell &#x6216;&#x662F; /sbin/nologin&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x6240;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x7ED3;&#x6784;&#x548C;&#x63A5;&#x53E3;&#x5305;&#x62EC;&#xFF1A;</p>
 <pre><code>#include &lt;pwd.h&gt;
@@ -2987,20 +2987,20 @@ struct passwd {
 struct passwd* getpwuid(uid_t uid);
 struct passwd* getpwnam(const char* name);
 
-// &#x5F97;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;entry&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x4F1A;&#x81EA;&#x52A8;&#x6253;&#x5F00;&#x4E0D;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;
+// &#x5F97;&#x5230;&#x4E0B;&#x4E00;&#x4E2A; entry&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x6253;&#x5F00;&#xFF0C;&#x4E0D;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;
 struct passwd* getpwent(void);
-// &#x4ECE;&#x5934;&#x5F00;&#x59CB;entry
+// &#x4ECE;&#x5934;&#x5F00;&#x59CB; entry
 void setpwent(void);
 // &#x5173;&#x95ED; entry &#x8BBF;&#x95EE;&#x63A5;&#x53E3;
 void endpwent(void);
-
-
-#include &lt;pwd.h&gt;
+</code></pre><p>&#x2003;&#x2003;
+&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>#include &lt;pwd.h&gt;
 #include &lt;cstdio&gt;
 int main() {
     setpwent();
     struct passwd* pw = getpwent();
-    while(pw){
+    while(pw) {
         printf(&quot;%s:%s:%d:%d:%s:%s:%s\n&quot;,
                pw-&gt;pw_name,pw-&gt;pw_passwd, pw-&gt;pw_uid, pw-&gt;pw_gid, 
                pw-&gt;pw_gecos, pw-&gt;pw_dir, pw-&gt;pw_shell);

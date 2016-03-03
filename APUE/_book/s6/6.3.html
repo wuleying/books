@@ -53,7 +53,7 @@
         data-chapter-title="组文件"
         data-filepath="s6/6.3.md"
         data-basepath=".."
-        data-revision="Thu Mar 03 2016 11:32:58 GMT+0800 (CST)"
+        data-revision="Thu Mar 03 2016 13:47:33 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2947,7 +2947,7 @@
                         <h1 id="&#x7EC4;&#x6587;&#x4EF6;">&#x7EC4;&#x6587;&#x4EF6;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x683C;&#x5F0F;&#x548C; /etc/passwd &#x4E00;&#x6837;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x6309;&#x7167; , &#x5206;&#x5F00;&#xFF1A;</p>
+&#x683C;&#x5F0F;&#x4E0E; /etc/passwd &#x4E00;&#x6837;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x6309;&#x9017;&#x53F7;&#x5206;&#x9694;&#xFF1A;</p>
 <pre><code>root:x:0:root
 bin:x:1:root,bin,daemon
 daemon:x:2:root,bin,daemon
@@ -2969,21 +2969,21 @@ struct group {
 struct group* getgrgid(gid_t gid);
 struct group* getgrnam(const char* name);
 
-//&#x904D;&#x5386;&#x63A5;&#x53E3;
+// &#x904D;&#x5386;&#x63A5;&#x53E3;
 struct group* getgrent();
 void setgrent();
 void endgrent();
-
-
-#include &lt;grp.h&gt;
+</code></pre><p>&#x2003;&#x2003;
+&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>#include &lt;grp.h&gt;
 #include &lt;cstdio&gt;
 int main() {
     setgrent();
     struct group *gp = getgrent();
-    while(gp){
+    while(gp) {
         printf(&quot;%s:%s:%d:&quot;, gp-&gt;gr_name, gp-&gt;gr_passwd, gp-&gt;gr_gid);
-        if(*(gp-&gt;gr_mem)){
-            while(*(gp-&gt;gr_mem+1)){
+        if(*(gp-&gt;gr_mem)) {
+            while(*(gp-&gt;gr_mem + 1)) {
                 printf(&quot;%s, &quot;, *(gp-&gt;gr_mem));
                 gp-&gt;gr_mem++;
             }
