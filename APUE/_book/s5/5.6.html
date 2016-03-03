@@ -53,7 +53,7 @@
         data-chapter-title="临时文件"
         data-filepath="s5/5.6.md"
         data-basepath=".."
-        data-revision="Wed Mar 02 2016 16:21:27 GMT+0800 (CST)"
+        data-revision="Thu Mar 03 2016 11:32:58 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2958,7 +2958,7 @@ tmpnam &#x7684; ptr &#x4F20;&#x5165;&#x4E00;&#x4E2A; L_tmpnam &#x957F;&#x5EA6;&#
 int main() {
     char name[L_tmpnam];
     printf(&quot;%d\n&quot;, TMP_MAX);
-    for(int i=0; i&lt;10; i++){
+    for(int i = 0; i &lt; 10; i++){
         name[0] = 0;
         tmpnam(name);
         printf(&quot;%s\n&quot;, name);
@@ -2966,7 +2966,7 @@ int main() {
     return 0;
 }
 </code></pre><p>&#x2003;&#x2003;
-&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x90FD;&#x662F;&#x5728; /tmp &#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x7684;</p>
+&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x90FD;&#x662F;&#x5728; /tmp &#x76EE;&#x5F55;&#x4E0B;&#xFF1A;</p>
 <pre><code>[dirlt@localhost.localdomain]$ ./main
 238328
 /tmp/fileroni3c
@@ -2989,7 +2989,7 @@ tmpfile &#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; &quot;wb+&quot; &#x6253
 </ul>
 <p>&#x2003;&#x2003;
 &#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x8FD9;&#x79CD;&#x95F4;&#x5B58;&#x5728;&#x4E00;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x7A7A;&#x9699;&#xFF0C;tmpfile &#x4FDD;&#x8BC1;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x884C;&#x3002;
-&#x5E76;&#x4E14;&#x6CE8;&#x610F;&#x5230;&#x6700;&#x540E; unlink &#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x7528;&#x6765;&#x81EA;&#x5DF1;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x3002;</p>
+&#x5E76;&#x4E14;&#x5230;&#x6700;&#x540E; unlink &#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x7528;&#x6765;&#x81EA;&#x5DF1;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x3002;</p>
 <p>&#x2003;&#x2003;
 tempnam &#x76F8;&#x5BF9;&#x4E8E; tmpnam &#x6765;&#x8BF4;&#x529F;&#x80FD;&#x66F4;&#x5F3A;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#x81F3;&#x4E8E;&#x662F;&#x5426;&#x597D;&#x7528;&#x5C31;&#x4E0D;&#x597D;&#x8BF4;&#x4E86;&#x3002;
 &#x5BF9;&#x4E8E; tempnam &#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x540C;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x751F;&#x6210;&#x4E34;&#x65F6;&#x6587;&#x4EF6; (&#x987A;&#x5E8F;&#x6BD4;&#x8F83;&#x8BE1;&#x5F02;):</p>
@@ -2999,8 +2999,8 @@ tempnam &#x76F8;&#x5BF9;&#x4E8E; tmpnam &#x6765;&#x8BF4;&#x529F;&#x80FD;&#x66F4;
 <li>&lt;cstdio&gt; &#x5B9A;&#x4E49;&#x7684; P_tmpdir</li>
 </ul>
 <p>&#x2003;&#x2003;
-&#x800C; prefix &#x662F;&#x6700;&#x591A;&#x5305;&#x542B; 5 &#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;
-&#x7136;&#x540E;&#x5185;&#x90E8;&#x4F7F;&#x7528; malloc &#x6765;&#x6784;&#x9020;&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x7EC8;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x91CA;&#x653E;&#x3002;</p>
+&#x800C; prefix &#x6700;&#x591A;&#x5305;&#x542B; 5 &#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;
+&#x5185;&#x90E8;&#x4F7F;&#x7528; malloc &#x6765;&#x6784;&#x9020;&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x7EC8;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x91CA;&#x653E;&#x3002;</p>
 <pre><code>#include &lt;cstdio&gt;
 #include &lt;cstdlib&gt;
 #include &lt;unistd.h&gt;
@@ -3010,7 +3010,7 @@ int main() {
     char* p = tempnam(&quot;/var/tmp&quot;, &quot;helloworld&quot;);
     printf(&quot;%s\n&quot;, p);
     free(p);
-    p=tempnam(NULL, &quot;helloworld&quot;);
+    p = tempnam(NULL, &quot;helloworld&quot;);
     printf(&quot;%s\n&quot;, p);
     free(p);
     return 0;
@@ -3026,9 +3026,9 @@ int main() {
 /home/hellopg7ANi
 /home/hello1xmviW
 </code></pre><p>&#x2003;&#x2003;
-mkstemp &#x8981;&#x6C42; template &#x662F;&#x4E00;&#x4E2A;&#x8DEF;&#x5F84;&#x540D;&#x79F0;&#xFF0C;&#x6700;&#x540E;&#x9762;&#x662F; 6 &#x4E2A; XXXXXX&#xFF0C;&#x7136;&#x540E;&#x4F1A;&#x4FEE;&#x6539;&#x8FD9; 6 &#x4E2A;&#x5B57;&#x7B26;&#x3002;
-&#x4E00;&#x65E6;&#x521B;&#x5EFA;&#x6210;&#x529F;&#x4E4B;&#x540E;&#x8FD4;&#x56DE;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x3002;
-&#x4F46;&#x662F;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;mkstemp &#x76F8;&#x5BF9;&#x4E8E; tmpfile &#x5E76;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x8FDB;&#x884C; unlink&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x7528;&#x6237;&#x81EA;&#x5DF1;&#x8FDB;&#x884C; unlink&#x3002;</p>
+mkstemp &#x8981;&#x6C42; template &#x662F;&#x4E00;&#x4E2A;&#x8DEF;&#x5F84;&#x540D;&#x79F0;&#xFF0C;&#x6700;&#x540E;&#x9762;&#x662F; 6 &#x4E2A; XXXXXX&#xFF0C;&#x5E76;&#x4F1A;&#x4FEE;&#x6539;&#x8FD9; 6 &#x4E2A;&#x5B57;&#x7B26;&#x3002;
+&#x4E00;&#x65E6;&#x521B;&#x5EFA;&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x3002;
+&#x4F46;&#x662F;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;mkstemp &#x76F8;&#x5BF9;&#x4E8E; tmpfile &#x5E76;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x8FDB;&#x884C; unlink&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x7528;&#x6237;&#x81EA;&#x5DF1; unlink&#x3002;</p>
 
                     
                     </section>
