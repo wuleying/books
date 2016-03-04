@@ -53,7 +53,7 @@
         data-chapter-title="signal"
         data-filepath="s10/10.8.1.md"
         data-basepath=".."
-        data-revision="Fri Mar 04 2016 14:11:01 GMT+0800 (CST)"
+        data-revision="Fri Mar 04 2016 14:48:08 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2984,11 +2984,11 @@ int main() {
 
 [dirlt@localhost.localdomain]$
 </code></pre><p>&#x2003;&#x2003;
-&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x90FD;&#x662F;&#x9ED8;&#x8BA4;&#x7684;&#x3002;
-&#x5BF9;&#x4E8E; fork&#xFF0C;&#x56E0;&#x4E3A;&#x5B50;&#x8FDB;&#x7A0B;&#x548C;&#x7236;&#x8FDB;&#x7A0B;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x4FDD;&#x7559;&#x4E86;&#x4E0B;&#x6765;&#x3002;
-&#x63A5;&#x4E0B;&#x6765;&#x8FDB;&#x884C; exec &#x4F1A;&#x5C06;&#x6240;&#x6709;&#x8BBE;&#x7F6E;&#x6210;&#x4E3A;&#x6355;&#x6349;&#x7684;&#x4FE1;&#x53F7;&#x90FD;&#x4FEE;&#x6539;&#x6210;&#x4E3A;&#x9ED8;&#x8BA4;&#xFF0C;&#x800C;&#x539F;&#x6765;&#x5DF2;&#x7ECF;&#x8BBE;&#x7F6E;&#x6210;&#x4E3A;&#x5FFD;&#x7565;&#x7684;&#x4FE1;&#x53F7;&#x5C31;&#x4E0D;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x3002;</p>
+&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x65F6;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x90FD;&#x662F;&#x9ED8;&#x8BA4;&#x7684;&#x3002;
+fork &#x56E0;&#x4E3A;&#x5B50;&#x8FDB;&#x7A0B;&#x548C;&#x7236;&#x8FDB;&#x7A0B;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x4FDD;&#x7559;&#x4E86;&#x4E0B;&#x6765;&#x3002;
+&#x63A5;&#x4E0B;&#x6765;&#x8FDB;&#x884C; exec &#x4F1A;&#x5C06;&#x6240;&#x6709;&#x8BBE;&#x7F6E;&#x6210;&#x4E3A;&#x6355;&#x6349;&#x7684;&#x4FE1;&#x53F7;&#x90FD;&#x4FEE;&#x6539;&#x4E3A;&#x9ED8;&#x8BA4;&#xFF0C;&#x800C;&#x539F;&#x6765;&#x5DF2;&#x7ECF;&#x8BBE;&#x7F6E;&#x6210;&#x4E3A;&#x5FFD;&#x7565;&#x7684;&#x4FE1;&#x53F7;&#x5C31;&#x4E0D;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x53E6;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x662F;&#xFF0C;&#x4FE1;&#x53F7;&#x5982;&#x679C;&#x6355;&#x6349;&#x5230;&#x67D0;&#x4E2A;&#x4FE1;&#x53F7;&#xFF0C;&#x8FDB;&#x5165;&#x4FE1;&#x53F7;&#x6355;&#x6349;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6B64;&#x65F6;&#x5F53;&#x524D;&#x4FE1;&#x53F7;&#x4F1A;&#x81EA;&#x52A8;&#x52A0;&#x5165;&#x5230;&#x8FDB;&#x7A0B;&#x7684;&#x4FE1;&#x53F7;&#x5C4F;&#x853D;&#x5B57;&#x3002;</p>
+&#x53E6;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x4FE1;&#x53F7;&#x5982;&#x679C;&#x6355;&#x6349;&#x5230;&#x67D0;&#x4E2A;&#x4FE1;&#x53F7;&#x8FDB;&#x5165;&#x4FE1;&#x53F7;&#x6355;&#x6349;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x5F53;&#x524D;&#x4FE1;&#x53F7;&#x4F1A;&#x81EA;&#x52A8;&#x52A0;&#x5165;&#x5230;&#x8FDB;&#x7A0B;&#x7684;&#x4FE1;&#x53F7;&#x5C4F;&#x853D;&#x5B57;&#x3002;</p>
 <pre><code>#include &lt;unistd.h&gt;
 #include &lt;signal.h&gt;
 #include &lt;errno.h&gt;
@@ -3026,10 +3026,10 @@ int main() {
 [dirlt@localhost.localdomain]$ kill -s SIGUSR2 6473
 [dirlt@localhost.localdomain]$ SIGUSR2 received
 
-[dirlt@localhost.localdomain]$ kill -s SIGUSR1 6473 //&#x91CD;&#x590D;&#x53D1;&#x9001;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x6548;&#x679C;
+[dirlt@localhost.localdomain]$ kill -s SIGUSR1 6473 // &#x91CD;&#x590D;&#x53D1;&#x9001;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x6548;&#x679C;
 [dirlt@localhost.localdomain]$ kill -s SIGUSR2 6473
 </code></pre><p>&#x2003;&#x2003;
-&#x5982;&#x679C;&#x8C03;&#x7528; kill &#x4E3A;&#x4F7F;&#x5176;&#x4E3A;&#x8C03;&#x7528;&#x8005;&#x4EA7;&#x751F;&#x4FE1;&#x53F7;&#xFF0C;&#x5E76;&#x4E14;&#x5982;&#x679C;&#x8BE5;&#x4FE1;&#x53F7;&#x4E0D;&#x662F;&#x88AB;&#x963B;&#x585E;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5728; kill &#x8FD4;&#x56DE;&#x4E4B;&#x524D;&#x8BE5;&#x4FE1;&#x53F7;&#x5C31;&#x4E00;&#x5B9A;&#x88AB;&#x4F20;&#x9001;&#x5230;&#x4E86;&#x8BE5;&#x8FDB;&#x7A0B;&#x5E76;&#x4E14;&#x89E6;&#x53D1;&#x4FE1;&#x53F7;&#x6355;&#x83B7;&#x51FD;&#x6570;&#x3002;</p>
+&#x5982;&#x679C;&#x8C03;&#x7528; kill &#x4F7F;&#x5176;&#x4E3A;&#x8C03;&#x7528;&#x8005;&#x4EA7;&#x751F;&#x4FE1;&#x53F7;&#xFF0C;&#x5E76;&#x4E14;&#x5982;&#x679C;&#x8BE5;&#x4FE1;&#x53F7;&#x4E0D;&#x662F;&#x88AB;&#x963B;&#x585E;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5728; kill &#x8FD4;&#x56DE;&#x4E4B;&#x524D;&#x8BE5;&#x4FE1;&#x53F7;&#x5C31;&#x4E00;&#x5B9A;&#x88AB;&#x4F20;&#x9001;&#x5230;&#x4E86;&#x8BE5;&#x8FDB;&#x7A0B;&#x5E76;&#x4E14;&#x89E6;&#x53D1;&#x4FE1;&#x53F7;&#x6355;&#x83B7;&#x51FD;&#x6570;&#x3002;</p>
 
                     
                     </section>

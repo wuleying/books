@@ -53,7 +53,7 @@
         data-chapter-title="kill/raise"
         data-filepath="s10/10.8.2.md"
         data-basepath=".."
-        data-revision="Fri Mar 04 2016 14:11:01 GMT+0800 (CST)"
+        data-revision="Fri Mar 04 2016 14:48:08 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2957,8 +2957,8 @@ int kill(pid_t pid, int signo);
 // &#x76F8;&#x5F53;&#x4E8E; kill(getpid(), signo)
 int raise(int signo); 
 </code></pre><p>&#x2003;&#x2003;
-&#x6743;&#x9650;&#x68C0;&#x67E5;&#x662F;&#xFF0C;&#x68C0;&#x67E5;&#x63A5;&#x6536;&#x8005;&#x7684;&#x4FDD;&#x5B58;&#x8BBE;&#x7F6E; id &#x548C;&#x53D1;&#x9001;&#x8005;&#x7684;&#x5B9E;&#x9645;&#x6216;&#x8005;&#x662F;&#x6709;&#x6548;&#x7528;&#x6237; id&#x3002;
-&#x5982;&#x679C;&#x4FE1;&#x53F7;&#x662F; SIGCONT &#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x7ED9;&#x540C;&#x4E00;&#x4E2A;&#x4F1A;&#x8BDD;&#x91CC;&#x9762;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x3002;</p>
+&#x6743;&#x9650;&#x68C0;&#x67E5;&#x662F;&#x6307;&#x68C0;&#x67E5;&#x63A5;&#x6536;&#x8005;&#x7684;&#x4FDD;&#x5B58;&#x8BBE;&#x7F6E; id &#x548C;&#x53D1;&#x9001;&#x8005;&#x7684;&#x5B9E;&#x9645;&#x6216;&#x662F;&#x6709;&#x6548;&#x7528;&#x6237; id&#x3002;
+&#x5982;&#x679C;&#x4FE1;&#x53F7;&#x662F; SIGCONT &#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x7ED9;&#x540C;&#x4E00;&#x4E2A;&#x4F1A;&#x8BDD;&#x91CC;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x4E4B;&#x524D;&#x8BF4;&#x5230; signo &#x7B49;&#x4E8E; 0 &#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x68C0;&#x67E5;&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x901A;&#x8FC7;&#x53D1;&#x9001; signo &#x7B49;&#x4E8E; 0 &#x7684;&#x4FE1;&#x53F7;&#x3002;</p>
 <pre><code>#include &lt;unistd.h&gt;
