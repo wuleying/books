@@ -53,7 +53,7 @@
         data-chapter-title="mmap 共享内存"
         data-filepath="s14/14.7.md"
         data-basepath=".."
-        data-revision="Sun Mar 06 2016 15:34:53 GMT+0800 (CST)"
+        data-revision="Sun Mar 06 2016 16:10:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2744,7 +2744,7 @@
                         
                             <b>14.2.</b>
                         
-                        fifo
+                        FIFO
                     </a>
             
             
@@ -2948,7 +2948,7 @@
 <hr>
 <p>&#x2003;&#x2003;
 &#x5982;&#x679C;&#x4EC5;&#x4EC5;&#x662F;&#x7236;&#x5B50;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x53EF;&#x4EE5;&#x6709;&#x66F4;&#x52A0;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x90FD;&#x548C; mmap &#x76F8;&#x5173;&#x3002;
-&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x662F;&#x5C06; mmap &#x6620;&#x5C04;&#x5230; /dev/zero&#xFF0C;&#x56E0;&#x4E3A; /dev/zero &#x662F;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x6587;&#x4EF6;&#x4EFB;&#x4F55;&#x5199;&#x90FD;&#x88AB;&#x5FFD;&#x7565;&#xFF0C;&#x5E76;&#x4E14;&#x4E00;&#x65E6;&#x6620;&#x5C04;&#xFF0C;&#x5B58;&#x50A8;&#x533A;&#x5185;&#x5BB9;&#x90FD;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E3A; 0&#x3002;
+&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x662F;&#x5C06; mmap &#x6620;&#x5C04;&#x5230; /dev/zero&#xFF0C;&#x56E0;&#x4E3A; /dev/zero &#x662F;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x6587;&#x4EF6;&#xFF0C;&#x4EFB;&#x4F55;&#x5199;&#x90FD;&#x88AB;&#x5FFD;&#x7565;&#xFF0C;&#x5E76;&#x4E14;&#x4E00;&#x65E6;&#x6620;&#x5C04;&#x5B58;&#x50A8;&#x533A;&#x5185;&#x5BB9;&#x90FD;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E3A; 0&#x3002;
 &#x53E6;&#x5916;&#x4E00;&#x79CD;&#x662F;&#x7B80;&#x5316;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;Linux &#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x4E86; MAP_ANON &#x9009;&#x9879;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x540E;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x6253;&#x5F00; /dev/zero &#x5C31;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5177;&#x6709;&#x8FDB;&#x7A0B;&#x5173;&#x7CFB;&#x4E4B;&#x95F4;&#x7684;&#x533F;&#x540D;&#x5B58;&#x50A8;&#x6620;&#x5C04;&#x3002;</p>
 <pre><code>#include &lt;unistd.h&gt;
 #include &lt;fcntl.h&gt;
@@ -2999,7 +2999,7 @@ int main() {
     return 0;
 }
 </code></pre><p>&#x2003;&#x2003;
-&#x4F7F;&#x7528; mmap &#x76F8;&#x5BF9;&#x4E8E;&#x4F7F;&#x7528; IPC &#x5171;&#x4EAB;&#x5185;&#x5B58;&#x66F4;&#x52A0;&#x65B9;&#x4FBF;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x53EA;&#x5141;&#x8BB8;&#x662F;&#x5728;&#x6709;&#x8FDB;&#x7A0B;&#x5173;&#x7CFB;&#x4E4B;&#x95F4;&#x8FDB;&#x7A0B;&#x4F7F;&#x7528;&#x3002;</p>
+&#x4F7F;&#x7528; mmap &#x76F8;&#x5BF9;&#x4E8E;&#x4F7F;&#x7528; IPC &#x5171;&#x4EAB;&#x5185;&#x5B58;&#x66F4;&#x52A0;&#x65B9;&#x4FBF;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x53EA;&#x5141;&#x8BB8;&#x662F;&#x5728;&#x6709;&#x8FDB;&#x7A0B;&#x5173;&#x7CFB;&#x4E4B;&#x95F4;&#x7684;&#x8FDB;&#x7A0B;&#x4F7F;&#x7528;&#x3002;</p>
 
                     
                     </section>

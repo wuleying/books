@@ -53,7 +53,7 @@
         data-chapter-title="优点和缺点"
         data-filepath="s14/14.3.4.md"
         data-basepath=".."
-        data-revision="Sun Mar 06 2016 15:34:53 GMT+0800 (CST)"
+        data-revision="Sun Mar 06 2016 16:10:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2744,7 +2744,7 @@
                         
                             <b>14.2.</b>
                         
-                        fifo
+                        FIFO
                     </a>
             
             
@@ -2948,16 +2948,16 @@
 <hr>
 <p>&#x2003;&#x2003;
 XSI IPC &#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#xFF1A;
-&#x9996;&#x5148; IPC &#x7ED3;&#x6784;&#x6CA1;&#x6709;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x8FD9;&#x5C31;&#x610F;&#x5473;&#x5982;&#x679C;&#x4E0D;&#x663E;&#x793A;&#x8C03;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x8D44;&#x6E90;&#x4F1A;&#x4E00;&#x76F4;&#x4FDD;&#x7559;&#xFF0C;&#x5373;&#x4F7F;&#x6CA1;&#x6709;&#x4EBA;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A; IPC &#x4E5F;&#x4E00;&#x76F4;&#x4F1A;&#x5B58;&#x5728;&#x4E8E;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x76F4;&#x5230;&#x663E;&#x5F0F;&#x73B0;&#x51FA;&#x5185;&#x5BB9;&#x548C;&#x7CFB;&#x7EDF;&#x91CD;&#x542F;&#xFF0C;&#x6216;&#x662F;&#x901A;&#x8FC7;&#x5916;&#x90E8;&#x547D;&#x4EE4; ipcrm &#x6765;&#x5220;&#x9664;&#x3002;
-&#x5176;&#x6B21;&#x6700;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A;&#x4E1C;&#x897F;&#x592A;&#x50CF;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E86;&#xFF0C;&#x6574;&#x4E2A; Unix &#x7CFB;&#x7EDF;&#x7684;&#x7406;&#x5FF5;&#x5C31;&#x662F;&#x6240;&#x6709;&#x5BF9;&#x8C61;&#x90FD;&#x662F;&#x6587;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982; open&#x3001;read&#x3001;write&#x3001;select&#x3001;poll &#x90FD;&#x662F;&#x64CD;&#x4F5C;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#xFF0C;&#x751A;&#x81F3; Unix socket &#x4E5F;&#x7EDF;&#x4E00;&#x5230;&#x4E86; &#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x4E0A;&#xFF0C;&#x800C; IPC &#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x62BD;&#x8C61;&#x5BFC;&#x81F4;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x4E00;&#x7CFB;&#x5217;&#x8F85;&#x52A9;&#x7684; API &#x6765;&#x6784;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x4F53;&#x7CFB;&#x3002;
+&#x9996;&#x5148; IPC &#x7ED3;&#x6784;&#x6CA1;&#x6709;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x8FD9;&#x5C31;&#x610F;&#x5473;&#x5982;&#x679C;&#x4E0D;&#x663E;&#x5F0F;&#x8C03;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x8D44;&#x6E90;&#x4F1A;&#x4E00;&#x76F4;&#x4FDD;&#x7559;&#xFF0C;&#x5373;&#x4F7F;&#x6CA1;&#x6709;&#x4EBA;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A; IPC &#x4E5F;&#x4E00;&#x76F4;&#x4F1A;&#x5B58;&#x5728;&#x4E8E;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x76F4;&#x5230;&#x663E;&#x5F0F;&#x51FA;&#x73B0;&#x5185;&#x5BB9;&#x548C;&#x7CFB;&#x7EDF;&#x91CD;&#x542F;&#xFF0C;&#x6216;&#x662F;&#x901A;&#x8FC7;&#x5916;&#x90E8;&#x547D;&#x4EE4; ipcrm &#x6765;&#x5220;&#x9664;&#x3002;
+&#x5176;&#x6B21;&#x6700;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A;&#x4E1C;&#x897F;&#x592A;&#x50CF;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E86;&#xFF0C;&#x6574;&#x4E2A; Unix &#x7CFB;&#x7EDF;&#x7684;&#x7406;&#x5FF5;&#x5C31;&#x662F;&#x6240;&#x6709;&#x5BF9;&#x8C61;&#x90FD;&#x662F;&#x6587;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982; open&#x3001;read&#x3001;write&#x3001;select&#x3001;poll &#x90FD;&#x662F;&#x64CD;&#x4F5C;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#xFF0C;&#x751A;&#x81F3; Unix Socket &#x4E5F;&#x7EDF;&#x4E00;&#x5230;&#x4E86;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x4E0A;&#xFF0C;&#x800C; IPC &#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x62BD;&#x8C61;&#x5BFC;&#x81F4;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x4E00;&#x7CFB;&#x5217;&#x8F85;&#x52A9;&#x7684; API &#x6765;&#x6784;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x4F53;&#x7CFB;&#x3002;
 &#x4F18;&#x70B9;&#x53EF;&#x80FD;&#x5C31;&#x662F;&#x6BD4;&#x8F83;&#x5FEB;&#x5427;&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x6D4B;&#x7684;&#x65F6;&#x5019;&#x53D1;&#x73B0;&#x5176;&#x4ED6;&#x8BBE;&#x65BD;&#x6548;&#x7387;&#x5E76;&#x4E0D;&#x4F1A;&#x5F88;&#x5DEE;&#xFF0C;&#x4F46;&#x662F;&#x5374;&#x6709;&#x7740;&#x4E00;&#x81F4;&#x7684;&#x63A5;&#x53E3;&#x3002;
 &#x5728;&#x540E;&#x9762;&#x6253;&#x7B97;&#x63D0;&#x4F9B;&#x51E0;&#x79CD;&#x4EE3;&#x66FF;&#x7684;&#x65B9;&#x6848;&#x6765;&#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x4E0D;&#x4F7F;&#x7528; XSI IPC&#x3002;</p>
 <ul>
-<li>&#x6D88;&#x606F;&#x961F;&#x5217;&#x4F7F;&#x7528; Unix domain socket &#x6765;&#x4EE3;&#x66FF;</li>
+<li>&#x6D88;&#x606F;&#x961F;&#x5217;&#x4F7F;&#x7528; Unix Domain Socket &#x6765;&#x4EE3;&#x66FF;</li>
 <li>&#x4FE1;&#x53F7;&#x91CF;&#x901A;&#x8FC7;&#x8FDB;&#x7A0B;&#x5171;&#x4EAB;&#x7684; pthread &#x548C;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4EE3;&#x66FF; (&#x53E6;&#x5916;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;)&#x3002;&#x4FE1;&#x53F7;&#x91CF;&#x4E3B;&#x8981;&#x6CE8;&#x91CD;&#x4E8E;&#x540C;&#x6B65;&#xFF0C;&#x6240;&#x4EE5;&#x7ED9;&#x51FA;&#x7684;&#x65B9;&#x6848;&#x4E5F;&#x662F;&#x6CE8;&#x91CD;&#x4E8E;&#x540C;&#x6B65;</li>
 </ul>
 <p>&#x2003;&#x2003;
-&#x53E6;&#x5916;&#x56E0;&#x4E3A; IPC &#x662F;&#x5168;&#x5C40;&#x7684;&#x5E76;&#x4E14;&#x6CA1;&#x6709;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x9700;&#x8981;&#x5220;&#x9664; IPC &#x90A3;&#x4E48;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x547D;&#x4EE4; ipcrm &#x6765;&#x5220;&#x9664;&#x3002;
+&#x53E6;&#x5916;&#x56E0;&#x4E3A; IPC &#x662F;&#x5168;&#x5C40;&#x7684;&#x5E76;&#x4E14;&#x6CA1;&#x6709;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x9700;&#x8981;&#x5220;&#x9664; IPC &#x90A3;&#x4E48;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x547D;&#x4EE4; ipcrm&#x3002;
 &#x800C; ipcrm &#x4E0D;&#x5141;&#x8BB8;&#x6279;&#x91CF;&#x5220;&#x9664;&#x6240;&#x6709;&#x7684; IPC &#x5BF9;&#x8C61;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x4E0B;&#x9762;&#x8F85;&#x52A9;&#x811A;&#x672C;&#x5B9E;&#x73B0;&#xFF1A;</p>
 <pre><code>#!/usr/bin/env python
 #coding:gbk
