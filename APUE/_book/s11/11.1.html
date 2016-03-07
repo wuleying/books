@@ -53,7 +53,7 @@
         data-chapter-title="线程标识"
         data-filepath="s11/11.1.md"
         data-basepath=".."
-        data-revision="Fri Mar 04 2016 14:48:08 GMT+0800 (CST)"
+        data-revision="Sun Mar 06 2016 16:10:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2744,7 +2744,7 @@
                         
                             <b>14.2.</b>
                         
-                        fifo
+                        FIFO
                     </a>
             
             
@@ -2947,43 +2947,38 @@
                         <h1 id="&#x7EBF;&#x7A0B;&#x6807;&#x8BC6;">&#x7EBF;&#x7A0B;&#x6807;&#x8BC6;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#x7EBF;&#x7A0B; id &#x6765;&#x6807;&#x8BC6;&#x81EA;&#x5DF1;&#xFF0C;thread_t &#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;
-&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x4E00;&#x79CD;&#x53EF;&#x79FB;&#x690D;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x6253;&#x5370;&#x8BE5;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x503C;&#x3002;</p>
+&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#x7EBF;&#x7A0B; id &#x6765;&#x6807;&#x8BC6;&#x81EA;&#x5DF1;&#xFF0C;&#x7528; thread_t &#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x4E00;&#x79CD;&#x53EF;&#x79FB;&#x690D;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x6253;&#x5370;&#x8BE5;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x503C;&#x3002;</p>
 <pre><code>pthread_t pthread_sekf();                           // &#x83B7;&#x5F97;&#x81EA;&#x8EAB;&#x7684;&#x7EBF;&#x7A0B;&#x6807;&#x8BC6;
 int pthread_equal(pthread_t tid1, pthread_t tid2);  // &#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x53F7;&#x662F;&#x5426;&#x76F8;&#x540C;
 </code></pre><p>&#x2003;&#x2003;
-&#x4F46;&#x662F;&#x8FD9;&#x4E2A; pthread_t &#x4EC5;&#x4EC5;&#x662F;&#x4E00;&#x4E2A;&#x903B;&#x8F91;&#x7684;&#x6807;&#x8BC6;&#x800C;&#x4E0D;&#x662F;&#x7CFB;&#x7EDF;&#x6807;&#x8BC6;&#xFF0C;&#x4E3A;&#x4E86;&#x83B7;&#x5F97;&#x7CFB;&#x7EDF;&#x6807;&#x8BC6;&#x53EF;&#x4EE5;&#x8C03;&#x7528; gettid &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x3002;
-gettid &#x662F;&#x4E00;&#x4E2A;&#x5185;&#x6838;&#x8C03;&#x7528;&#x3002;
+&#x4F46; pthread_t &#x4EC5;&#x4EC5;&#x662F;&#x4E00;&#x4E2A;&#x903B;&#x8F91;&#x7684;&#x6807;&#x8BC6;&#x800C;&#x4E0D;&#x662F;&#x7CFB;&#x7EDF;&#x6807;&#x8BC6;&#xFF0C;&#x4E3A;&#x4E86;&#x83B7;&#x5F97;&#x7CFB;&#x7EDF;&#x6807;&#x8BC6;&#x53EF;&#x4EE5;&#x8C03;&#x7528; gettid &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;gettid &#x662F;&#x4E00;&#x4E2A;&#x5185;&#x6838;&#x8C03;&#x7528;&#x3002;
 &#x5982;&#x679C;&#x9605;&#x8BFB; pthread &#x4EE3;&#x7801;&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x4E00;&#x79CD;&#x4E0D;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5F97;&#x5230; tid &#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; gettid &#x8FD9;&#x4E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5F97;&#x5230; thread id&#x3002;
 &#x4F46;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6C47;&#x7F16;&#x6765;&#x5F97;&#x5230; thread id &#x800C;&#x4E0D;&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x3002;
-&#x8FD9;&#x4E2A;&#x5185;&#x5BB9;&#x5728; fs &#x5BC4;&#x5B58;&#x5668;&#x6307;&#x5411;&#x7684;&#x6BB5; 144 &#x4E2A;&#x5B57;&#x8282;&#x4E0A;&#xFF0C;&#x5360;&#x7528; 4 &#x4E2A;&#x5B57;&#x8282;&#x3002;
+&#x8FD9;&#x4E2A;&#x5185;&#x5BB9;&#x5728; fs &#x5BC4;&#x5B58;&#x5668;&#x6307;&#x5411;&#x7684;&#x6BB5;&#x7B2C; 144 &#x4E2A;&#x5B57;&#x8282;&#x4E0A;&#xFF0C;&#x5360;&#x7528; 4 &#x4E2A;&#x5B57;&#x8282;&#x3002;
 &#x81F3;&#x4E8E;&#x4E3A;&#x4EC0;&#x4E48;&#x662F;&#x5728; 144 &#x5B57;&#x8282;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x9605;&#x8BFB; nptl/descr.h &#x91CC; pthread &#x7ED3;&#x6784;&#x4F53;&#x4EE3;&#x7801;&#xFF0C;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684; fs &#x5BC4;&#x5B58;&#x5668;&#x6307;&#x5411;&#x5185;&#x5BB9;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x3002;</p>
 <pre><code>/* Thread descriptor data structure.  */
-struct pthread
-{
-  union
-  {
+struct pthread {
+    union {
 #if !TLS_DTV_AT_TP
-    /* This overlaps the TCB as used for TLS without threads (see tls.h).  */
-    tcbhead_t header;
+        /* This overlaps the TCB as used for TLS without threads (see tls.h).  */
+        tcbhead_t header;
 #else
-    struct
-    {
-      int multiple_threads;
-    } header;
+        struct {
+            int multiple_threads;
+        } header;
 #endif
 
-    /* This extra padding has no special purpose, and this structure layout
-       is private and subject to change without affecting the official ABI.
-       We just have it here in case it might be convenient for some
-       implementation-specific instrumentation hack or suchlike.  */
-    void *__padding[16];
-  }; // 128&#x5B57;&#x8282;
+        /* This extra padding has no special purpose, and this structure layout
+           is private and subject to change without affecting the official ABI.
+           We just have it here in case it might be convenient for some
+           implementation-specific instrumentation hack or suchlike.  */
+        void *__padding[16];
+    }; // 128&#x5B57;&#x8282;
 
   /* This descriptor&apos;s link on the `stack_used&apos; or `__stack_user&apos; list.  */
-  list_t list; // 2&#x4E2A;&#x6307;&#x9488;&#xFF0C;16&#x4E2A;&#x5B57;&#x8282;
+  list_t list; // 2&#x4E2A;&#x6307;&#x9488;&#xFF0C;16 &#x4E2A;&#x5B57;&#x8282;
 
   /* Thread ID - which is also a &apos;is this thread descriptor (and
      therefore stack) used&apos; flag.  */

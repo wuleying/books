@@ -53,7 +53,7 @@
         data-chapter-title="共享存储"
         data-filepath="s14/14.6.md"
         data-basepath=".."
-        data-revision="Fri Mar 04 2016 14:48:08 GMT+0800 (CST)"
+        data-revision="Sun Mar 06 2016 16:10:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2744,7 +2744,7 @@
                         
                             <b>14.2.</b>
                         
-                        fifo
+                        FIFO
                     </a>
             
             
@@ -2947,23 +2947,23 @@
                         <h1 id="&#x5171;&#x4EAB;&#x5B58;&#x50A8;">&#x5171;&#x4EAB;&#x5B58;&#x50A8;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x5171;&#x4EAB;&#x5B58;&#x50A8;&#x4E5F;&#x79F0;&#x4E3A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x548C;&#x5176;&#x4ED6; XSI IPC &#x4E00;&#x6837;&#x4E5F;&#x6BCF;&#x4E2A;&#x5171;&#x4EAB;&#x5B58;&#x50A8;&#x6BB5;&#x4E5F;&#x6709;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#xFF1A;</p>
+&#x5171;&#x4EAB;&#x5B58;&#x50A8;&#x4E5F;&#x79F0;&#x4E3A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x548C;&#x5176;&#x4ED6; XSI IPC &#x4E00;&#x6837;&#x6BCF;&#x4E2A;&#x5171;&#x4EAB;&#x5B58;&#x50A8;&#x6BB5;&#x4E5F;&#x6709;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#xFF1A;</p>
 <pre><code>#include &lt;sys/shm.h&gt;
 /* Data structure describing a set of semaphores.  */
 struct shmid_ds {
-    struct ipc_perm shm_perm;           /* operation permission struct */
-    size_t shm_segsz;                   /* size of segment in bytes */
-    __time_t shm_atime;                 /* time of last shmat() */
-    unsigned long int __unused1;
-    __time_t shm_dtime;                 /* time of last shmdt() */
-    unsigned long int __unused2;
-    __time_t shm_ctime;                 /* time of last change by shmctl() */
-    unsigned long int __unused3;
-    __pid_t shm_cpid;                   /* pid of creator */
-    __pid_t shm_lpid;                   /* pid of last shmop */
-    shmatt_t shm_nattch;                /* number of current attaches */
-    unsigned long int __unused4;
-    unsigned long int __unused5;
+    struct ipc_perm     shm_perm;       /* operation permission struct */
+    size_t              shm_segsz;      /* size of segment in bytes */
+    __time_t            shm_atime;      /* time of last shmat() */
+    unsigned long int   __unused1;
+    __time_t            shm_dtime;      /* time of last shmdt() */
+    unsigned long int   __unused2;
+    __time_t            shm_ctime;      /* time of last change by shmctl() */
+    unsigned long int   __unused3;
+    __pid_t             shm_cpid;       /* pid of creator */
+    __pid_t             shm_lpid;       /* pid of last shmop */
+    shmatt_t            shm_nattch;     /* number of current attaches */
+    unsigned long int   __unused4;
+    unsigned long int   __unused5;
 };
 </code></pre><p>&#x2003;&#x2003;
 &#x5173;&#x4E8E;&#x5171;&#x4EAB;&#x5B58;&#x50A8;&#x7684;&#x63A5;&#x53E3;&#x5982;&#x4E0B;&#xFF1A;</p>
@@ -2983,7 +2983,7 @@ extern void *shmat (int __shmid, __const void *__shmaddr, int __shmflg)
 /* Detach shared memory segment.  */
 extern int shmdt (__const void *__shmaddr) __THROW;
 </code></pre><p>&#x2003;&#x2003;
-&#x9996;&#x5148;&#x901A;&#x8FC7; shmget &#x6765;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;size &#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x5171;&#x4EAB;&#x5B58;&#x50A8;&#x5927;&#x5C0F;&#x5185;&#x90E8;&#x4F1A;&#x548C; PAGE_SIZE &#x5BF9;&#x9F50;&#x3002;
+&#x9996;&#x5148;&#x901A;&#x8FC7; shmget &#x6765;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;size &#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x5171;&#x4EAB;&#x5B58;&#x50A8;&#x5927;&#x5C0F;&#xFF0C;&#x5185;&#x90E8;&#x4F1A;&#x548C; PAGE_SIZE &#x5BF9;&#x9F50;&#x3002;
 &#x7136;&#x540E;&#x8C03;&#x7528; shmctl &#x6765;&#x64CD;&#x4F5C;&#x8FD9;&#x4E2A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5305;&#x62EC; IPC_STAT&#x3001;IPC_SET &#x4EE5;&#x53CA; IPC_RMID&#x3002;
 &#x5982;&#x679C;&#x8FDB;&#x7A0B;&#x9700;&#x8981;&#x8FDE;&#x63A5;&#x5230;&#x8FD9;&#x4E2A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x6BB5;&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528; shmat&#x3002;
 flag &#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x9009;&#x9879;&#xFF1A;</p>
@@ -2992,7 +2992,7 @@ flag &#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x9009;&#x9879;&#xFF1A;</p>
 <li>SHM_RDONLY&#xFF0C;&#x53EA;&#x8BFB;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x6BB5;</li>
 </ul>
 <p>&#x2003;&#x2003;
-&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x8FDE;&#x63A5;&#x8FD9;&#x4E2A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x6BB5;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5; shmdt&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019; shmid_ds &#x91CC;&#x7684; shm_nattch &#x5B57;&#x6BB5;&#x4F1A;&#x51CF; 1&#x3002;</p>
+&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x8FDE;&#x63A5;&#x8FD9;&#x4E2A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x6BB5;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5; shmdt&#xFF0C;&#x8FD9;&#x65F6; shmid_ds &#x91CC;&#x7684; shm_nattch &#x5B57;&#x6BB5;&#x4F1A;&#x51CF; 1&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x76F8;&#x5BF9;&#x6765;&#x8BF4;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x662F;&#x6700;&#x597D;&#x7406;&#x89E3;&#x7684; IPC &#x4E86;&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x975E;&#x5E38;&#x81EA;&#x7136;&#x7684;&#x6982;&#x5FF5;&#x3002;</p>
 <pre><code>#include &lt;unistd.h&gt;

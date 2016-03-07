@@ -53,7 +53,7 @@
         data-chapter-title="线程和信号"
         data-filepath="s11/11.11.md"
         data-basepath=".."
-        data-revision="Fri Mar 04 2016 14:48:08 GMT+0800 (CST)"
+        data-revision="Sun Mar 06 2016 16:10:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2744,7 +2744,7 @@
                         
                             <b>14.2.</b>
                         
-                        fifo
+                        FIFO
                     </a>
             
             
@@ -2948,12 +2948,12 @@
 <hr>
 <p>&#x2003;&#x2003;
 &#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x4FE1;&#x53F7;&#x5C4F;&#x853D;&#x5B57;&#xFF0C;&#x4F46;&#x662F;&#x4FE1;&#x53F7;&#x7684;&#x5904;&#x7406;&#x662F;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;&#x7684;&#x3002;
-&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x5355;&#x4E2A;&#x4FE1;&#x53F7;&#x662F;&#x9012;&#x9001;&#x5230;&#x5355;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x4FE1;&#x53F7;&#x4E0E;&#x786C;&#x4EF6;&#x6545;&#x969C;&#x6216;&#x8005;&#x662F;&#x8BA1;&#x65F6;&#x5668;&#x76F8;&#x5173;&#xFF0C;&#x90A3;&#x4E48;&#x4FE1;&#x53F7;&#x5C31;&#x4F1A;&#x53D1;&#x9001;&#x5230;&#x5F15;&#x8D77;&#x8BE5;&#x4E8B;&#x4EF6;&#x7684;&#x7EBF;&#x7A0B;&#x4E2D;&#x53BB;&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x7684;&#x4FE1;&#x53F7;&#x5219;&#x88AB;&#x53D1;&#x9001;&#x5230;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x3002;
+&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x5355;&#x4E2A;&#x4FE1;&#x53F7;&#x662F;&#x9012;&#x9001;&#x5230;&#x5355;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x4FE1;&#x53F7;&#x4E0E;&#x786C;&#x4EF6;&#x6545;&#x969C;&#x6216;&#x662F;&#x8BA1;&#x65F6;&#x5668;&#x76F8;&#x5173;&#xFF0C;&#x90A3;&#x4E48;&#x4FE1;&#x53F7;&#x5C31;&#x4F1A;&#x53D1;&#x9001;&#x5230;&#x5F15;&#x8D77;&#x8BE5;&#x4E8B;&#x4EF6;&#x7684;&#x7EBF;&#x7A0B;&#x4E2D;&#x53BB;&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x7684;&#x4FE1;&#x53F7;&#x5219;&#x88AB;&#x53D1;&#x9001;&#x5230;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x3002;
 POSIX.1 &#x7684;&#x7EBF;&#x7A0B;&#x6A21;&#x578B;&#x4E2D;&#xFF0C;&#x5F02;&#x6B65;&#x4FE1;&#x53F7;&#x88AB;&#x53D1;&#x9001;&#x5230;&#x8FDB;&#x7A0B;&#x4EE5;&#x540E;&#xFF0C;&#x8FDB;&#x7A0B;&#x4E2D;&#x5F53;&#x524D;&#x6CA1;&#x6709;&#x963B;&#x585E;&#x8BE5;&#x4FE1;&#x53F7;&#x7684;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x6765;&#x5904;&#x7406;&#x8BE5;&#x4FE1;&#x53F7;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x4FE1;&#x53F7;&#x5C4F;&#x853D;&#x5B57;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528; sigprocmask &#x5BF9;&#x4E8E;&#x591A;&#x7EBF;&#x7A0B;&#x662F;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x7684;&#x3002;
 &#x4E3A;&#x6B64; pthread &#x63D0;&#x4F9B;&#x4E86; pthread_sigmask &#x6765;&#x4E3A;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x63D0;&#x4F9B;&#x7EBF;&#x7A0B;&#x7684;&#x4FE1;&#x53F7;&#x5C4F;&#x853D;&#x5B57;&#x3002;
-&#x6B64;&#x5916;&#x7EBF;&#x7A0B;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528; sigwait &#x6765;&#x7B49;&#x5F85;&#x4E00;&#x4E2A;&#x6216;&#x8005;&#x662F;&#x591A;&#x4E2A;&#x4FE1;&#x53F7;&#x53D1;&#x751F;&#x3002;
+&#x6B64;&#x5916;&#x7EBF;&#x7A0B;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528; sigwait &#x6765;&#x7B49;&#x5F85;&#x4E00;&#x4E2A;&#x6216;&#x662F;&#x591A;&#x4E2A;&#x4FE1;&#x53F7;&#x53D1;&#x751F;&#x3002;
 &#x8BED;&#x4E49;&#x548C; sigsuspend &#x4E00;&#x6837;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x7B49;&#x5F85;&#x5230;&#x7684;&#x4FE1;&#x53F7;&#x7F16;&#x53F7;&#x3002;
 sigwait &#x4F1A;&#x9996;&#x5148;&#x6E05;&#x9664;&#x672A;&#x51B3;&#x7684;&#x4FE1;&#x53F7;&#xFF0C;&#x7136;&#x540E;&#x6253;&#x5F00;&#x9700;&#x8981;&#x622A;&#x83B7;&#x7684;&#x4FE1;&#x53F7;&#xFF0C;&#x8FD9;&#x4E5F;&#x610F;&#x5473;&#x8FD9;&#x5728; sigwait &#x4E4B;&#x524D;&#x9700;&#x8981;&#x5C4F;&#x853D;&#x9700;&#x8981;&#x5173;&#x5FC3;&#x7684;&#x4FE1;&#x53F7;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528; sigwait&#x3002;</p>
 <pre><code>#include &lt;signal.h&gt;
@@ -2969,6 +2969,7 @@ int sigwait(const sigset_t* restrict set, int* restrict signop);
 #include &lt;cstdio&gt;
 #include &lt;cstdlib&gt;
 #include &lt;cstring&gt;
+
 int quit_flag = 0;
 
 // &#x6B64;&#x7EBF;&#x7A0B;&#x4E13;&#x95E8;&#x5904;&#x7406;&#x4FE1;&#x53F7;
@@ -2993,7 +2994,7 @@ void* signal_handler_thread(void* arg) {
 }
 
 // main &#x4E3B;&#x7EBF;&#x7A0B;&#x975E;&#x5E38;&#x8F7B;&#x677E;&#xFF0C;&#x5C4F;&#x853D;&#x4E86;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x53F7;&#xFF0C;
-// &#x800C;&#x5728;&#x4E13;&#x95E8;&#x7684;&#x7EBF;&#x7A0B;&#x91CC;&#x9762;&#x4EE5;&#x4E00;&#x79CD;&#x540C;&#x6B65;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5904;&#x7406;&#x4FE1;&#x53F7;
+// &#x800C;&#x5728;&#x4E13;&#x95E8;&#x7684;&#x7EBF;&#x7A0B;&#x91CC;&#x4EE5;&#x4E00;&#x79CD;&#x540C;&#x6B65;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5904;&#x7406;&#x4FE1;&#x53F7;
 int main() {
     sigset_t set;
     sigfillset(&amp;set);
@@ -3010,13 +3011,11 @@ int main() {
     return 0;
 }
 </code></pre><p>&#x2003;&#x2003;
-&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x53D1;&#x9001;&#x4FE1;&#x53F7;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#x3002;
-&#x53EF;&#x4EE5;&#x4F20;&#x9012;&#x4FE1;&#x53F7; 0 &#x6765;&#x5224;&#x65AD;&#x7EBF;&#x7A0B;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;</p>
+&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x53D1;&#x9001;&#x4FE1;&#x53F7;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x4F20;&#x9012;&#x4FE1;&#x53F7; 0 &#x6765;&#x5224;&#x65AD;&#x7EBF;&#x7A0B;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;</p>
 <pre><code>#include &lt;signal.h&gt;
 int pthread_kill(pthread_t thread, int signo);
 </code></pre><p>&#x2003;&#x2003;
-&#x6CE8;&#x610F;&#x95F9;&#x949F;&#x5B9A;&#x65F6;&#x5668;&#x662F;&#x8FDB;&#x7A0B;&#x8D44;&#x6E90;&#xFF0C;&#x5E76;&#x4E14;&#x6240;&#x6709;&#x7684;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;&#x76F8;&#x540C;&#x7684; alarm&#x3002;
-&#x6240;&#x4EE5;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E0D;&#x53EF;&#x80FD;&#x4E92;&#x4E0D;&#x5E72;&#x6270;&#x5730;&#x4F7F;&#x7528;&#x95F9;&#x949F;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+&#x6CE8;&#x610F;&#x95F9;&#x949F;&#x5B9A;&#x65F6;&#x5668;&#x662F;&#x8FDB;&#x7A0B;&#x8D44;&#x6E90;&#xFF0C;&#x5E76;&#x4E14;&#x6240;&#x6709;&#x7684;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;&#x76F8;&#x540C;&#x7684; alarm&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E0D;&#x53EF;&#x80FD;&#x4E92;&#x4E0D;&#x5E72;&#x6270;&#x5730;&#x4F7F;&#x7528;&#x95F9;&#x949F;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
 
                     
                     </section>

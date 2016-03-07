@@ -53,7 +53,7 @@
         data-chapter-title="线程栈"
         data-filepath="s11/11.6.2.md"
         data-basepath=".."
-        data-revision="Fri Mar 04 2016 14:48:08 GMT+0800 (CST)"
+        data-revision="Sun Mar 06 2016 16:10:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2744,7 +2744,7 @@
                         
                             <b>14.2.</b>
                         
-                        fifo
+                        FIFO
                     </a>
             
             
@@ -2947,16 +2947,16 @@
                         <h1 id="&#x7EBF;&#x7A0B;&#x6808;">&#x7EBF;&#x7A0B;&#x6808;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x90FD;&#x662F;&#x5728;&#x7279;&#x5B9A;&#x6808;&#x4E0A;&#x9762;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8BBE;&#x7F6E;&#xFF0C;&#x4F1A;&#x6309;&#x7167;&#x9ED8;&#x8BA4;&#x65B9;&#x5F0F;&#x6765;&#x5206;&#x914D;&#x6808;&#x3002;</p>
+&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x90FD;&#x662F;&#x5728;&#x7279;&#x5B9A;&#x6808;&#x4E0A;&#x9762;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8BBE;&#x7F6E;&#x4F1A;&#x6309;&#x7167;&#x9ED8;&#x8BA4;&#x65B9;&#x5F0F;&#x6765;&#x5206;&#x914D;&#x6808;&#x3002;</p>
 <pre><code>int pthread_attr_getstack(const pthread_attr_t* restrict attr, void** restrict stackaddr, size_t* restrict stacksize);
 int pthread_attr_setstack(pthread_attr_t* addr, void* stackaddr, size_t stacksize);
 </code></pre><p>&#x2003;&#x2003;
-&#x5982;&#x679C;&#x60F3;&#x4FEE;&#x6539;&#x6808;&#x5927;&#x5C0F;&#x4F46;&#x662F;&#x4E0D;&#x60F3;&#x81EA;&#x5DF1;&#x63A7;&#x5236;&#x6808;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x90A3;&#x4E48; pthread &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x7B80;&#x5316;&#x7684;&#x63A5;&#x53E3;</p>
+&#x5982;&#x679C;&#x60F3;&#x4FEE;&#x6539;&#x6808;&#x5927;&#x5C0F;&#x4F46;&#x662F;&#x4E0D;&#x60F3;&#x81EA;&#x5DF1;&#x63A7;&#x5236;&#x6808;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;pthread &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x7B80;&#x5316;&#x7684;&#x63A5;&#x53E3;&#xFF1A;</p>
 <pre><code>int pthread_attr_getstacksize(const pthread_attr_t* restrict attr, size_t* restrict stacksize);
 int pthread_attr_setstacksize(pthread_attr_t* attr, size_t stacksize);
 </code></pre><p>&#x2003;&#x2003;
-guardsize &#x610F;&#x601D;&#x662F;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x7EBF;&#x7A0B;&#x6808;&#x8D85;&#x8FC7;&#x4E86;&#x8BBE;&#x5B9A;&#x5927;&#x5C0F;&#x4E4B;&#x540E;&#xFF0C;&#x7CFB;&#x7EDF;&#x8FD8;&#x4F1A;&#x4F7F;&#x7528;&#x90E8;&#x5206;&#x6269;&#x5C55;&#x5185;&#x5B58;&#x6765;&#x9632;&#x6B62;&#x6808;&#x6EA2;&#x51FA;&#xFF0C;&#x800C;&#x8FD9;&#x90E8;&#x5206;&#x6269;&#x5C55;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x5C31;&#x662F; guardsize&#x3002;
-&#x4E0D;&#x8FC7;&#x5982;&#x679C;&#x81EA;&#x5DF1;&#x4FEE;&#x6539;&#x4E86;&#x6808;&#x5206;&#x914D;&#x4F4D;&#x7F6E;&#xFF0C;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x5C06;&#x4F1A;&#x5931;&#x6548;&#xFF0C;&#x6548;&#x679C;&#x76F8;&#x5F53;&#x4E8E;&#x5C06; guardsize &#x8BBE;&#x7F6E;&#x4E3A; 0&#x3002;</p>
+guardsize &#x662F;&#x6307;&#xFF1A;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x7EBF;&#x7A0B;&#x6808;&#x8D85;&#x8FC7;&#x4E86;&#x8BBE;&#x5B9A;&#x5927;&#x5C0F;&#xFF0C;&#x7CFB;&#x7EDF;&#x8FD8;&#x4F1A;&#x4F7F;&#x7528;&#x90E8;&#x5206;&#x6269;&#x5C55;&#x5185;&#x5B58;&#x6765;&#x9632;&#x6B62;&#x6808;&#x6EA2;&#x51FA;&#xFF0C;&#x800C;&#x8FD9;&#x90E8;&#x5206;&#x6269;&#x5C55;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x5C31;&#x662F; guardsize&#x3002;
+&#x4E0D;&#x8FC7;&#x5982;&#x679C;&#x4FEE;&#x6539;&#x4E86;&#x6808;&#x5206;&#x914D;&#x4F4D;&#x7F6E;&#xFF0C;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x5C06;&#x4F1A;&#x5931;&#x6548;&#xFF0C;&#x6548;&#x679C;&#x76F8;&#x5F53;&#x4E8E;&#x5C06; guardsize &#x8BBE;&#x7F6E;&#x4E3A; 0&#x3002;</p>
 <pre><code>int pthread_attr_getguardsize(const pthread_attr_t* restrict attr, size_t* restrict guardsize);
 int pthread_attr_setguardsize(pthread_attr_t* attr, size_t guardsize);
 </code></pre><p>&#x2003;&#x2003;

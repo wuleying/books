@@ -5,12 +5,12 @@
 Unix 系统下的 IPC (inteprocess communication) 主要分为下面这几种：
 
 + pipe
-+ fifo
++ FIFO (First Input First Output)
 + 消息队列
 + 信号量
 + 共享存储
-+ uds (Unix domain socket)
-+ 套接字
++ UDS (Unix Domain Socket)
++ 套接字 (Socket)
 
 &emsp;&emsp;
 其中套接字可以跨机器进程通信，而之前几类都是单机进程之间通信。

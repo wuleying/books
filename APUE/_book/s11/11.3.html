@@ -53,7 +53,7 @@
         data-chapter-title="线程终止"
         data-filepath="s11/11.3.md"
         data-basepath=".."
-        data-revision="Fri Mar 04 2016 14:48:08 GMT+0800 (CST)"
+        data-revision="Sun Mar 06 2016 16:10:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2744,7 +2744,7 @@
                         
                             <b>14.2.</b>
                         
-                        fifo
+                        FIFO
                     </a>
             
             
@@ -2947,7 +2947,7 @@
                         <h1 id="&#x7EBF;&#x7A0B;&#x7EC8;&#x6B62;">&#x7EBF;&#x7A0B;&#x7EC8;&#x6B62;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x5982;&#x679C;&#x8FDB;&#x7A0B;&#x4E2D;&#x4EFB;&#x610F;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;&#x4E86; _exit/Exit/exit&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4EFB;&#x610F;&#x7EBF;&#x7A0B;&#x63A5;&#x6536;&#x5230;&#x4E86;&#x4FE1;&#x53F7;&#x800C;&#x5904;&#x7406;&#x52A8;&#x4F5C;&#x662F;&#x7EC8;&#x6B62;&#xFF0C;&#x90A3;&#x4E48;&#x6574;&#x4E2A;&#x8FDB;&#x7A0B;&#x5C31;&#x4F1A;&#x7EC8;&#x6B62;&#x3002;
+&#x5982;&#x679C;&#x8FDB;&#x7A0B;&#x4E2D;&#x4EFB;&#x610F;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;&#x4E86; _exit/Exit/exit&#xFF0C;&#x6216;&#x662F;&#x4EFB;&#x610F;&#x7EBF;&#x7A0B;&#x63A5;&#x6536;&#x5230;&#x4E86;&#x4FE1;&#x53F7;&#x800C;&#x5904;&#x7406;&#x52A8;&#x4F5C;&#x662F;&#x7EC8;&#x6B62;&#xFF0C;&#x90A3;&#x4E48;&#x6574;&#x4E2A;&#x8FDB;&#x7A0B;&#x5C31;&#x4F1A;&#x7EC8;&#x6B62;&#x3002;
 &#x5BF9;&#x4E8E;&#x5355;&#x4E2A;&#x7EBF;&#x7A0B;&#x53EA;&#x6709;&#x4EE5;&#x4E0B;&#x9762;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x9000;&#x51FA;&#xFF0C;&#x624D;&#x53EF;&#x80FD;&#x5728;&#x4E0D;&#x7EC8;&#x6B62;&#x6574;&#x4E2A;&#x8FDB;&#x7A0B;&#x60C5;&#x51B5;&#x4E0B;&#x9762;&#x505C;&#x6B62;&#x5B83;&#x7684;&#x63A7;&#x5236;&#x6D41;&#xFF1A;</p>
 <ul>
 <li>&#x7EBF;&#x7A0B;&#x53EA;&#x662F;&#x4ECE;&#x542F;&#x52A8;&#x4F8B;&#x7A0B;&#x4E2D;&#x8FD4;&#x56DE;&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x7EBF;&#x7A0B;&#x7684;&#x9000;&#x51FA;&#x7801;</li>
@@ -2966,8 +2966,8 @@ pthread_join &#x597D;&#x6BD4; wait &#x8C03;&#x7528;&#x3002;
 <p>&#x2003;&#x2003;
 &#x548C;&#x8FDB;&#x7A0B;&#x4F7F;&#x7528; atexit &#x4E00;&#x6837;&#xFF0C;&#x7EBF;&#x7A0B;&#x4E5F;&#x5141;&#x8BB8;&#x5B58;&#x5728;&#x8FD9;&#x79CD;&#x6E05;&#x7406;&#x51FD;&#x6570;&#xFF1A;</p>
 <pre><code>void pthread_cleanup_push(void (*func)(void*), void* arg);
-void pthread_cleanup_pop(int execute);              // &#x975E; 0 &#x8868;&#x793A;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;0 &#x8868;&#x793A;&#x4E0D;&#x7ACB;&#x5373;&#x6267;&#x884C;
-</code></pre><p>&#x901A;&#x5E38;&#x6765;&#x8BF4;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x9700;&#x8981;&#x914D;&#x5BF9;&#x4F7F;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x5F88;&#x53EF;&#x80FD;&#x5B9E;&#x73B0;&#x4E3A;&#x5B8F;&#x3002;
+void pthread_cleanup_pop(int execute); // &#x975E; 0 &#x8868;&#x793A;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;0 &#x8868;&#x793A;&#x4E0D;&#x7ACB;&#x5373;&#x6267;&#x884C;
+</code></pre><p>&#x901A;&#x5E38;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x9700;&#x8981;&#x914D;&#x5BF9;&#x4F7F;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x5F88;&#x53EF;&#x80FD;&#x5B9E;&#x73B0;&#x4E3A;&#x5B8F;&#x3002;
 push &#x5305;&#x542B; {&#xFF0C;&#x800C; pop &#x5305;&#x542B; }&#x3002;
 &#x5F53;&#x7EBF;&#x7A0B;&#x8FD4;&#x56DE;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x89E6;&#x53D1; push &#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
 <pre><code>void foo(void* arg) {
@@ -2977,9 +2977,11 @@ push &#x5305;&#x542B; {&#xFF0C;&#x800C; pop &#x5305;&#x542B; }&#x3002;
 void* pthread_func(void* arg) {
     pthread_cleanup_push(foo, (void*) &quot;push1&quot;);
     pthread_cleanup_push(foo, (void*) &quot;push2&quot;);
+
     for( ; ; ) {
         sleep(5);
     }
+
     pthread_cleanup_pop(0);
     pthread_cleanup_pop(0);
     return NULL;
@@ -2989,14 +2991,18 @@ int main() {
     pthread_t tid;
     int ret = 0;
     pthread_create(&amp;tid, NULL, pthread_func, 0);
-    ret=pthread_detach(tid);
+    ret = pthread_detach(tid);
+
     if(ret) {
         printf(&quot;pthread_detach:%s\n&quot;, strerror(ret));
     }
+
     ret = pthread_join(tid, NULL); // detach &#x4E4B;&#x540E;&#x8FD4;&#x56DE; join &#x8FD4;&#x56DE; EINVAL &#x9519;&#x8BEF;
+
     if(ret) {
         printf(&quot;pthread_join:%s\n&quot;, strerror(ret));
     }
+
     pthread_cancel(tid);
     return 0;
 }

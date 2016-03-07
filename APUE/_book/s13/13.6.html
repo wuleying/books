@@ -53,7 +53,7 @@
         data-chapter-title="存储映射 IO"
         data-filepath="s13/13.6.md"
         data-basepath=".."
-        data-revision="Fri Mar 04 2016 14:48:08 GMT+0800 (CST)"
+        data-revision="Sun Mar 06 2016 16:10:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2744,7 +2744,7 @@
                         
                             <b>14.2.</b>
                         
-                        fifo
+                        FIFO
                     </a>
             
             
@@ -2947,7 +2947,7 @@
                         <h1 id="&#x5B58;&#x50A8;&#x6620;&#x5C04;-io">&#x5B58;&#x50A8;&#x6620;&#x5C04; IO</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x5B58;&#x50A8;&#x6620;&#x5C04; IO (memoryy-mapped IO) &#x4F7F;&#x5F97;&#x4E00;&#x4E2A;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x4E8E;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#x76F8;&#x6620;&#x5C04;&#x3002;
+&#x5B58;&#x50A8;&#x6620;&#x5C04; IO (memory-mapped IO) &#x4F7F;&#x5F97;&#x4E00;&#x4E2A;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x4E0E;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#x76F8;&#x6620;&#x5C04;&#x3002;
 &#x8FD9;&#x6837;&#x8BFB;&#x53D6;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x5185;&#x5BB9;&#x5C31;&#x76F8;&#x5F53;&#x8BFB;&#x53D6;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x540C;&#x6837;&#x5982;&#x679C;&#x5199;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x3002;
 &#x6620;&#x5C04;&#x533A;&#x57DF;&#x548C;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x76F8;&#x5173;&#xFF0C;&#x4F46;&#x662F;&#x901A;&#x5E38;&#x6620;&#x5C04;&#x5728;&#x5806;&#x6808;&#x4E4B;&#x95F4;&#x7684;&#x5B58;&#x50A8;&#x533A;&#x57DF;&#x5185;&#x90E8;&#x3002;</p>
 <pre><code>#include &lt;sys/mman.h&gt;
@@ -3062,7 +3062,7 @@ int main() {
     signal(SIGBUS, signal_handler);
     struct stat stat_buf;
     stat(&quot;main.cc&quot;, &amp;stat_buf);
-    int fd=open(&quot;main.cc&quot;, O_RDWR);
+    int fd = open(&quot;main.cc&quot;, O_RDWR);
     char* addr = (char*) mmap(NULL, stat_buf.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     close(fd);
     getchar(); // &#x8FD9;&#x4E2A;&#x5730;&#x65B9;&#x5C06; main.cc &#x5220;&#x9664;&#x6389;
