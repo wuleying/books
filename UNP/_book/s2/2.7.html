@@ -53,7 +53,7 @@
         data-chapter-title="close/shutdown"
         data-filepath="s2/2.7.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,13 +1699,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="closeshutdown">close/shutdown</h1>
+                        <h1 id="27-closeshutdown">2.7 close/shutdown</h1>
 <hr>
 <p>&#x2003;&#x2003;
 &#x5173;&#x95ED;&#x5EFA;&#x7ACB;&#x597D;&#x7684;&#x8FDE;&#x63A5;&#x3002;</p>
 <pre><code>// #include &lt;unistd.h&gt;
 /* Close the file descriptor FD.
-
    This function is a cancellation point and therefore not marked with
    __THROW.  */
 extern int close (int __fd);
@@ -1719,13 +1718,13 @@ extern int close (int __fd);
    Returns 0 on success, -1 for errors.  */
 extern int shutdown (int __fd, int __how) __THROW;
 </code></pre><p>&#x2003;&#x2003;
-&#x5BF9;&#x4E8E; close &#x548C; shutdown &#x533A;&#x522B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;close &#x4F1A;&#x505A;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x800C; shutdown &#x662F; close &#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7B49;&#x4E8E; 0 &#x65F6;&#x7684;&#x771F;&#x5B9E;&#x64CD;&#x4F5C; (SHUT_RDWR)&#x3002;
+close &#x548C; shutdown &#x533A;&#x522B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;close &#x4F1A;&#x505A;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x800C; shutdown &#x662F; close &#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7B49;&#x4E8E; 0 &#x65F6;&#x7684;&#x771F;&#x5B9E;&#x64CD;&#x4F5C; (SHUT_RDWR)&#x3002;
 &#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x770B;&#x5230; close &#x662F;&#x5168;&#x5173;&#x95ED;&#xFF0C;&#x800C; shutdown &#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x534A;&#x5173;&#x95ED;&#x3002;
 SHUT_RDWR &#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x8C03;&#x7528;&#x4E00;&#x6B21; SHUT_RD &#x548C; SHUT_WR&#x3002;</p>
 <p>&#x2003;&#x2003;
-SHUT_RD&#x80FD;&#x591F;&#x5173;&#x95ED;&#x8BFB;&#x534A;&#x90E8;&#xFF0C;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x90E8;&#x5206;&#x4E0D;&#x4F1A;&#x53D1;&#x9001;&#x4EFB;&#x4F55;&#x5206;&#x8282;&#xFF0C;&#x800C; kernel &#x5185;&#x90E8;&#x4F1A;&#x5C06;&#x5DF2;&#x7ECF;&#x63A5;&#x6536;&#x5230;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x90FD;&#x5168;&#x90E8;&#x4E22;&#x5F03;&#xFF0C;&#x7EE7;&#x7EED; read &#x8FD9;&#x4E2A; fd &#x90FD;&#x4F1A;&#x8FD4;&#x56DE; 0&#xFF0C;&#x800C;&#x5982;&#x679C;&#x5BF9;&#x7AEF;&#x7EE7;&#x7EED;&#x53D1;&#x9001;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x88AB;&#x65E0;&#x6761;&#x4EF6;&#x5730;&#x786E;&#x8BA4;&#x3002;
-SHUT_WR&#x80FD;&#x591F;&#x5173;&#x95ED;&#x5199;&#x534A;&#x90E8;&#xFF0C;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x90E8;&#x5206;&#x4F1A;&#x53D1;&#x9001; FIN &#x5206;&#x8282;&#xFF0C;&#x800C;&#x539F;&#x6765; kernel &#x5185;&#x90E8;&#x7EF4;&#x6301;&#x7684;&#x6570;&#x636E;&#x4F1A;&#x9996;&#x5148;&#x5168;&#x90E8;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x7EE7;&#x7EED; write &#x8FD9;&#x4E2A; fd &#x4F1A;&#x4EA7;&#x751F; EPIPE &#x9519;&#x8BEF;&#x3002;
-&#x534A;&#x5173;&#x95ED;&#x5728;&#x6709;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#x9762;&#x662F;&#x5FC5;&#x8981;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x534A;&#x5173;&#x95ED;&#x5E94;&#x7528;&#x5C42;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x4E00;&#x4E9B;&#x5176;&#x4ED6;&#x6280;&#x672F;&#x6216;&#x8005;&#x662F;&#x534F;&#x8BAE;&#x6765;&#x901A;&#x77E5;&#x5BF9;&#x7AEF;&#xFF0C;&#x81EA;&#x5DF1;&#x5DF2;&#x7ECF;&#x5C06;&#x6570;&#x636E;&#x53D1;&#x9001;&#x5B8C;&#x6BD5;&#x3002;</p>
+SHUT_RD &#x80FD;&#x591F;&#x5173;&#x95ED;&#x8BFB;&#x534A;&#x90E8;&#xFF0C;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x90E8;&#x5206;&#x4E0D;&#x4F1A;&#x53D1;&#x9001;&#x4EFB;&#x4F55;&#x5206;&#x8282;&#xFF0C;&#x800C; kernel &#x5185;&#x90E8;&#x4F1A;&#x5C06;&#x5DF2;&#x7ECF;&#x63A5;&#x6536;&#x5230;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x5168;&#x90E8;&#x4E22;&#x5F03;&#xFF0C;&#x7EE7;&#x7EED; read &#x8FD9;&#x4E2A; fd &#x4F1A;&#x8FD4;&#x56DE; 0&#xFF0C;&#x800C;&#x5982;&#x679C;&#x5BF9;&#x7AEF;&#x7EE7;&#x7EED;&#x53D1;&#x9001;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x88AB;&#x65E0;&#x6761;&#x4EF6;&#x5730;&#x786E;&#x8BA4;&#x3002;
+SHUT_WR &#x80FD;&#x591F;&#x5173;&#x95ED;&#x5199;&#x534A;&#x90E8;&#xFF0C;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x90E8;&#x5206;&#x4F1A;&#x53D1;&#x9001; FIN &#x5206;&#x8282;&#xFF0C;&#x800C;&#x539F;&#x6765; kernel &#x5185;&#x90E8;&#x7EF4;&#x6301;&#x7684;&#x6570;&#x636E;&#x4F1A;&#x9996;&#x5148;&#x5168;&#x90E8;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x7EE7;&#x7EED; write &#x8FD9;&#x4E2A; fd &#x4F1A;&#x4EA7;&#x751F; EPIPE &#x9519;&#x8BEF;&#x3002;
+&#x534A;&#x5173;&#x95ED;&#x5728;&#x6709;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#x662F;&#x5FC5;&#x8981;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x534A;&#x5173;&#x95ED;&#xFF0C;&#x5E94;&#x7528;&#x5C42;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x4E00;&#x4E9B;&#x5176;&#x4ED6;&#x6280;&#x672F;&#x6216;&#x8005;&#x662F;&#x534F;&#x8BAE;&#x6765;&#x901A;&#x77E5;&#x5BF9;&#x7AEF;&#x5DF2;&#x7ECF;&#x5C06;&#x6570;&#x636E;&#x53D1;&#x9001;&#x5B8C;&#x6BD5;&#x3002;</p>
 <pre><code>[dirlt@localhost.localdomain]$ ./connect -H -b 44567 119.75.218.45 80
 bind (0.0.0.0:44567)
 connect 119.75.218.45:80 ...

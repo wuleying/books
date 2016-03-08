@@ -53,7 +53,7 @@
         data-chapter-title="信号驱动 IO (signal-driven IO)"
         data-filepath="s2/2.10.4.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,14 +1699,14 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x4FE1;&#x53F7;&#x9A71;&#x52A8;-io-signaldriven-io">&#x4FE1;&#x53F7;&#x9A71;&#x52A8; IO (signal-driven IO)</h1>
+                        <h1 id="2104-&#x4FE1;&#x53F7;&#x9A71;&#x52A8;-io-signaldriven-io">2.10.4 &#x4FE1;&#x53F7;&#x9A71;&#x52A8; IO (signal-driven IO)</h1>
 <hr>
 <p>&#x2003;&#x2003;
 &#x4FE1;&#x53F7;&#x9A71;&#x52A8; IO &#x7684;&#x65B9;&#x5F0F;&#x662F;&#x53D1;&#x9001; SIGIO &#x4FE1;&#x53F7;&#x6765;&#x901A;&#x77E5;&#x67D0;&#x4E2A; fd &#x662F;&#x53EF;&#x8BFB;&#x6216;&#x662F;&#x53EF;&#x5199;&#x7684;&#x3002;
-fd &#x7684;&#x963B;&#x585E;&#x7B49;&#x5F85;&#x6216;&#x8005;&#x662F;&#x8F6E;&#x8BE2;&#x90FD;&#x8BA9;&#x7CFB;&#x7EDF;&#x6765;&#x8FDB;&#x884C;&#x6258;&#x7BA1;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x7528;&#x6237;&#x6001;&#x5904;&#x7406;&#x3002;</p>
+fd &#x7684;&#x963B;&#x585E;&#x7B49;&#x5F85;&#x6216;&#x662F;&#x8F6E;&#x8BE2;&#x90FD;&#x8BA9;&#x7CFB;&#x7EDF;&#x6765;&#x8FDB;&#x884C;&#x6258;&#x7BA1;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x7528;&#x6237;&#x6001;&#x5904;&#x7406;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x8BBE;&#x7F6E;&#x4FE1;&#x53F7;&#x9A71;&#x52A8; IO &#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
-<pre><code>// &#x9996;&#x5148;&#x8BBE;&#x7F6E;&#x4FE1;&#x53F7;&#x9A71;&#x52A8;&#xFF0C;&#x8FD9;&#x6837;&#x51C6;&#x5907;&#x597D;&#x4E4B;&#x540E;&#x4F1A;&#x53D1;&#x9001; SIGIO &#x4FE1;&#x53F7;
+<pre><code>// &#x9996;&#x5148;&#x8BBE;&#x7F6E;&#x4FE1;&#x53F7;&#x9A71;&#x52A8;&#xFF0C;&#x51C6;&#x5907;&#x597D;&#x4E4B;&#x540E;&#x4F1A;&#x53D1;&#x9001; SIGIO &#x4FE1;&#x53F7;
 int flags = fcntl(fd, F_GETFL, 0);
 flags |= O_ASYNC;
 fcntl(fd, F_SETFL, flags);

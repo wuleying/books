@@ -53,7 +53,7 @@
         data-chapter-title="TCP_MAXSEG"
         data-filepath="s2/2.9.8.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,18 +1699,18 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="tcpmaxseg">TCP_MAXSEG</h1>
+                        <h1 id="298-tcpmaxseg">2.9.8 TCP_MAXSEG</h1>
 <hr>
 <p>&#x2003;&#x2003;
 &#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x5141;&#x8BB8;&#x83B7;&#x53D6;&#x548C;&#x8BBE;&#x7F6E; TCP &#x8FDE;&#x63A5;&#x7684;&#x6700;&#x5927;&#x5206;&#x8282;&#x5927;&#x5C0F; (MSS)&#x3002;
 TCP &#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x4E4B;&#x524D;&#x53CC;&#x65B9;&#x5C31;&#x4F1A;&#x4EA4;&#x6362;&#x5404;&#x81EA;&#x7684; MSS&#xFF0C;&#x7136;&#x540E;&#x9009;&#x62E9;&#x6700;&#x5C0F;&#x7684; MSS &#x4F5C;&#x4E3A;&#x672C;&#x6B21;&#x8FDE;&#x63A5;&#x7684; MSS&#xFF0C;&#x4E3A;&#x7684;&#x5C31;&#x662F;&#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x51CF;&#x5C11;&#x5206;&#x7247;&#x3002;
 &#x5728; TCP &#x5EFA;&#x7ACB;&#x4E4B;&#x524D;&#xFF0C;&#x4F7F;&#x7528; TCP_MAXSEG &#x83B7;&#x5F97;&#x7684; MSS &#x662F;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x503C; (&#x867D;&#x7136;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; 536&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x53D1;&#x9001;&#x7684; MSS &#x8FD8;&#x662F; 1460&#xFF0C;&#x8FD9;&#x70B9;&#x53EF;&#x4EE5;&#x4ECE; tcpdump &#x4E2D;&#x89C2;&#x5BDF;&#x5230;)&#xFF0C;&#x5EFA;&#x7ACB;&#x4E4B;&#x540E;&#x7684; MSS &#x662F;&#x53CC;&#x65B9;&#x8F83;&#x5C0F;&#x7684; MSS&#x3002;
-&#x4E4B;&#x524D;&#x8BF4;&#x8FC7; MSS &#x53D6;&#x51B3;&#x4E8E;&#x8DEF;&#x5F84; MTU&#xFF0C;&#x5982;&#x679C;&#x8DEF;&#x7531;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x9020;&#x6210;&#x8DEF;&#x5F84;MTU&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x90A3;&#x4E48; MSS &#x53EF;&#x80FD;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x3002;</p>
+&#x4E4B;&#x524D;&#x8BF4;&#x8FC7; MSS &#x53D6;&#x51B3;&#x4E8E;&#x8DEF;&#x5F84; MTU&#xFF0C;&#x5982;&#x679C;&#x8DEF;&#x7531;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x9020;&#x6210;&#x8DEF;&#x5F84; MTU &#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x90A3;&#x4E48; MSS &#x4E5F;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x3002;</p>
 <p>&#x2003;&#x2003;
 @todo: TCP_MAXSEG&#x9ED8;&#x8BA4;&#x503C;&#x662F; 536&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x8FDE;&#x63A5;&#x53D1;&#x73B0;&#x4EA4;&#x6362;&#x8FD8;&#x662F;&#x6309;&#x7167; 1460 &#x6765;&#x8FDB;&#x884C;&#x4EA4;&#x6362;&#x3002;
 &#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x4FA6;&#x6D4B;&#x8DEF;&#x5F84; MTU&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x8DEF;&#x5F84; MTU &#x53D1;&#x73B0;&#x5B9E;&#x73B0;&#x4E0A;&#x5E76;&#x4E0D;&#x590D;&#x6742;&#xFF0C;&#x539F;&#x7406;&#x4E0A;&#x8BF4;&#x53EA;&#x9700;&#x8981;&#x5728; IP &#x9996;&#x90E8;&#x52A0;&#x4E0A; DF &#x6807;&#x8BB0; (donnot-fragment &#x4E0D;&#x8981;&#x5206;&#x7247;)&#xFF0C;&#x7136;&#x540E;&#x6309;&#x7167;&#x4E00;&#x4E2A;&#x5C0F;&#x7684; MTU &#x5BF9;&#x5E94; MSS &#x8FDB;&#x884C;&#x4F20;&#x8F93;&#x3002;
+&#x8DEF;&#x5F84; MTU &#x53D1;&#x73B0;&#x5B9E;&#x73B0;&#x4E0A;&#x5E76;&#x4E0D;&#x590D;&#x6742;&#xFF0C;&#x539F;&#x7406;&#x4E0A;&#x53EA;&#x9700;&#x8981;&#x5728; IP &#x9996;&#x90E8;&#x52A0;&#x4E0A; DF &#x6807;&#x8BB0; (donnot-fragment &#x4E0D;&#x8981;&#x5206;&#x7247;)&#xFF0C;&#x7136;&#x540E;&#x6309;&#x7167;&#x4E00;&#x4E2A;&#x5C0F;&#x7684; MTU &#x5BF9;&#x5E94; MSS &#x8FDB;&#x884C;&#x4F20;&#x8F93;&#x3002;
 &#x5982;&#x679C;&#x8DEF;&#x5F84;&#x4E0A; MTU &#x5C0F;&#x4E8E;&#x8FD9;&#x6B21;&#x4F20;&#x8F93;&#x6570;&#x636E;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; ICMP &#x9519;&#x8BEF;&#x3002;
 &#x539F;&#x7406;&#x4E0A;&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x53CD;&#x9988;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x8DEF;&#x5F84; MTU&#x3002;
 &#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x8DEF;&#x5F84; MTU &#x53D6;&#x51B3;&#x4E8E; IP &#x62A5;&#x6587;&#x8DEF;&#x7531;&#x9009;&#x62E9;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x52A8;&#x6001;&#x53D8;&#x5316;&#x503C;&#xFF0C;&#x8DEF;&#x5F84; MTU &#x4E5F;&#x5FC5;&#x987B;&#x4E0D;&#x65AD;&#x5730;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x548C;&#x8C03;&#x6574;&#x3002;</p>

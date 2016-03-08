@@ -53,7 +53,7 @@
         data-chapter-title="backlog"
         data-filepath="s2/2.5.2.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,7 +1699,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="backlog">backlog</h1>
+                        <h1 id="252-backlog">2.5.2 backlog</h1>
 <hr>
 <p>&#x2003;&#x2003;
 &#x53D8;&#x4E3A;&#x88AB;&#x52A8;&#x72B6;&#x6001;&#x4E4B;&#x540E;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x7B49;&#x5F85;&#x5BA2;&#x6237;&#x7AEF;&#x8FDB;&#x884C; connnect (&#x53D1;&#x9001; SYN &#x5206;&#x8282;)&#x3002;
@@ -1711,19 +1711,18 @@
 </ul>
 <p>&#x2003;&#x2003;
 &#x5728;&#x961F;&#x5217;&#x91CC;&#x9762;&#x5E76;&#x6CA1;&#x6709;&#x5206;&#x914D; fd&#xFF0C;&#x53EA;&#x662F;&#x4FDD;&#x5B58;&#x4E86;&#x8FDE;&#x63A5;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x76F4;&#x5230; accept &#x4E4B;&#x540E;&#x624D;&#x6B63;&#x5F0F;&#x5206;&#x914D; fd&#x3002;
-&#x81F3;&#x4E8E;&#x8FD9;&#x4E2A;&#x961F;&#x5217;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x5C31;&#x662F; listen &#x8C03;&#x7528;&#x91CC;&#x9762;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570; n &#x7684;&#x542B;&#x4E49;&#xFF0C;&#x901A;&#x5E38;&#x79F0;&#x4E3A; backlog&#x3002;
-&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E2A;&#x89E3;&#x91CA;&#x662F;&#x5386;&#x53F2;&#x4E0A; BSD &#x7684;&#x89E3;&#x91CA;&#x3002;</p>
+&#x81F3;&#x4E8E;&#x8FD9;&#x4E2A;&#x961F;&#x5217;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x5C31;&#x662F; listen &#x8C03;&#x7528;&#x91CC;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570; n &#x7684;&#x542B;&#x4E49;&#xFF0C;&#x901A;&#x5E38;&#x79F0;&#x4E3A; backlog&#x3002;
+&#x4F46;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E2A;&#x89E3;&#x91CA;&#x662F;&#x5386;&#x53F2;&#x4E0A; BSD &#x7684;&#x89E3;&#x91CA;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x4F46;&#x5728; linux &#x7CFB;&#x7EDF;&#x4E0B;&#xFF0C;backlog &#x7684;&#x503C;&#x4FEE;&#x6539;&#x6210;&#x4E3A;&#x4E86;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x4F46;&#x6CA1;&#x6709; accept &#x7684;&#x961F;&#x5217;&#x957F;&#x5EA6; (complete queue)&#x3002;
-&#x800C; SYN_RCVD &#x961F;&#x5217;&#x957F;&#x5EA6; (incomplete queue) &#x662F; /proc/sys/net/ipv4/tcp_max_syn_backlog &#x91CC;&#x9762;&#x5B58;&#x653E;&#x7684;&#x503C;&#x3002;
-&#x8FD9;&#x6837;&#x4FEE;&#x6539;&#x533A;&#x5206;&#x5F00;&#x6765;&#x662F;&#x5B58;&#x5728;&#x539F;&#x56E0;&#x7684;&#x3002;
-&#x5047;&#x8BBE; backlog &#x662F;&#x4E24;&#x4E2A;&#x961F;&#x5217;&#x957F;&#x5EA6;&#x4E0A;&#x9650;&#xFF0C;&#x90A3;&#x4E48;&#x662F;&#x4E0D;&#x80FD;&#x591F;&#x6709;&#x6548;&#x62B5;&#x5FA1; SYN flood &#x653B;&#x51FB;&#x7684;&#x3002;
-SYN flood &#x653B;&#x51FB;&#x5C31;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x76F4;&#x63A5;&#x4F2A;&#x9020; IP &#x6570;&#x636E;&#x62A5;&#xFF0C;&#x53EA;&#x662F;&#x53D1;&#x9001;&#x4E00;&#x4E2A; SYN &#x5206;&#x8282;&#x4E4B;&#x540E;&#x7136;&#x540E;&#x7ACB;&#x523B;&#x65AD;&#x6389;&#xFF0C;&#x8FD9;&#x6837;&#x670D;&#x52A1;&#x7AEF;&#x5728;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x5185;&#x7EF4;&#x62A4;&#x8FD9;&#x6837;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x8FC7;&#x591A;&#x7684;&#x8FD9;&#x6837;&#x7684;&#x6570;&#x636E;&#x62A5;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x5C06;&#x4E0D;&#x80FD;&#x591F;&#x6B63;&#x5E38;&#x5730;&#x63A5;&#x53D7;&#x65B0;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x6700;&#x7EC8;&#x62D2;&#x63A5;&#x670D;&#x52A1; (denial of service)&#x3002;</p>
+&#x4F46;&#x5728; linux &#x7CFB;&#x7EDF;&#x4E0B;&#xFF0C;backlog &#x7684;&#x503C;&#x4FEE;&#x6539;&#x6210;&#x4E3A;&#x4E86;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#xFF0C;&#x4F46;&#x6CA1;&#x6709; accept &#x7684;&#x961F;&#x5217;&#x957F;&#x5EA6; (complete queue)&#x3002;
+&#x800C; SYN_RCVD &#x961F;&#x5217;&#x957F;&#x5EA6; (incomplete queue) &#x662F; /proc/sys/net/ipv4/tcp_max_syn_backlog &#x91CC;&#x5B58;&#x653E;&#x7684;&#x503C;&#x3002;
+&#x8FD9;&#x6837;&#x4FEE;&#x6539;&#x533A;&#x5206;&#x5F00;&#x6765;&#x662F;&#x5B58;&#x5728;&#x539F;&#x56E0;&#x7684;&#xFF0C;&#x5047;&#x8BBE; backlog &#x662F;&#x4E24;&#x4E2A;&#x961F;&#x5217;&#x957F;&#x5EA6;&#x4E0A;&#x9650;&#xFF0C;&#x90A3;&#x4E48;&#x662F;&#x4E0D;&#x80FD;&#x6709;&#x6548;&#x62B5;&#x5FA1; SYN flood &#x653B;&#x51FB;&#x7684;&#x3002;
+SYN flood &#x653B;&#x51FB;&#x5C31;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x76F4;&#x63A5;&#x4F2A;&#x9020; IP &#x6570;&#x636E;&#x62A5;&#xFF0C;&#x53EA;&#x662F;&#x53D1;&#x9001;&#x4E00;&#x4E2A; SYN &#x5206;&#x8282;&#x7136;&#x540E;&#x7ACB;&#x523B;&#x65AD;&#x6389;&#xFF0C;&#x8FD9;&#x6837;&#x670D;&#x52A1;&#x7AEF;&#x5728;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x5185;&#x7EF4;&#x62A4;&#x8FD9;&#x6837;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x8FC7;&#x591A;&#x7684;&#x8FD9;&#x6837;&#x7684;&#x6570;&#x636E;&#x62A5;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x5C06;&#x4E0D;&#x80FD;&#x591F;&#x6B63;&#x5E38;&#x5730;&#x63A5;&#x53D7;&#x65B0;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x6700;&#x7EC8;&#x62D2;&#x63A5;&#x670D;&#x52A1; (denial of service)&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x8FD9;&#x91CC;&#x503C;&#x5F97;&#x770B;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x662F;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF; SYN &#x5206;&#x8282;&#x5230;&#x8FBE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x670D;&#x52A1;&#x7AEF; incomplete queue &#x5DF2;&#x6EE1;&#xFF0C;&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x8FD4;&#x56DE; RST &#x5206;&#x8282;&#x8FD8;&#x662F;&#x4E0D;&#x56DE;&#x590D; ACK &#x5206;&#x8282;&#xFF0C;&#x800C;&#x8BA9;&#x5BA2;&#x6237;&#x7AEF;&#x8FDB;&#x884C;&#x91CD;&#x4F20;&#x3002;
-&#x5BF9;&#x4E8E; manpage &#x7406;&#x89E3;&#x89E3;&#x91CA;&#x4E24;&#x79CD;&#x8FD4;&#x56DE;&#x60C5;&#x51B5;&#x90FD;&#x662F;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x5FC5;&#x987B;&#x533A;&#x5206;&#x3002;
-&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#x66F4;&#x597D;&#x7684;&#x505A;&#x6CD5;&#x8FD8;&#x662F;&#x8BA9;&#x5BA2;&#x6237;&#x7AEF;&#x91CD;&#x4F20;&#xFF0C;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x54CD;&#x5E94; RST &#x5206;&#x8282;&#x5BA2;&#x6237;&#x7AEF;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x533A;&#x5206;&#x662F;&#x56E0;&#x4E3A;&#x670D;&#x52A1;&#x7AEF;&#x6CA1;&#x6709;&#x5F00;&#x542F;&#x5BF9;&#x5E94;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x8FD8;&#x662F;&#x56E0;&#x4E3A; incomplete queue &#x5DF2;&#x6EE1;&#x8FD9;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x3002;
-&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x80FD;&#x7A0D;&#x5FAE;&#x91CD;&#x4F20;&#x7B49;&#x5F85;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x670D;&#x52A1;&#x7AEF; incomplete queue &#x90E8;&#x5206;&#x8FDE;&#x63A5;&#x5E94;&#x7ECF;&#x5EFA;&#x7ACB;&#x8D77;&#x6765;&#x4E86;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x5904;&#x7406;&#x4E86;&#x3002;</p>
+&#x5BA2;&#x6237;&#x7AEF; SYN &#x5206;&#x8282;&#x5230;&#x8FBE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x670D;&#x52A1;&#x7AEF; incomplete queue &#x5DF2;&#x6EE1;&#xFF0C;&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x8FD4;&#x56DE; RST &#x5206;&#x8282;&#x8FD8;&#x662F;&#x4E0D;&#x56DE;&#x590D; ACK &#x5206;&#x8282;&#xFF0C;&#x800C;&#x8BA9;&#x5BA2;&#x6237;&#x7AEF;&#x8FDB;&#x884C;&#x91CD;&#x4F20;&#x3002;
+&#x5BF9;&#x4E8E; manpage &#x89E3;&#x91CA;&#x4E24;&#x79CD;&#x8FD4;&#x56DE;&#x60C5;&#x51B5;&#x90FD;&#x662F;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x5FC5;&#x987B;&#x533A;&#x5206;&#x3002;
+&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x66F4;&#x597D;&#x7684;&#x505A;&#x6CD5;&#x8FD8;&#x662F;&#x8BA9;&#x5BA2;&#x6237;&#x7AEF;&#x91CD;&#x4F20;&#xFF0C;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x54CD;&#x5E94; RST &#x5206;&#x8282;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x533A;&#x5206;&#x662F;&#x56E0;&#x4E3A;&#x670D;&#x52A1;&#x7AEF;&#x6CA1;&#x6709;&#x5F00;&#x542F;&#x5BF9;&#x5E94;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x8FD8;&#x662F;&#x56E0;&#x4E3A; incomplete queue &#x5DF2;&#x6EE1;&#x8FD9;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x3002;
+&#x5B9E;&#x9645;&#x4E0A;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x80FD;&#x7A0D;&#x5FAE;&#x91CD;&#x4F20;&#x7B49;&#x5F85;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x670D;&#x52A1;&#x7AEF; incomplete queue &#x90E8;&#x5206;&#x8FDE;&#x63A5;&#x5E94;&#x7ECF;&#x5EFA;&#x7ACB;&#x8D77;&#x6765;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x5904;&#x7406;&#x4E86;&#x3002;</p>
 
                     
                     </section>

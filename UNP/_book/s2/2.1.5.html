@@ -53,7 +53,7 @@
         data-chapter-title="端口号"
         data-filepath="s2/2.1.5.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,7 +1699,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x7AEF;&#x53E3;&#x53F7;">&#x7AEF;&#x53E3;&#x53F7;</h1>
+                        <h1 id="215-&#x7AEF;&#x53E3;&#x53F7;">2.1.5 &#x7AEF;&#x53E3;&#x53F7;</h1>
 <hr>
 <p>&#x2003;&#x2003;
 IP &#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x901A;&#x8BAF;&#x7684;&#x673A;&#x5668;&#xFF0C;&#x800C;&#x7AEF;&#x53E3;&#x53F7;&#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x901A;&#x4FE1;&#x7684;&#x8FDB;&#x7A0B;&#x3002;
@@ -1762,6 +1762,7 @@ extern uint16_t htons (uint16_t __hostshort)  __THROW __attribute__ ((__const__)
 &#x5176;&#x4E2D; n &#x8868;&#x793A; network&#xFF0C;h &#x8868;&#x793A; host&#xFF0C;l &#x8868;&#x793A; long (32bit)&#xFF0C;s &#x8868;&#x793A; short (16bit)&#x3002;</p>
 <pre><code>#include &lt;netinet/in.h&gt;
 #include &lt;cstdio&gt;
+
 int main() {
     sockaddr_in addr;
     addr.sin_port = htons(12345);

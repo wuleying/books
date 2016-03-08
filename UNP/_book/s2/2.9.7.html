@@ -53,7 +53,7 @@
         data-chapter-title="SO_REUSEADDR"
         data-filepath="s2/2.9.7.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,17 +1699,17 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="soreuseaddr">SO_REUSEADDR</h1>
+                        <h1 id="297-soreuseaddr">2.9.7 SO_REUSEADDR</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x4F7F;&#x7528; SO_REUSEADDR &#x9009;&#x9879;&#xFF0C;&#x5141;&#x8BB8;&#x76D1;&#x542C; (&#x88AB;&#x52A8;&#x6253;&#x5F00;) &#x7684;&#x5957;&#x63A5;&#x5B57;&#x7ED1;&#x5B9A;&#x5728;&#x4E00;&#x4E2A;&#x6B63;&#x5728;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#x7AEF;&#x53E3;&#x4E0A;&#x3002;
-&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x5FC5;&#x987B;&#x5728; socket &#x548C; bind &#x4E4B;&#x95F4;&#x8C03;&#x7528;&#x3002;
-&#x4F46;&#x662F;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x68C0;&#x67E5;&#x662F;&#x5728;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x7684;&#x3002;
+&#x4F7F;&#x7528; SO_REUSEADDR &#x9009;&#x9879;&#xFF0C;&#x5141;&#x8BB8;&#x76D1;&#x542C; (&#x88AB;&#x52A8;&#x6253;&#x5F00;) &#x7684;&#x5957;&#x63A5;&#x5B57;&#x7ED1;&#x5B9A;&#x5728;&#x4E00;&#x4E2A;&#x6B63;&#x5728;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#x7AEF;&#x53E3;&#x4E0A;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x5FC5;&#x987B;&#x5728; socket &#x548C; bind &#x4E4B;&#x95F4;&#x8C03;&#x7528;&#x3002;
+&#x4F46;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x4E2A;&#x68C0;&#x67E5;&#x662F;&#x5728;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x7684;&#x3002;
 &#x4F7F;&#x7528; connect.cc &#x8FDB;&#x884C;&#x4E24;&#x6B21;&#x6B63;&#x5E38;&#x8FDE;&#x63A5;&#xFF1A;</p>
 <pre><code>[dirlt@localhost.localdomain]$ ./connect -b 44567 119.75.217.56 80
 bind (0.0.0.0:44567)
 connect 119.75.217.56:80 ...
 connect succeed
+
 [dirlt@localhost.localdomain]$ ./connect -b 44567 119.75.217.56 80
 bind (0.0.0.0:44567)
 bind failed:Address already in use
@@ -1721,6 +1721,7 @@ setsockopt SO_REUSEADDR
 bind (0.0.0.0:44568)
 connect 119.75.217.56:80 ...
 connect succeed
+
 [dirlt@localhost.localdomain]$ ./connect -r -b 44568 119.75.217.56 80
 setsockopt SO_REUSEADDR
 bind (0.0.0.0:44568)
@@ -1728,11 +1729,11 @@ connect 119.75.217.56:80 ...
 connect failed:Cannot assign requested address
 </code></pre><p>&#x2003;&#x2003;
 &#x670D;&#x52A1;&#x5668;&#x4F7F;&#x7528;&#x6D3E;&#x751F;&#x5B50;&#x8FDB;&#x7A0B;&#x6765;&#x5904;&#x7406;&#x8FDE;&#x63A5;&#xFF0C;&#x800C;&#x670D;&#x52A1;&#x5668;&#x9700;&#x8981;&#x91CD;&#x542F;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x4F1A;&#x5B58;&#x5728;&#x95EE;&#x9898;&#x3002;
-&#x56E0;&#x4E3A;&#x670D;&#x52A1;&#x5668;&#x5173;&#x95ED;&#x4E4B;&#x540E;&#x5B50;&#x8FDB;&#x7A0B;&#x7684;&#x8FDE;&#x63A5;&#x4F9D;&#x7136;&#x88AB;&#x4F7F;&#x7528;&#x7740;&#xFF0C;&#x4F7F;&#x7528; netstat &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7AEF;&#x53E3;&#x4F9D;&#x7136;&#x88AB;&#x4F7F;&#x7528;&#x3002;
-&#x5982;&#x679C;&#x670D;&#x52A1;&#x5668;&#x91CD;&#x542F;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x7ED1;&#x5B9A;&#x8FD9;&#x4E2A;&#x7AEF;&#x53E3;&#x5C31;&#x4F1A;&#x51FA;&#x95EE;&#x9898;&#x3002;</p>
+&#x56E0;&#x4E3A;&#x670D;&#x52A1;&#x5668;&#x5173;&#x95ED;&#x4E4B;&#x540E;&#x5B50;&#x8FDB;&#x7A0B;&#x7684;&#x8FDE;&#x63A5;&#x4F9D;&#x7136;&#x88AB;&#x4F7F;&#x7528;&#x7740;&#xFF0C;&#x4F7F;&#x7528; netstat &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7AEF;&#x53E3;&#x4F9D;&#x7136;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;&#x5982;&#x679C;&#x670D;&#x52A1;&#x5668;&#x91CD;&#x542F;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x7ED1;&#x5B9A;&#x8FD9;&#x4E2A;&#x7AEF;&#x53E3;&#x5C31;&#x4F1A;&#x51FA;&#x95EE;&#x9898;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x662F;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x4E0A;&#x9762;&#x542F;&#x52A8;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x5B9E;&#x4F8B;&#xFF0C;&#x6BD4;&#x5982;&#x4E3B;&#x673A;&#x6709;&#x53CC;&#x7F51;&#x5361;&#x4E24;&#x4E2A; ip &#x5206;&#x522B;&#x662F; x&#x3001;y&#x3002;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x5141;&#x8BB8;&#x5206;&#x522B;&#x4F7F;&#x7528; (x, z)&#x3001;(y, z) &#x6765;&#x542F;&#x52A8;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x5B9E;&#x4F8B;&#x3002;
-&#x4F46;&#x662F;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x53EA;&#x8981;&#x4F7F;&#x7528;&#x4E86;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x53EF;&#x7528; ip &#x7684;&#x5C31;&#x4E0D;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x901A;&#x914D;&#x5730;&#x5740;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x901A;&#x914D;&#x5730;&#x5740;&#x5C31;&#x4E0D;&#x5141;&#x8BB8;&#x7ED1;&#x5B9A;&#x7279;&#x5B9A; ip&#x3002;</p>
+&#x53E6;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x662F;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x4E0A;&#x542F;&#x52A8;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x5B9E;&#x4F8B;&#xFF0C;&#x6BD4;&#x5982;&#x4E3B;&#x673A;&#x6709;&#x53CC;&#x7F51;&#x5361;&#x4E24;&#x4E2A; IP &#x5206;&#x522B;&#x662F; x&#x3001;y&#x3002;
+&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x5141;&#x8BB8;&#x5206;&#x522B;&#x4F7F;&#x7528; (x, z)&#x3001;(y, z) &#x6765;&#x542F;&#x52A8;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x5B9E;&#x4F8B;&#x3002;
+&#x4F46;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x53EA;&#x8981;&#x4F7F;&#x7528;&#x4E86;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x53EF;&#x7528; IP &#x5C31;&#x4E0D;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x901A;&#x914D;&#x5730;&#x5740;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x901A;&#x914D;&#x5730;&#x5740;&#x5C31;&#x4E0D;&#x5141;&#x8BB8;&#x7ED1;&#x5B9A;&#x7279;&#x5B9A; IP&#x3002;</p>
 <pre><code>[dirlt@localhost.localdomain]$ ./server -b 127.0.0.1 44567
 bind (127.0.0.1:44567)
 listen 5

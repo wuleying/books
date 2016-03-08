@@ -53,7 +53,7 @@
         data-chapter-title="TCP_QUICKACK"
         data-filepath="s2/2.9.10.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,16 +1699,16 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="tcpquickack">TCP_QUICKACK</h1>
+                        <h1 id="2910-tcpquickack">2.9.10 TCP_QUICKACK</h1>
 <hr>
 <p>&#x2003;&#x2003;
 quick ACK &#x662F;&#x76F8;&#x5BF9;&#x4E8E; delay ACK &#x6765;&#x8BF4;&#x7684;&#x3002;
 delay ACK &#x7B97;&#x6CD5;&#x5C31;&#x662F;&#x63A5;&#x6536;&#x5230;&#x6570;&#x636E;&#x4E4B;&#x540E;&#x5E76;&#x4E0D;&#x56DE;&#x590D; ACK&#xFF0C;&#x800C;&#x662F;&#x5047;&#x8BBE;&#x53EF;&#x80FD;&#x4E5F;&#x8981;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;&#x53D1;&#x9001;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x65F6;&#x5019;&#x634E;&#x5E26; ACK &#x56DE;&#x53BB;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x67D0;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x624D;&#x54CD;&#x5E94; ACK&#x3002;
-&#x95EE;&#x9898;&#x5C31;&#x662F;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x8981;&#x53D1;&#x9001;&#xFF0C;&#x90A3;&#x4E48;&#x5FC5;&#x987B;&#x7B49;&#x5F85;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x8FD4;&#x56DE; ACK&#x3002;
-&#x901A;&#x5E38;&#x4F7F;&#x7528; nagel &#x7B97;&#x6CD5;&#x90FD;&#x4F1A;&#x4F7F;&#x7528; delay ACK &#x7B97;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x7F51;&#x7EDC;&#x4E0A;&#x9762;&#x7684;&#x5206;&#x7EC4;&#x4F20;&#x8F93;&#x3002;
-&#x800C; quick ACK &#x63A5;&#x6536;&#x5230;&#x6570;&#x636E;&#x4E4B;&#x540E;&#x5C31;&#x5C3D;&#x5FEB;&#x56DE;&#x590D; ACK&#x3002;</p>
+&#x95EE;&#x9898;&#x662F;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x8981;&#x53D1;&#x9001;&#xFF0C;&#x90A3;&#x4E48;&#x5FC5;&#x987B;&#x7B49;&#x5F85;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x8FD4;&#x56DE; ACK&#x3002;
+&#x901A;&#x5E38;&#x4F7F;&#x7528; Nagel &#x7B97;&#x6CD5;&#x90FD;&#x4F1A;&#x4F7F;&#x7528; delay ACK &#x7B97;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x7F51;&#x7EDC;&#x4E0A;&#x9762;&#x7684;&#x5206;&#x7EC4;&#x4F20;&#x8F93;&#x3002;
+&#x800C; quick ACK &#x63A5;&#x6536;&#x5230;&#x6570;&#x636E;&#x4E4B;&#x540E;&#x5C31;&#x4F1A;&#x5C3D;&#x5FEB;&#x56DE;&#x590D; ACK&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x548C; TCP_NODELAY &#x7684;&#x72B6;&#x51B5;&#x76F8;&#x540C;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5C40;&#x57DF;&#x7F51;&#x6216;&#x8005;&#x662F;&#x4EA4;&#x4E92;&#x5F0F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x7F51;&#x7EDC;&#x60C5;&#x51B5;&#x826F;&#x597D;&#x6216;&#x8005;&#x662F;&#x8981;&#x6C42;&#x6BD4;&#x8F83;&#x9AD8;&#x7684;&#x5B9E;&#x65F6;&#x6027;&#x7684;&#x65F6;&#x5019;&#xFF0C;delay ACK &#x7B97;&#x6CD5;&#x5C31;&#x4E0D;&#x9002;&#x5408;&#x4E86;&#x3002;
+&#x548C; TCP_NODELAY &#x7684;&#x72B6;&#x51B5;&#x76F8;&#x540C;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5C40;&#x57DF;&#x7F51;&#x6216;&#x662F;&#x4EA4;&#x4E92;&#x5F0F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x7F51;&#x7EDC;&#x60C5;&#x51B5;&#x826F;&#x597D;&#x6216;&#x662F;&#x8981;&#x6C42;&#x6BD4;&#x8F83;&#x9AD8;&#x7684;&#x5B9E;&#x65F6;&#x6027;&#x7684;&#x65F6;&#x5019;&#xFF0C;delay ACK &#x7B97;&#x6CD5;&#x5C31;&#x4E0D;&#x9002;&#x5408;&#x4E86;&#x3002;
 &#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; quick ACK &#x800C;&#x4E0D;&#x4F7F;&#x7528; delay ACK &#x7B97;&#x6CD5;&#x3002;
 &#x901A;&#x5E38;&#x4F7F;&#x7528; TCP_NODELAY &#x4E5F;&#x4F7F;&#x7528; TCP_QUICKACK&#x3002;
 &#x7EDD;&#x5927;&#x90E8;&#x5206;&#x5B9E;&#x73B0;&#x91C7;&#x7528;&#x7684;&#x5EF6;&#x8FDF;&#x662F; 200ms&#xFF0C;&#x4F46;&#x8FD9;&#x5BF9;&#x4E8E;&#x5C40;&#x57DF;&#x7F51;&#x4E0B;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x80AF;&#x5B9A;&#x662F;&#x4E0D;&#x80FD;&#x591F;&#x5FCD;&#x53D7;&#x7684;&#x3002;</p>

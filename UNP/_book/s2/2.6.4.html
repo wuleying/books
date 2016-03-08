@@ -53,7 +53,7 @@
         data-chapter-title="ECONNABORTED/EPROTO"
         data-filepath="s2/2.6.4.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,7 +1699,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="econnabortedeproto">ECONNABORTED/EPROTO</h1>
+                        <h1 id="264-econnabortedeproto">2.6.4 ECONNABORTED/EPROTO</h1>
 <hr>
 <p>&#x2003;&#x2003;
 &#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x5728; accept &#x4E4B;&#x524D;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x53D6;&#x6D88;&#x8FDE;&#x63A5;&#x53D1;&#x9001; RST &#x5206;&#x8282;&#xFF0C;accept &#x5F97;&#x5230;&#x7684;&#x5C31;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x5957;&#x63A5;&#x5B57;&#x4E86;&#x3002;
@@ -1711,6 +1711,7 @@ setsockopt SO_LINGER
 bind (0.0.0.0:44568)
 connect 127.0.0.1:44567 ...
 connect succeed
+
 [dirlt@localhost.localdomain]$ ./server -d 10 44567
 bind (0.0.0.0:44567)
 listen 5
@@ -1719,7 +1720,7 @@ client (127.0.0.1:44568)
 accept ...
 </code></pre><p>&#x2003;&#x2003;
 &#x4F3C;&#x4E4E;&#x5E76;&#x6CA1;&#x6709;&#x8FD4;&#x56DE; ECONNABORTED &#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x4E14;&#x8FD9;&#x4E2A;&#x8FDE;&#x63A5;&#x6B63;&#x5E38;&#x8FD4;&#x56DE;&#x4E86;&#x3002;
-&#x7136;&#x540E;&#x770B;&#x770B; tcpdump &#x7ED3;&#x679C;&#xFF1A;</p>
+&#x770B;&#x770B; tcpdump &#x7ED3;&#x679C;&#xFF1A;</p>
 <pre><code>00:00:00.000000 IP localhost.localdomain.44568 &gt; localhost.localdomain.44567: Flags [S], seq 1612964784, win 32792, options [mss 16396,sackOK,TS val 86983449 ecr 0,nop,wscale 4], length 0
 00:00:00.000158 IP localhost.localdomain.44567 &gt; localhost.localdomain.44568: Flags [S.], seq 1610609404, ack 1612964785, win 32768, options [mss 16396,sackOK,TS val 86983449 ecr 86983449,nop,wscale 4], length 0
 00:00:00.000050 IP localhost.localdomain.44568 &gt; localhost.localdomain.44567: Flags [.], ack 1, win 2050, options [nop,nop,TS val 86983449 ecr 86983449], length 0

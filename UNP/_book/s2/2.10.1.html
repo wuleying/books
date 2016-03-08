@@ -53,7 +53,7 @@
         data-chapter-title="阻塞 IO (blocking IO)"
         data-filepath="s2/2.10.1.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,16 +1699,16 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x963B;&#x585E;-io-blocking-io">&#x963B;&#x585E; IO (blocking IO)</h1>
+                        <h1 id="2101-&#x963B;&#x585E;-io-blocking-io">2.10.1 &#x963B;&#x585E; IO (blocking IO)</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x8FD9;&#x4E2A;&#x662F;&#x6700;&#x6D41;&#x884C;&#x7684;IO&#x6A21;&#x578B;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x5F62;&#x4E0B;&#x9762;&#x6240;&#x6709;&#x7684;&#x5957;&#x63A5;&#x5B57;&#x90FD;&#x662F;&#x963B;&#x585E;&#x7684;&#x3002;
+&#x8FD9;&#x662F;&#x6700;&#x6D41;&#x884C;&#x7684; IO &#x6A21;&#x578B;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x5F62;&#x4E0B;&#x6240;&#x6709;&#x7684;&#x5957;&#x63A5;&#x5B57;&#x90FD;&#x662F;&#x963B;&#x585E;&#x7684;&#x3002;
 read(buf, x) &#x884C;&#x4E3A;&#x662F;&#xFF1A;</p>
 <ul>
 <li>&#x7528;&#x6237;&#x8C03;&#x7528; read(buf, x) &#x963B;&#x585E;</li>
 <li>&#x7CFB;&#x7EDF;&#x8C03;&#x7528; sysread</li>
-<li>&#x5982;&#x679C; kernel_buffer &#x6CA1;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x4E00;&#x76F4;&#x963B;&#x585E;&#x76F4;&#x5230;&#x6709;&#x6570;&#x636E;&#x4EA7;&#x751F;&#x4E3A;&#x6B62;</li>
-<li>&#x5F53;&#x6709;&#x6570;&#x636E;&#x4EA7;&#x751F;&#x5047;&#x8BBE; y &#x4E2A;&#x5B57;&#x8282;&#xFF0C;z = y &gt; x ? x : y&#xFF0C;&#x7136;&#x540E; memcopy(buf, kernel_buffer, z)</li>
+<li>&#x5982;&#x679C; kernel_buffer &#x6CA1;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x963B;&#x585E;&#x76F4;&#x5230;&#x6709;&#x6570;&#x636E;&#x4EA7;&#x751F;&#x4E3A;&#x6B62;</li>
+<li>&#x5F53;&#x6709;&#x6570;&#x636E;&#x4EA7;&#x751F;&#xFF0C;&#x5047;&#x8BBE; y &#x4E2A;&#x5B57;&#x8282;&#xFF0C;z = y &gt; x ? x : y&#xFF0C;&#x7136;&#x540E; memcopy(buf, kernel_buffer, z)</li>
 <li>&#x7CFB;&#x7EDF;&#x8C03;&#x7528; sysread &#x8FD4;&#x56DE;&#xFF0C;&#x8BFB;&#x53D6; z &#x4E2A;&#x5B57;&#x8282;</li>
 <li>&#x7528;&#x6237;&#x8C03;&#x7528; read(buf, x) &#x8FD4;&#x56DE;</li>
 </ul>
@@ -1717,7 +1717,7 @@ read(buf, x) &#x884C;&#x4E3A;&#x662F;&#xFF1A;</p>
 <ul>
 <li>&#x7528;&#x6237;&#x8C03;&#x7528; write(buf, x) &#x963B;&#x585E;</li>
 <li>&#x7CFB;&#x7EDF;&#x8C03;&#x7528; syswrite</li>
-<li>&#x5982;&#x679C; kernel buffer &#x6CA1;&#x6709;&#x7A7A;&#x95F4;&#xFF0C;&#x4E00;&#x76F4;&#x963B;&#x585E;&#x76F4;&#x5230;&#x6709;&#x7A7A;&#x95F4;&#x4E3A;&#x6B62;</li>
+<li>&#x5982;&#x679C; kernel buffer &#x6CA1;&#x6709;&#x7A7A;&#x95F4;&#xFF0C;&#x963B;&#x585E;&#x76F4;&#x5230;&#x6709;&#x7A7A;&#x95F4;&#x4E3A;&#x6B62;</li>
 <li>&#x5047;&#x8BBE;&#x6709; y &#x4E2A;&#x5B57;&#x8282;&#x7684;&#x53EF;&#x7528;&#x7A7A;&#x95F4;&#xFF0C;z = y &gt; x ? x : y&#xFF0C;&#x7136;&#x540E; memcopy(kernel_buffer, buf, z)</li>
 <li>&#x7CFB;&#x7EDF;&#x8C03;&#x7528; sywrite &#x8FD4;&#x56DE;&#xFF0C;&#x5199;&#x5165; z &#x4E2A;&#x5B57;&#x8282;</li>
 <li>&#x7528;&#x6237;&#x8C03;&#x7528; write(buf, x) &#x8FD4;&#x56DE;</li>

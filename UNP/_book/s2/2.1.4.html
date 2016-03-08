@@ -53,7 +53,7 @@
         data-chapter-title="IP 地址表示和数值"
         data-filepath="s2/2.1.4.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,12 +1699,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="ip-&#x5730;&#x5740;&#x8868;&#x793A;&#x548C;&#x6570;&#x503C;">IP &#x5730;&#x5740;&#x8868;&#x793A;&#x548C;&#x6570;&#x503C;</h1>
+                        <h1 id="214-ip-&#x5730;&#x5740;&#x8868;&#x793A;&#x548C;&#x6570;&#x503C;">2.1.4 IP &#x5730;&#x5740;&#x8868;&#x793A;&#x548C;&#x6570;&#x503C;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x4F7F;&#x7528; inet_pton &#x548C; inet_ntop &#x53EF;&#x4EE5;&#x5728; IP &#x5730;&#x5740;&#x7684;&#x8868;&#x793A; (presentation) &#x4EE5;&#x53CA;&#x6570;&#x503C; (numeric) &#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#xFF0C;&#x8868;&#x793A;&#x683C;&#x5F0F;&#x662F; ASCII &#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x800C;&#x6570;&#x503C;&#x683C;&#x5F0F;&#x662F;&#x5B58;&#x653E;&#x5230;&#x5957;&#x63A5;&#x5B57;&#x7ED3;&#x6784;&#x4E2D;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;&#x4F7F;&#x7528; ine_pton &#x548C; inet_ntop &#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E24;&#x79CD;&#x683C;&#x5F0F;&#x4E0B;&#x9762;&#x8F6C;&#x6362;&#x3002;
-&#x5BF9;&#x4E8E; IPv4 &#x548C; IPv6 &#x7684; IP &#x8868;&#x793A;&#x957F;&#x5EA6;&#x5B58;&#x5728;&#x9650;&#x5236;&#xFF0C;&#x5982;&#x679C;&#x63D0;&#x4F9B;&#x7684;&#x957F;&#x5EA6;&#x4E0D;&#x8DB3;&#x4EE5;&#x8868;&#x793A;&#x7684;&#x8BDD;&#x90A3;&#x4E48;&#x4F1A;&#x8FD4;&#x56DE; ENOSPC &#x9519;&#x8BEF;&#x3002;
-&#x4F46;&#x662F;&#x5E78;&#x8FD0;&#x7684;&#x662F;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x4E86;&#x9650;&#x5236;&#x5E38;&#x6570;&#x3002;</p>
+&#x4F7F;&#x7528; inet_pton &#x548C; inet_ntop &#x53EF;&#x4EE5;&#x5728; IP &#x5730;&#x5740;&#x7684;&#x8868;&#x793A; (presentation) &#x4EE5;&#x53CA;&#x6570;&#x503C; (numeric) &#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#xFF0C;&#x8868;&#x793A;&#x683C;&#x5F0F;&#x662F; ASCII &#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x800C;&#x6570;&#x503C;&#x683C;&#x5F0F;&#x662F;&#x5B58;&#x653E;&#x5230;&#x5957;&#x63A5;&#x5B57;&#x7ED3;&#x6784;&#x4E2D;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;&#x4F7F;&#x7528; ine_pton &#x548C; inet_ntop &#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E24;&#x79CD;&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#x3002;
+&#x5BF9;&#x4E8E; IPv4 &#x548C; IPv6 &#x7684; IP &#x8868;&#x793A;&#x957F;&#x5EA6;&#x5B58;&#x5728;&#x9650;&#x5236;&#xFF0C;&#x5982;&#x679C;&#x63D0;&#x4F9B;&#x7684;&#x957F;&#x5EA6;&#x4E0D;&#x8DB3;&#x4EE5;&#x8868;&#x793A;&#x4F1A;&#x8FD4;&#x56DE; ENOSPC &#x9519;&#x8BEF;&#x3002;
+&#x4F46;&#x5E78;&#x8FD0;&#x7684;&#x662F;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x4E86;&#x9650;&#x5236;&#x5E38;&#x6570;&#x3002;</p>
 <pre><code>// #include &lt;arpa/inet.h&gt;
 /* Convert from presentation format of an Internet number in buffer
    starting at CP to the binary network format and store result for
@@ -1720,8 +1720,9 @@ extern __const char *inet_ntop (int __af, __const void *__restrict __cp,
      __THROW;
 </code></pre><p>&#x2003;&#x2003;</p>
 <pre><code>// #include &lt;netinet/in.h&gt;
-#define INET_ADDRSTRLEN 16
-#define INET6_ADDRSTRLEN 46
+#define INET_ADDRSTRLEN     16
+#define INET6_ADDRSTRLEN    46
+
 #include &lt;arpa/inet.h&gt;
 #include &lt;netinet/in.h&gt;
 #include &lt;cstdio&gt;

@@ -53,7 +53,7 @@
         data-chapter-title="IO 复用 (IO multiplexing)"
         data-filepath="s2/2.10.3.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,14 +1699,14 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="io-&#x590D;&#x7528;-io-multiplexing">IO &#x590D;&#x7528; (IO multiplexing)</h1>
+                        <h1 id="2103-io-&#x590D;&#x7528;-io-multiplexing">2.10.3 IO &#x590D;&#x7528; (IO multiplexing)</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x5BF9;&#x4E8E;&#x5355;&#x8DEF;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x963B;&#x585E;&#x6216;&#x8005;&#x662F;&#x975E;&#x963B;&#x585E;&#x5C31;&#x8DB3;&#x591F;&#x4F7F;&#x7528;&#x4E86;&#x3002;
+&#x5BF9;&#x4E8E;&#x5355;&#x8DEF;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x963B;&#x585E;&#x6216;&#x662F;&#x975E;&#x963B;&#x585E;&#x5C31;&#x8DB3;&#x591F;&#x4F7F;&#x7528;&#x4E86;&#x3002;
 &#x4F46;&#x5982;&#x679C;&#x662F;&#x591A;&#x8DEF; IO&#xFF0C;&#x4F7F;&#x7528;&#x963B;&#x585E;&#x65B9;&#x5F0F;&#x5FC5;&#x987B;&#x6309;&#x7167;&#x67D0;&#x4E2A;&#x6570;&#x636E;&#x5230;&#x6765;&#x7684;&#x987A;&#x5E8F;&#x963B;&#x585E;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x4F7F;&#x7528;&#x975E;&#x963B;&#x585E;&#x5FC5;&#x987B;&#x663E;&#x5F0F;&#x5730;&#x8F6E;&#x8BE2;&#x6BCF;&#x8DEF; IO&#x3002;
-IO &#x590D;&#x7528;&#x89E3;&#x51B3;&#x7684;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x80FD;&#x591F;&#x76D1;&#x542C;&#x591A;&#x8DEF; IO &#x7684;&#x72B6;&#x6001;&#xFF0C;&#x76F4;&#x5230;&#x67D0;&#x8DEF;&#x6216;&#x8005;&#x662F;&#x591A;&#x8DEF;&#x72B6;&#x6001;&#x53D8;&#x6210;&#x53EF;&#x8BFB;&#x6216;&#x8005;&#x662F;&#x53EF;&#x5199;&#x624D;&#x8FD4;&#x56DE;&#x3002;
-IO &#x590D;&#x7528;&#x548C;&#x5E95;&#x5C42;&#x6BCF;&#x8DEF;&#x7684; IO &#x662F;&#x5426;&#x5904;&#x4E8E;&#x963B;&#x585E;&#x6216;&#x8005;&#x662F;&#x975E;&#x963B;&#x585E;&#x72B6;&#x6001;&#x65E0;&#x5173;&#xFF0C;&#x5BF9;&#x5E94;&#x4E8E;&#x5E94;&#x7528;&#x5C42;&#x89C1;&#x5230;&#x7684;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#x6A21;&#x578B;&#x3002;
-&#x591A;&#x8DEF;&#x7B49;&#x5F85;&#x6216;&#x8005;&#x662F;&#x8F6E;&#x8BE2;&#x65F6;&#x95F4;&#x90FD;&#x8BA9;&#x7CFB;&#x7EDF;&#x6765;&#x8FDB;&#x884C;&#x6258;&#x7BA1;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x7528;&#x6237;&#x6001;&#x5904;&#x7406;&#x3002;</p>
+IO &#x590D;&#x7528;&#x89E3;&#x51B3;&#x7684;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x80FD;&#x591F;&#x76D1;&#x542C;&#x591A;&#x8DEF; IO &#x7684;&#x72B6;&#x6001;&#xFF0C;&#x76F4;&#x5230;&#x67D0;&#x8DEF;&#x6216;&#x662F;&#x591A;&#x8DEF;&#x72B6;&#x6001;&#x53D8;&#x6210;&#x53EF;&#x8BFB;&#x6216;&#x662F;&#x53EF;&#x5199;&#x624D;&#x8FD4;&#x56DE;&#x3002;
+IO &#x590D;&#x7528;&#x548C;&#x5E95;&#x5C42;&#x6BCF;&#x8DEF;&#x7684; IO &#x662F;&#x5426;&#x5904;&#x4E8E;&#x963B;&#x585E;&#x6216;&#x662F;&#x975E;&#x963B;&#x585E;&#x72B6;&#x6001;&#x65E0;&#x5173;&#xFF0C;&#x5BF9;&#x5E94;&#x4E8E;&#x5E94;&#x7528;&#x5C42;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#x6A21;&#x578B;&#x3002;
+&#x591A;&#x8DEF;&#x7B49;&#x5F85;&#x6216;&#x662F;&#x8F6E;&#x8BE2;&#x65F6;&#x95F4;&#x90FD;&#x8BA9;&#x7CFB;&#x7EDF;&#x6765;&#x8FDB;&#x884C;&#x6258;&#x7BA1;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x7528;&#x6237;&#x6001;&#x5904;&#x7406;&#x3002;</p>
 <p>&#x2003;&#x2003;
 <strong>(1) select/pselect</strong></p>
 <pre><code>// #include &lt;bits/time.h&gt;
@@ -1761,13 +1761,13 @@ extern int pselect (int __nfds, fd_set *__restrict __readfds,
                     const struct timespec *__restrict __timeout,
                     const __sigset_t *__restrict __sigmask);
 </code></pre><p>&#x2003;&#x2003;
-&#x5176;&#x4E2D; nfds &#x5E94;&#x8BE5;&#x662F;&#x5173;&#x5FC3;&#x5230;&#x7684;&#x6700;&#x9AD8; fd + 1&#xFF0C;read_fds &#x8868;&#x793A;&#x5173;&#x5FC3;&#x8BFB;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x7684; fd &#x6709;&#x54EA;&#x4E9B;&#xFF0C;write_fds &#x8868;&#x793A;&#x5173;&#x5FC3;&#x5199;&#x72B6;&#x6001;&#xFF0C;except_fds &#x8868;&#x793A;&#x5173;&#x5FC3;&#x5F02;&#x5E38;&#x72B6;&#x6001;&#x3002;
+&#x5176;&#x4E2D; nfds &#x662F;&#x5173;&#x5FC3;&#x5230;&#x7684;&#x6700;&#x9AD8;&#x503C;&#x4E3A; fd + 1&#xFF0C;read_fds &#x8868;&#x793A;&#x5173;&#x5FC3;&#x8BFB;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x7684; fd &#x6709;&#x54EA;&#x4E9B;&#xFF0C;write_fds &#x8868;&#x793A;&#x5173;&#x5FC3;&#x5199;&#x72B6;&#x6001;&#xFF0C;except_fds &#x8868;&#x793A;&#x5173;&#x5FC3;&#x5F02;&#x5E38;&#x72B6;&#x6001;&#x3002;
 timeout &#x8868;&#x793A;&#x7B49;&#x5F85;&#x8D85;&#x65F6;&#x7684;&#x65F6;&#x95F4; (us)&#x3002;
-fd_set &#x8868;&#x793A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x96C6;&#x5408;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7CFB;&#x5217; FD_xxx &#x64CD;&#x4F5C;&#x6765;&#x64CD;&#x4F5C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x3002;
-&#x8FD9;&#x4E9B;&#x96C6;&#x5408;&#x5FC5;&#x987B;&#x6BCF;&#x6B21;&#x90FD;&#x91CD;&#x65B0;&#x8BBE;&#x7F6E;&#xFF0C;&#x56E0;&#x4E3A;&#x6BCF;&#x6B21; select &#x8FD4;&#x56DE;&#x4E4B;&#x540E;&#x96C6;&#x5408;&#x72B6;&#x6001;&#x90FD;&#x6709;&#x53EF;&#x80FD;&#x6539;&#x53D8;&#x3002;
+fd_set &#x8868;&#x793A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x96C6;&#x5408;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7CFB;&#x5217; FD_xxx &#x65B9;&#x6CD5;&#x6765;&#x64CD;&#x4F5C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x3002;
+&#x8FD9;&#x4E9B;&#x96C6;&#x5408;&#x5FC5;&#x987B;&#x6BCF;&#x6B21;&#x90FD;&#x91CD;&#x65B0;&#x8BBE;&#x7F6E;&#xFF0C;&#x56E0;&#x4E3A;&#x6BCF;&#x6B21; select &#x8FD4;&#x56DE;&#x540E;&#x96C6;&#x5408;&#x72B6;&#x6001;&#x90FD;&#x6709;&#x53EF;&#x80FD;&#x6539;&#x53D8;&#x3002;
 &#x81F3;&#x4E8E; pselect &#x63D0;&#x4F9B;&#x4E86;&#x5728;&#x7B49;&#x5F85;&#x671F;&#x95F4;&#x5C4F;&#x853D;&#x4E00;&#x4E9B;&#x4FE1;&#x53F7;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x57FA;&#x672C;&#x529F;&#x80FD;&#x548C; select &#x76F8;&#x540C;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x8FD9;&#x91CC;&#x9762;&#x6700;&#x5173;&#x5FC3;&#x7684;&#x8FD8;&#x662F;&#x4EC0;&#x4E48;&#x624D;&#x7B97;&#x662F;&#x8BFB;&#x72B6;&#x6001;&#x53D8;&#x5316; (&#x53EF;&#x8BFB;)&#xFF0C;&#x5199;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x53D8;&#x5316; (&#x53EF;&#x5199;) &#x4EE5;&#x53CA;&#x5F02;&#x5E38;&#x72B6;&#x6001;&#x7684;&#x51FA;&#x73B0; (&#x5F02;&#x5E38;)&#x3002;</p>
+&#x8FD9;&#x91CC;&#x6700;&#x5173;&#x5FC3;&#x7684;&#x8FD8;&#x662F;&#x4EC0;&#x4E48;&#x624D;&#x7B97;&#x662F;&#x8BFB;&#x72B6;&#x6001;&#x53D8;&#x5316; (&#x53EF;&#x8BFB;)&#xFF0C;&#x5199;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x53D8;&#x5316; (&#x53EF;&#x5199;) &#x4EE5;&#x53CA;&#x5F02;&#x5E38;&#x72B6;&#x6001;&#x7684;&#x51FA;&#x73B0; (&#x5F02;&#x5E38;)&#x3002;</p>
 <table>
 <thead>
 <tr>
@@ -1829,19 +1829,17 @@ fd_set &#x8868;&#x793A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x96C6;&#x5408;&
 </tbody>
 </table>
 <p>&#x2003;&#x2003;
-&#x8FD9;&#x91CC;&#x5F85;&#x5904;&#x7406;&#x9519;&#x8BEF;&#x662F;&#x6307;&#xFF1A;&#x5982;&#x679C;&#x8FDE;&#x63A5;&#x4E0A;&#x51FA;&#x73B0;&#x5957;&#x63A5;&#x5B57;&#x9519;&#x8BEF;&#xFF0C;&#x901A;&#x5E38;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; getsockopt &#x7684; SO_ERROR &#x9009;&#x9879;&#x83B7;&#x5F97;&#x3002;
-&#x800C;&#x5982;&#x679C;&#x4F7F;&#x7528; select &#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;
-read/write &#x4F1A;&#x8FD4;&#x56DE; -1&#xFF0C;&#x5E76;&#x4E14;&#x5C06; errno &#x7F6E;&#x4E3A;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#xFF0C;&#x65B9;&#x4FBF;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;
-&#x56E0;&#x4E3A; TCP &#x5E26;&#x5916;&#x6570;&#x636E;&#x57FA;&#x672C;&#x90FD;&#x4E0D;&#x8FDB;&#x884C;&#x4F7F;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x4E0D;&#x8BE6;&#x7EC6;&#x8BF4;&#x800C;&#x6765;&#x3002;</p>
+&#x5F85;&#x5904;&#x7406;&#x9519;&#x8BEF;&#x662F;&#x6307;&#xFF1A;&#x5982;&#x679C;&#x8FDE;&#x63A5;&#x4E0A;&#x51FA;&#x73B0;&#x5957;&#x63A5;&#x5B57;&#x9519;&#x8BEF;&#xFF0C;&#x901A;&#x5E38;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; getsockopt &#x7684; SO_ERROR &#x9009;&#x9879;&#x83B7;&#x5F97;&#xFF0C;&#x800C;&#x5982;&#x679C;&#x4F7F;&#x7528; select &#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;
+read/write &#x4F1A;&#x8FD4;&#x56DE; -1&#xFF0C;&#x5E76;&#x5C06; errno &#x7F6E;&#x4E3A;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#xFF0C;&#x65B9;&#x4FBF;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;
+&#x56E0;&#x4E3A; TCP &#x5E26;&#x5916;&#x6570;&#x636E;&#x57FA;&#x672C;&#x90FD;&#x4E0D;&#x4F7F;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x4E0D;&#x8BE6;&#x7EC6;&#x8BF4;&#x800C;&#x6765;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x8FD9;&#x91CC;&#x8FD8;&#x5FC5;&#x987B;&#x660E;&#x786E;&#x6E05;&#x695A;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x4EC0;&#x4E48;&#x79F0;&#x4E3A;&#x6570;&#x636E;&#x53EF;&#x8BFB;&#x4EE5;&#x53CA;&#x6709;&#x7A7A;&#x95F4;&#x53EF;&#x5199;&#x3002;
-&#x76F4;&#x89C9;&#x4E0A;&#x8BA4;&#x4E3A;&#x53EA;&#x8981; kernel buffer &#x6709; 1 &#x5B57;&#x8282;&#x6570;&#x636E;&#x548C; 1 &#x5B57;&#x8282;&#x7A7A;&#x95F4;&#x5C31;&#x7B97;&#xFF0C;&#x4F46;&#x5BF9;&#x4E8E; socket &#x6216;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E2A;&#x9608;&#x503C;&#xFF0C;&#x5206;&#x522B;&#x662F; SO_RCVLOWAT &#x548C; SO_SNDLOWAT &#x8FD9;&#x4E2A;&#x4E24;&#x4E2A;&#x9608;&#x503C;&#x3002;
+&#x8FD8;&#x5FC5;&#x987B;&#x660E;&#x786E;&#x6E05;&#x695A;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x4EC0;&#x4E48;&#x79F0;&#x4E3A;&#x6570;&#x636E;&#x53EF;&#x8BFB;&#x4EE5;&#x53CA;&#x6709;&#x7A7A;&#x95F4;&#x53EF;&#x5199;&#x3002;
+&#x76F4;&#x89C9;&#x4E0A;&#x8BA4;&#x4E3A;&#x53EA;&#x8981; kernel buffer &#x6709; 1 &#x5B57;&#x8282;&#x6570;&#x636E;&#x548C; 1 &#x5B57;&#x8282;&#x7A7A;&#x95F4;&#x5C31;&#x7B97;&#xFF0C;&#x4F46;&#x5BF9;&#x4E8E; socket &#x6216;&#x8005;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E2A;&#x9608;&#x503C;&#xFF0C;&#x5206;&#x522B;&#x662F; SO_RCVLOWAT &#x548C; SO_SNDLOWAT &#x8FD9;&#x4E2A;&#x4E24;&#x4E2A;&#x9608;&#x503C;&#x3002;
 UDP &#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x53EA;&#x8981; UDP &#x53D1;&#x9001;&#x7F13;&#x51B2;&#x533A;&#x548C;&#x63A5;&#x53D7;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x4E8E;&#x8FD9;&#x9608;&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x603B;&#x662F;&#x53EF;&#x8BFB;&#x548C;&#x53EF;&#x5199;&#x7684;&#x3002;
 &#x5BF9;&#x4E8E; kernel buffer &#x5927;&#x5C0F;&#xFF0C;&#x5C31;&#x662F;&#x53D1;&#x9001;&#x7F13;&#x51B2;&#x533A;&#x548C;&#x63A5;&#x6536;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; SO_SNDBUF &#x548C; SO_RCVBUF &#x6765;&#x8BBE;&#x7F6E;&#x3002;</p>
 <p>&#x2003;&#x2003;
-select &#x5B58;&#x5728;&#x9650;&#x5236;&#xFF0C;&#x90A3;&#x5C31;&#x662F; FD_SETSIZE &#x8FD9;&#x4E2A;&#x5927;&#x5C0F;&#x3002;
-&#x901A;&#x5E38;&#x8FD9;&#x4E2A;&#x503C;&#x662F; 1024&#xFF0C;&#x4F46;&#x5BF9;&#x4E8E;&#x9AD8;&#x5E76;&#x53D1;&#x7684;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x5668;&#x80AF;&#x5B9A;&#x662F;&#x4E0D;&#x80FD;&#x591F;&#x6EE1;&#x8DB3;&#x7684;&#x3002;
-&#x8C03;&#x6574;&#x8FD9;&#x4E2A;&#x5927;&#x5C0F;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x5185;&#x6838;&#xFF0C;&#x5E76;&#x4E14;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;select &#x5185;&#x90E8;&#x662F;&#x4F7F;&#x7528;&#x7EBF;&#x6027;&#x7B97;&#x6CD5;&#x6765;&#x626B;&#x63CF;&#x96C6;&#x5408;&#x662F;&#x5426;&#x6709;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5C31;&#x662F;&#x8C03;&#x6574; FD_SETSIZE&#xFF0C;&#x6027;&#x80FD;&#x4E5F;&#x4F1A;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x3002;
+select &#x5B58;&#x5728;&#x9650;&#x5236;&#xFF0C;&#x90A3;&#x5C31;&#x662F; FD_SETSIZE &#x8FD9;&#x4E2A;&#x5927;&#x5C0F;&#xFF0C;&#x901A;&#x5E38;&#x8FD9;&#x4E2A;&#x503C;&#x662F; 1024&#xFF0C;&#x4F46;&#x5BF9;&#x4E8E;&#x9AD8;&#x5E76;&#x53D1;&#x7684;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x5668;&#x80AF;&#x5B9A;&#x662F;&#x4E0D;&#x80FD;&#x591F;&#x6EE1;&#x8DB3;&#x7684;&#x3002;
+&#x8C03;&#x6574;&#x8FD9;&#x4E2A;&#x5927;&#x5C0F;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x5185;&#x6838;&#xFF0C;&#x5E76;&#x4E14;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;select &#x5185;&#x90E8;&#x662F;&#x4F7F;&#x7528;&#x7EBF;&#x6027;&#x7B97;&#x6CD5;&#x6765;&#x626B;&#x63CF;&#x96C6;&#x5408;&#x662F;&#x5426;&#x6709;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5C31;&#x662F;&#x8C03;&#x6574; FD_SETSIZE &#x6027;&#x80FD;&#x4E5F;&#x4F1A;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x3002;
 &#x66F4;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x4F7F;&#x7528; epoll&#xFF0C;&#x8FD9;&#x4E2A;&#x53EF;&#x4EE5;&#x5728; fs/select.c &#x4E0B;&#x770B;&#x5230;&#x5B9E;&#x73B0;&#x3002;</p>
 <p>&#x2003;&#x2003;
 <strong>(2) poll/ppoll</strong></p>
@@ -1876,9 +1874,9 @@ extern int ppoll (struct pollfd *__fds, nfds_t __nfds,
                   __const struct timespec *__timeout,
                   __const __sigset_t *__ss);
 </code></pre><p>&#x2003;&#x2003;
-poll &#x89E3;&#x51B3;&#x4E86; select &#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x662F;&#x68C0;&#x6D4B; fd &#x96C6;&#x5408;&#x5927;&#x5C0F;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x89E3;&#x51B3; select &#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x4F7F;&#x7528;&#x7EBF;&#x6027;&#x626B;&#x63CF;&#x7684;&#x65B9;&#x5F0F;&#x3002;
+poll &#x89E3;&#x51B3;&#x4E86; select &#x7684;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x662F;&#x68C0;&#x6D4B; fd &#x96C6;&#x5408;&#x5927;&#x5C0F;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x89E3;&#x51B3; select &#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x4F7F;&#x7528;&#x7EBF;&#x6027;&#x626B;&#x63CF;&#x7684;&#x65B9;&#x5F0F;&#x3002;
 poll &#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x5355;&#x4F4D;&#x662F; ms&#xFF0C;&#x5982;&#x679C;&#x4E3A;&#x8D1F;&#x503C;&#x5C31;&#x662F;&#x6C38;&#x4E45;&#x7B49;&#x5F85;&#x3002;
-poll &#x76F8;&#x5BF9;&#x4E8E; select &#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x597D;&#x5904;&#x5C31;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x6BCF;&#x6B21;&#x90FD;&#x91CD;&#x65B0;&#x8BBE;&#x7F6E;&#xFF0C;&#x56E0;&#x4E3A; poll &#x8C03;&#x7528;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x4E8B;&#x4EF6;&#x72B6;&#x6001;&#x90FD;&#x5B58;&#x653E;&#x5728;&#x4E86; revents &#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x91CC;&#xFF0C;&#x800C; events &#x662F;&#x5173;&#x5FC3;&#x4E8B;&#x4EF6;&#x5B57;&#x6BB5;&#x8FD9;&#x4E2A;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x3002;
+poll &#x76F8;&#x5BF9;&#x4E8E; select &#x53E6;&#x4E00;&#x4E2A;&#x597D;&#x5904;&#x5C31;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x6BCF;&#x6B21;&#x90FD;&#x91CD;&#x65B0;&#x8BBE;&#x7F6E;&#xFF0C;&#x56E0;&#x4E3A; poll &#x8C03;&#x7528;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x4E8B;&#x4EF6;&#x72B6;&#x6001;&#x90FD;&#x5B58;&#x653E;&#x5728;&#x4E86; revents &#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x91CC;&#xFF0C;&#x800C; events &#x662F;&#x5173;&#x5FC3;&#x4E8B;&#x4EF6;&#x5B57;&#x6BB5;&#xFF0C;&#x8FD9;&#x4E2A;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x3002;
 &#x53EF;&#x4EE5;&#x5728; fs/select.c &#x91CC;&#x770B;&#x5230;&#x5B9E;&#x73B0;&#x3002;</p>
 <table>
 <thead>
@@ -1954,8 +1952,7 @@ poll &#x76F8;&#x5BF9;&#x4E8E; select &#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x597D;&#x
 </table>
 <p>&#x2003;&#x2003;
 &#x6700;&#x5E38;&#x7528;&#x7684;&#x4E09;&#x4E2A;&#x5E38;&#x6570;&#xFF1A;POLLIN&#x3001;POLLOUT&#x3001;POLLERR&#x3002;
-&#x800C;&#x53EF;&#x8BFB;&#x548C;&#x53EF;&#x5199;&#x7684;&#x5B9A;&#x4E49;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x548C; select &#x57FA;&#x672C;&#x4E00;&#x81F4;&#x3002;
-&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A; poll &#x5C31;&#x662F; select &#x53E6;&#x5916;&#x63A5;&#x53E3;&#x3002;</p>
+&#x800C;&#x53EF;&#x8BFB;&#x548C;&#x53EF;&#x5199;&#x7684;&#x5B9A;&#x4E49;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x548C; select &#x57FA;&#x672C;&#x4E00;&#x81F4;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A; poll &#x5C31;&#x662F; select &#x53E6;&#x5916;&#x7684;&#x63A5;&#x53E3;&#x3002;</p>
 
                     
                     </section>

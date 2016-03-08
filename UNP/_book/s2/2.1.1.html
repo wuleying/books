@@ -53,7 +53,7 @@
         data-chapter-title="通用地址结构"
         data-filepath="s2/2.1.1.md"
         data-basepath=".."
-        data-revision="Mon Mar 07 2016 15:42:24 GMT+0800 (CST)"
+        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1699,7 +1699,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x901A;&#x7528;&#x5730;&#x5740;&#x7ED3;&#x6784;">&#x901A;&#x7528;&#x5730;&#x5740;&#x7ED3;&#x6784;</h1>
+                        <h1 id="211-&#x901A;&#x7528;&#x5730;&#x5740;&#x7ED3;&#x6784;">2.1.1 &#x901A;&#x7528;&#x5730;&#x5740;&#x7ED3;&#x6784;</h1>
 <hr>
 <table>
 <thead>
@@ -1747,14 +1747,13 @@
 //==============================
 // #include &lt;bits/socket.h&gt;
 /* Structure describing a generic socket address.  */
-// &#x8001;&#x7684;&#x901A;&#x7528;&#x5957;&#x63A5;&#x5B57;&#x5730;&#x5740;&#x7ED3;&#x6784;&#xFF0C;&#x5BF9;&#x4E8E;&#x6BD4;&#x5982;Unix Domain Socket&#x5730;&#x5740;&#x7684;&#x8BDD;&#x4E0D;&#x80FD;&#x591F;&#x5BB9;&#x7EB3;
+// &#x8001;&#x7684;&#x901A;&#x7528;&#x5957;&#x63A5;&#x5B57;&#x5730;&#x5740;&#x7ED3;&#x6784;&#xFF0C;&#x4F8B;&#x5982;&#x5BF9; Unix Domain Socket &#x5730;&#x5740;&#xFF0C;&#x4E0D;&#x80FD;&#x5BB9;&#x7EB3;&#x6240;&#x6709;&#x7684;&#x5957;&#x63A5;&#x5B57;&#x7ED3;&#x6784;&#x5730;&#x5740;
 struct sockaddr {
     __SOCKADDR_COMMON (sa_);    /* Common data: address family and length.  */
     char sa_data[14];           /* Address data.  */
 };
-
-
-/* Structure large enough to hold any socket address (with the historical
+</code></pre><p>&#x2003;&#x2003;</p>
+<pre><code>/* Structure large enough to hold any socket address (with the historical
    exception of AF_UNIX).  We reserve 128 bytes.  */
 #if ULONG_MAX &gt; 0xffffffff
 # define __ss_aligntype __uint64_t
@@ -1771,8 +1770,8 @@ struct sockaddr_storage {
     char __ss_padding[_SS_PADSIZE];
 };
 </code></pre><p>&#x2003;&#x2003;
-&#x901A;&#x7528;&#x5957;&#x63A5;&#x5B57;&#x7ED3;&#x6784;&#x662F;&#x4E3A;&#x4E86;&#x7ED9;&#x5E95;&#x5C42;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x6765;&#x4F7F;&#x7528;&#xFF0C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x6839;&#x636E;&#x8FD9;&#x91CC;&#x7684; sa_family &#x5B57;&#x6BB5;&#x5224;&#x65AD;&#x5177;&#x4F53;&#x4E3A;&#x4EC0;&#x4E48;&#x534F;&#x8BAE;&#x65CF;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x5F3A;&#x8F6C;&#x6210;&#x4E3A;&#x5BF9;&#x5E94;&#x7684;&#x5177;&#x4F53;&#x5957;&#x63A5;&#x5B57;&#x5730;&#x5740;&#x7ED3;&#x6784;&#x6765;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;
-&#x867D;&#x7136;&#x8FD9;&#x91CC;&#x6709;&#x65B0;&#x7684;&#x5957;&#x63A5;&#x5B57;&#x5730;&#x5740;&#x7ED3;&#x6784;&#xFF0C;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x5E95;&#x5C42;&#x53EA;&#x662F;&#x5173;&#x5FC3;&#x5934;&#x90E8;&#x7684;&#x6709;&#x9650;&#x51E0;&#x4E2A;&#x5B57;&#x8282;&#x7136;&#x540E;&#x5206;&#x522B;&#x505A;&#x5904;&#x7406;&#xFF0C;&#x540C;&#x65F6;&#x5386;&#x53F2;&#x539F;&#x56E0;&#x90FD;&#x4F7F;&#x7528;&#x4E86; sockaddr &#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x6240;&#x4EE5;&#x57FA;&#x672C;&#x4E0A;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x5173;&#x5FC3; sockaddr_storage &#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x3002;</p>
+&#x901A;&#x7528;&#x5957;&#x63A5;&#x5B57;&#x7ED3;&#x6784;&#x662F;&#x4E3A;&#x4E86;&#x7ED9;&#x5E95;&#x5C42;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4F7F;&#x7528;&#xFF0C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x6839;&#x636E; sa_family &#x5B57;&#x6BB5;&#x5224;&#x65AD;&#x5177;&#x4F53;&#x4E3A;&#x4EC0;&#x4E48;&#x534F;&#x8BAE;&#x65CF;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x5F3A;&#x8F6C;&#x6210;&#x4E3A;&#x5BF9;&#x5E94;&#x7684;&#x5177;&#x4F53;&#x5957;&#x63A5;&#x5B57;&#x5730;&#x5740;&#x7ED3;&#x6784;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;
+&#x867D;&#x7136;&#x8FD9;&#x91CC;&#x6709;&#x65B0;&#x7684;&#x5957;&#x63A5;&#x5B57;&#x5730;&#x5740;&#x7ED3;&#x6784;&#xFF0C;&#x4F46;&#x5E95;&#x5C42;&#x53EA;&#x5173;&#x5FC3;&#x5934;&#x90E8;&#x7684;&#x6709;&#x9650;&#x51E0;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x7136;&#x540E;&#x5206;&#x522B;&#x5904;&#x7406;&#xFF0C;&#x540C;&#x65F6;&#x56E0;&#x4E3A;&#x5386;&#x53F2;&#x539F;&#x56E0;&#x90FD;&#x4F7F;&#x7528;&#x4E86; sockaddr &#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x6240;&#x4EE5;&#x57FA;&#x672C;&#x4E0A;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x5173;&#x5FC3; sockaddr_storage &#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x3002;</p>
 
                     
                     </section>
