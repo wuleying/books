@@ -53,7 +53,7 @@
         data-chapter-title="TFO (tcp fast open)"
         data-filepath="s3/3.3.4.md"
         data-basepath=".."
-        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
+        data-revision="Wed Mar 09 2016 16:44:45 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1702,14 +1702,13 @@
                         <h1 id="334-tfo-tcp-fast-open">3.3.4 TFO (tcp fast open)</h1>
 <hr>
 <p>&#x2003;&#x2003;
-TFO &#x5728; client &#x5F00;&#x59CB; SYN &#x7684;&#x65F6;&#x5019;&#x5141;&#x8BB8;&#x8BBE;&#x5728; TCP &#x9009;&#x9879;&#x4E0A;&#x9762;&#x8BBE;&#x7F6E; TFO option&#xFF0C;&#x7136;&#x540E; server &#x51B3;&#x5B9A;&#x662F;&#x5426;&#x5F00;&#x542F; TFO &#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x3002;
-&#x5982;&#x679C; server &#x51B3;&#x5B9A;&#x5F00;&#x542F; TFO&#xFF0C;&#x90A3;&#x4E48; server &#x56DE;&#x590D;&#x7684; SYNACK &#x91CC;&#x9762;&#x5C31;&#x4F1A;&#x6807;&#x8BB0; &quot;&#x6211;&#x5F00;&#x542F;&#x4E86; TFO&quot;&#xFF0C;&#x5E76;&#x4E14;&#x5E26;&#x4E0A; cookie&#x3002;
-google chrome &#x867D;&#x7136; keepalive &#x65F6;&#x95F4;&#x4E3A; 4mim&#xFF0C;&#x4F46;&#x662F; 35% &#x8BF7;&#x6C42;&#x8FD8;&#x662F;&#x4F1A;&#x8D85;&#x8FC7; keepalive &#x7684;&#x65F6;&#x95F4;&#x7136;&#x540E;&#x91CD;&#x65B0;&#x53D1;&#x8D77;&#x8FDE;&#x63A5;&#xFF0C;&#x5982;&#x679C;&#x4E4B;&#x524D; server &#x662F;&#x5F00;&#x542F; TFO &#x529F;&#x80FD;&#xFF0C;&#x90A3;&#x4E48; client &#x8FD9;&#x6B21;&#x8FDE;&#x63A5;&#x53D1;&#x8D77;&#x7684; SYN &#x4F1A;&#x5E26;&#x4E0A;&#x8BF7;&#x6C42;&#x548C; cookie&#x3002;</p>
+TFO &#x5728; client &#x5F00;&#x59CB; SYN &#x65F6;&#x5141;&#x8BB8;&#x8BBE;&#x5728; TCP &#x9009;&#x9879;&#x4E0A;&#x8BBE;&#x7F6E; TFO option&#xFF0C;&#x7136;&#x540E; server &#x51B3;&#x5B9A;&#x662F;&#x5426;&#x5F00;&#x542F; TFO &#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x3002;
+&#x5982;&#x679C; server &#x51B3;&#x5B9A;&#x5F00;&#x542F; TFO&#xFF0C;&#x90A3;&#x4E48; server &#x56DE;&#x590D;&#x7684; SYNACK &#x91CC;&#x5C31;&#x4F1A;&#x6807;&#x8BB0; &quot;&#x6211;&#x5F00;&#x542F;&#x4E86; TFO&quot;&#xFF0C;&#x5E76;&#x5E26;&#x4E0A; cookie&#x3002;
+google chrome &#x867D;&#x7136; keepalive &#x65F6;&#x95F4;&#x4E3A; 4mim&#xFF0C;&#x4F46;&#x662F; 35% &#x7684;&#x8BF7;&#x6C42;&#x8FD8;&#x662F;&#x4F1A;&#x8D85;&#x8FC7; keepalive &#x7136;&#x540E;&#x91CD;&#x65B0;&#x53D1;&#x8D77;&#x8FDE;&#x63A5;&#xFF0C;&#x5982;&#x679C;&#x4E4B;&#x524D; server &#x662F;&#x5F00;&#x542F; TFO &#x529F;&#x80FD;&#xFF0C;&#x90A3;&#x4E48; client &#x8FD9;&#x6B21;&#x8FDE;&#x63A5;&#x53D1;&#x8D77;&#x7684; SYN &#x4F1A;&#x5E26;&#x4E0A;&#x8BF7;&#x6C42;&#x548C; cookie&#x3002;</p>
 <p>&#x2003;&#x2003;
 RFC793 &#x867D;&#x7136;&#x89C4;&#x5B9A;&#x4E86; SYN &#x53EF;&#x4EE5;&#x5E26;&#x4E0A;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x8BF7;&#x6C42;&#x5FC5;&#x987B;&#x5728; 3WHS &#x4E4B;&#x540E;&#x624D;&#x80FD;&#x591F;&#x5904;&#x7406; (&#x4E00;&#x65B9;&#x9762;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x8FC7;&#x65F6;&#x7684; SYN&#xFF0C;&#x53E6;&#x5916;&#x4E00;&#x65B9;&#x9762;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62; SYN flood attack)&#x3002;
-&#x4F46; TFO &#x7684;&#x5B9E;&#x73B0;&#x5141;&#x8BB8;&#x5728; SYN &#x5C31;&#x5E26;&#x4E0A;&#x6570;&#x636E;&#x5E76;&#x4E14;&#x7ACB;&#x523B;&#x5904;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x67E5;&#x770B; pdf &#x91CC;&#x7684; TFO &#x8FC7;&#x7A0B;&#x3002;
-&#x4E3A;&#x4E86;&#x9632;&#x6B62; SYN flood attack &#x4F7F;&#x7528;&#x4E86; cookie &#x673A;&#x5236;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#x3002;
-&#x800C; TFO &#x5E76;&#x4E0D;&#x9632;&#x6B62;&#x8FC7;&#x65F6;&#x7684; SYN &#x8FD9;&#x6837;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5141;&#x8BB8; SYN+ &#x6570;&#x636E;&#x53D1;&#x9001;&#x591A;&#x6B21;&#x5E76;&#x4E14;&#x54CD;&#x5E94;&#xFF0C;&#x8FD9;&#x5C31;&#x8981;&#x6C42;&#x4E86; server &#x6709;&#x80FD;&#x529B;&#x786E;&#x5B9A;&#x662F;&#x5426;&#x5F00;&#x542F; TFO (server &#x5982;&#x679C;&#x5224;&#x65AD;&#x8BF7;&#x6C42;&#x662F;&#x5E42;&#x7B49;&#x5C31;&#x53EF;&#x4EE5;&#x5F00;&#x542F; TFO)&#x3002;</p>
+&#x4F46; TFO &#x7684;&#x5B9E;&#x73B0;&#x5141;&#x8BB8;&#x5728; SYN &#x5C31;&#x5E26;&#x4E0A;&#x6570;&#x636E;&#x5E76;&#x4E14;&#x7ACB;&#x523B;&#x5904;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x67E5;&#x770B; pdf &#x91CC;&#x7684; TFO &#x8FC7;&#x7A0B;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62; SYN flood attack &#x4F7F;&#x7528;&#x4E86; cookie &#x673A;&#x5236;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#x3002;
+&#x800C; TFO &#x5E76;&#x4E0D;&#x9632;&#x6B62;&#x8FC7;&#x65F6;&#x7684; SYN &#x8BF7;&#x6C42;&#xFF0C;&#x5141;&#x8BB8; SYN+ &#x6570;&#x636E;&#x53D1;&#x9001;&#x591A;&#x6B21;&#x5E76;&#x54CD;&#x5E94;&#xFF0C;&#x8FD9;&#x5C31;&#x8981;&#x6C42; server &#x6709;&#x80FD;&#x529B;&#x786E;&#x5B9A;&#x662F;&#x5426;&#x5F00;&#x542F; TFO (server &#x5982;&#x679C;&#x5224;&#x65AD;&#x8BF7;&#x6C42;&#x662F;&#x5E42;&#x7B49;&#x5C31;&#x53EF;&#x4EE5;&#x5F00;&#x542F; TFO)&#x3002;</p>
 <p>&#x2003;&#x2003;
 Rather than trying to capture all the dubious SYN packets to make TFO 100% compatible with TCP semantics, we&apos;ve made a design decision early on to accept old SYN packets with data, i.e., to allow TFO for a class of applications that are tolerant of duplicate SYN packets with data, e.g., idempotent or query type transactions. We believe this is the right design trade-off balancing complexity with usefulness. There is a large class of applications that can tolerate dubious transaction requests.</p>
 <p>&#x2003;&#x2003;

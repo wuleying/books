@@ -53,7 +53,7 @@
         data-chapter-title="重传定时器"
         data-filepath="s3/3.5.1.md"
         data-basepath=".."
-        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
+        data-revision="Wed Mar 09 2016 16:44:45 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1702,30 +1702,31 @@
                         <h1 id="351-&#x91CD;&#x4F20;&#x5B9A;&#x65F6;&#x5668;">3.5.1 &#x91CD;&#x4F20;&#x5B9A;&#x65F6;&#x5668;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x91CD;&#x4F20;&#x8D85;&#x65F6;&#x65F6;&#x95F4; (RTO&#xFF0C;Retranmission TimeOut) &#x7684;&#x6D4B;&#x91CF;&#x4F9D;&#x8D56;&#x4E8E; RTT (round-trip time)&#x3002;&#x9996;&#x5148;&#x770B;&#x770B; RTT &#x7684;&#x6D4B;&#x91CF;&#x65B9;&#x5F0F;&#xFF0C;&#x7136;&#x540E;&#x770B;&#x770B;&#x5982;&#x4F55;&#x901A;&#x8FC7; RTT &#x91CD;&#x4F20;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x3002;</p>
+&#x91CD;&#x4F20;&#x8D85;&#x65F6;&#x65F6;&#x95F4; RTO (Retranmission TimeOut) &#x7684;&#x6D4B;&#x91CF;&#x4F9D;&#x8D56;&#x4E8E; RTT (round-trip time)&#x3002;
+&#x9996;&#x5148;&#x770B; RTT &#x7684;&#x6D4B;&#x91CF;&#x65B9;&#x5F0F;&#xFF0C;&#x7136;&#x540E;&#x770B;&#x5982;&#x4F55;&#x901A;&#x8FC7; RTT &#x91CD;&#x4F20;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x3002;</p>
 <p>&#x2003;&#x2003;
 RTT &#x7684;&#x6D4B;&#x91CF;&#x8FC7;&#x7A0B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;&#x6709;&#x4E00;&#x4E2A;&#x72B6;&#x6001; status&#xFF0C;&#x4E3A; 0 &#x8868;&#x793A;&#x6CA1;&#x6709;&#x8FDB;&#x884C; RTT &#x6D4B;&#x91CF;&#x72B6;&#x6001;&#xFF0C;&#x4E3A; 1 &#x8868;&#x793A;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x6D4B;&#x91CF;&#x3002;
 &#x5F00;&#x59CB; status &#x4E3A; 0&#xFF0C;t1 &#x65F6;&#x523B;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x7136;&#x540E; status &#x4E3A; 1&#x3002;
 &#x7B49;&#x5F85;&#x5BF9;&#x7AEF;&#x5BF9;&#x8FD9;&#x4E2A;&#x62A5;&#x6587;&#x6BB5; ACK&#xFF0C;&#x5230;&#x8FBE;&#x65F6;&#x523B;&#x4E3A; t2&#x3002;
 &#x90A3;&#x4E48; RTT = t2 - t1&#xFF0C;&#x7136;&#x540E; status &#x4E3A; 0&#x3002;
-&#x4F7F;&#x7528; status &#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x662F;&#x5E0C;&#x671B;&#x9488;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x53EA;&#x5E0C;&#x671B;&#x6D4B;&#x91CF;&#x4E00;&#x6B21; RTT &#x503C;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x53D1;&#x9001;&#x62A5;&#x6587;&#x6BB5;&#x65F6;&#x5019; RTT &#x5DF2;&#x7ECF;&#x5F00;&#x59CB;&#x6D4B;&#x91CF;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x4E0D;&#x8BA1;&#x65F6;&#x3002;</p>
+&#x4F7F;&#x7528; status &#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x662F;&#x5E0C;&#x671B;&#x9488;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x53EA;&#x6D4B;&#x91CF;&#x4E00;&#x6B21; RTT &#x503C;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x53D1;&#x9001;&#x62A5;&#x6587;&#x6BB5;&#x65F6; RTT &#x5DF2;&#x7ECF;&#x5F00;&#x59CB;&#x6D4B;&#x91CF;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x4E0D;&#x8BA1;&#x65F6;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x5982;&#x679C;&#x5728;&#x91CD;&#x4F20;&#x4E00;&#x4E2A;&#x5206;&#x7EC4;&#x65F6;&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x8FD9;&#x4E2A; ACK &#x662F;&#x9488;&#x5BF9;&#x539F;&#x59CB;&#x53D1;&#x9001;&#x5206;&#x7EC4;&#x7684;&#x786E;&#x8BA4;&#x8FD8;&#x662F;&#x9488;&#x5BF9;&#x91CD;&#x4F20;&#x5206;&#x7EC4;&#x7684;&#x786E;&#x8BA4;&#xFF0C;&#x6CA1;&#x6709;&#x597D;&#x7684;&#x529E;&#x6CD5;&#x6765;&#x786E;&#x5B9A; RTT&#x3002;&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x4E0D;&#x66F4;&#x65B0; RTT&#x3002;
-&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x4E00;&#x65E6;&#x5728;&#x8FDB;&#x884C;&#x91CD;&#x4F20;&#x72B6;&#x6001;&#x4E4B;&#x540E;&#xFF0C;&#x4E0D;&#x8FDB;&#x884C; RTT &#x7684;&#x66F4;&#x65B0;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x662F; Karn &#x7B97;&#x6CD5;&#x3002;</p>
+&#x5982;&#x679C;&#x5728;&#x91CD;&#x4F20;&#x4E00;&#x4E2A;&#x5206;&#x7EC4;&#x65F6;&#x4E0D;&#x77E5;&#x9053;&#x8FD9;&#x4E2A; ACK &#x662F;&#x9488;&#x5BF9;&#x539F;&#x59CB;&#x53D1;&#x9001;&#x5206;&#x7EC4;&#x7684;&#x786E;&#x8BA4;&#x8FD8;&#x662F;&#x9488;&#x5BF9;&#x91CD;&#x4F20;&#x5206;&#x7EC4;&#x7684;&#x786E;&#x8BA4;&#xFF0C;&#x6CA1;&#x6709;&#x597D;&#x7684;&#x529E;&#x6CD5;&#x6765;&#x786E;&#x5B9A; RTT&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x4E0D;&#x66F4;&#x65B0; RTT&#x3002;
+&#x4E5F;&#x5C31;&#x662F;&#x4E00;&#x65E6;&#x5728;&#x8FDB;&#x884C;&#x91CD;&#x4F20;&#x72B6;&#x6001;&#x4E4B;&#x540E;&#xFF0C;&#x4E0D;&#x8FDB;&#x884C; RTT &#x7684;&#x66F4;&#x65B0;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x662F; Karn &#x7B97;&#x6CD5;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x4ECE; RTT &#x8BA1;&#x7B97; RTO &#x7684;&#x7B97;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#x7248;&#x672C;&#x3002;
 &#x7B2C;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF1A;</p>
 <pre><code>R = xR + (1 - x) RTT    # R &#x8868;&#x793A;&#x5386;&#x53F2;&#x7684; RTT &#x5185;&#x5BB9;&#xFF0C;&#x901A;&#x5E38; x = 0.9&#xFF0C;&#x521D;&#x59CB;&#x4E3A; 0s
 RTO = yR                # &#x901A;&#x5E38; y = 2
 </code></pre><p>&#x2003;&#x2003;
-&#x4F46;&#x662F; Jacobson &#x8BA4;&#x4E3A;&#xFF1A;&#x5982;&#x679C;&#x5728; RTT &#x53D8;&#x5316;&#x8303;&#x56F4;&#x5F88;&#x5927;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x8BA1;&#x7B97;&#x51FA;&#x7684; RTO &#x5E76;&#x4E0D;&#x80FD;&#x591F;&#x5F88;&#x597D;&#x5730;&#x9002;&#x5E94;&#x8FD9;&#x79CD;&#x53D8;&#x5316;&#x3002;
+&#x4F46; Jacobson &#x8BA4;&#x4E3A;&#xFF1A;&#x5982;&#x679C;&#x5728; RTT &#x53D8;&#x5316;&#x8303;&#x56F4;&#x5F88;&#x5927;&#x65F6;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x8BA1;&#x7B97;&#x51FA;&#x7684; RTO &#x5E76;&#x4E0D;&#x80FD;&#x591F;&#x5F88;&#x597D;&#x5730;&#x9002;&#x5E94;&#x8FD9;&#x79CD;&#x53D8;&#x5316;&#x3002;
 &#x7B2C;&#x4E8C;&#x4E2A;&#x7248;&#x672C;&#x5C31;&#x662F;&#xFF1A;</p>
-<pre><code>E = RTT - R             # R&#x8868;&#x793A;&#x5386;&#x53F2; RTT&#xFF0C;E &#x8868;&#x793A;&#x504F;&#x5DEE;&#x503C;
+<pre><code>E = RTT - R             # R &#x8868;&#x793A;&#x5386;&#x53F2; RTT&#xFF0C;E &#x8868;&#x793A;&#x504F;&#x5DEE;&#x503C;
 R = R + gE              # &#x901A;&#x5E38; g = 0.125&#xFF0C;&#x7136;&#x540E;&#x4FEE;&#x6B63;&#x5386;&#x53F2; RTT&#xFF0C;&#x521D;&#x59CB;&#x4E3A; 0s
 D = D + h(abs(E) - D)   # &#x901A;&#x5E38; h = 0.25&#xFF0C;&#x88AB;&#x5E73;&#x6ED1;&#x4E4B;&#x540E;&#x7684;&#x504F;&#x5DEE;&#xFF0C;&#x521D;&#x59CB;&#x4E3A; 3s
 RTO = R + 4D
 </code></pre><p>&#x2003;&#x2003;
-&#x5F53; TCP &#x8D85;&#x65F6;&#x5E76;&#x4E14;&#x91CD;&#x4F20;&#x65F6;&#xFF0C;&#x5B83;&#x4E0D;&#x4E00;&#x5B9A;&#x8981;&#x91CD;&#x4F20;&#x76F8;&#x540C;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;
+&#x5F53; TCP &#x8D85;&#x65F6;&#x5E76;&#x91CD;&#x4F20;&#x65F6;&#xFF0C;&#x5B83;&#x4E0D;&#x4E00;&#x5B9A;&#x8981;&#x91CD;&#x4F20;&#x76F8;&#x540C;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;
 &#x76F8;&#x53CD; TCP &#x5141;&#x8BB8;&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x5206;&#x7EC4;&#x800C;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x8F83;&#x5927;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#xFF0C;&#x8FD9;&#x5C06;&#x6709;&#x52A9;&#x4E8E;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#x3002;</p>
 
                     

@@ -53,7 +53,7 @@
         data-chapter-title="TCP 首部"
         data-filepath="s3/3.2.md"
         data-basepath=".."
-        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
+        data-revision="Wed Mar 09 2016 16:44:45 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1708,7 +1708,7 @@ TCP &#x9996;&#x90E8;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x5982;&#x4E0B;&#xFF0C;&#x5
     uint16_t dst_port;
     uint32_t seq;
     uint32_t ack_seq;           // ACK &#x5E8F;&#x53F7;&#xFF0C;&#x786E;&#x8BA4;&#x9700;&#x8981;&#x662F;&#x4E0A;&#x6B21;&#x6210;&#x529F;&#x63A5;&#x6536;&#x6570;&#x636E;&#x5E8F;&#x53F7;&#x52A0; 1
-    uint8_t  header_length:4;   // &#x7ED9;&#x51FA;&#x7684;&#x9996;&#x90E8;&#x4E2D; 32bit &#x7684;&#x6570;&#x76EE;&#xFF0C;&#x56E0;&#x4E3A;&#x9996;&#x90E8;&#x6700;&#x5927; 15 * 4byte = 60byte
+    uint8_t  header_length:4;   // &#x7ED9;&#x51FA;&#x7684;&#x9996;&#x90E8;&#x4E2D; 32 bit &#x7684;&#x6570;&#x76EE;&#xFF0C;&#x56E0;&#x4E3A;&#x9996;&#x90E8;&#x6700;&#x5927; 15 * 4 byte = 60 byte
     uint8_t  reserved:6;
     uint8_t  urg:1;
     uint8_t  ack:1;
@@ -1716,7 +1716,7 @@ TCP &#x9996;&#x90E8;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x5982;&#x4E0B;&#xFF0C;&#x5
     uint8_t  rst:1;
     uint8_t  syn:1;
     uint8_t  fin:1;
-    uint16_t win_size;          // &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7A97;&#x53E3;&#x5927;&#x5C0F; 65535 &#x5B57;&#x8282;
+    uint16_t win_size;          // &#x7A97;&#x53E3;&#x5927;&#x5C0F; 65535 &#x5B57;&#x8282;
     uint16_t checksum;          // &#x5F3A;&#x5236;&#x6027;&#x5B57;&#x6BB5;&#xFF0C;&#x53D1;&#x9001;&#x7AEF;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x548C;&#x5B58;&#x50A8;&#xFF0C;&#x63A5;&#x6536;&#x7AEF;&#x8FDB;&#x884C;&#x6821;&#x9A8C;
     uint16_t urg_ptr;           // &#x7D27;&#x6025;&#x6307;&#x9488;&#x5F53; urg &#x7B49;&#x4E8E; 1 &#x7684;&#x65F6;&#x5019;&#x624D;&#x6709;&#x6548;&#xFF0C;+seq &#x8868;&#x793A;&#x7D27;&#x6025;&#x6570;&#x636E;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x7684;&#x5E8F;&#x53F7;
     uint8_t  option[0];         // &#x6700;&#x5E38;&#x89C1;&#x53EF;&#x9009;&#x5B57;&#x6BB5;&#x662F; MSS
@@ -1724,7 +1724,7 @@ TCP &#x9996;&#x90E8;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x5982;&#x4E0B;&#xFF0C;&#x5
 </code></pre><p>&#x2003;&#x2003;
 &#x5E8F;&#x53F7;&#x7528;&#x6765;&#x6807;&#x8BC6;&#x4ECE; TCP &#x53D1;&#x9001;&#x7AEF;&#x5411; TCP &#x63A5;&#x6536;&#x7AEF;&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;&#x5B57;&#x8282;&#x6D41;&#xFF0C;&#x5B83;&#x8868;&#x793A;&#x5728;&#x8FD9;&#x4E2A;&#x62A5;&#x6587;&#x6BB5;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5B57;&#x8282;&#x3002;
 &#x5982;&#x679C;&#x5C06;&#x5B57;&#x8282;&#x6D41;&#x770B;&#x505A;&#x5728;&#x4E24;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x7684;&#x5355;&#x5411;&#x6D41;&#x52A8;&#xFF0C;&#x5219; TCP &#x7528;&#x5E8F;&#x53F7;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x8FDB;&#x884C;&#x8BA1;&#x6570;&#x3002;
-&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5E8F;&#x53F7;&#x662F; 32bit &#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x5E8F;&#x53F7;&#x5230;&#x8FBE; 2^31 - 1 &#x4E4B;&#x540E;&#x53C8;&#x4F1A;&#x4ECE; 0 &#x5F00;&#x59CB;&#x3002;</p>
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5E8F;&#x53F7;&#x662F; 32 bit &#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x5E8F;&#x53F7;&#x5230;&#x8FBE; 2^31 - 1 &#x4E4B;&#x540E;&#x53C8;&#x4F1A;&#x4ECE; 0 &#x5F00;&#x59CB;&#x3002;</p>
 
                     
                     </section>

@@ -53,7 +53,7 @@
         data-chapter-title="写数据"
         data-filepath="s3/3.6.2.md"
         data-basepath=".."
-        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
+        data-revision="Wed Mar 09 2016 16:44:45 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1702,15 +1702,15 @@
                         <h1 id="362-&#x5199;&#x6570;&#x636E;">3.6.2 &#x5199;&#x6570;&#x636E;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x5E94;&#x7528;&#x5C42;&#x53EA;&#x662F;&#x8C03;&#x7528; write &#x5C06;&#x5E94;&#x7528;&#x5C42;&#x6570;&#x636E;&#x5B8C;&#x5168; copy &#x5230;&#x5185;&#x6838;&#x7684; tcp send buffer &#x4E0A;&#xFF0C;&#x81F3;&#x4E8E;&#x8FD9;&#x4E2A; tcp send buffer &#x5927;&#x5C0F;&#x662F; SO_SNDBUF &#x6765;&#x63A7;&#x5236;&#x7684;&#x3002;
-&#x5199;&#x5165; write &#x6210;&#x529F;&#x4EC5;&#x4EC5;&#x8868;&#x793A;&#x5199;&#x5165;&#x5230; tcp send buffer &#x800C;&#x4E0D;&#x8868;&#x793A;&#x5DF2;&#x7ECF;&#x53D1;&#x9001;&#x6216;&#x8005;&#x662F;&#x5BF9;&#x7AEF;&#x5DF2;&#x7ECF;&#x63A5;&#x6536;&#x5230;&#x3002;
+&#x5E94;&#x7528;&#x5C42;&#x53EA;&#x662F;&#x8C03;&#x7528; write &#x5C06;&#x5E94;&#x7528;&#x5C42;&#x6570;&#x636E;&#x5B8C;&#x5168; copy &#x5230;&#x5185;&#x6838;&#x7684; tcp send buffer &#x4E0A;&#xFF0C;&#x8FD9;&#x4E2A; tcp send buffer &#x5927;&#x5C0F;&#x662F; SO_SNDBUF &#x6765;&#x63A7;&#x5236;&#x7684;&#x3002;
+&#x5199;&#x5165; write &#x6210;&#x529F;&#x4EC5;&#x4EC5;&#x8868;&#x793A;&#x5199;&#x5165;&#x5230; tcp send buffer&#xFF0C;&#x800C;&#x4E0D;&#x8868;&#x793A;&#x5DF2;&#x7ECF;&#x53D1;&#x9001;&#x6216;&#x8005;&#x662F;&#x5BF9;&#x7AEF;&#x5DF2;&#x7ECF;&#x63A5;&#x6536;&#x5230;&#x3002;
 &#x7136;&#x540E;&#x672C;&#x7AEF;&#x5C06; tcp send buffer &#x6309;&#x7167; MSS &#x6765;&#x8FDB;&#x884C;&#x5207;&#x5206;&#xFF0C;&#x5E76;&#x4E14;&#x52A0;&#x4E0A; TCP &#x7684;&#x5934;&#x90E8;&#x4F20;&#x9012;&#x7ED9; IP &#x5C42;&#x3002;
 &#x56E0;&#x4E3A; TCP &#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x6309;&#x7167; MSS &#x8FDB;&#x884C;&#x4E86;&#x5206;&#x7247;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x4E3B;&#x673A;&#x7684; IP &#x5C42;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x5206;&#x7247;&#x64CD;&#x4F5C;&#x3002;
 tcp send buffer &#x4E0D;&#x4F1A;&#x88AB;&#x4E22;&#x5F03;&#x76F4;&#x5230;&#x5BF9;&#x7AEF;&#x6536;&#x5230;&#x8FD9;&#x5757; buffer &#x6240;&#x5305;&#x542B;&#x5185;&#x5BB9;&#x7684;&#x786E;&#x8BA4;&#x4E3A;&#x6B62;&#x3002;
 &#x540C;&#x65F6;&#x5982;&#x679C;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;&#x8F93;&#x51FA;&#x961F;&#x5217;&#x5DF2;&#x6EE1;&#xFF0C;&#x90A3;&#x4E48;&#x65B0;&#x5230;&#x7684; IP &#x5206;&#x7EC4;&#x5C06;&#x4F1A;&#x4E22;&#x5F03;&#xFF0C;&#x5E76;&#x4E14;&#x6CBF;&#x7740;&#x534F;&#x8BAE;&#x6808;&#x5411;&#x4E0A;&#x53CD;&#x9988;&#x3002;
 TCP &#x6CE8;&#x610F;&#x5230;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#x5C31;&#x4F1A;&#x7B49;&#x5F85;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x7136;&#x540E;&#x91CD;&#x4F20;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x8BA9;&#x5E94;&#x7528;&#x5C42;&#x770B;&#x5230;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x5982;&#x679C;&#x5E95;&#x5C42; tcp send buffer &#x7A7A;&#x95F4;&#x4E0D;&#x591F;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x963B;&#x585E; IO &#x5C31;&#x4F1A; hang &#x4F4F;&#x76F4;&#x5230; tcp send buffer &#x6709;&#x7A7A;&#x95F2;&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x5199;&#x5165;&#xFF0C;&#x76F4;&#x5230;&#x6570;&#x636E;&#x5B8C;&#x5168;&#x5199;&#x5B8C;&#x4E3A;&#x6B62;&#x3002;
+&#x5982;&#x679C;&#x5E95;&#x5C42; tcp send buffer &#x7A7A;&#x95F4;&#x4E0D;&#x591F;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x963B;&#x585E; IO &#x5C31;&#x4F1A; hang &#x4F4F;&#xFF0C;tcp send buffer &#x6709;&#x7A7A;&#x95F2;&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x5199;&#x5165;&#x76F4;&#x5230;&#x6570;&#x636E;&#x5B8C;&#x5168;&#x5199;&#x5B8C;&#x4E3A;&#x6B62;&#x3002;
 &#x5982;&#x679C;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x975E;&#x963B;&#x585E; IO&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x679C;&#x6709;&#x90E8;&#x5206;&#x7A7A;&#x95F4;&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x5DF2;&#x7ECF;&#x6210;&#x529F;&#x5199;&#x5165;&#x7684;&#x5B57;&#x8282;&#x6570;&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;&#x9519;&#x8BEF; EAGAIN&#x3002;</p>
 
                     

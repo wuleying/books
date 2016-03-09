@@ -53,7 +53,7 @@
         data-chapter-title="TIME_WAIT 状态"
         data-filepath="s3/3.3.2.md"
         data-basepath=".."
-        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
+        data-revision="Wed Mar 09 2016 16:44:45 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1704,9 +1704,9 @@
 <p>&#x2003;&#x2003;
 Coping with the TCP TIME-WAIT state on busy Linux servers | Vincent Bernat : <a href="http://vincent.bernat.im/en/blog/2014-tcp-time-wait-state-linux.html" target="_blank">http://vincent.bernat.im/en/blog/2014-tcp-time-wait-state-linux.html</a></p>
 <p>&#x2003;&#x2003;
-&#x6709;&#x5173; TCP &#x72B6;&#x6001;&#x4E2D;&#x6700;&#x4E0D;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x7684;&#x5C31;&#x662F; TIME_WAIT &#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x4E86;&#xFF0C;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x662F;&#x4E3B;&#x52A8;&#x6267;&#x884C;&#x5173;&#x95ED;&#x4F1A;&#x7ECF;&#x5386;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x505C;&#x7559;&#x65F6;&#x95F4;&#x662F;&#x6700;&#x957F;&#x5206;&#x8282;&#x751F;&#x547D;&#x671F; (maximum segment liftime&#xFF0C;MSL) &#x7684;&#x4E24;&#x500D;&#xFF0C;&#x79F0;&#x4E3A; 2MSL&#x3002;
+&#x6709;&#x5173; TCP &#x72B6;&#x6001;&#x4E2D;&#x6700;&#x4E0D;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x7684;&#x5C31;&#x662F; TIME_WAIT &#x72B6;&#x6001;&#xFF0C;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x662F;&#x4E3B;&#x52A8;&#x6267;&#x884C;&#x5173;&#x95ED;&#x4F1A;&#x7ECF;&#x5386;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x505C;&#x7559;&#x65F6;&#x95F4;&#x662F;&#x6700;&#x957F;&#x5206;&#x8282;&#x751F;&#x547D;&#x671F; MSL (Maximum Segment Liftime) &#x7684;&#x4E24;&#x500D;&#xFF0C;&#x79F0;&#x4E3A; 2MSL&#x3002;
 MSL &#x662F;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A; IP &#x6570;&#x636E;&#x62A5;&#x53EF;&#x80FD;&#x505C;&#x7559;&#x5728;&#x7F51;&#x7EDC;&#x4E2D;&#x5B58;&#x6D3B;&#x7684;&#x6700;&#x957F;&#x65F6;&#x95F4;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x9650;&#x503C;&#xFF0C;&#x4E0D;&#x540C;&#x7CFB;&#x7EDF;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x3002;
-RFC &#x5EFA;&#x8BAE;&#x503C;&#x662F; 2min&#xFF0C;&#x800C; BSD &#x7684;&#x4F20;&#x7EDF;&#x5B9E;&#x73B0;&#x662F; 30s&#x3002;
+RFC &#x5EFA;&#x8BAE;&#x503C;&#x662F; 2 min&#xFF0C;&#x800C; BSD &#x7684;&#x4F20;&#x7EDF;&#x5B9E;&#x73B0;&#x662F; 30 s&#x3002;
 TIME_WAIT &#x72B6;&#x6001;&#x5B58;&#x5728;&#x6709;&#x4E24;&#x4E2A;&#x7406;&#x7531;&#xFF1A;</p>
 <ul>
 <li>&#x53EF;&#x9760;&#x5730;&#x5B9E;&#x73B0; TCP &#x5168;&#x53CC;&#x5DE5;&#x8FDE;&#x63A5;&#x7EC8;&#x6B62;</li>
@@ -1715,15 +1715,15 @@ TIME_WAIT &#x72B6;&#x6001;&#x5B58;&#x5728;&#x6709;&#x4E24;&#x4E2A;&#x7406;&#x753
 <p>&#x2003;&#x2003;
 &#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x5B9A;&#x65F6;&#x5668;&#x79F0;&#x4E3A; 2MSL &#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x7B2C;&#x4E00;&#x4E2A;&#x7406;&#x7531;&#xFF1A;&#x5982;&#x679C;&#x6700;&#x540E; passive &#x8C03;&#x7528; close &#x53D1;&#x51FA; FIN &#x5206;&#x8282;&#x5E76;&#x4E14; active &#x4E00;&#x7AEF;&#x6536;&#x5230;&#xFF0C;&#x4F46;&#x662F;&#x54CD;&#x5E94; ACK &#x4E22;&#x5931;&#xFF0C;passive &#x4E00;&#x7AEF;&#x8FD8;&#x4F1A;&#x91CD;&#x590D;&#x53D1;&#x51FA; FIN &#x5206;&#x8282;&#x4EE5;&#x7B49;&#x5F85;&#x786E;&#x8BA4;&#x3002;
-&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x6CA1;&#x6709; TIME_WAIT &#x72B6;&#x6001;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x9000;&#x51FA;&#xFF0C;&#x8BA9; passive &#x4E00;&#x6BB5;&#x91CD;&#x590D;&#x53D1;&#x9001; FIN &#x5206;&#x8282;&#x5230;&#x6765;&#xFF0C;active &#x4E00;&#x7AEF;&#x4F1A;&#x76F4;&#x63A5;&#x54CD;&#x5E94;&#x4E00;&#x4E2A; RST &#x5206;&#x8282;&#x9020;&#x6210;&#x8FDE;&#x63A5;&#x9519;&#x8BEF;&#x7EC8;&#x6B62;&#x3002;</p>
+&#x7B2C;&#x4E00;&#x4E2A;&#x7406;&#x7531;&#xFF1A;&#x5982;&#x679C;&#x6700;&#x540E; passive &#x8C03;&#x7528; close &#x53D1;&#x51FA; FIN &#x5206;&#x8282;&#x5E76;&#x4E14; active &#x7AEF;&#x6536;&#x5230;&#xFF0C;&#x4F46;&#x662F;&#x54CD;&#x5E94; ACK &#x4E22;&#x5931;&#xFF0C;passive &#x7AEF;&#x8FD8;&#x4F1A;&#x91CD;&#x590D;&#x53D1;&#x51FA; FIN &#x5206;&#x8282;&#x4EE5;&#x7B49;&#x5F85;&#x786E;&#x8BA4;&#x3002;
+&#x5982;&#x679C;&#x8FD9;&#x65F6;&#x6CA1;&#x6709; TIME_WAIT &#x72B6;&#x6001;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x9000;&#x51FA;&#xFF0C;&#x8BA9; passive &#x7AEF;&#x91CD;&#x590D;&#x53D1;&#x9001; FIN &#x5206;&#x8282;&#x5230;&#x6765;&#xFF0C;active &#x7AEF;&#x4F1A;&#x76F4;&#x63A5;&#x54CD;&#x5E94;&#x4E00;&#x4E2A; RST &#x5206;&#x8282;&#x9020;&#x6210;&#x8FDE;&#x63A5;&#x9519;&#x8BEF;&#x7EC8;&#x6B62;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x7B2C;&#x4E8C;&#x4E2A;&#x7406;&#x7531;&#xFF1A;&#x9996;&#x5148;&#x8003;&#x8651;&#x4E00;&#x4E2A;&#x8FF7;&#x9014;&#x7684;&#x91CD;&#x590D;&#x5206;&#x7EC4; (lost duplicate)&#x3002;
-&#x5982;&#x679C; A-&gt;B &#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x5206;&#x8282;&#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x5206;&#x8282;&#x56E0;&#x4E3A;&#x4E2D;&#x9014;&#x90E8;&#x5206;&#x8DEF;&#x7531;&#x5668;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#xFF0C;&#x5728;&#x8DEF;&#x7531;&#x5668;&#x505C;&#x7559;&#x65F6;&#x95F4;&#x8FC7;&#x957F;&#xFF0C;&#x5BFC;&#x81F4; A-&gt;B &#x53D1;&#x9001;&#x5206;&#x8282;&#x8D85;&#x65F6;&#x800C;&#x91CD;&#x53D1;&#x3002;
+&#x5982;&#x679C; A-&gt;B &#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x5206;&#x8282;&#x4F46;&#x8FD9;&#x4E2A;&#x5206;&#x8282;&#x56E0;&#x4E3A;&#x4E2D;&#x9014;&#x90E8;&#x5206;&#x8DEF;&#x7531;&#x5668;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#xFF0C;&#x5728;&#x8DEF;&#x7531;&#x5668;&#x505C;&#x7559;&#x65F6;&#x95F4;&#x8FC7;&#x957F;&#xFF0C;&#x5BFC;&#x81F4; A-&gt;B &#x53D1;&#x9001;&#x5206;&#x8282;&#x8D85;&#x65F6;&#x800C;&#x91CD;&#x53D1;&#x3002;
 &#x5982;&#x679C; A-&gt;B &#x91CD;&#x53D1;&#x4E4B;&#x540E;&#x5E76;&#x4E14;&#x90FD;&#x5173;&#x95ED;&#xFF0C;&#x7136;&#x540E; AB &#x53C8;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684; IP &#x548C;&#x7AEF;&#x53E3;&#x5E76;&#x4E14;&#x5206;&#x8282;&#x5E8F;&#x5217;&#x53F7;&#x6B63;&#x597D;&#x5339;&#x914D; (&#x867D;&#x7136;&#x6982;&#x7387;&#x5F88;&#x4F4E;)&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x4EE5;&#x524D;&#x8FDE;&#x63A5;&#x7684;&#x5206;&#x7EC4;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x5728;&#x65B0;&#x7684;&#x8FDE;&#x63A5;&#x88AB;&#x5904;&#x7406;&#x3002;
 &#x800C; TCP_WAIT &#x72B6;&#x6001;&#x4E0D;&#x5141;&#x8BB8;&#x5728; 2MSL &#x4E4B;&#x5185;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x7AEF;&#x53E3;&#x8FDE;&#x63A5;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x8FD9;&#x6837;&#x8001;&#x5206;&#x7EC4;&#x51FA;&#x73B0;&#x5728;&#x65B0;&#x8FDE;&#x63A5;&#x4E0A;&#x4E86;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x4E2A;&#x4EBA;&#x89C9;&#x5F97;&#x51FA;&#x73B0; TIME_WAIT &#x72B6;&#x6001;&#x4E3B;&#x8981;&#x8FD8;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x539F;&#x56E0;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x7684;&#x51E0;&#x7387;&#x5728;&#x666E;&#x901A;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x5185;&#x662F;&#x5F88;&#x96BE;&#x51FA;&#x73B0;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x9700;&#x8981;&#x6B63;&#x597D;&#x5339;&#x914D;&#x5230;&#x539F;&#x6709;&#x7684;&#x5E8F;&#x5217;&#x53F7;&#x4E5F;&#x662F;&#x9700;&#x8981;&#x4E00;&#x5B9A;&#x51E0;&#x7387;&#x7684;&#xFF0C;&#x800C;&#x6BD5;&#x7ADF;&#x5E8F;&#x5217;&#x53F7;&#x5360;&#x7528; TCP &#x4E2D;&#x7684; 4 &#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x8303;&#x56F4;&#x662F; [0 &#x5230; 2^32 - 1]&#x3002;</p>
+&#x4E2A;&#x4EBA;&#x89C9;&#x5F97;&#x51FA;&#x73B0; TIME_WAIT &#x72B6;&#x6001;&#x4E3B;&#x8981;&#x8FD8;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x539F;&#x56E0;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x7684;&#x51E0;&#x7387;&#x5728;&#x666E;&#x901A;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x5185;&#x662F;&#x5F88;&#x96BE;&#x51FA;&#x73B0;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x9700;&#x8981;&#x6B63;&#x597D;&#x5339;&#x914D;&#x5230;&#x539F;&#x6709;&#x7684;&#x5E8F;&#x5217;&#x53F7;&#x4E5F;&#x662F;&#x9700;&#x8981;&#x4E00;&#x5B9A;&#x51E0;&#x7387;&#xFF0C;&#x800C;&#x6BD5;&#x7ADF;&#x5E8F;&#x5217;&#x53F7;&#x5360;&#x7528; TCP &#x4E2D;&#x7684; 4 &#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x8303;&#x56F4;&#x662F; [0 &#x5230; 2^32 - 1]&#x3002;</p>
 
                     
                     </section>

@@ -53,7 +53,7 @@
         data-chapter-title="FIN_WAIT2 状态"
         data-filepath="s3/3.3.3.md"
         data-basepath=".."
-        data-revision="Tue Mar 08 2016 15:44:42 GMT+0800 (CST)"
+        data-revision="Wed Mar 09 2016 16:44:45 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1702,11 +1702,11 @@
                         <h1 id="333-finwait2-&#x72B6;&#x6001;">3.3.3 FIN_WAIT2 &#x72B6;&#x6001;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x5047;&#x8BBE; client &#x6267;&#x884C;&#x4E86;&#x534A;&#x5173;&#x95ED;&#x8FDB;&#x5165; FIN_WAIT2 &#x72B6;&#x6001;&#xFF0C;&#x7136;&#x540E;&#x7B49;&#x5F85; server &#x7AEF;&#x4F20;&#x8F93;&#x5B8C;&#x6210;&#x5E76;&#x4E14;&#x53D1;&#x9001; FIN &#x5206;&#x8282;&#x3002;
-&#x4F46;&#x662F;&#x5982;&#x679C; server &#x4EE3;&#x7801;&#x6709; bug &#x6CA1;&#x6709;&#x53D1;&#x9001; FIN &#x5206;&#x8282;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x5BFC;&#x81F4; server &#x53E5;&#x67C4;&#x4E00;&#x76F4;&#x5B58;&#x5728;&#xFF0C;&#x800C; client &#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x5F97;&#x5230; FIN &#x5206;&#x8282;&#x800C;&#x963B;&#x585E;&#x5728; read &#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x4E0A;&#x9762;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E2A;&#x662F;&#x65E0;&#x9650;&#x7B49;&#x5F85;&#x7684;&#x3002;</p>
+&#x5047;&#x8BBE; client &#x6267;&#x884C;&#x4E86;&#x534A;&#x5173;&#x95ED;&#x8FDB;&#x5165; FIN_WAIT2 &#x72B6;&#x6001;&#xFF0C;&#x7136;&#x540E;&#x7B49;&#x5F85; server &#x7AEF;&#x4F20;&#x8F93;&#x5B8C;&#x6210;&#x5E76;&#x53D1;&#x9001; FIN &#x5206;&#x8282;&#x3002;
+&#x4F46;&#x5982;&#x679C; server &#x4EE3;&#x7801;&#x6709; bug &#x6CA1;&#x6709;&#x53D1;&#x9001; FIN &#x5206;&#x8282;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x5BFC;&#x81F4; server &#x53E5;&#x67C4;&#x4E00;&#x76F4;&#x5B58;&#x5728;&#xFF0C;&#x800C; client &#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x5F97;&#x5230; FIN &#x5206;&#x8282;&#x800C;&#x963B;&#x585E;&#x5728; read &#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E2A;&#x662F;&#x65E0;&#x9650;&#x7B49;&#x5F85;&#x7684;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x6240;&#x4EE5;&#x5728;&#x5B9E;&#x73B0;&#x4E0A;&#x6DFB;&#x52A0;&#x4E86;&#x5B9A;&#x65F6;&#x5668;&#x6765;&#x907F;&#x514D;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;
-FIN_WAIT2 &#x5728;&#x7B49;&#x5F85;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x8FDB;&#x884C; CLOSED &#x72B6;&#x6001;&#xFF0C;client &#x7AEF;&#x7684; read &#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x7136;&#x540E;&#x9000;&#x51FA;&#x3002;
+FIN_WAIT2 &#x5728;&#x7B49;&#x5F85;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5C31;&#x4F1A;&#x8FDB;&#x884C; CLOSED &#x72B6;&#x6001;&#xFF0C;client &#x7AEF;&#x7684; read &#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x7136;&#x540E;&#x9000;&#x51FA;&#x3002;
 &#x800C;&#x5728; server &#x7AEF;&#x5C31;&#x663E;&#x793A;&#x8FD9;&#x4E2A;&#x8FDE;&#x63A5;&#x4E00;&#x76F4;&#x5B58;&#x5728;&#x5E76;&#x4E14; fd &#x4E5F;&#x88AB;&#x5360;&#x7528;&#x3002;
 &#x4E5F;&#x5C31;&#x662F;&#x5982;&#x679C; netstat &#x53D1;&#x73B0;&#x5F88;&#x591A; CLOSE_WAIT &#x72B6;&#x6001;&#x5E76;&#x4E14;&#x53E5;&#x67C4;&#x6CC4;&#x9732;&#xFF0C;&#x90A3;&#x4E48;&#x5F88;&#x53EF;&#x80FD;&#x662F; server &#x5728;&#x4F1A;&#x8BDD;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x6CA1;&#x6709;&#x8C03;&#x7528; close &#x800C;&#x9020;&#x6210;&#x7684;&#x8D44;&#x6E90;&#x6CC4;&#x9732;&#x3002;</p>
 
