@@ -51,7 +51,7 @@
         data-chapter-title="addr2name.cc"
         data-filepath="s6/6.5.md"
         data-basepath=".."
-        data-revision="Thu Mar 10 2016 14:02:14 GMT+0800 (CST)"
+        data-revision="Thu Mar 10 2016 15:18:16 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1761,7 +1761,7 @@ int main(int argc, char* const argv[]) {
                         &amp;ent, buf, sizeof(buf), &amp;entp, &amp;herrno);
 
         if(!entp) {
-            fprintf(stderr, &quot;gethostbyaddr_r(%s,AF_INET6) failed:%s\n&quot;,
+            fprintf(stderr, &quot;gethostbyaddr_r(%s, AF_INET6) failed:%s\n&quot;,
                     ip, hstrerror(herrno));
             return -1;
         }

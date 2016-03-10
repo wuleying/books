@@ -53,7 +53,7 @@
         data-chapter-title="name2addr.cc"
         data-filepath="s6/6.4.md"
         data-basepath=".."
-        data-revision="Thu Mar 10 2016 14:02:14 GMT+0800 (CST)"
+        data-revision="Thu Mar 10 2016 15:18:16 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1756,7 +1756,7 @@ int main(int argc, char* const argv[]) {
         // AF_INET
         gethostbyname2_r(hostname, AF_INET, &amp;ent, buf, sizeof(buf), &amp;entp, &amp;herrno);
         if(!entp) {
-            fprintf(stderr, &quot;gethostbyname2_r(%s,AF_INET) failed:%s\n&quot;,
+            fprintf(stderr, &quot;gethostbyname2_r(%s, AF_INET) failed:%s\n&quot;,
                     hostname, hstrerror(herrno));
             goto next1;
         } else {
