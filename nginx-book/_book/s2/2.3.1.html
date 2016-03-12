@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>ngx_str_t | nginx-book</title>
+        <title>ngx_str_t | Nginx Book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.2">
@@ -53,7 +53,7 @@
         data-chapter-title="ngx_str_t"
         data-filepath="s2/2.3.1.md"
         data-basepath=".."
-        data-revision="Sat Mar 12 2016 11:25:41 GMT+0800 (CST)"
+        data-revision="Sat Mar 12 2016 11:48:19 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3714,7 +3714,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../" >nginx-book</a>
+        <a href="../" >Nginx Book</a>
     </h1>
 </div>
 
@@ -3724,53 +3724,53 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="ngxstrt">ngx_str_t</h1>
+                        <h1 id="231-ngxstrt">2.3.1 ngx_str_t</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x5728; nginx &#x6E90;&#x7801;&#x76EE;&#x5F55;&#x7684; src/core &#x4E0B;&#x9762;&#x7684; ngx_string.h|c &#x91CC;&#xFF0C;&#x5305;&#x542B;&#x4E86;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5C01;&#x88C5;&#x4EE5;&#x53CA;&#x5B57;&#x7B26;&#x4E32;&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#x7684; api&#x3002;
-nginx &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5E26;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x7ED3;&#x6784; ngx_str_t&#xFF0C;&#x5B83;&#x7684;&#x539F;&#x578B;&#x5982;&#x4E0B;&#xFF1A;</p>
+&#x5728; Nginx &#x6E90;&#x7801;&#x76EE;&#x5F55;&#x7684; src/core &#x4E0B;&#x7684; ngx_string.h|c &#x91CC;&#xFF0C;&#x5305;&#x542B;&#x4E86;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5C01;&#x88C5;&#x4EE5;&#x53CA;&#x5B57;&#x7B26;&#x4E32;&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#x7684; api&#x3002;
+Nginx &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5E26;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x7ED3;&#x6784; ngx_str_t&#xFF0C;&#x5B83;&#x7684;&#x539F;&#x578B;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code>typedef struct {
     size_t      len;
     u_char     *data;
 } ngx_str_t;
 </code></pre><p>&#x2003;&#x2003;
-&#x5728;&#x7ED3;&#x6784;&#x4F53;&#x5F53;&#x4E2D;&#xFF0C;data &#x6307;&#x5411;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7ED3;&#x675F;&#x7528;&#x957F;&#x5EA6;&#x6765;&#x8868;&#x793A;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7531; &#x2019;\0&#x2019; &#x6765;&#x8868;&#x793A;&#x7ED3;&#x675F;&#x3002;
-&#x6240;&#x4EE5;&#x5728;&#x5199; nginx &#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x5904;&#x7406;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x65B9;&#x6CD5;&#x8DDF;&#x5E73;&#x65F6;&#x4F7F;&#x7528;&#x6709;&#x5F88;&#x5927;&#x7684;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x4F46;&#x8981;&#x65F6;&#x523B;&#x8BB0;&#x4F4F;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x4E0D;&#x4EE5; &#x2019;\0&#x2019; &#x7ED3;&#x675F;&#xFF0C;&#x5C3D;&#x91CF;&#x4F7F;&#x7528; nginx &#x63D0;&#x4F9B;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x7684; api &#x6765;&#x64CD;&#x4F5C;&#x5B57;&#x7B26;&#x4E32;&#x3002;
-&#x90A3;&#x4E48; nginx &#x8FD9;&#x6837;&#x505A;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;&#x5462;&#xFF1F;
+&#x5728;&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#xFF0C;data &#x6307;&#x5411;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7ED3;&#x675F;&#x7528;&#x957F;&#x5EA6;&#x6765;&#x8868;&#x793A;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7531; &quot;\0&quot; &#x6765;&#x8868;&#x793A;&#x7ED3;&#x675F;&#x3002;
+&#x6240;&#x4EE5;&#x5728;&#x5199; Nginx &#x4EE3;&#x7801;&#x65F6;&#x5904;&#x7406;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x65B9;&#x6CD5;&#x8DDF;&#x5E73;&#x65F6;&#x4F7F;&#x7528;&#x6709;&#x5F88;&#x5927;&#x7684;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x4F46;&#x8981;&#x65F6;&#x523B;&#x8BB0;&#x4F4F;&#x5B57;&#x7B26;&#x4E32;&#x4E0D;&#x4EE5; &quot;\0&quot; &#x7ED3;&#x675F;&#xFF0C;&#x5C3D;&#x91CF;&#x4F7F;&#x7528; Nginx &#x63D0;&#x4F9B;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C; api &#x6765;&#x64CD;&#x4F5C;&#x5B57;&#x7B26;&#x4E32;&#x3002;
+&#x90A3;&#x4E48; Nginx &#x8FD9;&#x6837;&#x505A;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;&#x5462;&#xFF1F;
 &#x9996;&#x5148;&#x901A;&#x8FC7;&#x957F;&#x5EA6;&#x6765;&#x8868;&#x793A;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#x51CF;&#x5C11;&#x8BA1;&#x7B97;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#x7684;&#x6B21;&#x6570;&#x3002;
-&#x5176;&#x6B21; nginx &#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x5F15;&#x7528;&#x4E00;&#x6BB5;&#x5B57;&#x7B26;&#x4E32;&#x5185;&#x5B58;&#xFF0C;data &#x53EF;&#x4EE5;&#x6307;&#x5411;&#x4EFB;&#x610F;&#x5185;&#x5B58;&#xFF0C;&#x957F;&#x5EA6;&#x8868;&#x793A;&#x7ED3;&#x675F;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x53BB; copy &#x4E00;&#x4EFD;&#x81EA;&#x5DF1;&#x7684;&#x5B57;&#x7B26;&#x4E32;(&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x8981;&#x4EE5; &#x2019;\0&#x2019; &#x7ED3;&#x675F;&#xFF0C;&#x800C;&#x4E0D;&#x80FD;&#x66F4;&#x6539;&#x539F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6240;&#x4EE5;&#x52BF;&#x5FC5;&#x8981; copy &#x4E00;&#x6BB5;&#x5B57;&#x7B26;&#x4E32;)&#x3002;
-&#x6211;&#x4EEC;&#x5728; ngx_http_request_t &#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6210;&#x5458;&#x4E2D;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x5F88;&#x591A;&#x5B57;&#x7B26;&#x4E32;&#x5F15;&#x7528;&#x4E00;&#x6BB5;&#x5185;&#x5B58;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x6BD4;&#x5982; request_line&#x3001;uri&#x3001;args &#x7B49;&#x7B49;&#xFF0C;&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#x4E32;&#x7684; data &#x90E8;&#x5206;&#x90FD;&#x662F;&#x6307;&#x5411;&#x5728;&#x63A5;&#x6536;&#x6570;&#x636E;&#x65F6;&#x521B;&#x5EFA; buffer &#x6240;&#x6307;&#x5411;&#x7684;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;uri&#xFF0C;args &#x5C31;&#x6CA1;&#x6709;&#x5FC5;&#x8981; copy &#x4E00;&#x4EFD;&#x51FA;&#x6765;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#x51CF;&#x5C11;&#x4E86;&#x5F88;&#x591A;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;&#x4E0E;&#x62F7;&#x8D1D;&#x3002;
-&#x6B63;&#x662F;&#x57FA;&#x4E8E;&#x6B64;&#x7279;&#x6027;&#xFF0C;&#x5728; nginx &#x4E2D;&#x5FC5;&#x987B;&#x8C28;&#x614E;&#x7684;&#x53BB;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x3002;
+&#x5176;&#x6B21; Nginx &#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x5F15;&#x7528;&#x4E00;&#x6BB5;&#x5B57;&#x7B26;&#x4E32;&#x5185;&#x5B58;&#xFF0C;data &#x53EF;&#x4EE5;&#x6307;&#x5411;&#x4EFB;&#x610F;&#x5185;&#x5B58;&#xFF0C;&#x957F;&#x5EA6;&#x8868;&#x793A;&#x7ED3;&#x675F;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x53BB; copy &#x4E00;&#x4EFD;&#x81EA;&#x5DF1;&#x7684;&#x5B57;&#x7B26;&#x4E32; (&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x8981;&#x4EE5; &quot;\0&quot; &#x7ED3;&#x675F;&#xFF0C;&#x800C;&#x4E0D;&#x80FD;&#x66F4;&#x6539;&#x539F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6240;&#x4EE5;&#x52BF;&#x5FC5;&#x8981; copy &#x4E00;&#x6BB5;&#x5B57;&#x7B26;&#x4E32;)&#x3002;
+&#x5728; ngx_http_request_t &#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6210;&#x5458;&#x4E2D;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x5F88;&#x591A;&#x5B57;&#x7B26;&#x4E32;&#x5F15;&#x7528;&#x4E00;&#x6BB5;&#x5185;&#x5B58;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x6BD4;&#x5982; request_line&#x3001;uri&#x3001;args &#x7B49;&#x7B49;&#xFF0C;&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#x4E32;&#x7684; data &#x90E8;&#x5206;&#x90FD;&#x662F;&#x6307;&#x5411;&#x5728;&#x63A5;&#x6536;&#x6570;&#x636E;&#x65F6;&#x521B;&#x5EFA; buffer &#x6240;&#x6307;&#x5411;&#x7684;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;uri&#x3001;args &#x5C31;&#x6CA1;&#x6709;&#x5FC5;&#x8981; copy &#x4E00;&#x4EFD;&#x51FA;&#x6765;&#xFF0C;&#x8FD9;&#x6837;&#x51CF;&#x5C11;&#x4E86;&#x5F88;&#x591A;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;&#x4E0E;&#x62F7;&#x8D1D;&#x3002;
+&#x6B63;&#x662F;&#x57FA;&#x4E8E;&#x6B64;&#x7279;&#x6027;&#xFF0C;&#x5728; Nginx &#x4E2D;&#x5FC5;&#x987B;&#x8C28;&#x614E;&#x7684;&#x53BB;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x3002;
 &#x5728;&#x4FEE;&#x6539;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#x9700;&#x8981;&#x8BA4;&#x771F;&#x7684;&#x53BB;&#x8003;&#x8651;&#xFF1A;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x8BE5;&#x5B57;&#x7B26;&#x4E32;&#xFF1B;&#x5B57;&#x7B26;&#x4E32;&#x4FEE;&#x6539;&#x540E;&#xFF0C;&#x662F;&#x5426;&#x4F1A;&#x5BF9;&#x5176;&#x5B83;&#x7684;&#x5F15;&#x7528;&#x9020;&#x6210;&#x5F71;&#x54CD;&#x3002;
-&#x5728;&#x540E;&#x9762;&#x4ECB;&#x7ECD; ngx_unescape_uri &#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x4F1A;&#x770B;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#x3002;
-&#x4F46;&#x662F;&#x4F7F;&#x7528; nginx &#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;glibc &#x63D0;&#x4F9B;&#x7684;&#x5F88;&#x591A;&#x7CFB;&#x7EDF; api &#x51FD;&#x6570;&#x5927;&#x591A;&#x662F;&#x901A;&#x8FC7; &#x2019;\0&#x2019; &#x6765;&#x8868;&#x793A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7ED3;&#x675F;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x8C03;&#x7528;&#x7CFB;&#x7EDF; api &#x65F6;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x4F20;&#x5165; str-&gt;data &#x4E86;&#x3002;
-&#x6B64;&#x65F6;&#x901A;&#x5E38;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x521B;&#x5EFA;&#x4E00;&#x6BB5; str-&gt;len + 1 &#x5927;&#x5C0F;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x7136;&#x540E; copy &#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x7F6E;&#x4E3A; &#x2019;\0&#x2019;&#x3002;
-&#x6BD4;&#x8F83; hack &#x7684;&#x505A;&#x6CD5;&#x662F;&#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x7B26; backup &#x4E00;&#x4E2A;&#xFF0C;&#x7136;&#x540E;&#x8BBE;&#x7F6E;&#x4E3A; &#x2019;\0&#x2019;&#xFF0C;&#x5728;&#x505A;&#x5B8C;&#x8C03;&#x7528;&#x540E;&#x518D;&#x7531; backup &#x6539;&#x56DE;&#x6765;&#xFF0C;&#x4F46;&#x524D;&#x63D0;&#x6761;&#x4EF6;&#x662F;&#x4F60;&#x5F97;&#x786E;&#x5B9A;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x662F;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x662F;&#x6709;&#x5185;&#x5B58;&#x5206;&#x914D;&#xFF0C;&#x4E0D;&#x4F1A;&#x8D8A;&#x754C;&#xFF0C;&#x4F46;&#x4E00;&#x822C;&#x4E0D;&#x5EFA;&#x8BAE;&#x8FD9;&#x4E48;&#x505A;&#x3002;
-&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x770B; nginx &#x63D0;&#x4F9B;&#x7684;&#x64CD;&#x4F5C;&#x5B57;&#x7B26;&#x4E32;&#x76F8;&#x5173;&#x7684; api&#x3002;</p>
-<pre><code>#define ngx_string(str) { sizeof(str) - 1, (u_char *) str }
-</code></pre><p>&#x2003;&#x2003;
-ngx_string(str) &#x662F;&#x4E00;&#x4E2A;&#x5B8F;&#xFF0C;&#x5B83;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x4EE5; &#x2019;\0&#x2019; &#x7ED3;&#x5C3E;&#x7684;&#x666E;&#x901A;&#x5B57;&#x7B26;&#x4E32; str &#x6784;&#x9020;&#x4E00;&#x4E2A; nginx &#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x9274;&#x4E8E;&#x5176;&#x4E2D;&#x91C7;&#x7528; sizeof &#x64CD;&#x4F5C;&#x7B26;&#x8BA1;&#x7B97;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#xFF0C;&#x56E0;&#x6B64;&#x53C2;&#x6570;&#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;&#x5E38;&#x91CF;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
-<pre><code>#define ngx_null_string { 0, NULL }
-</code></pre><p>&#x2003;&#x2003;
-&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x4F7F;&#x7528; ngx_null_string &#x521D;&#x59CB;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x4E3A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#x4E3A; 0&#xFF0C;data &#x4E3A; NULL&#x3002;</p>
-<pre><code>#define ngx_str_set(str, text)                                               \
+&#x5728;&#x540E;&#x9762;&#x4ECB;&#x7ECD; ngx_unescape_uri &#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x770B;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#x3002;
+&#x4F46;&#x4F7F;&#x7528; Nginx &#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;glibc &#x63D0;&#x4F9B;&#x7684;&#x5F88;&#x591A;&#x7CFB;&#x7EDF; api &#x51FD;&#x6570;&#x5927;&#x591A;&#x662F;&#x901A;&#x8FC7; &quot;\0&quot; &#x6765;&#x8868;&#x793A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7ED3;&#x675F;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x8C03;&#x7528;&#x7CFB;&#x7EDF; api &#x65F6;&#x5C31;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x4F20;&#x5165; str-&gt;data &#x4E86;&#x3002;
+&#x6B64;&#x65F6;&#x901A;&#x5E38;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x521B;&#x5EFA;&#x4E00;&#x6BB5; str-&gt;len + 1 &#x5927;&#x5C0F;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x7136;&#x540E; copy &#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x7F6E;&#x4E3A; &quot;\0&quot;&#x3002;
+&#x6BD4;&#x8F83; hack &#x7684;&#x505A;&#x6CD5;&#x662F;&#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x7B26; backup &#x4E00;&#x4E2A;&#xFF0C;&#x7136;&#x540E;&#x8BBE;&#x7F6E;&#x4E3A; &quot;\0&quot;&#xFF0C;&#x5728;&#x505A;&#x5B8C;&#x8C03;&#x7528;&#x540E;&#x518D;&#x7531; backup &#x6539;&#x56DE;&#x6765;&#xFF0C;&#x4F46;&#x524D;&#x63D0;&#x6761;&#x4EF6;&#x662F;&#x5F97;&#x786E;&#x5B9A;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x662F;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x662F;&#x6709;&#x5185;&#x5B58;&#x5206;&#x914D;&#xFF0C;&#x4E0D;&#x4F1A;&#x8D8A;&#x754C;&#xFF0C;&#x4F46;&#x4E00;&#x822C;&#x4E0D;&#x5EFA;&#x8BAE;&#x8FD9;&#x4E48;&#x505A;&#x3002;
+&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x770B; Nginx &#x63D0;&#x4F9B;&#x7684;&#x64CD;&#x4F5C;&#x5B57;&#x7B26;&#x4E32;&#x76F8;&#x5173;&#x7684; api&#x3002;</p>
+<pre><code>// ngx_string(str) &#x662F;&#x4E00;&#x4E2A;&#x5B8F;&#xFF0C;&#x5B83;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x4EE5; &quot;\0&quot; &#x7ED3;&#x5C3E;&#x7684;&#x666E;&#x901A;&#x5B57;&#x7B26;&#x4E32; str &#x6784;&#x9020;&#x4E00;&#x4E2A; Nginx &#x7684;&#x5B57;&#x7B26;&#x4E32;
+// &#x9274;&#x4E8E;&#x5176;&#x4E2D;&#x91C7;&#x7528; sizeof &#x64CD;&#x4F5C;&#x7B26;&#x8BA1;&#x7B97;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#xFF0C;&#x56E0;&#x6B64;&#x53C2;&#x6570;&#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;&#x5E38;&#x91CF;&#x5B57;&#x7B26;&#x4E32;
+#define ngx_string(str) { sizeof(str) - 1, (u_char *) str }
+
+// &#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x65F6;&#x4F7F;&#x7528; ngx_null_string &#x521D;&#x59CB;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x4E3A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#x4E3A; 0&#xFF0C;data &#x4E3A; NULL
+#define ngx_null_string { 0, NULL }
+
+// ngx_str_set &#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x5B57;&#x7B26;&#x4E32; str &#x4E3A; text&#xFF0C;&#x7531;&#x4E8E;&#x4F7F;&#x7528; sizeof &#x8BA1;&#x7B97;&#x957F;&#x5EA6;&#xFF0C;&#x6545; text &#x5FC5;&#x987B;&#x4E3A;&#x5E38;&#x91CF;&#x5B57;&#x7B26;&#x4E32;
+#define ngx_str_set(str, text)                                               \
     (str)-&gt;len = sizeof(text) - 1; (str)-&gt;data = (u_char *) text
+
+// ngx_str_null &#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x5B57;&#x7B26;&#x4E32; str &#x4E3A;&#x7A7A;&#x4E32;&#xFF0C;&#x957F;&#x5EA6;&#x4E3A; 0&#xFF0C;data &#x4E3A; NULL&#x3002;
+#define ngx_str_null(str) (str)-&gt;len = 0; (str)-&gt;data = NULL
 </code></pre><p>&#x2003;&#x2003;
-ngx_str_set &#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x5B57;&#x7B26;&#x4E32; str &#x4E3A; text&#xFF0C;&#x7531;&#x4E8E;&#x4F7F;&#x7528; sizeof &#x8BA1;&#x7B97;&#x957F;&#x5EA6;&#xFF0C;&#x6545; text &#x5FC5;&#x987B;&#x4E3A;&#x5E38;&#x91CF;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
-<pre><code>#define ngx_str_null(str) (str)-&gt;len = 0; (str)-&gt;data = NULL
-</code></pre><p>&#x2003;&#x2003;
-ngx_str_null &#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x5B57;&#x7B26;&#x4E32; str &#x4E3A;&#x7A7A;&#x4E32;&#xFF0C;&#x957F;&#x5EA6;&#x4E3A; 0&#xFF0C;data &#x4E3A; NULL&#x3002;</p>
-<p>&#x2003;&#x2003;
 &#x4E0A;&#x9762;&#x8FD9;&#x56DB;&#x4E2A;&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x65F6;&#x4E00;&#x5B9A;&#x8981;&#x5C0F;&#x5FC3;&#xFF0C;ngx_string &#x4E0E; ngx_null_string &#x662F; &#x201C;{&#xFF0C;}&#x201D; &#x683C;&#x5F0F;&#x7684;&#xFF0C;&#x6545;&#x53EA;&#x80FD;&#x7528;&#x4E8E;&#x8D4B;&#x503C;&#x65F6;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5982;&#xFF1A;</p>
 <pre><code>ngx_str_t str = ngx_string(&quot;hello world&quot;);
 ngx_str_t str1 = ngx_null_string;
 </code></pre><p>&#x2003;&#x2003;
-&#x5982;&#x679C;&#x5411;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#x5C31;&#x4F1A;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x91CC;&#x6D89;&#x53CA;&#x5230; c &#x8BED;&#x8A00;&#x4E2D;&#x5BF9;&#x7ED3;&#x6784;&#x4F53;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#x7684;&#x8BED;&#x6CD5;&#x89C4;&#x5219;&#xFF0C;&#x5728;&#x6B64;&#x4E0D;&#x505A;&#x4ECB;&#x7ECD;&#x3002;</p>
+&#x5982;&#x679C;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#x5C31;&#x4F1A;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x91CC;&#x6D89;&#x53CA;&#x5230; c &#x8BED;&#x8A00;&#x4E2D;&#x5BF9;&#x7ED3;&#x6784;&#x4F53;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#x7684;&#x8BED;&#x6CD5;&#x89C4;&#x5219;&#xFF0C;&#x5728;&#x6B64;&#x4E0D;&#x505A;&#x4ECB;&#x7ECD;&#x3002;</p>
 <pre><code>ngx_str_t str, str1;
 str  = ngx_string(&quot;hello world&quot;);    // &#x7F16;&#x8BD1;&#x51FA;&#x9519;
 str1 = ngx_null_string;              // &#x7F16;&#x8BD1;&#x51FA;&#x9519;
 </code></pre><p>&#x2003;&#x2003;
-&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x53EF;&#x4EE5;&#x8C03;&#x7528; ngx_str_set &#x4E0E; ngx_str_null &#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x505A;&#xFF1A;</p>
+&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x53EF;&#x4EE5;&#x8C03;&#x7528; ngx_str_set &#x4E0E; ngx_str_null &#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
 <pre><code>ngx_str_t str, str1;
 ngx_str_set(&amp;str, &quot;hello world&quot;);
 ngx_str_null(&amp;str1);
@@ -3780,7 +3780,7 @@ ngx_str_null(&amp;str1);
 str  = (ngx_str_t) ngx_string(&quot;hello world&quot;);
 str1 = (ngx_str_t) ngx_null_string;
 </code></pre><p>&#x2003;&#x2003;
-&#x53E6;&#x5916;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; ngx_string &#x4E0E; ngx_str_set &#x5728;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x4F20;&#x8FDB;&#x53BB;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E00;&#x5B9A;&#x662F;&#x5E38;&#x91CF;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x5F97;&#x5230;&#x610F;&#x60F3;&#x4E0D;&#x5230;&#x7684;&#x9519;&#x8BEF;(&#x56E0;&#x4E3A; ngx_str_set &#x5185;&#x90E8;&#x4F7F;&#x7528;&#x4E86; sizeof()&#xFF0C;&#x5982;&#x679C;&#x4F20;&#x5165;&#x7684;&#x662F; u_char*&#xFF0C;&#x90A3;&#x4E48;&#x8BA1;&#x7B97;&#x7684;&#x662F;&#x8FD9;&#x4E2A;&#x6307;&#x9488;&#x7684;&#x957F;&#x5EA6;&#x800C;&#x4E0D;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;)&#x3002;
+&#x53E6;&#x5916;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; ngx_string &#x4E0E; ngx_str_set &#x5728;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x4F20;&#x8FDB;&#x53BB;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E00;&#x5B9A;&#x662F;&#x5E38;&#x91CF;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x5F97;&#x5230;&#x610F;&#x60F3;&#x4E0D;&#x5230;&#x7684;&#x9519;&#x8BEF; (&#x56E0;&#x4E3A; ngx_str_set &#x5185;&#x90E8;&#x4F7F;&#x7528;&#x4E86; sizeof()&#xFF0C;&#x5982;&#x679C;&#x4F20;&#x5165;&#x7684;&#x662F; u_char*&#xFF0C;&#x90A3;&#x4E48;&#x8BA1;&#x7B97;&#x7684;&#x662F;&#x8FD9;&#x4E2A;&#x6307;&#x9488;&#x7684;&#x957F;&#x5EA6;&#x800C;&#x4E0D;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;)&#x3002;
 &#x5982;&#xFF1A;</p>
 <pre><code>ngx_str_t str;
 u_char *a = &quot;hello world&quot;;
@@ -3792,34 +3792,35 @@ if (cond)
    ngx_str_set(&amp;str, &quot;true&quot;);     // &#x95EE;&#x9898;&#x4EA7;&#x751F;
 else
    ngx_str_set(&amp;str, &quot;false&quot;);    // &#x95EE;&#x9898;&#x4EA7;&#x751F;
-</code></pre><p>&#xA0;&#xA0;</p>
-<pre><code>void ngx_strlow(u_char *dst, u_char *src, size_t n);
 </code></pre><p>&#x2003;&#x2003;
-&#x5C06; src &#x7684;&#x524D; n &#x4E2A;&#x5B57;&#x7B26;&#x8F6C;&#x6362;&#x6210;&#x5C0F;&#x5199;&#x5B58;&#x653E;&#x5728; dst &#x5B57;&#x7B26;&#x4E32;&#x5F53;&#x4E2D;&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x9700;&#x8981;&#x4FDD;&#x8BC1; dst &#x6307;&#x5411;&#x7684;&#x7A7A;&#x95F4;&#x5927;&#x4E8E;&#x7B49;&#x4E8E; n&#xFF0C;&#x4E14;&#x6307;&#x5411;&#x7684;&#x7A7A;&#x95F4;&#x5FC5;&#x987B;&#x53EF;&#x5199;&#x3002;
-&#x64CD;&#x4F5C;&#x4E0D;&#x4F1A;&#x5BF9;&#x539F;&#x5B57;&#x7B26;&#x4E32;&#x4EA7;&#x751F;&#x53D8;&#x52A8;&#x3002;
-&#x5982;&#x8981;&#x66F4;&#x6539;&#x539F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x53EF;&#x4EE5;&#xFF1A;</p>
-<p>ngx_strlow(str-&gt;data, str-&gt;data, str-&gt;len);</p>
-<p>&#x2003;&#x2003;
-&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;&#xFF0C;&#x53EA;&#x6BD4;&#x8F83;&#x524D;n&#x4E2A;&#x5B57;&#x7B26;&#x3002;</p>
-<pre><code>ngx_strncmp(s1, s2, n)
-</code></pre><p>&#x2003;&#x2003;
-&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x4E0D;&#x5E26;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;&#x3002;</p>
-<pre><code>ngx_strcmp(s1, s2)
-</code></pre><p>&#x2003;&#x2003;
-&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x4E0D;&#x5E26;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;&#x3002;</p>
-<pre><code>ngx_int_t ngx_strcasecmp(u_char *s1, u_char *s2);
-</code></pre><p>&#x2003;&#x2003;
-&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x5E26;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;&#xFF0C;&#x53EA;&#x6BD4;&#x8F83;&#x524D;n&#x4E2A;&#x5B57;&#x7B26;&#x3002;</p>
-<pre><code>ngx_int_t ngx_strncasecmp(u_char *s1, u_char *s2, size_t n);
-</code></pre><p>&#xA0;&#xA0;</p>
-<pre><code>u_char * ngx_cdecl ngx_sprintf(u_char *buf, const char *fmt, ...);
+&#x5B57;&#x7B26;&#x4E32;&#x5927;&#x5C0F;&#x5199;&#x8F6C;&#x6362;&#x3001;&#x6BD4;&#x8F83;&#x3001;&#x683C;&#x5F0F;&#x5316; api&#xFF1A;</p>
+<pre><code>// &#x5C06; src &#x7684;&#x524D; n &#x4E2A;&#x5B57;&#x7B26;&#x8F6C;&#x6362;&#x6210;&#x5C0F;&#x5199;&#x5B58;&#x653E;&#x5728; dst &#x5B57;&#x7B26;&#x4E32;&#x5F53;&#x4E2D;
+// &#x8C03;&#x7528;&#x8005;&#x9700;&#x8981;&#x4FDD;&#x8BC1; dst &#x6307;&#x5411;&#x7684;&#x7A7A;&#x95F4;&#x5927;&#x4E8E;&#x7B49;&#x4E8E; n&#xFF0C;&#x4E14;&#x6307;&#x5411;&#x7684;&#x7A7A;&#x95F4;&#x5FC5;&#x987B;&#x53EF;&#x5199;
+// &#x64CD;&#x4F5C;&#x4E0D;&#x4F1A;&#x5BF9;&#x539F;&#x5B57;&#x7B26;&#x4E32;&#x4EA7;&#x751F;&#x53D8;&#x52A8;
+// &#x5982;&#x8981;&#x66F4;&#x6539;&#x539F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x53EF;&#x4EE5;&#xFF1A;ngx_strlow(str-&gt;data, str-&gt;data, str-&gt;len);
+void ngx_strlow(u_char *dst, u_char *src, size_t n);
+
+// &#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;&#xFF0C;&#x53EA;&#x6BD4;&#x8F83;&#x524D;n&#x4E2A;&#x5B57;&#x7B26;
+ngx_strncmp(s1, s2, n)
+
+// &#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x4E0D;&#x5E26;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;
+ngx_strcmp(s1, s2)
+
+// &#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x4E0D;&#x5E26;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;
+ngx_int_t ngx_strcasecmp(u_char *s1, u_char *s2);
+
+// &#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x5E26;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;&#xFF0C;&#x53EA;&#x6BD4;&#x8F83;&#x524D;n&#x4E2A;&#x5B57;&#x7B26;&#x3002;
+ngx_int_t ngx_strncasecmp(u_char *s1, u_char *s2, size_t n);
+
+// &#x8FD9;&#x4E09;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x5B57;&#x7B26;&#x4E32;&#x683C;&#x5F0F;&#x5316;
+// ngx_snprintf &#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570; max &#x6307;&#x660E; buf &#x7684;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;&#xFF0C;ngx_slprintf &#x5219;&#x901A;&#x8FC7; last &#x6765;&#x6307;&#x660E; buf &#x7A7A;&#x95F4;&#x7684;&#x5927;&#x5C0F;
+// &#x63A8;&#x8350;&#x4F7F;&#x7528;&#x7B2C;&#x4E8C;&#x4E2A;&#x6216;&#x7B2C;&#x4E09;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;ngx_sprintf &#x51FD;&#x6570;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x5371;&#x9669;&#x7684;&#xFF0C;&#x5BB9;&#x6613;&#x4EA7;&#x751F;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x6F0F;&#x6D1E;
+u_char * ngx_cdecl ngx_sprintf(u_char *buf, const char *fmt, ...);
 u_char * ngx_cdecl ngx_snprintf(u_char *buf, size_t max, const char *fmt, ...);
 u_char * ngx_cdecl ngx_slprintf(u_char *buf, u_char *last, const char *fmt, ...);
 </code></pre><p>&#x2003;&#x2003;
-&#x4E0A;&#x9762;&#x8FD9;&#x4E09;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x5B57;&#x7B26;&#x4E32;&#x683C;&#x5F0F;&#x5316;&#xFF0C;ngx_snprintf &#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570; max &#x6307;&#x660E; buf &#x7684;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;&#xFF0C;ngx_slprintf &#x5219;&#x901A;&#x8FC7; last &#x6765;&#x6307;&#x660E; buf &#x7A7A;&#x95F4;&#x7684;&#x5927;&#x5C0F;&#x3002;
-&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x7B2C;&#x4E8C;&#x4E2A;&#x6216;&#x7B2C;&#x4E09;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;ngx_sprintf &#x51FD;&#x6570;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x5371;&#x9669;&#x7684;&#xFF0C;&#x5BB9;&#x6613;&#x4EA7;&#x751F;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x6F0F;&#x6D1E;&#x3002;
-&#x5728;&#x8FD9;&#x4E00;&#x7CFB;&#x5217;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;nginx &#x5728;&#x517C;&#x5BB9; glibc &#x4E2D;&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5F62;&#x5F0F;&#x4E4B;&#x5916;&#x8FD8;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E9B;&#x65B9;&#x4FBF;&#x683C;&#x5F0F;&#x5316; nginx &#x7C7B;&#x578B;&#x7684;&#x4E00;&#x4E9B;&#x8F6C;&#x4E49;&#x5B57;&#x7B26;&#xFF0C;&#x6BD4;&#x5982; %V &#x7528;&#x4E8E;&#x683C;&#x5F0F;&#x5316; ngx_str_t &#x7ED3;&#x6784;&#x3002;
-&#x5728; nginx &#x6E90;&#x6587;&#x4EF6;&#x7684; ngx_string.c &#x4E2D;&#x6709;&#x8BF4;&#x660E;&#xFF1A;</p>
+&#x5728;&#x8FD9;&#x4E00;&#x7CFB;&#x5217;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;Nginx &#x5728;&#x517C;&#x5BB9; glibc &#x4E2D;&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5F62;&#x5F0F;&#x4E4B;&#x5916;&#x8FD8;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E9B;&#x65B9;&#x4FBF;&#x683C;&#x5F0F;&#x5316; Nginx &#x7C7B;&#x578B;&#x7684;&#x4E00;&#x4E9B;&#x8F6C;&#x4E49;&#x5B57;&#x7B26;&#xFF0C;&#x6BD4;&#x5982; %V &#x7528;&#x4E8E;&#x683C;&#x5F0F;&#x5316; ngx_str_t &#x7ED3;&#x6784;&#x3002;
+&#x5728; Nginx &#x6E90;&#x6587;&#x4EF6;&#x7684; ngx_string.c &#x4E2D;&#x6709;&#x8BF4;&#x660E;&#xFF1A;</p>
 <pre><code>/*
  * supported formats:
  *    %[0][width][x][X]O        off_t
@@ -3851,40 +3852,42 @@ u_char * ngx_cdecl ngx_slprintf(u_char *buf, u_char *last, const char *fmt, ...)
  *    %C                        wchar
  */
 </code></pre><p>&#x2003;&#x2003;
-&#x8FD9;&#x91CC;&#x7279;&#x522B;&#x8981;&#x63D0;&#x9192;&#x7684;&#x662F;&#xFF0C;&#x6700;&#x5E38;&#x7528;&#x4E8E;&#x683C;&#x5F0F;&#x5316; ngx_str_t &#x7ED3;&#x6784;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x8F6C;&#x4E49;&#x7B26;&#x662F; %V&#xFF0C;&#x4F20;&#x7ED9;&#x51FD;&#x6570;&#x7684;&#x4E00;&#x5B9A;&#x8981;&#x662F;&#x6307;&#x9488;&#x7C7B;&#x578B;&#xFF0C;&#x5426;&#x5219;&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A; coredump &#x6389;&#x3002;
-&#x8FD9;&#x4E5F;&#x662F;&#x6700;&#x5BB9;&#x6613;&#x72AF;&#x7684;&#x9519;&#x3002;
+&#x8FD9;&#x91CC;&#x7279;&#x522B;&#x8981;&#x63D0;&#x9192;&#x7684;&#x662F;&#xFF0C;&#x6700;&#x5E38;&#x7528;&#x4E8E;&#x683C;&#x5F0F;&#x5316; ngx_str_t &#x7ED3;&#x6784;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x8F6C;&#x4E49;&#x7B26;&#x662F; %V&#xFF0C;&#x4F20;&#x7ED9;&#x51FD;&#x6570;&#x7684;&#x4E00;&#x5B9A;&#x8981;&#x662F;&#x6307;&#x9488;&#x7C7B;&#x578B;&#xFF0C;&#x5426;&#x5219;&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A; coredump&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x6700;&#x5BB9;&#x6613;&#x72AF;&#x7684;&#x9519;&#x3002;
 &#x6BD4;&#x5982;&#xFF1A;</p>
 <pre><code>ngx_str_t str = ngx_string(&quot;hello world&quot;);
 char buffer[1024];
 ngx_snprintf(buffer, 1024, &quot;%V&quot;, &amp;str);    // &#x6CE8;&#x610F;&#xFF0C;str&#x53D6;&#x5730;&#x5740;
-</code></pre><p>&#xA0;&#xA0;</p>
-<pre><code>void ngx_encode_base64(ngx_str_t *dst, ngx_str_t *src);
+</code></pre><p>&#x2003;&#x2003;
+&#x5B57;&#x7B26;&#x4E32;&#x7F16;&#x89E3;&#x7801; api&#xFF1A;</p>
+<pre><code>// &#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x5BF9; str &#x8FDB;&#x884C; base64 &#x7F16;&#x7801;&#x4E0E;&#x89E3;&#x7801;
+// &#x8C03;&#x7528;&#x524D;&#x9700;&#x8981;&#x4FDD;&#x8BC1; dst &#x4E2D;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x7A7A;&#x95F4;&#x6765;&#x5B58;&#x653E;&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x77E5;&#x9053;&#x5177;&#x4F53;&#x5927;&#x5C0F;
+// &#x53EF;&#x5148;&#x8C03;&#x7528; ngx_base64_encoded_length &#x4E0E; ngx_base64_decoded_length &#x6765;&#x9884;&#x4F30;&#x6700;&#x5927;&#x5360;&#x7528;&#x7A7A;&#x95F4;
+void ngx_encode_base64(ngx_str_t *dst, ngx_str_t *src);
 ngx_int_t ngx_decode_base64(ngx_str_t *dst, ngx_str_t *src);
-</code></pre><p>&#x2003;&#x2003;
-&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x5BF9; str &#x8FDB;&#x884C; base64 &#x7F16;&#x7801;&#x4E0E;&#x89E3;&#x7801;&#xFF0C;&#x8C03;&#x7528;&#x524D;&#x9700;&#x8981;&#x4FDD;&#x8BC1; dst &#x4E2D;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x7A7A;&#x95F4;&#x6765;&#x5B58;&#x653E;&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x77E5;&#x9053;&#x5177;&#x4F53;&#x5927;&#x5C0F;&#xFF0C;&#x53EF;&#x5148;&#x8C03;&#x7528; ngx_base64_encoded_length &#x4E0E; ngx_base64_decoded_length &#x6765;&#x9884;&#x4F30;&#x6700;&#x5927;&#x5360;&#x7528;&#x7A7A;&#x95F4;&#x3002;</p>
-<pre><code>uintptr_t ngx_escape_uri(u_char *dst, u_char *src, size_t size,
+
+// &#x5BF9; src &#x8FDB;&#x884C;&#x7F16;&#x7801;&#xFF0C;&#x6839;&#x636E; type &#x6765;&#x6309;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x7F16;&#x7801;
+// &#x5982;&#x679C; dst &#x4E3A; NULL &#x5219;&#x8FD4;&#x56DE;&#x9700;&#x8981;&#x8F6C;&#x4E49;&#x7684;&#x5B57;&#x7B26;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x7531;&#x6B64;&#x53EF;&#x5F97;&#x5230;&#x9700;&#x8981;&#x7684;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;
+// type &#x7684;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x662F;&#xFF1A;
+// #define NGX_ESCAPE_URI         0
+// #define NGX_ESCAPE_ARGS        1
+// #define NGX_ESCAPE_HTML        2
+// #define NGX_ESCAPE_REFRESH     3
+// #define NGX_ESCAPE_MEMCACHED   4
+// #define NGX_ESCAPE_MAIL_AUTH   5
+uintptr_t ngx_escape_uri(u_char *dst, u_char *src, size_t size,
     ngx_uint_t type);
+
+// &#x5BF9; src &#x8FDB;&#x884C;&#x53CD;&#x7F16;&#x7801;&#xFF0C;type &#x53EF;&#x4EE5;&#x662F; 0&#x3001;NGX_UNESCAPE_URI&#x3001;NGX_UNESCAPE_REDIRECT &#x8FD9;&#x4E09;&#x4E2A;&#x503C;
+// &#x5982;&#x679C;&#x662F; 0 &#x5219;&#x8868;&#x793A; src &#x4E2D;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#x90FD;&#x8981;&#x8FDB;&#x884C;&#x8F6C;&#x7801;
+// &#x5982;&#x679C;&#x662F; NGX_UNESCAPE_URI &#x4E0E; NGX_UNESCAPE_REDIRECT&#xFF0C;&#x5219;&#x9047;&#x5230; &#x2019;?&#x2019; &#x540E;&#x5C31;&#x7ED3;&#x675F;&#x4E86;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x5B57;&#x7B26;&#x5C31;&#x4E0D;&#x7BA1;&#x4E86;
+// &#x800C; NGX_UNESCAPE_URI &#x4E0E; NGX_UNESCAPE_REDIRECT &#x4E4B;&#x95F4;&#x7684;&#x533A;&#x522B;&#x662F;
+// NGX_UNESCAPE_URI &#x5BF9;&#x4E8E;&#x9047;&#x5230;&#x7684;&#x9700;&#x8981;&#x8F6C;&#x7801;&#x7684;&#x5B57;&#x7B26;&#x90FD;&#x4F1A;&#x8F6C;&#x7801;&#xFF0C;&#x800C; NGX_UNESCAPE_REDIRECT &#x5219;&#x53EA;&#x4F1A;&#x5BF9;&#x975E;&#x53EF;&#x89C1;&#x5B57;&#x7B26;&#x8FDB;&#x884C;&#x8F6C;&#x7801;
+void ngx_unescape_uri(u_char **dst, u_char **src, size_t size, ngx_uint_t type);
+
+// &#x5BF9;html&#x6807;&#x7B7E;&#x8FDB;&#x884C;&#x7F16;&#x7801;
+uintptr_t ngx_escape_html(u_char *dst, u_char *src, size_t size);
 </code></pre><p>&#x2003;&#x2003;
-&#x5BF9; src &#x8FDB;&#x884C;&#x7F16;&#x7801;&#xFF0C;&#x6839;&#x636E; type &#x6765;&#x6309;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#xFF0C;&#x5982;&#x679C; dst &#x4E3A; NULL &#x5219;&#x8FD4;&#x56DE;&#x9700;&#x8981;&#x8F6C;&#x4E49;&#x7684;&#x5B57;&#x7B26;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x7531;&#x6B64;&#x53EF;&#x5F97;&#x5230;&#x9700;&#x8981;&#x7684;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;&#x3002;
-type &#x7684;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x662F;&#xFF1A;</p>
-<pre><code>#define NGX_ESCAPE_URI         0
-#define NGX_ESCAPE_ARGS        1
-#define NGX_ESCAPE_HTML        2
-#define NGX_ESCAPE_REFRESH     3
-#define NGX_ESCAPE_MEMCACHED   4
-#define NGX_ESCAPE_MAIL_AUTH   5
-</code></pre><p>&#xA0;&#xA0;</p>
-<pre><code>void ngx_unescape_uri(u_char **dst, u_char **src, size_t size, ngx_uint_t type);
-</code></pre><p>&#x2003;&#x2003;
-&#x5BF9; src &#x8FDB;&#x884C;&#x53CD;&#x7F16;&#x7801;&#xFF0C;type &#x53EF;&#x4EE5;&#x662F; 0&#x3001;NGX_UNESCAPE_URI&#x3001;NGX_UNESCAPE_REDIRECT &#x8FD9;&#x4E09;&#x4E2A;&#x503C;&#x3002;
-&#x5982;&#x679C;&#x662F; 0 &#x5219;&#x8868;&#x793A; src &#x4E2D;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#x90FD;&#x8981;&#x8FDB;&#x884C;&#x8F6C;&#x7801;&#x3002;
-&#x5982;&#x679C;&#x662F; NGX_UNESCAPE_URI &#x4E0E; NGX_UNESCAPE_REDIRECT&#xFF0C;&#x5219;&#x9047;&#x5230; &#x2019;?&#x2019; &#x540E;&#x5C31;&#x7ED3;&#x675F;&#x4E86;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x5B57;&#x7B26;&#x5C31;&#x4E0D;&#x7BA1;&#x4E86;&#x3002;
-&#x800C; NGX_UNESCAPE_URI &#x4E0E; NGX_UNESCAPE_REDIRECT &#x4E4B;&#x95F4;&#x7684;&#x533A;&#x522B;&#x662F; NGX_UNESCAPE_URI &#x5BF9;&#x4E8E;&#x9047;&#x5230;&#x7684;&#x9700;&#x8981;&#x8F6C;&#x7801;&#x7684;&#x5B57;&#x7B26;&#x90FD;&#x4F1A;&#x8F6C;&#x7801;&#xFF0C;&#x800C; NGX_UNESCAPE_REDIRECT &#x5219;&#x53EA;&#x4F1A;&#x5BF9;&#x975E;&#x53EF;&#x89C1;&#x5B57;&#x7B26;&#x8FDB;&#x884C;&#x8F6C;&#x7801;&#x3002;</p>
-<pre><code>uintptr_t ngx_escape_html(u_char *dst, u_char *src, size_t size);
-</code></pre><p>&#x2003;&#x2003;
-&#x5BF9;html&#x6807;&#x7B7E;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#x3002;</p>
-<p>&#x2003;&#x2003;
-&#x5F53;&#x7136;&#x8FD9;&#x91CC;&#x53EA;&#x4ECB;&#x7ECD;&#x4E86;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x7684; api &#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x5148;&#x719F;&#x6089;&#x4E00;&#x4E0B;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x4E2D;&#x9047;&#x5230;&#x4E0D;&#x660E;&#x767D;&#x7684;&#xFF0C;&#x6700;&#x5FEB;&#x6700;&#x76F4;&#x63A5;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x53BB;&#x770B;&#x6E90;&#x7801;&#xFF0C;&#x770B; api &#x7684;&#x5B9E;&#x73B0;&#x6216;&#x770B; nginx &#x81EA;&#x8EAB;&#x8C03;&#x7528; api &#x7684;&#x5730;&#x65B9;&#x662F;&#x600E;&#x4E48;&#x505A;&#x7684;&#xFF0C;&#x4EE3;&#x7801;&#x5C31;&#x662F;&#x6700;&#x597D;&#x7684;&#x6587;&#x6863;&#x3002;</p>
+&#x5F53;&#x7136;&#x8FD9;&#x91CC;&#x53EA;&#x4ECB;&#x7ECD;&#x4E86;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x7684; api &#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x719F;&#x6089;&#x4E00;&#x4E0B;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x4E2D;&#x9047;&#x5230;&#x4E0D;&#x660E;&#x767D;&#x7684;&#x6700;&#x5FEB;&#x6700;&#x76F4;&#x63A5;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x53BB;&#x770B;&#x6E90;&#x7801;&#xFF0C;&#x770B; api &#x7684;&#x5B9E;&#x73B0;&#x6216; Nginx &#x81EA;&#x8EAB;&#x8C03;&#x7528; api &#x7684;&#x5730;&#x65B9;&#x662F;&#x600E;&#x4E48;&#x505A;&#x7684;&#xFF0C;&#x4EE3;&#x7801;&#x5C31;&#x662F;&#x6700;&#x597D;&#x7684;&#x6587;&#x6863;&#x3002;</p>
 
                     
                     </section>
