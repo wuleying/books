@@ -53,7 +53,7 @@
         data-chapter-title="request"
         data-filepath="s2/2.2.2.md"
         data-basepath=".."
-        data-revision="Fri Feb 05 2016 15:20:03 GMT+0800 (CST)"
+        data-revision="Sat Mar 12 2016 11:25:41 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -107,7 +107,7 @@
                         
                             <b>1.1.</b>
                         
-                        nginx 历史
+                        Nginx 历史
                     </a>
             
             
@@ -137,7 +137,7 @@
                         
                             <b>1.3.</b>
                         
-                        nginx 特点介绍
+                        Nginx 特点介绍
                     </a>
             
             
@@ -157,7 +157,7 @@
                         
                             <b>2.</b>
                         
-                        nginx 平台初探
+                        Nginx 平台初探
                     </a>
             
             
@@ -173,7 +173,7 @@
                         
                             <b>2.1.</b>
                         
-                        初探 nginx 架构
+                        初探 Nginx 架构
                     </a>
             
             
@@ -188,7 +188,7 @@
                         
                             <b>2.2.</b>
                         
-                        nginx 基础概念
+                        Nginx 基础概念
                     </a>
             
             
@@ -476,7 +476,7 @@
                         
                             <b>2.4.</b>
                         
-                        nginx 的配置系统
+                        Nginx 的配置系统
                     </a>
             
             
@@ -542,7 +542,7 @@
                         
                             <b>2.5.</b>
                         
-                        nginx 的模板化体系结构
+                        Nginx 的模板化体系结构
                     </a>
             
             
@@ -593,7 +593,7 @@
                         
                             <b>2.7.</b>
                         
-                        nginx 的请求处理
+                        Nginx 的请求处理
                     </a>
             
             
@@ -1530,7 +1530,7 @@
                         
                             <b>6.1.1.</b>
                         
-                        nginx 的启动模块
+                        Nginx 的启动模块
                     </a>
             
             
@@ -1942,7 +1942,7 @@
                         
                             <b>9.</b>
                         
-                        nginx 架构详解(50%)
+                        Nginx 架构详解(50%)
                     </a>
             
             
@@ -1958,7 +1958,7 @@
                         
                             <b>9.1.</b>
                         
-                        nginx 的源码目录结构
+                        Nginx 的源码目录结构
                     </a>
             
             
@@ -1973,7 +1973,7 @@
                         
                             <b>9.2.</b>
                         
-                        nginx 的 configure 原理
+                        Nginx 的 configure 原理
                     </a>
             
             
@@ -2024,7 +2024,7 @@
                         
                             <b>9.3.</b>
                         
-                        nginx 的事件机制(0%)
+                        Nginx 的事件机制(0%)
                     </a>
             
             
@@ -2105,7 +2105,7 @@
                         
                             <b>9.4.</b>
                         
-                        nginx 的进程机制(0%)
+                        Nginx 的进程机制(0%)
                     </a>
             
             
@@ -2176,7 +2176,7 @@
                         
                             <b>10.</b>
                         
-                        nginx 基础设施(10%)
+                        Nginx 基础设施(10%)
                     </a>
             
             
@@ -2476,7 +2476,7 @@
                         
                             <b>11.</b>
                         
-                        nginx 的启动阶段(30%)
+                        Nginx 的启动阶段(30%)
                     </a>
             
             
@@ -2857,7 +2857,7 @@
                         
                             <b>12.</b>
                         
-                        nginx 的请求处理阶段(90%)
+                        Nginx 的请求处理阶段(90%)
                     </a>
             
             
@@ -3212,7 +3212,7 @@
                         
                             <b>12.3.</b>
                         
-                        nginx filter
+                        Nginx filter
                     </a>
             
             
@@ -3330,7 +3330,7 @@
                         
                             <b>12.5.1.</b>
                         
-                        nginx 支持 ssl 简介
+                        Nginx 支持 ssl 简介
                     </a>
             
             
@@ -3436,7 +3436,7 @@
                         
                             <b>13.</b>
                         
-                        nginx 的 upstream 原理解析
+                        Nginx 的 upstream 原理解析
                     </a>
             
             
@@ -3619,7 +3619,7 @@
                         
                             <b>14.</b>
                         
-                        nginx 的 script 处理
+                        Nginx 的 script 处理
                     </a>
             
             
@@ -3724,64 +3724,62 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="request">request</h1>
+                        <h1 id="222-request">2.2.2 request</h1>
 <hr>
 <p>&#x2003;&#x2003;
-request &#x5728; nginx &#x4E2D;&#x6307;&#x7684;&#x662F; http &#x8BF7;&#x6C42;&#xFF0C;&#x5177;&#x4F53;&#x5230; nginx &#x4E2D;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x662F; ngx_http_request_t&#x3002;
+request &#x5728; Nginx &#x4E2D;&#x6307;&#x7684;&#x662F; http &#x8BF7;&#x6C42;&#xFF0C;&#x5177;&#x4F53;&#x5230; Nginx &#x4E2D;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x662F; ngx_http_request_t&#x3002;
 ngx_http_request_t &#x662F;&#x5BF9;&#x4E00;&#x4E2A; http &#x8BF7;&#x6C42;&#x7684;&#x5C01;&#x88C5;&#x3002;
 &#x4E00;&#x4E2A; http &#x8BF7;&#x6C42;&#x5305;&#x542B;&#xFF1A;&#x8BF7;&#x6C42;&#x884C;&#x3001;&#x8BF7;&#x6C42;&#x5934;&#x3001;&#x8BF7;&#x6C42;&#x4F53;&#x3001;&#x54CD;&#x5E94;&#x884C;&#x3001;&#x54CD;&#x5E94;&#x5934;&#x3001;&#x54CD;&#x5E94;&#x4F53;&#x3002;</p>
 <p>&#x2003;&#x2003;
-http &#x8BF7;&#x6C42;&#x662F;&#x5178;&#x578B;&#x7684;&#x8BF7;&#x6C42;-&#x54CD;&#x5E94;&#x7C7B;&#x578B;&#x7684;&#x7684;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#xFF0C;&#x800C; http &#x662F;&#x6587;&#x4EF6;&#x534F;&#x8BAE;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x5206;&#x6790;&#x8BF7;&#x6C42;&#x884C;&#x4E0E;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x4EE5;&#x53CA;&#x8F93;&#x51FA;&#x54CD;&#x5E94;&#x884C;&#x4E0E;&#x54CD;&#x5E94;&#x5934;&#xFF0C;&#x5F80;&#x5F80;&#x662F;&#x4E00;&#x884C;&#x4E00;&#x884C;&#x7684;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;
-&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6765;&#x5199;&#x4E00;&#x4E2A; http &#x670D;&#x52A1;&#x5668;&#xFF0C;&#x901A;&#x5E38;&#x5728;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x597D;&#x540E;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x8FC7;&#x6765;&#x3002;
+http &#x8BF7;&#x6C42;&#x662F;&#x5178;&#x578B;&#x7684; &quot;&#x8BF7;&#x6C42;-&#x54CD;&#x5E94;&quot; &#x7C7B;&#x578B;&#x7684;&#x7684;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#xFF0C;&#x800C; http &#x662F;&#x6587;&#x4EF6;&#x534F;&#x8BAE;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x5206;&#x6790;&#x8BF7;&#x6C42;&#x884C;&#x4E0E;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x4EE5;&#x53CA;&#x8F93;&#x51FA;&#x54CD;&#x5E94;&#x884C;&#x4E0E;&#x54CD;&#x5E94;&#x5934;&#xFF0C;&#x5F80;&#x5F80;&#x662F;&#x4E00;&#x884C;&#x4E00;&#x884C;&#x7684;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;
+&#x5982;&#x679C;&#x6765;&#x5199;&#x4E00;&#x4E2A; http &#x670D;&#x52A1;&#x5668;&#xFF0C;&#x901A;&#x5E38;&#x5728;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x597D;&#x540E;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x8FC7;&#x6765;&#x3002;
 &#x7136;&#x540E;&#x8BFB;&#x53D6;&#x4E00;&#x884C;&#x6570;&#x636E;&#xFF0C;&#x5206;&#x6790;&#x51FA;&#x8BF7;&#x6C42;&#x884C;&#x4E2D;&#x5305;&#x542B;&#x7684; method&#x3001;uri&#x3001;http_version &#x4FE1;&#x606F;&#x3002;
-&#x7136;&#x540E;&#x518D;&#x4E00;&#x884C;&#x4E00;&#x884C;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x5E76;&#x6839;&#x636E;&#x8BF7;&#x6C42; method &#x4E0E;&#x8BF7;&#x6C42;&#x5934;&#x7684;&#x4FE1;&#x606F;&#x6765;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x6709;&#x8BF7;&#x6C42;&#x4F53;&#x4EE5;&#x53CA;&#x8BF7;&#x6C42;&#x4F53;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x53BB;&#x8BFB;&#x53D6;&#x8BF7;&#x6C42;&#x4F53;&#x3002;
-&#x5F97;&#x5230;&#x8BF7;&#x6C42;&#x540E;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x4EA7;&#x751F;&#x9700;&#x8981;&#x8F93;&#x51FA;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x751F;&#x6210;&#x54CD;&#x5E94;&#x884C;&#xFF0C;&#x54CD;&#x5E94;&#x5934;&#x4EE5;&#x53CA;&#x54CD;&#x5E94;&#x4F53;&#x3002;
+&#x518D;&#x4E00;&#x884C;&#x4E00;&#x884C;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x5E76;&#x6839;&#x636E;&#x8BF7;&#x6C42; method &#x4E0E;&#x8BF7;&#x6C42;&#x5934;&#x7684;&#x4FE1;&#x606F;&#x6765;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x6709;&#x8BF7;&#x6C42;&#x4F53;&#x4EE5;&#x53CA;&#x8BF7;&#x6C42;&#x4F53;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x518D;&#x53BB;&#x8BFB;&#x53D6;&#x8BF7;&#x6C42;&#x4F53;&#x3002;
+&#x5F97;&#x5230;&#x8BF7;&#x6C42;&#x540E;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x4EA7;&#x751F;&#x9700;&#x8981;&#x8F93;&#x51FA;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x518D;&#x751F;&#x6210;&#x54CD;&#x5E94;&#x884C;&#x3001;&#x54CD;&#x5E94;&#x5934;&#x4EE5;&#x53CA;&#x54CD;&#x5E94;&#x4F53;&#x3002;
 &#x5728;&#x5C06;&#x54CD;&#x5E94;&#x53D1;&#x9001;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x4E4B;&#x540E;&#xFF0C;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x8BF7;&#x6C42;&#x5C31;&#x5904;&#x7406;&#x5B8C;&#x4E86;&#x3002;
-&#x5F53;&#x7136;&#x8FD9;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684; webserver &#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x5176;&#x5B9E; nginx &#x4E5F;&#x662F;&#x8FD9;&#x6837;&#x505A;&#x7684;&#xFF0C;&#x53EA;&#x662F;&#x6709;&#x4E00;&#x4E9B;&#x5C0F;&#x5C0F;&#x7684;&#x533A;&#x522B;&#xFF0C;&#x6BD4;&#x5982;&#x5F53;&#x8BF7;&#x6C42;&#x5934;&#x8BFB;&#x53D6;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5C31;&#x5F00;&#x59CB;&#x8FDB;&#x884C;&#x8BF7;&#x6C42;&#x7684;&#x5904;&#x7406;&#x4E86;&#x3002;
-nginx &#x901A;&#x8FC7;ngx_http_request_t &#x6765;&#x4FDD;&#x5B58;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#x4E0E;&#x8F93;&#x51FA;&#x54CD;&#x5E94;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+&#x5F53;&#x7136;&#x8FD9;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684; webserver &#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x5176;&#x5B9E; Nginx &#x4E5F;&#x662F;&#x8FD9;&#x6837;&#x505A;&#x7684;&#xFF0C;&#x53EA;&#x662F;&#x6709;&#x4E00;&#x4E9B;&#x5C0F;&#x5C0F;&#x7684;&#x533A;&#x522B;&#xFF0C;&#x6BD4;&#x5982;&#x5F53;&#x8BF7;&#x6C42;&#x5934;&#x8BFB;&#x53D6;&#x5B8C;&#x6210;&#x540E;&#x5C31;&#x5F00;&#x59CB;&#x8FDB;&#x884C;&#x8BF7;&#x6C42;&#x7684;&#x5904;&#x7406;&#x4E86;&#x3002;
+Nginx &#x901A;&#x8FC7;ngx_http_request_t &#x6765;&#x4FDD;&#x5B58;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#x4E0E;&#x8F93;&#x51FA;&#x54CD;&#x5E94;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x63A5;&#x4E0B;&#x6765;&#x7B80;&#x8981;&#x8BB2;&#x8BB2; nginx &#x662F;&#x5982;&#x4F55;&#x5904;&#x7406;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x8BF7;&#x6C42;&#x7684;&#x3002;
-&#x5BF9;&#x4E8E; nginx &#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x662F;&#x4ECE; ngx_http_init_request &#x5F00;&#x59CB;&#x7684;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x4F1A;&#x8BBE;&#x7F6E;&#x8BFB;&#x4E8B;&#x4EF6;&#x4E3A; ngx_http_process_request_line&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x7F51;&#x7EDC;&#x4E8B;&#x4EF6;&#x4F1A;&#x7531; ngx_http_process_request_line &#x6765;&#x6267;&#x884C;&#x3002;
+&#x63A5;&#x4E0B;&#x6765;&#x7B80;&#x8981;&#x8BB2;&#x8BB2; Nginx &#x662F;&#x5982;&#x4F55;&#x5904;&#x7406;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x8BF7;&#x6C42;&#x7684;&#x3002;
+&#x5BF9;&#x4E8E; Nginx &#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x662F;&#x4ECE; ngx_http_init_request &#x5F00;&#x59CB;&#x7684;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#x4F1A;&#x8BBE;&#x7F6E;&#x8BFB;&#x4E8B;&#x4EF6;&#x4E3A; ngx_http_process_request_line&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x7F51;&#x7EDC;&#x4E8B;&#x4EF6;&#x4F1A;&#x7531; ngx_http_process_request_line &#x6765;&#x6267;&#x884C;&#x3002;
 &#x4ECE; ngx_http_process_request_line &#x7684;&#x51FD;&#x6570;&#x540D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x6765;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x884C;&#x7684;&#xFF0C;&#x6B63;&#x597D;&#x4E0E;&#x4E4B;&#x524D;&#x8BB2;&#x7684;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x7684;&#x7B2C;&#x4E00;&#x4EF6;&#x4E8B;&#x5C31;&#x662F;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x884C;&#x662F;&#x4E00;&#x81F4;&#x7684;&#x3002;
-&#x901A;&#x8FC7; ngx_http_read_request_header &#x6765;&#x8BFB;&#x53D6;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x3002;
-&#x7136;&#x540E;&#x8C03;&#x7528; ngx_http_parse_request_line &#x51FD;&#x6570;&#x6765;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#x884C;&#x3002;
-nginx &#x4E3A;&#x63D0;&#x9AD8;&#x6548;&#x7387;&#x91C7;&#x7528;&#x72B6;&#x6001;&#x673A;&#x6765;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#x884C;&#xFF0C;&#x800C;&#x4E14;&#x5728;&#x8FDB;&#x884C; method &#x7684;&#x6BD4;&#x8F83;&#x65F6;&#x6CA1;&#x6709;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;&#xFF0C;&#x800C;&#x662F;&#x5C06;&#x56DB;&#x4E2A;&#x5B57;&#x7B26;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;&#x6574;&#x578B;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x6B21;&#x6BD4;&#x8F83;&#x4EE5;&#x51CF;&#x5C11; cpu &#x7684;&#x6307;&#x4EE4;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x524D;&#x9762;&#x6709;&#x8BF4;&#x8FC7;&#x3002;
-&#x5F88;&#x591A;&#x4EBA;&#x53EF;&#x80FD;&#x5F88;&#x6E05;&#x695A;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x884C;&#x5305;&#x542B;&#x8BF7;&#x6C42;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;uri&#xFF0C;&#x7248;&#x672C;&#xFF0C;&#x5374;&#x4E0D;&#x77E5;&#x9053;&#x5176;&#x5B9E;&#x5728;&#x8BF7;&#x6C42;&#x884C;&#x4E2D;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x6709; host &#x7684;&#x3002;
-&#x6BD4;&#x5982;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42; GET <a href="http://www.taobao.com/uri" target="_blank">http://www.taobao.com/uri</a> HTTP/1.0 &#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x884C;&#x4E5F;&#x662F;&#x5408;&#x6CD5;&#x7684;&#xFF0C;&#x800C;&#x4E14; host &#x662F;www.taobao.com &#x7684;&#x65F6;&#x5019;&#xFF0C;nginx &#x4F1A;&#x5FFD;&#x7565;&#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x7684; host &#x57DF;&#xFF0C;&#x800C;&#x4EE5;&#x8BF7;&#x6C42;&#x884C;&#x4E2D;&#x7684;&#x8FD9;&#x4E2A;&#x4E3A;&#x51C6;&#x6765;&#x67E5;&#x627E;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#x3002;
-&#x53E6;&#x5916;&#x5BF9;&#x4E8E;&#x5BF9;&#x4E8E; http0.9 &#x7248;&#x6765;&#x8BF4;&#x662F;&#x4E0D;&#x652F;&#x6301;&#x8BF7;&#x6C42;&#x5934;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x4E5F;&#x662F;&#x8981;&#x7279;&#x522B;&#x7684;&#x5904;&#x7406;&#x3002;
+&#x901A;&#x8FC7; ngx_http_read_request_header &#x6765;&#x8BFB;&#x53D6;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528; ngx_http_parse_request_line &#x51FD;&#x6570;&#x6765;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#x884C;&#x3002;
+Nginx &#x4E3A;&#x63D0;&#x9AD8;&#x6548;&#x7387;&#x91C7;&#x7528;&#x72B6;&#x6001;&#x673A;&#x6765;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#x884C;&#xFF0C;&#x800C;&#x4E14;&#x5728;&#x8FDB;&#x884C; method &#x7684;&#x6BD4;&#x8F83;&#x65F6;&#x6CA1;&#x6709;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;&#xFF0C;&#x800C;&#x662F;&#x5C06;&#x56DB;&#x4E2A;&#x5B57;&#x7B26;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;&#x6574;&#x578B;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x6B21;&#x6BD4;&#x8F83;&#x4EE5;&#x51CF;&#x5C11; CPU &#x7684;&#x6307;&#x4EE4;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x524D;&#x9762;&#x6709;&#x8BF4;&#x8FC7;&#x3002;
+&#x5F88;&#x591A;&#x4EBA;&#x53EF;&#x80FD;&#x5F88;&#x6E05;&#x695A;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x884C;&#x5305;&#x542B;&#x8BF7;&#x6C42;&#x7684;&#x65B9;&#x6CD5;&#x3001;uri&#x3001;&#x7248;&#x672C;&#xFF0C;&#x5374;&#x4E0D;&#x77E5;&#x9053;&#x5176;&#x5B9E;&#x5728;&#x8BF7;&#x6C42;&#x884C;&#x4E2D;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x6709; host &#x7684;&#x3002;
+&#x6BD4;&#x5982;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42; GET <a href="http://www.taobao.com/uri" target="_blank">http://www.taobao.com/uri</a> HTTP/1.0 &#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x884C;&#x4E5F;&#x662F;&#x5408;&#x6CD5;&#x7684;&#xFF0C;&#x800C;&#x4E14; host &#x662F; www.taobao.com &#x65F6;&#xFF0C;Nginx &#x4F1A;&#x5FFD;&#x7565;&#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x7684; host &#x57DF;&#xFF0C;&#x800C;&#x4EE5;&#x8BF7;&#x6C42;&#x884C;&#x4E2D;&#x7684;&#x8FD9;&#x4E2A;&#x503C;&#x4E3A;&#x51C6;&#x6765;&#x67E5;&#x627E;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#x3002;
+&#x53E6;&#x5916;&#x5BF9;&#x4E8E;&#x5BF9;&#x4E8E; http 0.9 &#x7248;&#x662F;&#x4E0D;&#x652F;&#x6301;&#x8BF7;&#x6C42;&#x5934;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x4E5F;&#x8981;&#x7279;&#x522B;&#x7684;&#x5904;&#x7406;&#x3002;
 &#x6240;&#x4EE5;&#x5728;&#x540E;&#x9762;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#x5934;&#x65F6;&#xFF0C;&#x534F;&#x8BAE;&#x7248;&#x672C;&#x90FD;&#x662F; 1.0 &#x6216; 1.1&#x3002;
 &#x6574;&#x4E2A;&#x8BF7;&#x6C42;&#x884C;&#x89E3;&#x6790;&#x5230;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4F1A;&#x4FDD;&#x5B58;&#x5230; ngx_http_request_t &#x7ED3;&#x6784;&#x5F53;&#x4E2D;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x5728;&#x89E3;&#x6790;&#x5B8C;&#x8BF7;&#x6C42;&#x884C;&#x540E; nginx &#x4F1A;&#x8BBE;&#x7F6E;&#x8BFB;&#x4E8B;&#x4EF6;&#x7684; handler &#x4E3A; ngx_http_process_request_headers&#xFF0C;&#x7136;&#x540E;&#x540E;&#x7EED;&#x7684;&#x8BF7;&#x6C42;&#x5C31;&#x5728; ngx_http_process_request_headers &#x4E2D;&#x8FDB;&#x884C;&#x8BFB;&#x53D6;&#x4E0E;&#x89E3;&#x6790;&#x3002;
-ngx_http_process_request_headers &#x51FD;&#x6570;&#x7528;&#x6765;&#x8BFB;&#x53D6;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x8DDF;&#x8BF7;&#x6C42;&#x884C;&#x4E00;&#x6837;&#xFF0C;&#x8FD8;&#x662F;&#x8C03;&#x7528; ngx_http_read_request_header &#x6765;&#x8BFB;&#x53D6;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x8C03;&#x7528; ngx_http_parse_header_line &#x6765;&#x89E3;&#x6790;&#x4E00;&#x884C;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x89E3;&#x6790;&#x5230;&#x7684;&#x8BF7;&#x6C42;&#x5934;&#x4F1A;&#x4FDD;&#x5B58;&#x5230; ngx_http_request_t &#x7684;&#x57DF; headers_in &#x4E2D;&#xFF0C;headers_in &#x662F;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x7ED3;&#x6784;&#xFF0C;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x7684;&#x8BF7;&#x6C42;&#x5934;&#x3002;
-&#x800C; HTTP &#x4E2D;&#x6709;&#x4E9B;&#x8BF7;&#x6C42;&#x662F;&#x9700;&#x8981;&#x7279;&#x522B;&#x5904;&#x7406;&#x7684;&#xFF0C;&#x8FD9;&#x4E9B;&#x8BF7;&#x6C42;&#x5934;&#x4E0E;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x51FD;&#x6570;&#x5B58;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x6620;&#x5C04;&#x8868;&#x91CC;&#x9762;&#xFF0C;&#x5373; ngx_http_headers_in&#xFF0C;&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A; hash &#x8868;&#xFF0C;&#x5F53;&#x6BCF;&#x89E3;&#x6790;&#x5230;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x5934;&#x540E;&#x5C31;&#x4F1A;&#x5148;&#x5728;&#x8FD9;&#x4E2A; hash &#x8868;&#x4E2D;&#x67E5;&#x627E;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x627E;&#x5230;&#x5219;&#x8C03;&#x7528;&#x76F8;&#x5E94;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x6765;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x5934;&#x3002;
+&#x5728;&#x89E3;&#x6790;&#x5B8C;&#x8BF7;&#x6C42;&#x884C;&#x540E; Nginx &#x4F1A;&#x8BBE;&#x7F6E;&#x8BFB;&#x4E8B;&#x4EF6;&#x7684; handler &#x4E3A; ngx_http_process_request_headers&#xFF0C;&#x7136;&#x540E;&#x540E;&#x7EED;&#x7684;&#x8BF7;&#x6C42;&#x5C31;&#x5728; ngx_http_process_request_headers &#x4E2D;&#x8FDB;&#x884C;&#x8BFB;&#x53D6;&#x4E0E;&#x89E3;&#x6790;&#x3002;
+ngx_http_process_request_headers &#x51FD;&#x6570;&#x7528;&#x6765;&#x8BFB;&#x53D6;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x8DDF;&#x8BF7;&#x6C42;&#x884C;&#x4E00;&#x6837;&#x8FD8;&#x662F;&#x8C03;&#x7528; ngx_http_read_request_header &#x6765;&#x8BFB;&#x53D6;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x8C03;&#x7528; ngx_http_parse_header_line &#x6765;&#x89E3;&#x6790;&#x4E00;&#x884C;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x89E3;&#x6790;&#x5230;&#x7684;&#x8BF7;&#x6C42;&#x5934;&#x4F1A;&#x4FDD;&#x5B58;&#x5230; ngx_http_request_t &#x7684;&#x57DF; headers_in &#x4E2D;&#xFF0C;headers_in &#x662F;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x7ED3;&#x6784;&#xFF0C;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x7684;&#x8BF7;&#x6C42;&#x5934;&#x3002;
+&#x800C; HTTP &#x4E2D;&#x6709;&#x4E9B;&#x8BF7;&#x6C42;&#x662F;&#x9700;&#x8981;&#x7279;&#x522B;&#x5904;&#x7406;&#x7684;&#xFF0C;&#x8FD9;&#x4E9B;&#x8BF7;&#x6C42;&#x5934;&#x4E0E;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x51FD;&#x6570;&#x5B58;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x6620;&#x5C04;&#x8868;&#x91CC;&#xFF0C;&#x5373; ngx_http_headers_in&#xFF0C;&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A; hash &#x8868;&#xFF0C;&#x5F53;&#x6BCF;&#x89E3;&#x6790;&#x5230;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x5934;&#x540E;&#x5C31;&#x4F1A;&#x5148;&#x5728;&#x8FD9;&#x4E2A; hash &#x8868;&#x4E2D;&#x67E5;&#x627E;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x627E;&#x5230;&#x5219;&#x8C03;&#x7528;&#x76F8;&#x5E94;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x6765;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x5934;&#x3002;
 &#x6BD4;&#x5982;: host &#x5934;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x662F; ngx_http_process_host&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x5F53; nginx &#x89E3;&#x6790;&#x5230;&#x4E24;&#x4E2A;&#x56DE;&#x8F66;&#x6362;&#x884C;&#x7B26;&#x65F6;&#x5C31;&#x8868;&#x793A;&#x8BF7;&#x6C42;&#x5934;&#x7684;&#x7ED3;&#x675F;&#xFF0C;&#x6B64;&#x65F6;&#x4F1A;&#x8C03;&#x7528; ngx_http_process_request &#x6765;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x4E86;&#x3002;
-ngx_http_process_request &#x4F1A;&#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x7684;&#x8FDE;&#x63A5;&#x7684;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E3A; ngx_http_request_handler&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8C03;&#x7528; ngx_http_handler &#x6765;&#x771F;&#x6B63;&#x5F00;&#x59CB;&#x5904;&#x7406;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684; http &#x8BF7;&#x6C42;&#x3002;
+&#x5F53; Nginx &#x89E3;&#x6790;&#x5230;&#x4E24;&#x4E2A;&#x56DE;&#x8F66;&#x6362;&#x884C;&#x7B26;&#x65F6;&#x5C31;&#x8868;&#x793A;&#x8BF7;&#x6C42;&#x5934;&#x7684;&#x7ED3;&#x675F;&#xFF0C;&#x6B64;&#x65F6;&#x4F1A;&#x8C03;&#x7528; ngx_http_process_request &#x6765;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x4E86;&#x3002;
+ngx_http_process_request &#x4F1A;&#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x7684;&#x8FDE;&#x63A5;&#x7684;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;&#xFF0C;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E3A; ngx_http_request_handler&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8C03;&#x7528; ngx_http_handler &#x6765;&#x771F;&#x6B63;&#x5F00;&#x59CB;&#x5904;&#x7406;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684; http &#x8BF7;&#x6C42;&#x3002;
 &#x8FD9;&#x91CC;&#x53EF;&#x80FD;&#x6BD4;&#x8F83;&#x5947;&#x602A;&#xFF0C;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;&#x90FD;&#x662F; ngx_http_request_handler&#xFF0C;&#x5176;&#x5B9E;&#x5728;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#x4F1A;&#x6839;&#x636E;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x662F;&#x8BFB;&#x4E8B;&#x4EF6;&#x8FD8;&#x662F;&#x5199;&#x4E8B;&#x4EF6;&#x5206;&#x522B;&#x8C03;&#x7528; ngx_http_request_t &#x4E2D;&#x7684; read_event_handler &#x6216;&#x662F; write_event_handler&#x3002;
-&#x7531;&#x4E8E;&#x6B64;&#x65F6;&#x8BF7;&#x6C42;&#x5934;&#x5DF2;&#x7ECF;&#x8BFB;&#x53D6;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x4E4B;&#x524D;&#x6709;&#x8BF4;&#x8FC7; nginx &#x7684;&#x505A;&#x6CD5;&#x662F;&#x5148;&#x4E0D;&#x8BFB;&#x53D6;&#x8BF7;&#x6C42; body&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x9762;&#x8BBE;&#x7F6E; read_event_handler &#x4E3A; ngx_http_block_reading&#xFF0C;&#x5373;&#x4E0D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x4E86;&#x3002;
-&#x521A;&#x624D;&#x8BF4;&#x5230;&#x771F;&#x6B63;&#x5F00;&#x59CB;&#x5904;&#x7406;&#x6570;&#x636E;&#x662F;&#x5728; ngx_http_handler &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x91CC;&#x9762;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;&#x8BBE;&#x7F6E; write_event_handler &#x4E3A; ngx_http_core_run_phases&#xFF0C;&#x5E76;&#x6267;&#x884C; ngx_http_core_run_phases &#x51FD;&#x6570;&#x3002;
-ngx_http_core_run_phases &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5C06;&#x6267;&#x884C;&#x591A;&#x9636;&#x6BB5;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#xFF0C;nginx &#x5C06;&#x4E00;&#x4E2A; http &#x8BF7;&#x6C42;&#x7684;&#x5904;&#x7406;&#x5206;&#x4E3A;&#x591A;&#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5C31;&#x662F;&#x6267;&#x884C;&#x8FD9;&#x4E9B;&#x9636;&#x6BB5;&#x6765;&#x4EA7;&#x751F;&#x6570;&#x636E;&#x3002;
+&#x7531;&#x4E8E;&#x6B64;&#x65F6;&#x8BF7;&#x6C42;&#x5934;&#x5DF2;&#x7ECF;&#x8BFB;&#x53D6;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x4E4B;&#x524D;&#x6709;&#x8BF4;&#x8FC7; Nginx &#x7684;&#x505A;&#x6CD5;&#x662F;&#x5148;&#x4E0D;&#x8BFB;&#x53D6;&#x8BF7;&#x6C42; body&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E; read_event_handler &#x4E3A; ngx_http_block_reading&#xFF0C;&#x5373;&#x4E0D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x4E86;&#x3002;
+&#x521A;&#x624D;&#x8BF4;&#x5230;&#x771F;&#x6B63;&#x5F00;&#x59CB;&#x5904;&#x7406;&#x6570;&#x636E;&#x662F;&#x5728; ngx_http_handler &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x91CC;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;&#x8BBE;&#x7F6E; write_event_handler &#x4E3A; ngx_http_core_run_phases&#xFF0C;&#x5E76;&#x6267;&#x884C; ngx_http_core_run_phases &#x51FD;&#x6570;&#x3002;
+ngx_http_core_run_phases &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5C06;&#x6267;&#x884C;&#x591A;&#x9636;&#x6BB5;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#xFF0C;Nginx &#x5C06;&#x4E00;&#x4E2A; http &#x8BF7;&#x6C42;&#x7684;&#x5904;&#x7406;&#x5206;&#x4E3A;&#x591A;&#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5C31;&#x662F;&#x6267;&#x884C;&#x8FD9;&#x4E9B;&#x9636;&#x6BB5;&#x6765;&#x4EA7;&#x751F;&#x6570;&#x636E;&#x3002;
 &#x56E0;&#x4E3A; ngx_http_core_run_phases &#x6700;&#x540E;&#x4F1A;&#x4EA7;&#x751F;&#x6570;&#x636E;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x5F88;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x4E3A;&#x4EC0;&#x4E48;&#x8BBE;&#x7F6E;&#x5199;&#x4E8B;&#x4EF6;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E3A; ngx_http_core_run_phases &#x4E86;&#x3002;
-&#x5728;&#x8FD9;&#x91CC;&#x7B80;&#x8981;&#x8BF4;&#x660E;&#x4E86;&#x4E00;&#x4E0B;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x903B;&#x8F91;&#xFF0C;&#x9700;&#x8981;&#x660E;&#x767D;&#x6700;&#x7EC8;&#x662F;&#x8C03;&#x7528; ngx_http_core_run_phases &#x6765;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#xFF0C;&#x4EA7;&#x751F;&#x7684;&#x54CD;&#x5E94;&#x5934;&#x4F1A;&#x653E;&#x5728; ngx_http_request_t &#x7684; headers_out &#x4E2D;&#xFF0C;&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#xFF0C;&#x4F1A;&#x653E;&#x5728;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#x91CC;&#x9762;&#x53BB;&#x8BB2;&#x3002;
-nginx &#x7684;&#x5404;&#x79CD;&#x9636;&#x6BB5;&#x4F1A;&#x5BF9;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x6700;&#x540E;&#x4F1A;&#x8C03;&#x7528; filter &#x6765;&#x8FC7;&#x6EE4;&#x6570;&#x636E;&#xFF0C;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x52A0;&#x5DE5;&#xFF0C;&#x5982; truncked &#x4F20;&#x8F93;&#x3001;gzip &#x538B;&#x7F29;&#x7B49;&#x3002;
+&#x5728;&#x8FD9;&#x91CC;&#x7B80;&#x8981;&#x8BF4;&#x660E;&#x4E86;&#x4E00;&#x4E0B;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x903B;&#x8F91;&#xFF0C;&#x9700;&#x8981;&#x660E;&#x767D;&#x6700;&#x7EC8;&#x662F;&#x8C03;&#x7528; ngx_http_core_run_phases &#x6765;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#xFF0C;&#x4EA7;&#x751F;&#x7684;&#x54CD;&#x5E94;&#x5934;&#x4F1A;&#x653E;&#x5728; ngx_http_request_t &#x7684; headers_out &#x4E2D;&#xFF0C;&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x4F1A;&#x653E;&#x5728;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#x91CC;&#x53BB;&#x8BB2;&#x3002;
+Nginx &#x7684;&#x5404;&#x79CD;&#x9636;&#x6BB5;&#x4F1A;&#x5BF9;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x6700;&#x540E;&#x4F1A;&#x8C03;&#x7528; filter &#x6765;&#x8FC7;&#x6EE4;&#x6570;&#x636E;&#xFF0C;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x52A0;&#x5DE5;&#xFF0C;&#x5982; truncked &#x4F20;&#x8F93;&#x3001;gzip &#x538B;&#x7F29;&#x7B49;&#x3002;
 &#x8FD9;&#x91CC;&#x7684; filter &#x5305;&#x62EC; header filter &#x4E0E; body filter&#xFF0C;&#x5373;&#x5BF9;&#x54CD;&#x5E94;&#x5934;&#x6216;&#x54CD;&#x5E94;&#x4F53;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;
-filter &#x662F;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x7ED3;&#x6784;&#xFF0C;&#x5206;&#x522B;&#x6709; header filter &#x4E0E; body filter&#xFF0C;&#x5148;&#x6267;&#x884C; header filter &#x4E2D;&#x7684;&#x6240;&#x6709; filter&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6267;&#x884C; body filter &#x4E2D;&#x7684;&#x6240;&#x6709; filter&#x3002;
-&#x5728; header filter &#x4E2D;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A; filter&#xFF0C;&#x5373; ngx_http_header_filter&#xFF0C;&#x8FD9;&#x4E2A; filter &#x5C06;&#x4F1A;&#x904D;&#x5386;&#x6240;&#x6709;&#x7684;&#x54CD;&#x5E94;&#x5934;&#xFF0C;&#x6700;&#x540E;&#x9700;&#x8981;&#x8F93;&#x51FA;&#x7684;&#x54CD;&#x5E94;&#x5934;&#x5728;&#x4E00;&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528; ngx_http_write_filter &#x8FDB;&#x884C;&#x8F93;&#x51FA;&#x3002;
-ngx_http_write_filter &#x662F;body filter &#x4E2D;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#xFF0C;&#x6240;&#x4EE5; nginx &#x9996;&#x5148;&#x7684; body &#x4FE1;&#x606F;&#x5728;&#x7ECF;&#x8FC7;&#x4E00;&#x7CFB;&#x5217;&#x7684; body filter &#x4E4B;&#x540E;&#xFF0C;&#x6700;&#x540E;&#x4E5F;&#x4F1A;&#x8C03;&#x7528; ngx_http_write_filter &#x6765;&#x8FDB;&#x884C;&#x8F93;&#x51FA;(&#x6709;&#x56FE;&#x6765;&#x8BF4;&#x660E;)&#x3002;</p>
+filter &#x662F;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x7ED3;&#x6784;&#xFF0C;&#x5206;&#x522B;&#x6709; header filter &#x4E0E; body filter&#xFF0C;&#x5148;&#x6267;&#x884C; header filter &#x4E2D;&#x7684;&#x6240;&#x6709; filter&#xFF0C;&#x518D;&#x6267;&#x884C; body filter &#x4E2D;&#x7684;&#x6240;&#x6709; filter&#x3002;
+header filter &#x4E2D;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A; filter&#xFF0C;&#x5373; ngx_http_header_filter&#xFF0C;&#x8FD9;&#x4E2A; filter &#x5C06;&#x4F1A;&#x904D;&#x5386;&#x6240;&#x6709;&#x7684;&#x54CD;&#x5E94;&#x5934;&#xFF0C;&#x6700;&#x540E;&#x9700;&#x8981;&#x8F93;&#x51FA;&#x7684;&#x54CD;&#x5E94;&#x5934;&#x5728;&#x4E00;&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528; ngx_http_write_filter &#x8FDB;&#x884C;&#x8F93;&#x51FA;&#x3002;
+ngx_http_write_filter &#x662F; body filter &#x4E2D;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#xFF0C;&#x6240;&#x4EE5; Nginx &#x9996;&#x5148;&#x7684; body &#x4FE1;&#x606F;&#x5728;&#x7ECF;&#x8FC7;&#x4E00;&#x7CFB;&#x5217;&#x7684; body filter &#x4E4B;&#x540E;&#xFF0C;&#x6700;&#x540E;&#x4E5F;&#x4F1A;&#x8C03;&#x7528; ngx_http_write_filter &#x6765;&#x8FDB;&#x884C;&#x8F93;&#x51FA; (&#x6709;&#x56FE;&#x6765;&#x8BF4;&#x660E;)&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x8FD9;&#x91CC;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; nginx &#x4F1A;&#x5C06;&#x6574;&#x4E2A;&#x8BF7;&#x6C42;&#x5934;&#x90FD;&#x653E;&#x5728;&#x4E00;&#x4E2A; buffer &#x91CC;&#x9762;&#xFF0C;&#x8FD9;&#x4E2A; buffer &#x7684;&#x5927;&#x5C0F;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x9879; client_header_buffer_size &#x6765;&#x8BBE;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x7528;&#x6237;&#x7684;&#x8BF7;&#x6C42;&#x5934;&#x592A;&#x5927;&#xFF0C;&#x8FD9;&#x4E2A; buffer &#x88C5;&#x4E0D;&#x4E0B;&#xFF0C;&#x90A3; nginx &#x5C31;&#x4F1A;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x66F4;&#x5927;&#x7684; buffer &#x6765;&#x88C5;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x8FD9;&#x4E2A;&#x5927; buffer &#x53EF;&#x4EE5;&#x901A;&#x8FC7; large_client_header_buffers &#x6765;&#x8BBE;&#x7F6E;&#xFF0C;&#x8FD9;&#x4E2A; large_buffer &#x8FD9;&#x4E00;&#x7EC4; buffer&#xFF0C;&#x6BD4;&#x5982;&#x914D;&#x7F6E; 4 8k&#xFF0C;&#x5C31;&#x662F;&#x8868;&#x793A;&#x6709;&#x56DB;&#x4E2A; 8k &#x5927;&#x5C0F;&#x7684; buffer &#x53EF;&#x4EE5;&#x7528;&#x3002;
-&#x6CE8;&#x610F;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x5B58;&#x8BF7;&#x6C42;&#x884C;&#x6216;&#x8BF7;&#x6C42;&#x5934;&#x7684;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x8BF7;&#x6C42;&#x884C;&#x6216;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x9700;&#x8981;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x91CC;&#x9762;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x8BF7;&#x6C42;&#x884C;&#x6216;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x53EA;&#x4F1A;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x4E2A;buffer&#x91CC;&#x9762;&#x3002;
+&#x8FD9;&#x91CC;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; Nginx &#x4F1A;&#x5C06;&#x6574;&#x4E2A;&#x8BF7;&#x6C42;&#x5934;&#x90FD;&#x653E;&#x5728;&#x4E00;&#x4E2A; buffer &#x91CC;&#xFF0C;&#x8FD9;&#x4E2A; buffer &#x7684;&#x5927;&#x5C0F;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x9879; client_header_buffer_size &#x6765;&#x8BBE;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x7528;&#x6237;&#x7684;&#x8BF7;&#x6C42;&#x5934;&#x592A;&#x5927;&#xFF0C;&#x8FD9;&#x4E2A; buffer &#x88C5;&#x4E0D;&#x4E0B;&#xFF0C;&#x90A3; Nginx &#x5C31;&#x4F1A;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x66F4;&#x5927;&#x7684; buffer &#x6765;&#x88C5;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x8FD9;&#x4E2A;&#x5927; buffer &#x53EF;&#x4EE5;&#x901A;&#x8FC7; large_client_header_buffers &#x6765;&#x8BBE;&#x7F6E;&#xFF0C;large_buffer &#x8FD9;&#x4E00;&#x7EC4; buffer&#xFF0C;&#x6BD4;&#x5982;&#x914D;&#x7F6E; 4 8k&#xFF0C;&#x5C31;&#x662F;&#x8868;&#x793A;&#x6709;&#x56DB;&#x4E2A; 8k &#x5927;&#x5C0F;&#x7684; buffer &#x53EF;&#x4EE5;&#x7528;&#x3002;
+&#x6CE8;&#x610F;&#x4E3A;&#x4E86;&#x4FDD;&#x5B58;&#x8BF7;&#x6C42;&#x884C;&#x6216;&#x8BF7;&#x6C42;&#x5934;&#x7684;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x8BF7;&#x6C42;&#x884C;&#x6216;&#x8BF7;&#x6C42;&#x5934;&#x9700;&#x8981;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x91CC;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x8BF7;&#x6C42;&#x884C;&#x6216;&#x8BF7;&#x6C42;&#x5934;&#xFF0C;&#x53EA;&#x4F1A;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x4E2A; buffer &#x91CC;&#x3002;
 &#x8FD9;&#x6837;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x884C;&#x5927;&#x4E8E;&#x4E00;&#x4E2A; buffer &#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x5C31;&#x4F1A;&#x8FD4;&#x56DE; 414 &#x9519;&#x8BEF;&#x3002;
 &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x5934;&#x5927;&#x5C0F;&#x5927;&#x4E8E;&#x4E00;&#x4E2A; buffer &#x5927;&#x5C0F;&#xFF0C;&#x5C31;&#x4F1A;&#x8FD4;&#x56DE; 400 &#x9519;&#x8BEF;&#x3002;
-&#x5728;&#x4E86;&#x89E3;&#x4E86;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x7684;&#x503C;&#x4EE5;&#x53CA; nginx &#x5B9E;&#x9645;&#x7684;&#x505A;&#x6CD5;&#x4E4B;&#x540E;&#xFF0C;&#x5728;&#x5E94;&#x7528;&#x573A;&#x666F;&#x5C31;&#x9700;&#x8981;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x7684;&#x9700;&#x6C42;&#x6765;&#x8C03;&#x6574;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x6765;&#x4F18;&#x5316;&#x7A0B;&#x5E8F;&#x4E86;&#x3002;</p>
+&#x5728;&#x4E86;&#x89E3;&#x4E86;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x7684;&#x503C;&#x4EE5;&#x53CA; Nginx &#x5B9E;&#x9645;&#x7684;&#x505A;&#x6CD5;&#x4E4B;&#x540E;&#xFF0C;&#x5728;&#x5E94;&#x7528;&#x573A;&#x666F;&#x5C31;&#x9700;&#x8981;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x7684;&#x9700;&#x6C42;&#x6765;&#x8C03;&#x6574;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x6765;&#x4F18;&#x5316;&#x7A0B;&#x5E8F;&#x4E86;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x5904;&#x7406;&#x6D41;&#x7A0B;&#x56FE;&#xFF1A;</p>
 <p><img src="../images/2.1/02.png" alt="image"></p>
 <p>&#x2003;&#x2003;
-&#x4EE5;&#x4E0A;&#x8FD9;&#x4E9B;&#x5C31;&#x662F; nginx &#x4E2D;&#x4E00;&#x4E2A;http&#x8BF7;&#x6C42;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E86;&#x3002;
-&#x6211;&#x4EEC;&#x518D;&#x770B;&#x770B;&#x4E0E;&#x8BF7;&#x6C42;&#x76F8;&#x5173;&#x7684;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;&#x5427;&#x3002;</p>
+&#x4EE5;&#x4E0A;&#x8FD9;&#x4E9B;&#x5C31;&#x662F; Nginx &#x4E2D;&#x4E00;&#x4E2A; http &#x8BF7;&#x6C42;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E86;&#xFF0C;&#x518D;&#x770B;&#x770B;&#x4E0E;&#x8BF7;&#x6C42;&#x76F8;&#x5173;&#x7684;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;&#x5427;&#x3002;</p>
 
                     
                     </section>
