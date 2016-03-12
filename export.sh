@@ -3,9 +3,11 @@
 
 base_dir=$(cd "$(dirname "$0")";pwd)
 
+target_dir=~/Desktop/book_tmp
+
 # 创建临时目录
-if [ ! -d $base_dir/tmp ]; then
-    mkdir $base_dir/tmp
+if [ ! -d $target_dir ]; then
+    mkdir $target_dir
 fi
 
 # 遍历项目目录
@@ -16,7 +18,7 @@ do
 
         if [ -d "$file_path" ]; then
             # 导出地址
-            target=$base_dir/tmp/$(echo $dir | tr '[A-Z]' '[a-z]')
+            target=$target_dir/$(echo $dir | tr '[A-Z]' '[a-z]')
 
             # 拷贝文件
             cp -vr $file_path $target
