@@ -53,7 +53,7 @@
         data-chapter-title="ngx_chain_t"
         data-filepath="s2/2.3.8.md"
         data-basepath=".."
-        data-revision="Sat Mar 12 2016 15:01:29 GMT+0800 (CST)"
+        data-revision="Sat Mar 12 2016 17:34:48 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,37 +3724,34 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="ngxchaint">ngx_chain_t</h1>
+                        <h1 id="238-ngxchaint">2.3.8 ngx_chain_t</h1>
 <hr>
 <p>&#x2003;&#x2003;
-nginx &#x7684; filter &#x6A21;&#x5757;&#x5728;&#x5904;&#x7406;&#x4ECE;&#x522B;&#x7684; filter &#x6A21;&#x5757;&#x6216;&#x8005;&#x662F; handler &#x6A21;&#x5757;&#x4F20;&#x9012;&#x8FC7;&#x6765;&#x7684;&#x6570;&#x636E;(&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x9700;&#x8981;&#x53D1;&#x9001;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x7684; http response )&#x3002;
-&#x8FD9;&#x4E2A;&#x4F20;&#x9012;&#x8FC7;&#x6765;&#x7684;&#x6570;&#x636E;&#x662F;&#x4EE5;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x7684;&#x5F62;&#x5F0F;( ngx_chain_t )&#x3002;
-&#x800C;&#x4E14;&#x6570;&#x636E;&#x53EF;&#x80FD;&#x88AB;&#x5206;&#x591A;&#x6B21;&#x4F20;&#x9012;&#x8FC7;&#x6765;&#x3002;
-&#x4E5F;&#x5C31;&#x662F;&#x591A;&#x6B21;&#x4EE5;&#x4E0D;&#x540C;&#x7684; ngx_chain_t &#x8C03;&#x7528; filter &#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;</p>
+Nginx &#x7684; filter &#x6A21;&#x5757;&#x5728;&#x5904;&#x7406;&#x4ECE;&#x522B;&#x7684; filter &#x6A21;&#x5757;&#x6216;&#x662F; handler &#x6A21;&#x5757;&#x4F20;&#x9012;&#x8FC7;&#x6765;&#x7684;&#x6570;&#x636E; (&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x9700;&#x8981;&#x53D1;&#x9001;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x7684; http response)&#x3002;
+&#x8FD9;&#x4E2A;&#x4F20;&#x9012;&#x8FC7;&#x6765;&#x7684;&#x6570;&#x636E;&#x662F;&#x4EE5;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x7684;&#x5F62;&#x5F0F; (ngx_chain_t)&#x3002;
+&#x800C;&#x4E14;&#x6570;&#x636E;&#x53EF;&#x80FD;&#x88AB;&#x5206;&#x591A;&#x6B21;&#x4F20;&#x9012;&#x8FC7;&#x6765;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x591A;&#x6B21;&#x4EE5;&#x4E0D;&#x540C;&#x7684; ngx_chain_t &#x8C03;&#x7528; filter &#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x8BE5;&#x7ED3;&#x6784;&#x88AB;&#x5B9A;&#x4E49;&#x5728; src/core/ngx_buf.h|c&#x3002;
-&#x4E0B;&#x9762;&#x6765;&#x770B;&#x4E00;&#x4E0B; ngx_chain_t &#x7684;&#x5B9A;&#x4E49;&#x3002;</p>
+&#x8BE5;&#x7ED3;&#x6784;&#x88AB;&#x5B9A;&#x4E49;&#x5728; src/core/ngx_buf.h|c&#xFF0C;&#x4E0B;&#x9762;&#x6765;&#x770B;&#x4E00;&#x4E0B; ngx_chain_t &#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
 <pre><code>typedef struct ngx_chain_s       ngx_chain_t;
 
 struct ngx_chain_s {
-    ngx_buf_t    *buf;
-    ngx_chain_t  *next;
+    ngx_buf_t    *buf;      // &#x6307;&#x5411;&#x5B9E;&#x9645;&#x7684;&#x6570;&#x636E;
+    ngx_chain_t  *next;     // &#x6307;&#x5411;&#x8FD9;&#x4E2A;&#x94FE;&#x8868;&#x7684;&#x4E0B;&#x4E2A;&#x8282;&#x70B9;
 };
 </code></pre><p>&#x2003;&#x2003;
-&#x5C31; 2 &#x4E2A;&#x5B57;&#x6BB5;&#xFF0C;next &#x6307;&#x5411;&#x8FD9;&#x4E2A;&#x94FE;&#x8868;&#x7684;&#x4E0B;&#x4E2A;&#x8282;&#x70B9;&#x3002;
-buf &#x6307;&#x5411;&#x5B9E;&#x9645;&#x7684;&#x6570;&#x636E;&#x3002;
 &#x6240;&#x4EE5;&#x5728;&#x8FD9;&#x4E2A;&#x94FE;&#x8868;&#x4E0A;&#x8FFD;&#x52A0;&#x8282;&#x70B9;&#x4E5F;&#x662F;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#xFF0C;&#x53EA;&#x8981;&#x628A;&#x672B;&#x5C3E;&#x5143;&#x7D20;&#x7684; next &#x6307;&#x9488;&#x6307;&#x5411;&#x65B0;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x628A;&#x65B0;&#x8282;&#x70B9;&#x7684; next &#x8D4B;&#x503C;&#x4E3A; NULL &#x5373;&#x53EF;&#x3002;</p>
-<pre><code>ngx_chain_t *ngx_alloc_chain_link(ngx_pool_t *pool);
-</code></pre><p>&#x2003;&#x2003;
-&#x8BE5;&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; ngx_chain_t &#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x5931;&#x8D25;&#x8FD4;&#x56DE; NULL&#x3002;</p>
-<pre><code>#define ngx_free_chain(pool, cl)                                             \
+<pre><code>// &#x521B;&#x5EFA;&#x4E00;&#x4E2A; ngx_chain_t &#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;
+// &#x5931;&#x8D25;&#x8FD4;&#x56DE; NULL
+ngx_chain_t *ngx_alloc_chain_link(ngx_pool_t *pool);
+
+
+// &#x8BE5;&#x5B8F;&#x91CA;&#x653E;&#x4E00;&#x4E2A; ngx_chain_t &#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;
+// &#x5982;&#x679C;&#x8981;&#x91CA;&#x653E;&#x6574;&#x4E2A; chain&#xFF0C;&#x5219;&#x8FED;&#x4EE3;&#x6B64;&#x94FE;&#x8868;&#x5BF9;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4F7F;&#x7528;&#x6B64;&#x5B8F;
+#define ngx_free_chain(pool, cl)                                             \
     cl-&gt;next = pool-&gt;chain;                                                  \
 pool-&gt;chain = cl
 </code></pre><p>&#x2003;&#x2003;
-&#x8BE5;&#x5B8F;&#x91CA;&#x653E;&#x4E00;&#x4E2A; ngx_chain_t &#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x3002;
-&#x5982;&#x679C;&#x8981;&#x91CA;&#x653E;&#x6574;&#x4E2A; chain&#xFF0C;&#x5219;&#x8FED;&#x4EE3;&#x6B64;&#x94FE;&#x8868;&#xFF0C;&#x5BF9;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4F7F;&#x7528;&#x6B64;&#x5B8F;&#x5373;&#x53EF;&#x3002;</p>
-<p>&#x2003;&#x2003;
-&#x6CE8;&#x610F;: &#x5BF9; ngx_chaint_t &#x7C7B;&#x578B;&#x7684;&#x91CA;&#x653E;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x771F;&#x7684;&#x91CA;&#x653E;&#x4E86;&#x5185;&#x5B58;&#xFF0C;&#x800C;&#x4EC5;&#x4EC5;&#x662F;&#x628A;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x6302;&#x5728;&#x4E86;&#x8FD9;&#x4E2A; pool &#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x4E2A;&#x53EB;&#x505A; chain &#x7684;&#x5B57;&#x6BB5;&#x5BF9;&#x5E94;&#x7684; chain &#x4E0A;&#xFF0C;&#x4EE5;&#x4F9B;&#x4E0B;&#x6B21;&#x4ECE;&#x8FD9;&#x4E2A; pool &#x4E0A;&#x5206;&#x914D; ngx_chain_t &#x7C7B;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#x5FEB;&#x901F;&#x7684;&#x4ECE;&#x8FD9;&#x4E2A; pool-&gt;chain &#x4E0A;&#x53D6;&#x4E0B;&#x94FE;&#x9996;&#x5143;&#x7D20;&#x5C31;&#x8FD4;&#x56DE;&#x4E86;&#xFF0C;&#x5F53;&#x7136;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x94FE;&#x662F;&#x7A7A;&#x7684;&#xFF0C;&#x624D;&#x4F1A;&#x771F;&#x7684;&#x5728;&#x8FD9;&#x4E2A; pool &#x4E0A;&#x4F7F;&#x7528; ngx_palloc &#x51FD;&#x6570;&#x8FDB;&#x884C;&#x5206;&#x914D;&#x3002;</p>
+&#x6CE8;&#x610F;: &#x5BF9; ngx_chaint_t &#x7C7B;&#x578B;&#x7684;&#x91CA;&#x653E;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x771F;&#x7684;&#x91CA;&#x653E;&#x4E86;&#x5185;&#x5B58;&#xFF0C;&#x800C;&#x4EC5;&#x4EC5;&#x662F;&#x628A;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x6302;&#x5728;&#x4E86;&#x8FD9;&#x4E2A; pool &#x5BF9;&#x8C61;&#x4E00;&#x4E2A;&#x53EB;&#x505A; chain &#x5B57;&#x6BB5;&#x5BF9;&#x5E94;&#x7684; chain &#x4E0A;&#xFF0C;&#x4EE5;&#x4F9B;&#x4E0B;&#x6B21;&#x4ECE;&#x8FD9;&#x4E2A; pool &#x4E0A;&#x5206;&#x914D; ngx_chain_t &#x7C7B;&#x578B;&#x5BF9;&#x8C61;&#x65F6;&#x5FEB;&#x901F;&#x4ECE;&#x8FD9;&#x4E2A; pool-&gt;chain &#x4E0A;&#x53D6;&#x4E0B;&#x94FE;&#x9996;&#x5143;&#x7D20;&#x5C31;&#x8FD4;&#x56DE;&#x4E86;&#xFF0C;&#x5F53;&#x7136;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x94FE;&#x662F;&#x7A7A;&#x7684;&#xFF0C;&#x624D;&#x4F1A;&#x771F;&#x7684;&#x5728;&#x8FD9;&#x4E2A; pool &#x4E0A;&#x4F7F;&#x7528; ngx_palloc &#x51FD;&#x6570;&#x8FDB;&#x884C;&#x5206;&#x914D;&#x3002;</p>
 
                     
                     </section>

@@ -53,7 +53,7 @@
         data-chapter-title="模块概述"
         data-filepath="s2/2.6.md"
         data-basepath=".."
-        data-revision="Sat Mar 12 2016 15:01:29 GMT+0800 (CST)"
+        data-revision="Sat Mar 12 2016 17:34:48 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,18 +3724,16 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x6A21;&#x5757;&#x6982;&#x8FF0;">&#x6A21;&#x5757;&#x6982;&#x8FF0;</h1>
+                        <h1 id="26-&#x6A21;&#x5757;&#x6982;&#x8FF0;">2.6 &#x6A21;&#x5757;&#x6982;&#x8FF0;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-nginx &#x5C06;&#x5404;&#x529F;&#x80FD;&#x6A21;&#x5757;&#x7EC4;&#x7EC7;&#x6210;&#x4E00;&#x6761;&#x94FE;&#xFF0C;&#x5F53;&#x6709;&#x8BF7;&#x6C42;&#x5230;&#x8FBE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BF7;&#x6C42;&#x4F9D;&#x6B21;&#x7ECF;&#x8FC7;&#x8FD9;&#x6761;&#x94FE;&#x4E0A;&#x7684;&#x90E8;&#x5206;&#x6216;&#x8005;&#x5168;&#x90E8;&#x6A21;&#x5757;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;
-&#x6BCF;&#x4E2A;&#x6A21;&#x5757;&#x5B9E;&#x73B0;&#x7279;&#x5B9A;&#x7684;&#x529F;&#x80FD;&#x3002;
-&#x4F8B;&#x5982;&#xFF0C;&#x5B9E;&#x73B0;&#x5BF9;&#x8BF7;&#x6C42;&#x89E3;&#x538B;&#x7F29;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5B9E;&#x73B0;SSI&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5B9E;&#x73B0;&#x4E0E;&#x4E0A;&#x6E38;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x901A;&#x8BAF;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5B9E;&#x73B0;&#x4E0E; FastCGI &#x670D;&#x52A1;&#x8FDB;&#x884C;&#x901A;&#x8BAF;&#x7684;&#x6A21;&#x5757;&#x3002;</p>
+Nginx &#x5C06;&#x5404;&#x529F;&#x80FD;&#x6A21;&#x5757;&#x7EC4;&#x7EC7;&#x6210;&#x4E00;&#x6761;&#x94FE;&#xFF0C;&#x5F53;&#x6709;&#x8BF7;&#x6C42;&#x5230;&#x8FBE;&#x65F6;&#xFF0C;&#x8BF7;&#x6C42;&#x4F9D;&#x6B21;&#x7ECF;&#x8FC7;&#x8FD9;&#x6761;&#x94FE;&#x4E0A;&#x7684;&#x90E8;&#x5206;&#x6216;&#x8005;&#x5168;&#x90E8;&#x6A21;&#x5757;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x6BCF;&#x4E2A;&#x6A21;&#x5757;&#x5B9E;&#x73B0;&#x7279;&#x5B9A;&#x7684;&#x529F;&#x80FD;&#x3002;
+&#x4F8B;&#x5982;&#xFF0C;&#x5B9E;&#x73B0;&#x5BF9;&#x8BF7;&#x6C42;&#x89E3;&#x538B;&#x7F29;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5B9E;&#x73B0; SSI &#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5B9E;&#x73B0;&#x4E0E;&#x4E0A;&#x6E38;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x901A;&#x8BAF;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5B9E;&#x73B0;&#x4E0E; FastCGI &#x670D;&#x52A1;&#x8FDB;&#x884C;&#x901A;&#x8BAF;&#x7684;&#x6A21;&#x5757;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x6709;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#xFF0C;&#x5B83;&#x4EEC;&#x5C45;&#x4E8E; nginx core &#x548C;&#x5404;&#x529F;&#x80FD;&#x6A21;&#x5757;&#x7684;&#x4E2D;&#x95F4;&#x3002;
-&#x8FD9;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#x5C31;&#x662F; http &#x6A21;&#x5757;&#x548C; mail &#x6A21;&#x5757;&#x3002;
-&#x8FD9;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#x5728; nginx core &#x4E4B;&#x4E0A;&#x5B9E;&#x73B0;&#x4E86;&#x53E6;&#x5916;&#x4E00;&#x5C42;&#x62BD;&#x8C61;&#xFF0C;&#x5904;&#x7406;&#x4E0E; HTTP &#x534F;&#x8BAE;&#x548C; email &#x76F8;&#x5173;&#x534F;&#x8BAE;( SMTP/POP3/IMAP )&#x6709;&#x5173;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x4E14;&#x786E;&#x4FDD;&#x8FD9;&#x4E9B;&#x4E8B;&#x4EF6;&#x80FD;&#x88AB;&#x4EE5;&#x6B63;&#x786E;&#x7684;&#x987A;&#x5E8F;&#x8C03;&#x7528;&#x5176;&#x4ED6;&#x7684;&#x4E00;&#x4E9B;&#x529F;&#x80FD;&#x6A21;&#x5757;&#x3002;</p>
+&#x6709;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#xFF0C;&#x5B83;&#x4EEC;&#x5C45;&#x4E8E; Nginx core &#x548C;&#x5404;&#x529F;&#x80FD;&#x6A21;&#x5757;&#x7684;&#x4E2D;&#x95F4;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#x5C31;&#x662F; http &#x6A21;&#x5757;&#x548C; mail &#x6A21;&#x5757;&#x3002;
+&#x8FD9;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#x5728; Nginx core &#x4E4B;&#x4E0A;&#x5B9E;&#x73B0;&#x4E86;&#x53E6;&#x5916;&#x4E00;&#x5C42;&#x62BD;&#x8C61;&#xFF0C;&#x5904;&#x7406;&#x4E0E; HTTP &#x534F;&#x8BAE;&#x548C; email &#x76F8;&#x5173;&#x534F;&#x8BAE; (SMTP/POP3/IMAP) &#x6709;&#x5173;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x4E14;&#x786E;&#x4FDD;&#x8FD9;&#x4E9B;&#x4E8B;&#x4EF6;&#x80FD;&#x88AB;&#x4EE5;&#x6B63;&#x786E;&#x7684;&#x987A;&#x5E8F;&#x8C03;&#x7528;&#x5176;&#x4ED6;&#x7684;&#x4E00;&#x4E9B;&#x529F;&#x80FD;&#x6A21;&#x5757;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x76EE;&#x524D; HTTP &#x534F;&#x8BAE;&#x662F;&#x88AB;&#x5B9E;&#x73B0;&#x5728; http &#x6A21;&#x5757;&#x4E2D;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x53EF;&#x80FD;&#x5C06;&#x6765;&#x88AB;&#x5265;&#x79BB;&#x5230;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x4EE5;&#x6269;&#x5C55; nginx &#x652F;&#x6301; SPDY &#x534F;&#x8BAE;&#x3002;</p>
+&#x76EE;&#x524D; HTTP &#x534F;&#x8BAE;&#x662F;&#x88AB;&#x5B9E;&#x73B0;&#x5728; http &#x6A21;&#x5757;&#x4E2D;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x53EF;&#x80FD;&#x5C06;&#x6765;&#x88AB;&#x5265;&#x79BB;&#x5230;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x4EE5;&#x6269;&#x5C55; Nginx &#x652F;&#x6301; SPDY &#x534F;&#x8BAE;&#x3002;</p>
 
                     
                     </section>

@@ -53,7 +53,7 @@
         data-chapter-title="模块的分类"
         data-filepath="s2/2.6.1.md"
         data-basepath=".."
-        data-revision="Sat Mar 12 2016 15:01:29 GMT+0800 (CST)"
+        data-revision="Sat Mar 12 2016 17:34:48 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,33 +3724,33 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x6A21;&#x5757;&#x7684;&#x5206;&#x7C7B;">&#x6A21;&#x5757;&#x7684;&#x5206;&#x7C7B;</h1>
+                        <h1 id="261-&#x6A21;&#x5757;&#x7684;&#x5206;&#x7C7B;">2.6.1 &#x6A21;&#x5757;&#x7684;&#x5206;&#x7C7B;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-nginx &#x7684;&#x6A21;&#x5757;&#x6839;&#x636E;&#x5176;&#x529F;&#x80FD;&#x57FA;&#x672C;&#x4E0A;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#xFF1A;</p>
+Nginx &#x7684;&#x6A21;&#x5757;&#x6839;&#x636E;&#x5176;&#x529F;&#x80FD;&#x57FA;&#x672C;&#x4E0A;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#xFF1A;</p>
 <p>&#x2003;&#x2003;
-<strong>event module:</strong></p>
+<strong>(1) event module:</strong></p>
 <p>&#x2003;&#x2003;
 &#x642D;&#x5EFA;&#x4E86;&#x72EC;&#x7ACB;&#x4E8E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x673A;&#x5236;&#x7684;&#x6846;&#x67B6;&#xFF0C;&#x53CA;&#x63D0;&#x4F9B;&#x4E86;&#x5404;&#x5177;&#x4F53;&#x4E8B;&#x4EF6;&#x7684;&#x5904;&#x7406;&#x3002;
 &#x5305;&#x62EC; ngx_events_module&#xFF0C; ngx_event_core_module &#x548C; ngx_epoll_module &#x7B49;&#x3002;
-nginx &#x5177;&#x4F53;&#x4F7F;&#x7528;&#x4F55;&#x79CD;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x6A21;&#x5757;&#xFF0C;&#x8FD9;&#x4F9D;&#x8D56;&#x4E8E;&#x5177;&#x4F53;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x548C;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x3002;</p>
+Nginx &#x5177;&#x4F53;&#x4F7F;&#x7528;&#x4F55;&#x79CD;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x6A21;&#x5757;&#xFF0C;&#x8FD9;&#x4F9D;&#x8D56;&#x4E8E;&#x5177;&#x4F53;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x548C;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x3002;</p>
 <p>&#x2003;&#x2003;
-<strong>phase handler:</strong></p>
+<strong>(2) phase handler:</strong></p>
 <p>&#x2003;&#x2003;
 &#x6B64;&#x7C7B;&#x578B;&#x7684;&#x6A21;&#x5757;&#x4E5F;&#x88AB;&#x76F4;&#x63A5;&#x79F0;&#x4E3A; handler &#x6A21;&#x5757;&#x3002;
 &#x4E3B;&#x8981;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x5E76;&#x4EA7;&#x751F;&#x5F85;&#x54CD;&#x5E94;&#x5185;&#x5BB9;&#xFF0C;&#x6BD4;&#x5982; ngx_http_static_module &#x6A21;&#x5757;&#x8D1F;&#x8D23;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x9759;&#x6001;&#x9875;&#x9762;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x5E76;&#x5C06;&#x5BF9;&#x5E94;&#x7684;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x51C6;&#x5907;&#x4E3A;&#x54CD;&#x5E94;&#x5185;&#x5BB9;&#x8F93;&#x51FA;&#x3002;</p>
 <p>&#x2003;&#x2003;
-<strong>output filter:</strong></p>
+<strong>(3) output filter:</strong></p>
 <p>&#x2003;&#x2003;
 &#x4E5F;&#x79F0;&#x4E3A; filter &#x6A21;&#x5757;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x8D1F;&#x8D23;&#x5BF9;&#x8F93;&#x51FA;&#x7684;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x8F93;&#x51FA;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x3002;
 &#x4F8B;&#x5982;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5BF9;&#x8F93;&#x51FA;&#x7684;&#x6240;&#x6709; html &#x9875;&#x9762;&#x589E;&#x52A0;&#x9884;&#x5B9A;&#x4E49;&#x7684; footbar &#x4E00;&#x7C7B;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x6216;&#x8005;&#x5BF9;&#x8F93;&#x51FA;&#x7684;&#x56FE;&#x7247;&#x7684; URL &#x8FDB;&#x884C;&#x66FF;&#x6362;&#x4E4B;&#x7C7B;&#x7684;&#x5DE5;&#x4F5C;&#x3002;</p>
 <p>&#x2003;&#x2003;
-<strong>upstream:</strong></p>
+<strong>(4) upstream:</strong></p>
 <p>&#x2003;&#x2003;
 upstream &#x6A21;&#x5757;&#x5B9E;&#x73B0;&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5C06;&#x771F;&#x6B63;&#x7684;&#x8BF7;&#x6C42;&#x8F6C;&#x53D1;&#x5230;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x5E76;&#x4ECE;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x8BFB;&#x53D6;&#x54CD;&#x5E94;&#xFF0C;&#x53D1;&#x56DE;&#x5BA2;&#x6237;&#x7AEF;&#x3002;
 upstream &#x6A21;&#x5757;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684; handler&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x54CD;&#x5E94;&#x5185;&#x5BB9;&#x4E0D;&#x662F;&#x771F;&#x6B63;&#x7531;&#x81EA;&#x5DF1;&#x4EA7;&#x751F;&#x7684;&#xFF0C;&#x800C;&#x662F;&#x4ECE;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x8BFB;&#x53D6;&#x7684;&#x3002;</p>
 <p>&#x2003;&#x2003;
-<strong>load-balancer:</strong></p>
+<strong>(5) load-balancer:</strong></p>
 <p>&#x2003;&#x2003;
 &#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#xFF0C;&#x5B9E;&#x73B0;&#x7279;&#x5B9A;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x5728;&#x4F17;&#x591A;&#x7684;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#x4E2D;&#xFF0C;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x51FA;&#x6765;&#x4F5C;&#x4E3A;&#x67D0;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x8F6C;&#x53D1;&#x670D;&#x52A1;&#x5668;&#x3002;</p>
 
