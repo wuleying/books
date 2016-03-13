@@ -53,7 +53,7 @@
         data-chapter-title="handler 模块的基本结构"
         data-filepath="s3/3.3.md"
         data-basepath=".."
-        data-revision="Sat Mar 12 2016 17:40:20 GMT+0800 (CST)"
+        data-revision="Sun Mar 13 2016 14:53:40 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,16 +3724,15 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="handler-&#x6A21;&#x5757;&#x7684;&#x57FA;&#x672C;&#x7ED3;&#x6784;">handler &#x6A21;&#x5757;&#x7684;&#x57FA;&#x672C;&#x7ED3;&#x6784;</h1>
+                        <h1 id="33-handler-&#x6A21;&#x5757;&#x7684;&#x57FA;&#x672C;&#x7ED3;&#x6784;">3.3 handler &#x6A21;&#x5757;&#x7684;&#x57FA;&#x672C;&#x7ED3;&#x6784;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x9664;&#x4E86;&#x4E0A;&#x4E00;&#x8282;&#x4ECB;&#x7ECD;&#x7684;&#x6A21;&#x5757;&#x7684;&#x57FA;&#x672C;&#x7ED3;&#x6784;&#x4EE5;&#x5916;&#xFF0C;handler &#x6A21;&#x5757;&#x5FC5;&#x987B;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8D1F;&#x8D23;&#x5BF9;&#x6765;&#x81EA;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x7684;&#x771F;&#x6B63;&#x5904;&#x7406;&#x3002;
-&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x5904;&#x7406;&#x65E2;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x81EA;&#x5DF1;&#x76F4;&#x63A5;&#x751F;&#x6210;&#x5185;&#x5BB9;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x62D2;&#x7EDD;&#x5904;&#x7406;&#xFF0C;&#x7531;&#x540E;&#x7EED;&#x7684; handler &#x53BB;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x9009;&#x62E9;&#x4E22;&#x7ED9;&#x540E;&#x7EED;&#x7684; filter &#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;
+&#x9664;&#x4E86;&#x4E0A;&#x4E00;&#x8282;&#x4ECB;&#x7ECD;&#x7684;&#x6A21;&#x5757;&#x7684;&#x57FA;&#x672C;&#x7ED3;&#x6784;&#x4EE5;&#x5916;&#xFF0C;handler &#x6A21;&#x5757;&#x5FC5;&#x987B;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8D1F;&#x8D23;&#x5BF9;&#x6765;&#x81EA;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x7684;&#x771F;&#x6B63;&#x5904;&#x7406;&#x3002;
+&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x5904;&#x7406;&#x65E2;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x81EA;&#x5DF1;&#x76F4;&#x63A5;&#x751F;&#x6210;&#x5185;&#x5BB9;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x62D2;&#x7EDD;&#x5904;&#x7406;&#xFF0C;&#x7531;&#x540E;&#x7EED;&#x7684; handler &#x53BB;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x6216;&#x662F;&#x9009;&#x62E9;&#x4E22;&#x7ED9;&#x540E;&#x7EED;&#x7684; filter &#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;
 &#x6765;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x7533;&#x660E;&#xFF1A;</p>
 <pre><code>typedef ngx_int_t (*ngx_http_handler_pt)(ngx_http_request_t *r);
 </code></pre><p>&#x2003;&#x2003;
-r &#x662F; http &#x8BF7;&#x6C42;&#x3002;
-&#x91CC;&#x9762;&#x5305;&#x542B;&#x8BF7;&#x6C42;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x606F;&#x3002;
+r &#x662F; http &#x8BF7;&#x6C42;&#xFF0C;&#x91CC;&#x9762;&#x5305;&#x542B;&#x8BF7;&#x6C42;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x606F;&#x3002;
 &#x8BE5;&#x51FD;&#x6570;&#x5904;&#x7406;&#x6210;&#x529F;&#x8FD4;&#x56DE; NGX_OK&#xFF0C;&#x5904;&#x7406;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x8FD4;&#x56DE; NGX_ERROR&#xFF0C;&#x62D2;&#x7EDD;&#x5904;&#x7406;&#xFF08;&#x7559;&#x7ED9;&#x540E;&#x7EED;&#x7684; handler &#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF09;&#x8FD4;&#x56DE; NGX_DECLINE&#x3002;
 &#x8FD4;&#x56DE; NGX_OK &#x4E5F;&#x5C31;&#x4EE3;&#x8868;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x54CD;&#x5E94;&#x5DF2;&#x7ECF;&#x751F;&#x6210;&#x597D;&#x4E86;&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE; NGX_ERROR &#x5C31;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x4E86;&#x3002;</p>
 

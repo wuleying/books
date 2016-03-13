@@ -53,7 +53,7 @@
         data-chapter-title="http access module"
         data-filepath="s3/3.8.1.md"
         data-basepath=".."
-        data-revision="Sat Mar 12 2016 17:40:20 GMT+0800 (CST)"
+        data-revision="Sun Mar 13 2016 14:53:40 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,12 +3724,11 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="http-access-module">http access module</h1>
+                        <h1 id="381-http-access-module">3.8.1 http access module</h1>
 <hr>
 <p>&#x2003;&#x2003;
 &#x8BE5;&#x6A21;&#x5757;&#x7684;&#x4EE3;&#x7801;&#x4F4D;&#x4E8E; src/http/modules/ngx_http_access_module.c &#x4E2D;&#x3002;
-&#x8BE5;&#x6A21;&#x5757;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x63D0;&#x4F9B;&#x5BF9;&#x4E8E;&#x7279;&#x5B9A; host &#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x3002;
-&#x53EF;&#x4EE5;&#x9650;&#x5B9A;&#x7279;&#x5B9A; host &#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x5BF9;&#x4E8E;&#x670D;&#x52A1;&#x7AEF;&#x5168;&#x90E8;&#xFF0C;&#x6216;&#x8005;&#x67D0;&#x4E2A; server&#xFF0C;&#x6216;&#x8005;&#x662F;&#x67D0;&#x4E2A; location &#x7684;&#x8BBF;&#x95EE;&#x3002;
+&#x8BE5;&#x6A21;&#x5757;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x63D0;&#x4F9B;&#x5BF9;&#x7279;&#x5B9A; host &#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x9650;&#x5B9A;&#x7279;&#x5B9A; host &#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x5BF9;&#x4E8E;&#x670D;&#x52A1;&#x7AEF;&#x5168;&#x90E8;&#x6216;&#x67D0;&#x4E2A; server&#xFF0C;&#x6216;&#x662F;&#x67D0;&#x4E2A; location &#x7684;&#x8BBF;&#x95EE;&#x3002;
 &#x8BE5;&#x6A21;&#x5757;&#x7684;&#x5B9E;&#x73B0;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x603B;&#x5171;&#x4E5F;&#x5C31;&#x53EA;&#x6709;&#x51E0;&#x4E2A;&#x51FD;&#x6570;&#x3002;</p>
 <pre><code>static ngx_int_t ngx_http_access_handler(ngx_http_request_t *r);
 static ngx_int_t ngx_http_access_inet(ngx_http_request_t *r,
@@ -3752,7 +3751,7 @@ static ngx_int_t ngx_http_access_init(ngx_conf_t *cf);
 &#x53E6;&#x5916;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x7684;&#x4E3B;&#x5904;&#x7406;&#x51FD;&#x6570; ngx_http_access_handler&#x3002;
 &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x903B;&#x8F91;&#x4E5F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x6839;&#x636E;&#x5BA2;&#x6237;&#x7AEF;&#x5730;&#x5740;&#x7684;&#x7C7B;&#x578B;&#x6765;&#x5206;&#x522B;&#x9009;&#x62E9; ipv4 &#x7C7B;&#x578B;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570; ngx_http_access_inet &#x8FD8;&#x662F; ipv6 &#x7C7B;&#x578B;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570; ngx_http_access_inet6&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x800C;&#x8FD9;&#x4E2A;&#x4E24;&#x4E2A;&#x5904;&#x7406;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x4E5F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x5C31;&#x662F;&#x5FAA;&#x73AF;&#x68C0;&#x67E5;&#x6BCF;&#x4E2A;&#x89C4;&#x5219;&#xFF0C;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6709;&#x5339;&#x914D;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5C31;&#x8FD4;&#x56DE;&#x5339;&#x914D;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x90FD;&#x6CA1;&#x6709;&#x5339;&#x914D;&#x5C31;&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x3002;</p>
+&#x800C;&#x8FD9;&#x4E2A;&#x4E24;&#x4E2A;&#x5904;&#x7406;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x4E5F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x5C31;&#x662F;&#x5FAA;&#x73AF;&#x68C0;&#x67E5;&#x6BCF;&#x4E2A;&#x89C4;&#x5219;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6709;&#x5339;&#x914D;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5C31;&#x8FD4;&#x56DE;&#x5339;&#x914D;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x90FD;&#x6CA1;&#x6709;&#x5339;&#x914D;&#x5C31;&#x9ED8;&#x8BA4;&#x62D2;&#x7EDD;&#x3002;</p>
 
                     
                     </section>

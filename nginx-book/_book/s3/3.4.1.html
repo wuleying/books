@@ -53,7 +53,7 @@
         data-chapter-title="按处理阶段挂载"
         data-filepath="s3/3.4.1.md"
         data-basepath=".."
-        data-revision="Sat Mar 12 2016 17:40:20 GMT+0800 (CST)"
+        data-revision="Sun Mar 13 2016 14:53:40 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,29 +3724,68 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x6309;&#x5904;&#x7406;&#x9636;&#x6BB5;&#x6302;&#x8F7D;">&#x6309;&#x5904;&#x7406;&#x9636;&#x6BB5;&#x6302;&#x8F7D;</h1>
+                        <h1 id="341-&#x6309;&#x5904;&#x7406;&#x9636;&#x6BB5;&#x6302;&#x8F7D;">3.4.1 &#x6309;&#x5904;&#x7406;&#x9636;&#x6BB5;&#x6302;&#x8F7D;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x4E3A;&#x4E86;&#x66F4;&#x7CBE;&#x7EC6;&#x5730;&#x63A7;&#x5236;&#x5BF9;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;nginx &#x628A;&#x8FD9;&#x4E2A;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x5212;&#x5206;&#x6210;&#x4E86; 11 &#x4E2A;&#x9636;&#x6BB5;&#x3002;
-&#x4ECE;&#x524D;&#x5230;&#x540E;&#x4F9D;&#x6B21;&#x5217;&#x4E3E;&#x5982;&#x4E0B;&#xFF1A;</p>
-<ul>
-<li>NGX_HTTP_POST_READ_PHASE: &#x8BFB;&#x53D6;&#x8BF7;&#x6C42;&#x5185;&#x5BB9;&#x9636;&#x6BB5;</li>
-<li>NGX_HTTP_SERVER_REWRITE_PHASE: Server&#x8BF7;&#x6C42;&#x5730;&#x5740;&#x91CD;&#x5199;&#x9636;&#x6BB5;</li>
-<li>NGX_HTTP_FIND_CONFIG_PHASE: &#x914D;&#x7F6E;&#x67E5;&#x627E;&#x9636;&#x6BB5;</li>
-<li>NGX_HTTP_REWRITE_PHASE Location: &#x8BF7;&#x6C42;&#x5730;&#x5740;&#x91CD;&#x5199;&#x9636;&#x6BB5;</li>
-<li>NGX_HTTP_POST_REWRITE_PHASE: &#x8BF7;&#x6C42;&#x5730;&#x5740;&#x91CD;&#x5199;&#x63D0;&#x4EA4;&#x9636;&#x6BB5;</li>
-<li>NGX_HTTP_PREACCESS_PHASE: &#x8BBF;&#x95EE;&#x6743;&#x9650;&#x68C0;&#x67E5;&#x51C6;&#x5907;&#x9636;&#x6BB5;</li>
-<li>NGX_HTTP_ACCESS_PHASE: &#x8BBF;&#x95EE;&#x6743;&#x9650;&#x68C0;&#x67E5;&#x9636;&#x6BB5;</li>
-<li>NGX_HTTP_POST_ACCESS_PHASE: &#x8BBF;&#x95EE;&#x6743;&#x9650;&#x68C0;&#x67E5;&#x63D0;&#x4EA4;&#x9636;&#x6BB5;</li>
-<li>NGX_HTTP_TRY_FILES_PHASE: &#x914D;&#x7F6E;&#x9879; try_files &#x5904;&#x7406;&#x9636;&#x6BB5;</li>
-<li>NGX_HTTP_CONTENT_PHASE: &#x5185;&#x5BB9;&#x4EA7;&#x751F;&#x9636;&#x6BB5;</li>
-<li>NGX_HTTP_LOG_PHASE: &#x65E5;&#x5FD7;&#x6A21;&#x5757;&#x5904;&#x7406;&#x9636;&#x6BB5;</li>
-</ul>
+&#x4E3A;&#x4E86;&#x66F4;&#x7CBE;&#x7EC6;&#x5730;&#x63A7;&#x5236;&#x5BF9;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;Nginx &#x628A;&#x8FD9;&#x4E2A;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x5212;&#x5206;&#x6210;&#x4E86; 11 &#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x4ECE;&#x524D;&#x5230;&#x540E;&#x4F9D;&#x6B21;&#x5217;&#x4E3E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x9636;&#x6BB5;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NGX_HTTP_POST_READ_PHASE</td>
+<td>&#x8BFB;&#x53D6;&#x8BF7;&#x6C42;&#x5185;&#x5BB9;&#x9636;&#x6BB5;</td>
+</tr>
+<tr>
+<td>NGX_HTTP_SERVER_REWRITE_PHASE</td>
+<td>server &#x8BF7;&#x6C42;&#x5730;&#x5740;&#x91CD;&#x5199;&#x9636;&#x6BB5;</td>
+</tr>
+<tr>
+<td>NGX_HTTP_FIND_CONFIG_PHASE</td>
+<td>&#x914D;&#x7F6E;&#x67E5;&#x627E;&#x9636;&#x6BB5;</td>
+</tr>
+<tr>
+<td>NGX_HTTP_REWRITE_PHASE Location</td>
+<td>&#x8BF7;&#x6C42;&#x5730;&#x5740;&#x91CD;&#x5199;&#x9636;&#x6BB5;</td>
+</tr>
+<tr>
+<td>NGX_HTTP_POST_REWRITE_PHASE</td>
+<td>&#x8BF7;&#x6C42;&#x5730;&#x5740;&#x91CD;&#x5199;&#x63D0;&#x4EA4;&#x9636;&#x6BB5;</td>
+</tr>
+<tr>
+<td>NGX_HTTP_PREACCESS_PHASE</td>
+<td>&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x68C0;&#x67E5;&#x51C6;&#x5907;&#x9636;&#x6BB5;</td>
+</tr>
+<tr>
+<td>NGX_HTTP_ACCESS_PHASE</td>
+<td>&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x68C0;&#x67E5;&#x9636;&#x6BB5;</td>
+</tr>
+<tr>
+<td>NGX_HTTP_POST_ACCESS_PHASE</td>
+<td>&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x68C0;&#x67E5;&#x63D0;&#x4EA4;&#x9636;&#x6BB5;</td>
+</tr>
+<tr>
+<td>NGX_HTTP_TRY_FILES_PHASE</td>
+<td>&#x914D;&#x7F6E;&#x9879; try_files &#x5904;&#x7406;&#x9636;&#x6BB5;</td>
+</tr>
+<tr>
+<td>NGX_HTTP_CONTENT_PHASE</td>
+<td>&#x5185;&#x5BB9;&#x4EA7;&#x751F;&#x9636;&#x6BB5;</td>
+</tr>
+<tr>
+<td>NGX_HTTP_LOG_PHASE</td>
+<td>&#x65E5;&#x5FD7;&#x6A21;&#x5757;&#x5904;&#x7406;&#x9636;&#x6BB5;</td>
+</tr>
+</tbody>
+</table>
 <p>&#x2003;&#x2003;
-&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6A21;&#x5757;&#x5927;&#x591A;&#x6570;&#x662F;&#x6302;&#x8F7D;&#x5728; NGX_HTTP_CONTENT_PHASE &#x9636;&#x6BB5;&#x7684;&#x3002;
-&#x6302;&#x8F7D;&#x7684;&#x52A8;&#x4F5C;&#x4E00;&#x822C;&#x662F;&#x5728;&#x6A21;&#x5757;&#x4E0A;&#x4E0B;&#x6587;&#x8C03;&#x7528;&#x7684; postconfiguration &#x51FD;&#x6570;&#x4E2D;&#x3002;</p>
+&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6A21;&#x5757;&#x5927;&#x591A;&#x6570;&#x662F;&#x6302;&#x8F7D;&#x5728; NGX_HTTP_CONTENT_PHASE &#x9636;&#x6BB5;&#xFF0C;&#x6302;&#x8F7D;&#x7684;&#x52A8;&#x4F5C;&#x4E00;&#x822C;&#x662F;&#x5728;&#x6A21;&#x5757;&#x4E0A;&#x4E0B;&#x6587;&#x8C03;&#x7528;&#x7684; postconfiguration &#x51FD;&#x6570;&#x4E2D;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x6CE8;&#x610F;&#xFF1A;&#x6709;&#x51E0;&#x4E2A;&#x9636;&#x6BB5;&#x662F;&#x7279;&#x4F8B;&#xFF0C;&#x5B83;&#x4E0D;&#x8C03;&#x7528;&#x6302;&#x8F7D;&#x5730;&#x4EFB;&#x4F55;&#x7684; handler&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0D;&#x7528;&#x6302;&#x8F7D;&#x5230;&#x8FD9;&#x51E0;&#x4E2A;&#x9636;&#x6BB5;&#x4E86;&#xFF1A;</p>
+&#x6CE8;&#x610F;&#xFF1A;&#x6709;&#x51E0;&#x4E2A;&#x9636;&#x6BB5;&#x662F;&#x7279;&#x4F8B;&#xFF0C;&#x5B83;&#x4E0D;&#x8C03;&#x7528;&#x6302;&#x8F7D;&#x5730;&#x4EFB;&#x4F55;&#x7684; handler&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0D;&#x7528;&#x6302;&#x8F7D;&#x5230;&#x8FD9;&#x51E0;&#x4E2A;&#x9636;&#x6BB5;&#xFF1A;</p>
 <ul>
 <li>NGX_HTTP_FIND_CONFIG_PHASE</li>
 <li>NGX_HTTP_POST_ACCESS_PHASE</li>
@@ -3756,10 +3795,9 @@
 <p>&#x2003;&#x2003;
 &#x6240;&#x4EE5;&#x5176;&#x5B9E;&#x771F;&#x6B63;&#x662F;&#x6709; 7 &#x4E2A; phase &#x53EF;&#x4EE5;&#x53BB;&#x6302;&#x8F7D; handler&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x6302;&#x8F7D;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF08;&#x6458;&#x81EA; hello module &#xFF09;:</p>
+&#x6302;&#x8F7D;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B; (&#x6458;&#x81EA; hello module):</p>
 <pre><code>static ngx_int_t
-ngx_http_hello_init(ngx_conf_t *cf)
-{
+ngx_http_hello_init(ngx_conf_t *cf) {
     ngx_http_handler_pt        *h;
     ngx_http_core_main_conf_t  *cmcf;
 
@@ -3767,7 +3805,7 @@ ngx_http_hello_init(ngx_conf_t *cf)
 
     h = ngx_array_push(&amp;cmcf-&gt;phases[NGX_HTTP_CONTENT_PHASE].handlers);
     if (h == NULL) {
-            return NGX_ERROR;
+        return NGX_ERROR;
     }
 
     *h = ngx_http_hello_handler;

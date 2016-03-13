@@ -53,7 +53,7 @@
         data-chapter-title="http static module"
         data-filepath="s3/3.8.2.md"
         data-basepath=".."
-        data-revision="Sat Mar 12 2016 17:40:20 GMT+0800 (CST)"
+        data-revision="Sun Mar 13 2016 14:53:40 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,12 +3724,11 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="http-static-module">http static module</h1>
+                        <h1 id="382-http-static-module">3.8.2 http static module</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x4ECE;&#x67D0;&#x79CD;&#x7A0B;&#x5EA6;&#x4E0A;&#x6765;&#x8BF4;&#x6B64;&#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x7B97;&#x7684;&#x4E0A;&#x662F;&#x201C;&#x6700;&#x6B63;&#x5B97;&#x7684;&#x201D;&#xFF0C;&#x201C;&#x6700;&#x53E4;&#x8001;&#x201D;&#x7684; content handler&#x3002;
-&#x56E0;&#x4E3A;&#x672C;&#x6A21;&#x5757;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8BFB;&#x53D6;&#x78C1;&#x76D8;&#x4E0A;&#x7684;&#x9759;&#x6001;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x628A;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x4F5C;&#x4E3A;&#x4EA7;&#x751F;&#x7684;&#x8F93;&#x51FA;&#x3002;
-&#x5728; Web &#x6280;&#x672F;&#x53D1;&#x5C55;&#x7684;&#x65E9;&#x671F;&#xFF0C;&#x53EA;&#x6709;&#x9759;&#x6001;&#x9875;&#x9762;&#x6CA1;&#x6709;&#x670D;&#x52A1;&#x7AEF;&#x811A;&#x672C;&#x6765;&#x52A8;&#x6001;&#x751F;&#x6210; HTML &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6050;&#x6015;&#x5F00;&#x53D1;&#x4E2A; Web &#x670D;&#x52A1;&#x5668;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x8981;&#x5F00;&#x53D1;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#x4E00;&#x4E2A; content handler&#x3002;</p>
+&#x4ECE;&#x67D0;&#x79CD;&#x7A0B;&#x5EA6;&#x4E0A;&#x6765;&#x8BF4;&#x6B64;&#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x7B97;&#x7684;&#x4E0A;&#x662F;&#x6700;&#x6B63;&#x5B97;&#xFF0C;&#x6700;&#x53E4;&#x8001;&#x7684; content handler&#xFF0C;&#x56E0;&#x4E3A;&#x672C;&#x6A21;&#x5757;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8BFB;&#x53D6;&#x78C1;&#x76D8;&#x4E0A;&#x7684;&#x9759;&#x6001;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x628A;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x4F5C;&#x4E3A;&#x4EA7;&#x751F;&#x7684;&#x8F93;&#x51FA;&#x3002;
+&#x5728; Web &#x6280;&#x672F;&#x53D1;&#x5C55;&#x7684;&#x65E9;&#x671F;&#xFF0C;&#x53EA;&#x6709;&#x9759;&#x6001;&#x9875;&#x9762;&#x6CA1;&#x6709;&#x670D;&#x52A1;&#x7AEF;&#x811A;&#x672C;&#x6765;&#x52A8;&#x6001;&#x751F;&#x6210; HTML &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6050;&#x6015;&#x5F00;&#x53D1;&#x4E2A; Web &#x670D;&#x52A1;&#x5668;&#x7B2C;&#x4E00;&#x4E2A;&#x8981;&#x5F00;&#x53D1;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#x4E00;&#x4E2A; content handler&#x3002;</p>
 <p>&#x2003;&#x2003;
 http static module &#x7684;&#x4EE3;&#x7801;&#x4F4D;&#x4E8E; src/http/modules/ngx_http_static_module.c &#x4E2D;&#xFF0C;&#x603B;&#x5171;&#x53EA;&#x6709;&#x4E24;&#x767E;&#x591A;&#x884C;&#x8FD1;&#x4E09;&#x767E;&#x884C;&#xFF0C;&#x53EF;&#x4EE5;&#x8BF4;&#x662F;&#x975E;&#x5E38;&#x77ED;&#x5C0F;&#x3002;</p>
 <p>&#x2003;&#x2003;
@@ -3748,13 +3747,10 @@ http static module &#x7684;&#x4EE3;&#x7801;&#x4F4D;&#x4E8E; src/http/modules/ngx
     NULL                                   /* merge location configuration */
 };
 </code></pre><p>&#x2003;&#x2003;
-&#x975E;&#x5E38;&#x7684;&#x7B80;&#x6D01;&#xFF0C;&#x4EFB;&#x4F55;&#x4E0E;&#x914D;&#x7F6E;&#x76F8;&#x5173;&#x7684;&#x51FD;&#x6570;&#x90FD;&#x6CA1;&#x6709;&#x3002;
-&#x56E0;&#x4E3A;&#x8BE5;&#x6A21;&#x5757;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x4EFB;&#x4F55;&#x914D;&#x7F6E;&#x6307;&#x4EE4;&#xFF0C;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x5B9E;&#x5728;&#x662F;&#x592A;&#x7B80;&#x5355;&#x4E86;&#xFF0C;&#x4E5F;&#x786E;&#x5B9E;&#x6CA1;&#x4EC0;&#x4E48;&#x597D;&#x914D;&#x7F6E;&#x7684;&#x3002;
-&#x552F;&#x4E00;&#x9700;&#x8981;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x662F;&#x4E00;&#x4E2A; ngx_http_static_init &#x51FD;&#x6570;&#x3002;
-&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x90FD;&#x5E72;&#x4E86;&#x5199;&#x4EC0;&#x4E48;&#x3002;</p>
+&#x975E;&#x5E38;&#x7684;&#x7B80;&#x6D01;&#xFF0C;&#x4EFB;&#x4F55;&#x4E0E;&#x914D;&#x7F6E;&#x76F8;&#x5173;&#x7684;&#x51FD;&#x6570;&#x90FD;&#x6CA1;&#x6709;&#xFF0C;&#x56E0;&#x4E3A;&#x8BE5;&#x6A21;&#x5757;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x4EFB;&#x4F55;&#x914D;&#x7F6E;&#x6307;&#x4EE4;&#xFF0C;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x5B9E;&#x5728;&#x662F;&#x592A;&#x7B80;&#x5355;&#x4E86;&#xFF0C;&#x4E5F;&#x786E;&#x5B9E;&#x6CA1;&#x4EC0;&#x4E48;&#x597D;&#x914D;&#x7F6E;&#x7684;&#x3002;
+&#x552F;&#x4E00;&#x9700;&#x8981;&#x8C03;&#x7528;&#x7684;&#x662F;&#x4E00;&#x4E2A; ngx_http_static_init &#x51FD;&#x6570;&#xFF0C;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x90FD;&#x505A;&#x4E86;&#x4EC0;&#x4E48;&#xFF1A;</p>
 <pre><code>static ngx_int_t
-ngx_http_static_init(ngx_conf_t *cf)
-{
+ngx_http_static_init(ngx_conf_t *cf) {
     ngx_http_handler_pt        *h;
     ngx_http_core_main_conf_t  *cmcf;
 
@@ -3772,11 +3768,9 @@ ngx_http_static_init(ngx_conf_t *cf)
 </code></pre><p>&#x2003;&#x2003;
 &#x4EC5;&#x4EC5;&#x662F;&#x6302;&#x8F7D;&#x8FD9;&#x4E2A; handler &#x5230; NGX_HTTP_CONTENT_PHASE &#x5904;&#x7406;&#x9636;&#x6BB5;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#x6240;&#x5728;&#x7684; ngx_http_static_handler &#x51FD;&#x6570;&#x3002;
-&#x8BE5;&#x51FD;&#x6570;&#x5927;&#x6982;&#x5360;&#x4E86;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x4EE3;&#x7801;&#x91CF;&#x7684;&#x767E;&#x5206;&#x4E4B;&#x516B;&#x4E5D;&#x5341;&#x3002;</p>
+&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#x6240;&#x5728;&#x7684; ngx_http_static_handler &#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5927;&#x6982;&#x5360;&#x4E86;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x4EE3;&#x7801;&#x91CF;&#x7684;&#x767E;&#x5206;&#x4E4B;&#x516B;&#x4E5D;&#x5341;&#x3002;</p>
 <pre><code>static ngx_int_t
-ngx_http_static_handler(ngx_http_request_t *r)
-{
+ngx_http_static_handler(ngx_http_request_t *r) {
     u_char                    *last, *location;
     size_t                     root, len;
     ngx_str_t                  path;
@@ -3829,8 +3823,7 @@ ngx_http_static_handler(ngx_http_request_t *r)
     }
 
     if (ngx_open_cached_file(clcf-&gt;open_file_cache, &amp;path, &amp;of, r-&gt;pool)
-            != NGX_OK)
-    {
+            != NGX_OK) {
         switch (of.err) {
         case 0:
             return NGX_HTTP_INTERNAL_SERVER_ERROR;
@@ -3870,7 +3863,6 @@ ngx_http_static_handler(ngx_http_request_t *r)
     ngx_log_debug1(NGX_LOG_DEBUG_HTTP, log, 0, &quot;http static fd: %d&quot;, of.fd);
 
     if (of.is_dir) {
-
         ngx_log_debug0(NGX_LOG_DEBUG_HTTP, log, 0, &quot;http dir&quot;);
 
         ngx_http_clear_location(r);
@@ -3987,13 +3979,13 @@ ngx_http_static_handler(ngx_http_request_t *r)
     return ngx_http_output_filter(r, &amp;out);
 }
 </code></pre><p>&#x2003;&#x2003;
-&#x9996;&#x5148;&#x662F;&#x68C0;&#x67E5;&#x5BA2;&#x6237;&#x7AEF;&#x7684; http &#x8BF7;&#x6C42;&#x7C7B;&#x578B;&#xFF08; r-&gt;method &#xFF09;&#xFF0C;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x7C7B;&#x578B;&#x4E3A; NGX_HTTP_GET|NGX_HTTP_HEAD|NGX_HTTP_POST &#x5219;&#x7EE7;&#x7EED;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5426;&#x5219;&#x4E00;&#x5F8B;&#x8FD4;&#x56DE; NGX_HTTP_NOT_ALLOWED &#x4ECE;&#x800C;&#x62D2;&#x7EDD;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x53D1;&#x8D77;&#x7684;&#x8BF7;&#x6C42;&#x3002;</p>
+&#x9996;&#x5148;&#x662F;&#x68C0;&#x67E5;&#x5BA2;&#x6237;&#x7AEF;&#x7684; http &#x8BF7;&#x6C42;&#x7C7B;&#x578B;&#xFF08; r-&gt;method &#xFF09;&#xFF0C;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x7C7B;&#x578B;&#x4E3A; NGX_HTTP_GET | NGX_HTTP_HEAD | NGX_HTTP_POST &#x5219;&#x7EE7;&#x7EED;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5426;&#x5219;&#x4E00;&#x5F8B;&#x8FD4;&#x56DE; NGX_HTTP_NOT_ALLOWED &#x4ECE;&#x800C;&#x62D2;&#x7EDD;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x53D1;&#x8D77;&#x7684;&#x8BF7;&#x6C42;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x5176;&#x6B21;&#x662F;&#x68C0;&#x67E5;&#x8BF7;&#x6C42;&#x7684; url &#x7684;&#x7ED3;&#x5C3E;&#x5B57;&#x7B26;&#x662F;&#x4E0D;&#x662F;&#x659C;&#x6760;&#x2018;/&#x2019;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x8BF4;&#x660E;&#x8BF7;&#x6C42;&#x7684;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x7ED9;&#x540E;&#x7EED;&#x7684; handler &#x53BB;&#x5904;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#x540E;&#x7EED;&#x7684; ngx_http_autoindex_handler&#xFF08;&#x5982;&#x679C;&#x662F;&#x8BF7;&#x6C42;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#xFF0C;&#x53EF;&#x4EE5;&#x5217;&#x51FA;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7684;&#x6587;&#x4EF6;&#xFF09;&#xFF0C;&#x6216;&#x8005;&#x662F; ngx_http_index_handler&#xFF08;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x7684;&#x8DEF;&#x5F84;&#x4E0B;&#x9762;&#x6709;&#x4E2A;&#x9ED8;&#x8BA4;&#x7684; index &#x6587;&#x4EF6;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE; index &#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#xFF09;&#x3002;</p>
+&#x5176;&#x6B21;&#x662F;&#x68C0;&#x67E5;&#x8BF7;&#x6C42;&#x7684; url &#x7684;&#x7ED3;&#x5C3E;&#x5B57;&#x7B26;&#x662F;&#x4E0D;&#x662F;&#x659C;&#x6760;&#x2018;/&#x2019;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x8BF4;&#x660E;&#x8BF7;&#x6C42;&#x7684;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x7ED9;&#x540E;&#x7EED;&#x7684; handler &#x53BB;&#x5904;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#x540E;&#x7EED;&#x7684; ngx_http_autoindex_handler (&#x5982;&#x679C;&#x662F;&#x8BF7;&#x6C42;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x5217;&#x51FA;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7684;&#x6587;&#x4EF6;)&#xFF0C;&#x6216;&#x662F; ngx_http_index_handler (&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x7684;&#x8DEF;&#x5F84;&#x4E0B;&#x6709;&#x4E2A;&#x9ED8;&#x8BA4;&#x7684; index &#x6587;&#x4EF6;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE; index &#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;)&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x7136;&#x540E;&#x63A5;&#x4E0B;&#x6765;&#x8C03;&#x7528;&#x4E86;&#x4E00;&#x4E2A; ngx_http_map_uri_to_path &#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x628A;&#x8BF7;&#x6C42;&#x7684; http &#x534F;&#x8BAE;&#x7684;&#x8DEF;&#x5F84;&#x8F6C;&#x5316;&#x6210;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x8DEF;&#x5F84;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x7136;&#x540E;&#x6839;&#x636E;&#x8F6C;&#x5316;&#x51FA;&#x6765;&#x7684;&#x5177;&#x4F53;&#x8DEF;&#x5F84;&#x53BB;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#xFF0C;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x505A;&#x4E86; 2 &#x79CD;&#x68C0;&#x67E5;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x7684;&#x6587;&#x4EF6;&#x662F;&#x4E2A; symbol link&#xFF0C;&#x6839;&#x636E;&#x914D;&#x7F6E;&#xFF0C;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x3002;
+&#x7136;&#x540E;&#x6839;&#x636E;&#x8F6C;&#x5316;&#x51FA;&#x6765;&#x7684;&#x5177;&#x4F53;&#x8DEF;&#x5F84;&#x53BB;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#xFF0C;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x505A;&#x4E86;&#x4E24;&#x79CD;&#x68C0;&#x67E5;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x7684;&#x6587;&#x4EF6;&#x662F;&#x4E2A; symbol link&#xFF0C;&#x6839;&#x636E;&#x914D;&#x7F6E;&#xFF0C;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x3002;
 &#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x68C0;&#x67E5;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x662F;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x7684;&#x540D;&#x5B57;&#x4E5F;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x3002;
 &#x5982;&#x679C;&#x90FD;&#x6CA1;&#x6709;&#x9519;&#x8BEF;&#x5C31;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#xFF0C;&#x8FD4;&#x56DE;&#x5185;&#x5BB9;&#x3002;
 &#x5176;&#x5B9E;&#x8BF4;&#x8FD4;&#x56DE;&#x5185;&#x5BB9;&#x53EF;&#x80FD;&#x4E0D;&#x662F;&#x7279;&#x522B;&#x51C6;&#x786E;&#xFF0C;&#x6BD4;&#x8F83;&#x51C6;&#x786E;&#x7684;&#x8BF4;&#x6CD5;&#x662F;&#x628A;&#x4EA7;&#x751F;&#x7684;&#x5185;&#x5BB9;&#x4F20;&#x9012;&#x7ED9;&#x540E;&#x7EED;&#x7684; filter &#x53BB;&#x5904;&#x7406;&#x3002;</p>

@@ -53,7 +53,7 @@
         data-chapter-title="按需挂载"
         data-filepath="s3/3.4.2.md"
         data-basepath=".."
-        data-revision="Sat Mar 12 2016 17:40:20 GMT+0800 (CST)"
+        data-revision="Sun Mar 13 2016 14:53:40 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,27 +3724,25 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x6309;&#x9700;&#x6302;&#x8F7D;">&#x6309;&#x9700;&#x6302;&#x8F7D;</h1>
+                        <h1 id="342-&#x6309;&#x9700;&#x6302;&#x8F7D;">3.4.2 &#x6309;&#x9700;&#x6302;&#x8F7D;</h1>
 <hr>
 <p>&#x2003;&#x2003;
 &#x4EE5;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6302;&#x8F7D;&#x7684; handler &#x4E5F;&#x88AB;&#x79F0;&#x4E3A; content handler&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x5F53;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x8FDB;&#x6765;&#x4EE5;&#x540E;&#xFF0C;nginx &#x4ECE; NGX_HTTP_POST_READ_PHASE &#x9636;&#x6BB5;&#x5F00;&#x59CB;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x4E2D;&#x6240;&#x6709; handler&#x3002;
-&#x6267;&#x884C;&#x5230; NGX_HTTP_CONTENT_PHASE &#x9636;&#x6BB5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E2A; location &#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684; content handler &#x6A21;&#x5757;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x53BB;&#x6267;&#x884C;&#x8FD9;&#x4E2A; content handler &#x6A21;&#x5757;&#x771F;&#x6B63;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;
+&#x5F53;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x8FDB;&#x6765;&#x540E;&#xFF0C;Nginx &#x4ECE; NGX_HTTP_POST_READ_PHASE &#x9636;&#x6BB5;&#x5F00;&#x59CB;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x4E2D;&#x6240;&#x6709; handler&#x3002;
+&#x6267;&#x884C;&#x5230; NGX_HTTP_CONTENT_PHASE &#x9636;&#x6BB5;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E2A; location &#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684; content handler &#x6A21;&#x5757;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x53BB;&#x6267;&#x884C;&#x8FD9;&#x4E2A; content handler &#x6A21;&#x5757;&#x771F;&#x6B63;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;
 &#x5426;&#x5219;&#x7EE7;&#x7EED;&#x4F9D;&#x6B21;&#x6267;&#x884C; NGX_HTTP_CONTENT_PHASE &#x9636;&#x6BB5;&#x4E2D;&#x6240;&#x6709; content phase handlers&#xFF0C;&#x76F4;&#x5230;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#x5904;&#x7406;&#x8FD4;&#x56DE; NGX_OK &#x6216;&#x8005; NGX_ERROR&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x5F53;&#x67D0;&#x4E2A; location &#x5904;&#x7406;&#x5230; NGX_HTTP_CONTENT_PHASE &#x9636;&#x6BB5;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6709; content handler &#x6A21;&#x5757;&#xFF0C;&#x90A3;&#x4E48; NGX_HTTP_CONTENT_PHASE &#x6302;&#x8F7D;&#x7684;&#x6240;&#x6709; content phase handlers &#x90FD;&#x4E0D;&#x4F1A;&#x88AB;&#x6267;&#x884C;&#x4E86;&#x3002;</p>
+&#x5F53;&#x67D0;&#x4E2A; location &#x5904;&#x7406;&#x5230; NGX_HTTP_CONTENT_PHASE &#x9636;&#x6BB5;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6709; content handler &#x6A21;&#x5757;&#xFF0C;&#x90A3;&#x4E48; NGX_HTTP_CONTENT_PHASE &#x6302;&#x8F7D;&#x7684;&#x6240;&#x6709; content phase handlers &#x90FD;&#x4E0D;&#x4F1A;&#x88AB;&#x6267;&#x884C;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x4F46;&#x662F;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6302;&#x8F7D;&#x4E0A;&#x53BB;&#x7684; handler &#x6709;&#x4E00;&#x4E2A;&#x7279;&#x70B9;&#x662F;&#x5FC5;&#x987B;&#x5728; NGX_HTTP_CONTENT_PHASE &#x9636;&#x6BB5;&#x624D;&#x80FD;&#x6267;&#x884C;&#x5230;&#x3002;
-&#x5982;&#x679C;&#x60F3;&#x8981; handler &#x5728;&#x66F4;&#x65E9;&#x7684;&#x9636;&#x6BB5;&#x6267;&#x884C;&#xFF0C;&#x90A3;&#x5C31;&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x6302;&#x8F7D;&#x65B9;&#x5F0F;&#x3002;</p>
+&#x4F46;&#x662F;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6302;&#x8F7D;&#x7684; handler &#x6709;&#x4E00;&#x4E2A;&#x7279;&#x70B9;&#x662F;&#x5FC5;&#x987B;&#x5728; NGX_HTTP_CONTENT_PHASE &#x9636;&#x6BB5;&#x624D;&#x80FD;&#x6267;&#x884C;&#x5230;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8981; handler &#x5728;&#x66F4;&#x65E9;&#x7684;&#x9636;&#x6BB5;&#x6267;&#x884C;&#xFF0C;&#x90A3;&#x5C31;&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x6302;&#x8F7D;&#x65B9;&#x5F0F;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x90A3;&#x4E48;&#x5728;&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#x4F1A;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x6302;&#x8F7D;&#x5462;&#xFF1F;
-&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x67D0;&#x4E2A;&#x6A21;&#x5757;&#x5BF9;&#x67D0;&#x4E2A; location &#x8FDB;&#x884C;&#x4E86;&#x5904;&#x7406;&#x4EE5;&#x540E;&#xFF0C;&#x53D1;&#x73B0;&#x7B26;&#x5408;&#x81EA;&#x5DF1;&#x5904;&#x7406;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x800C;&#x4E14;&#x4E5F;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x518D;&#x8C03;&#x7528; NGX_HTTP_CONTENT_PHASE &#x9636;&#x6BB5;&#x7684;&#x5176;&#x5B83; handler &#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x52A8;&#x6001;&#x6302;&#x8F7D;&#x4E0A;&#x8FD9;&#x4E2A; handler&#x3002;</p>
+&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x67D0;&#x4E2A;&#x6A21;&#x5757;&#x5BF9;&#x67D0;&#x4E2A; location &#x8FDB;&#x884C;&#x4E86;&#x5904;&#x7406;&#x540E;&#xFF0C;&#x53D1;&#x73B0;&#x7B26;&#x5408;&#x81EA;&#x5DF1;&#x5904;&#x7406;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x800C;&#x4E14;&#x4E5F;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x518D;&#x8C03;&#x7528; NGX_HTTP_CONTENT_PHASE &#x9636;&#x6BB5;&#x7684;&#x5176;&#x5B83; handler &#x8FDB;&#x884C;&#x5904;&#x7406;&#x65F6;&#xFF0C;&#x5C31;&#x52A8;&#x6001;&#x6302;&#x8F7D;&#x4E0A;&#x8FD9;&#x4E2A; handler&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x4E0B;&#x9762;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x6302;&#x8F7D;&#x65B9;&#x5F0F;&#x7684;&#x5177;&#x4F53;&#x4F8B;&#x5B50;&#xFF08;&#x6458;&#x81EA; Emiller&#x2019;s Guide To nginx Module Development &#xFF09;&#x3002;</p>
+&#x4E0B;&#x9762;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x6302;&#x8F7D;&#x65B9;&#x5F0F;&#x7684;&#x5177;&#x4F53;&#x4F8B;&#x5B50; (&#x6458;&#x81EA; Emiller&#x2019;s Guide To Nginx Module Development)&#x3002;</p>
 <pre><code>static char *
-ngx_http_circle_gif(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
-{
+ngx_http_circle_gif(ngx_conf_t *cf, ngx_command_t *cmd, void *conf) {
     ngx_http_core_loc_conf_t  *clcf;
 
     clcf = ngx_http_conf_get_module_loc_conf(cf, ngx_http_core_module);
