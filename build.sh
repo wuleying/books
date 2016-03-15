@@ -4,7 +4,7 @@
 summary_file="SUMMARY.md"
 
 if [ ! -f $summary_file ]; then
-    echo "Error: SUMMARY.md is not exist"
+    echo "Error: $summary_file is not exist"
     exit 1;
 fi
 
