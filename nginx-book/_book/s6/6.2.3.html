@@ -53,7 +53,7 @@
         data-chapter-title="定时器"
         data-filepath="s6/6.2.3.md"
         data-basepath=".."
-        data-revision="Tue Mar 15 2016 11:51:20 GMT+0800 (CST)"
+        data-revision="Tue Mar 15 2016 14:03:49 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1616,7 +1616,7 @@
                         
                             <b>6.3.</b>
                         
-                        mail 模块
+                        mail 模块 (0%)
                     </a>
             
             
@@ -3724,14 +3724,13 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x5B9A;&#x65F6;&#x5668;">&#x5B9A;&#x65F6;&#x5668;</h1>
+                        <h1 id="623-&#x5B9A;&#x65F6;&#x5668;">6.2.3 &#x5B9A;&#x65F6;&#x5668;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-nginx &#x5728;&#x9700;&#x8981;&#x7528;&#x5230;&#x8D85;&#x65F6;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x7528;&#x5230;&#x5B9A;&#x65F6;&#x5668;&#x673A;&#x5236;&#x3002;
-&#x6BD4;&#x5982;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x4EE5;&#x540E;&#x7684;&#x90A3;&#x4E9B;&#x8BFB;&#x5199;&#x8D85;&#x65F6;&#x3002;
-nginx &#x4F7F;&#x7528;&#x7EA2;&#x9ED1;&#x6811;&#x6765;&#x6784;&#x9020;&#x5B9A;&#x671F;&#x5668;&#xFF0C;&#x7EA2;&#x9ED1;&#x6811;&#x662F;&#x4E00;&#x79CD;&#x6709;&#x5E8F;&#x7684;&#x4E8C;&#x53C9;&#x5E73;&#x8861;&#x6811;&#xFF0C;&#x5176;&#x67E5;&#x627E;&#x63D2;&#x5165;&#x548C;&#x5220;&#x9664;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x90FD;&#x4E3A; O(logn)&#xFF0C;&#x6240;&#x4EE5;&#x662F;&#x4E00;&#x79CD;&#x6BD4;&#x8F83;&#x7406;&#x60F3;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#x3002;</p>
+Nginx &#x5728;&#x8D85;&#x65F6;&#x90FD;&#x4F1A;&#x7528;&#x5230;&#x5B9A;&#x65F6;&#x5668;&#x673A;&#x5236;&#xFF0C;&#x6BD4;&#x5982;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x540E;&#x7684;&#x90A3;&#x4E9B;&#x8BFB;&#x5199;&#x8D85;&#x65F6;&#x3002;
+Nginx &#x4F7F;&#x7528;&#x7EA2;&#x9ED1;&#x6811;&#x6765;&#x6784;&#x9020;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x7EA2;&#x9ED1;&#x6811;&#x662F;&#x4E00;&#x79CD;&#x6709;&#x5E8F;&#x7684;&#x4E8C;&#x53C9;&#x5E73;&#x8861;&#x6811;&#xFF0C;&#x5176;&#x67E5;&#x627E;&#x63D2;&#x5165;&#x548C;&#x5220;&#x9664;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x90FD;&#x4E3A; O(log n)&#xFF0C;&#x6240;&#x4EE5;&#x662F;&#x4E00;&#x79CD;&#x6BD4;&#x8F83;&#x7406;&#x60F3;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x5B9A;&#x65F6;&#x5668;&#x7684;&#x673A;&#x5236;&#x5C31;&#x662F;&#xFF0C;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x503C;&#x662F;&#x5176;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x6BCF;&#x6B21;&#x67E5;&#x627E;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x6700;&#x5C0F;&#x503C;&#x5DF2;&#x7ECF;&#x8FC7;&#x671F;&#x5C31;&#x5220;&#x9664;&#x8BE5;&#x8282;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x67E5;&#x627E;&#xFF0C;&#x76F4;&#x5230;&#x6240;&#x6709;&#x8D85;&#x65F6;&#x8282;&#x70B9;&#x90FD;&#x88AB;&#x5220;&#x9664;&#x3002;</p>
+&#x5B9A;&#x65F6;&#x5668;&#x7684;&#x673A;&#x5236;&#x662F;&#xFF1A;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x503C;&#x662F;&#x5176;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x6BCF;&#x6B21;&#x67E5;&#x627E;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x6700;&#x5C0F;&#x503C;&#x5DF2;&#x7ECF;&#x8FC7;&#x671F;&#x5C31;&#x5220;&#x9664;&#x8BE5;&#x8282;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x67E5;&#x627E;&#xFF0C;&#x76F4;&#x5230;&#x6240;&#x6709;&#x8D85;&#x65F6;&#x8282;&#x70B9;&#x90FD;&#x88AB;&#x5220;&#x9664;&#x3002;</p>
 
                     
                     </section>
@@ -3745,7 +3744,7 @@ nginx &#x4F7F;&#x7528;&#x7EA2;&#x9ED1;&#x6811;&#x6765;&#x6784;&#x9020;&#x5B9A;&#
         <a href="../s6/6.2.2.html" class="navigation navigation-prev " aria-label="Previous page: accept 锁"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../s6/6.3.html" class="navigation navigation-next " aria-label="Next page: mail 模块"><i class="fa fa-angle-right"></i></a>
+        <a href="../s6/6.3.html" class="navigation navigation-next " aria-label="Next page: mail 模块 (0%)"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

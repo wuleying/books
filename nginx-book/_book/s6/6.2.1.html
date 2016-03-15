@@ -53,7 +53,7 @@
         data-chapter-title="event 的类型和功能"
         data-filepath="s6/6.2.1.md"
         data-basepath=".."
-        data-revision="Tue Mar 15 2016 11:51:20 GMT+0800 (CST)"
+        data-revision="Tue Mar 15 2016 14:03:49 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1616,7 +1616,7 @@
                         
                             <b>6.3.</b>
                         
-                        mail 模块
+                        mail 模块 (0%)
                     </a>
             
             
@@ -3724,18 +3724,17 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="event-&#x7684;&#x7C7B;&#x578B;&#x548C;&#x529F;&#x80FD;">event &#x7684;&#x7C7B;&#x578B;&#x548C;&#x529F;&#x80FD;</h1>
+                        <h1 id="621-event-&#x7684;&#x7C7B;&#x578B;&#x548C;&#x529F;&#x80FD;">6.2.1 event &#x7684;&#x7C7B;&#x578B;&#x548C;&#x529F;&#x80FD;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-nginx &#x662F;&#x4EE5; event&#xFF08;&#x4E8B;&#x4EF6;&#xFF09;&#x5904;&#x7406;&#x6A21;&#x578B;&#x4E3A;&#x57FA;&#x7840;&#x7684;&#x6A21;&#x5757;&#x3002;
-&#x5B83;&#x4E3A;&#x4E86;&#x652F;&#x6301;&#x8DE8;&#x5E73;&#x53F0;&#xFF0C;&#x62BD;&#x8C61;&#x51FA;&#x4E86; event &#x6A21;&#x5757;&#x3002;
-&#x5B83;&#x652F;&#x6301;&#x7684; event &#x5904;&#x7406;&#x7C7B;&#x578B;&#x6709;&#xFF1A;AIO&#xFF08;&#x5F02;&#x6B65; IO &#xFF09;&#xFF0C;/dev/poll&#xFF08; Solaris &#x548C; Unix &#x7279;&#x6709;&#xFF09;&#xFF0C;epoll&#xFF08; Linux &#x7279;&#x6709;&#xFF09;&#xFF0C;eventport&#xFF08; Solaris 10 &#x7279;&#x6709;&#xFF09;&#xFF0C;kqueue&#xFF08; BSD &#x7279;&#x6709;&#xFF09;&#xFF0C;poll&#xFF0C;rtsig&#xFF08;&#x5B9E;&#x65F6;&#x4FE1;&#x53F7;&#xFF09;&#xFF0C;select &#x7B49;&#x3002;</p>
+Nginx &#x662F;&#x4EE5; event (&#x4E8B;&#x4EF6;) &#x5904;&#x7406;&#x6A21;&#x578B;&#x4E3A;&#x57FA;&#x7840;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5B83;&#x4E3A;&#x4E86;&#x652F;&#x6301;&#x8DE8;&#x5E73;&#x53F0;&#xFF0C;&#x62BD;&#x8C61;&#x51FA;&#x4E86; event &#x6A21;&#x5757;&#x3002;
+&#x5B83;&#x652F;&#x6301;&#x7684; event &#x5904;&#x7406;&#x7C7B;&#x578B;&#x6709;&#xFF1A;AIO (&#x5F02;&#x6B65; IO)&#xFF0C;/dev/poll (Solaris &#x548C; Unix &#x7279;&#x6709;)&#xFF0C;epoll (Linux &#x7279;&#x6709;)&#xFF0C;eventport (Solaris 10 &#x7279;&#x6709;)&#xFF0C;kqueue (BSD &#x7279;&#x6709;)&#xFF0C;poll&#xFF0C;rtsig (&#x5B9E;&#x65F6;&#x4FE1;&#x53F7;)&#xFF0C;select &#x7B49;&#x3002;</p>
 <p>&#x2003;&#x2003;
 event &#x6A21;&#x5757;&#x7684;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x76D1;&#x542C; accept &#x540E;&#x5EFA;&#x7ACB;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x5BF9;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;&#x8FDB;&#x884C;&#x6DFB;&#x52A0;&#x5220;&#x9664;&#x3002;
-&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x6A21;&#x578B;&#x548C; nginx &#x7684;&#x975E;&#x963B;&#x585E; IO &#x6A21;&#x578B;&#x7ED3;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x3002;
-&#x5F53; IO &#x53EF;&#x8BFB;&#x53EF;&#x5199;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x76F8;&#x5E94;&#x7684;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;&#x5C31;&#x4F1A;&#x88AB;&#x5524;&#x9192;&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x4F1A;&#x53BB;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x6A21;&#x578B;&#x548C; Nginx &#x7684;&#x975E;&#x963B;&#x585E; IO &#x6A21;&#x578B;&#x7ED3;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x3002;
+&#x5F53; IO &#x53EF;&#x8BFB;&#x53EF;&#x5199;&#x65F6;&#xFF0C;&#x76F8;&#x5E94;&#x7684;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;&#x5C31;&#x4F1A;&#x88AB;&#x5524;&#x9192;&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x4F1A;&#x53BB;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x7279;&#x522B;&#x5BF9;&#x4E8E; Linux&#xFF0C;nginx &#x5927;&#x90E8;&#x5206; event &#x91C7;&#x7528; epoll EPOLLET&#xFF08;&#x8FB9;&#x6CBF;&#x89E6;&#x53D1;&#xFF09;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#xFF0C;&#x53EA;&#x6709; listen &#x7AEF;&#x53E3;&#x7684;&#x8BFB;&#x4E8B;&#x4EF6;&#x662F; EPOLLLT&#xFF08;&#x6C34;&#x5E73;&#x89E6;&#x53D1;&#xFF09;&#x3002;
+&#x7279;&#x522B;&#x5BF9;&#x4E8E; Linux&#xFF0C;Nginx &#x5927;&#x90E8;&#x5206; event &#x91C7;&#x7528; epoll EPOLLET (&#x8FB9;&#x6CBF;&#x89E6;&#x53D1;) &#x7684;&#x65B9;&#x6CD5;&#x6765;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#xFF0C;&#x53EA;&#x6709; listen &#x7AEF;&#x53E3;&#x7684;&#x8BFB;&#x4E8B;&#x4EF6;&#x662F; EPOLLLT (&#x6C34;&#x5E73;&#x89E6;&#x53D1;)&#x3002;
 &#x5BF9;&#x4E8E;&#x8FB9;&#x6CBF;&#x89E6;&#x53D1;&#xFF0C;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x4E86;&#x53EF;&#x8BFB;&#x4E8B;&#x4EF6;&#x5FC5;&#x987B;&#x53CA;&#x65F6;&#x5904;&#x7406;&#xFF0C;&#x5426;&#x5219;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x8BFB;&#x4E8B;&#x4EF6;&#x4E0D;&#x518D;&#x89E6;&#x53D1;&#xFF0C;&#x8FDE;&#x63A5;&#x997F;&#x6B7B;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
 <pre><code>typedef struct {
     /* &#x6DFB;&#x52A0;&#x5220;&#x9664;&#x4E8B;&#x4EF6; */
