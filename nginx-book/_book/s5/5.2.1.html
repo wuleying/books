@@ -53,7 +53,7 @@
         data-chapter-title="配置"
         data-filepath="s5/5.2.1.md"
         data-basepath=".."
-        data-revision="Mon Mar 14 2016 16:44:43 GMT+0800 (CST)"
+        data-revision="Tue Mar 15 2016 11:51:20 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1261,7 +1261,7 @@
                         
                             <b>5.1.2.1.</b>
                         
-                        Handler 模块？
+                        handler 模块？
                     </a>
             
             
@@ -1276,7 +1276,7 @@
                         
                             <b>5.1.2.2.</b>
                         
-                        Upstream 模块！
+                        upstream 模块！
                     </a>
             
             
@@ -3436,7 +3436,7 @@
                         
                             <b>13.</b>
                         
-                        Nginx 的 upstream 原理解析
+                        Nginx 的 upstream 原理解析 (0%)
                     </a>
             
             
@@ -3724,7 +3724,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x914D;&#x7F6E;">&#x914D;&#x7F6E;</h1>
+                        <h1 id="521-&#x914D;&#x7F6E;">5.2.1 &#x914D;&#x7F6E;</h1>
 <hr>
 <p>&#x2003;&#x2003;
 &#x8981;&#x4E86;&#x89E3;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x7684;&#x5F00;&#x53D1;&#x65B9;&#x6CD5;&#xFF0C;&#x9996;&#x5148;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x3002;
@@ -3740,9 +3740,7 @@
 </code></pre><p>&#x2003;&#x2003;
 &#x4ECE;&#x914D;&#x7F6E;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;</p>
 <ul>
-<li><p>&#x6838;&#x5FC3;&#x6307;&#x4EE4; &#x201D;ip_hash&#x201D; &#x53EA;&#x80FD;&#x5728; upstream {} &#x4E2D;&#x4F7F;&#x7528;&#x3002;
-&#x8FD9;&#x6761;&#x6307;&#x4EE4;&#x7528;&#x4E8E;&#x901A;&#x77E5; nginx &#x4F7F;&#x7528; ip hash &#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B97;&#x6CD5;&#x3002;
-&#x5982;&#x679C;&#x6CA1;&#x52A0;&#x8FD9;&#x6761;&#x6307;&#x4EE4; nginx &#x4F1A;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684; round robin &#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x3002;
+<li><p>&#x6838;&#x5FC3;&#x6307;&#x4EE4; ip_hash &#x53EA;&#x80FD;&#x5728; upstream {} &#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x8FD9;&#x6761;&#x6307;&#x4EE4;&#x7528;&#x4E8E;&#x901A;&#x77E5; Nginx &#x4F7F;&#x7528; ip hash &#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B97;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x52A0;&#x8FD9;&#x6761;&#x6307;&#x4EE4; Nginx &#x4F1A;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684; round robin &#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x3002;
 &#x8BF7;&#x5BF9;&#x6BD4; handler &#x6A21;&#x5757;&#x7684;&#x914D;&#x7F6E;&#x662F;&#x4E0D;&#x662F;&#x6709;&#x5171;&#x540C;&#x70B9;&#xFF1F;</p>
 </li>
 <li><p>upstream {} &#x4E2D;&#x7684;&#x6307;&#x4EE4;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x5728; server &#x6307;&#x4EE4;&#x524D;&#xFF0C;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x5728; server &#x6307;&#x4EE4;&#x540E;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x5728;&#x4E24;&#x6761; server &#x6307;&#x4EE4;&#x4E4B;&#x95F4;&#x3002;
@@ -3757,8 +3755,8 @@
 </ul>
 <p>&#x2003;&#x2003;
 &#x795E;&#x5947;&#x7684;&#x4E8B;&#x60C5;&#x51FA;&#x73B0;&#x4E86;&#xFF1A;</p>
-<pre><code>nginx: [emerg] invalid parameter &quot;weight=7&quot; in nginx.conf:103
-configuration file nginx.conf test failed
+<pre><code>Nginx: [emerg] invalid parameter &quot;weight=7&quot; in Nginx.conf:103
+configuration file Nginx.conf test failed
 </code></pre><p>&#x2003;&#x2003;
 &#x53EF;&#x89C1; ip_hash &#x6307;&#x4EE4;&#x7684;&#x786E;&#x80FD;&#x5F71;&#x54CD;&#x5230;&#x914D;&#x7F6E;&#x7684;&#x89E3;&#x6790;&#x3002;</p>
 

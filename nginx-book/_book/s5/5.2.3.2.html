@@ -53,7 +53,7 @@
         data-chapter-title="设置 init_upstream回调"
         data-filepath="s5/5.2.3.2.md"
         data-basepath=".."
-        data-revision="Mon Mar 14 2016 16:44:43 GMT+0800 (CST)"
+        data-revision="Tue Mar 15 2016 11:51:20 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1261,7 +1261,7 @@
                         
                             <b>5.1.2.1.</b>
                         
-                        Handler 模块？
+                        handler 模块？
                     </a>
             
             
@@ -1276,7 +1276,7 @@
                         
                             <b>5.1.2.2.</b>
                         
-                        Upstream 模块！
+                        upstream 模块！
                     </a>
             
             
@@ -3436,7 +3436,7 @@
                         
                             <b>13.</b>
                         
-                        Nginx 的 upstream 原理解析
+                        Nginx 的 upstream 原理解析 (0%)
                     </a>
             
             
@@ -3724,12 +3724,11 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x8BBE;&#x7F6E;-initupstream-&#x56DE;&#x8C03;">&#x8BBE;&#x7F6E; init_upstream &#x56DE;&#x8C03;</h1>
+                        <h1 id="5232-&#x8BBE;&#x7F6E;-initupstream-&#x56DE;&#x8C03;">5.2.3.2 &#x8BBE;&#x7F6E; init_upstream &#x56DE;&#x8C03;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-nginx &#x521D;&#x59CB;&#x5316; upstream &#x65F6;&#x4F1A;&#x5728; ngx_http_upstream_init_main_conf &#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;&#x8BBE;&#x7F6E;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x521D;&#x59CB;&#x5316;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x3002;
-&#x8FD9;&#x91CC;&#x4E0D;&#x592A;&#x597D;&#x7406;&#x89E3;&#x7684;&#x662F; uscf &#x7684;&#x5177;&#x4F53;&#x4F4D;&#x7F6E;&#x3002;
-&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x793A;&#x610F;&#x56FE;&#x8BF4;&#x660E; upstream &#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x7684;&#x914D;&#x7F6E;&#x7684;&#x5185;&#x5B58;&#x5E03;&#x5C40;&#x3002;</p>
+Nginx &#x521D;&#x59CB;&#x5316; upstream &#x65F6;&#x4F1A;&#x5728; ngx_http_upstream_init_main_conf &#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;&#x8BBE;&#x7F6E;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x521D;&#x59CB;&#x5316;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x3002;
+&#x8FD9;&#x91CC;&#x4E0D;&#x592A;&#x597D;&#x7406;&#x89E3;&#x7684;&#x662F; uscf &#x7684;&#x5177;&#x4F53;&#x4F4D;&#x7F6E;&#xFF0C;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x793A;&#x610F;&#x56FE;&#x8BF4;&#x660E; upstream &#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x7684;&#x914D;&#x7F6E;&#x7684;&#x5185;&#x5B58;&#x5E03;&#x5C40;&#x3002;</p>
 <p><img src="../images/5.2.3.2/01.png" alt="image"></p>
 <p>&#x2003;&#x2003;
 &#x4ECE;&#x56FE;&#x4E0A;&#x53EF;&#x4EE5;&#x770B;&#x51FA; MAIN_CONF &#x4E2D; ngx_upstream_module &#x6A21;&#x5757;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x6570;&#x7EC4; upstreams&#xFF0C;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x5BF9;&#x5E94;&#x5C31;&#x662F;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x6BCF;&#x4E00;&#x4E2A; upstream{} &#x7684;&#x4FE1;&#x606F;&#x3002;

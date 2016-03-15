@@ -53,7 +53,7 @@
         data-chapter-title="设置 uscf-&gt;flags"
         data-filepath="s5/5.2.3.1.md"
         data-basepath=".."
-        data-revision="Mon Mar 14 2016 16:44:43 GMT+0800 (CST)"
+        data-revision="Tue Mar 15 2016 11:51:20 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1261,7 +1261,7 @@
                         
                             <b>5.1.2.1.</b>
                         
-                        Handler 模块？
+                        handler 模块？
                     </a>
             
             
@@ -1276,7 +1276,7 @@
                         
                             <b>5.1.2.2.</b>
                         
-                        Upstream 模块！
+                        upstream 模块！
                     </a>
             
             
@@ -3436,7 +3436,7 @@
                         
                             <b>13.</b>
                         
-                        Nginx 的 upstream 原理解析
+                        Nginx 的 upstream 原理解析 (0%)
                     </a>
             
             
@@ -3724,7 +3724,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x8BBE;&#x7F6E;-uscfflags">&#x8BBE;&#x7F6E; uscf-&gt;flags</h1>
+                        <h1 id="5231-&#x8BBE;&#x7F6E;-uscfflags">5.2.3.1 &#x8BBE;&#x7F6E; uscf-&gt;flags</h1>
 <hr>
 <table>
 <thead>
@@ -3736,34 +3736,34 @@
 <tbody>
 <tr>
 <td>NGX_HTTP_UPSTREAM_CREATE</td>
-<td>&#x521B;&#x5EFA;&#x6807;&#x5FD7;&#xFF0C;&#x5982;&#x679C;&#x542B;&#x6709;&#x521B;&#x5EFA;&#x6807;&#x5FD7;&#x7684;&#x8BDD;&#xFF0C;nginx &#x4F1A;&#x68C0;&#x67E5;&#x91CD;&#x590D;&#x521B;&#x5EFA;&#x4EE5;&#x53CA;&#x5FC5;&#x8981;&#x53C2;&#x6570;&#x662F;&#x5426;&#x586B;&#x5199;&#x3002;</td>
+<td>&#x521B;&#x5EFA;&#x6807;&#x5FD7;&#xFF0C;&#x5982;&#x679C;&#x542B;&#x6709;&#x521B;&#x5EFA;&#x6807;&#x5FD7; Nginx &#x4F1A;&#x68C0;&#x67E5;&#x91CD;&#x590D;&#x521B;&#x5EFA;&#x4EE5;&#x53CA;&#x5FC5;&#x8981;&#x53C2;&#x6570;&#x662F;&#x5426;&#x586B;&#x5199;</td>
 </tr>
 <tr>
 <td>NGX_HTTP_UPSTREAM_MAX_FAILS</td>
-<td>&#x53EF;&#x4EE5;&#x5728; server &#x4E2D;&#x4F7F;&#x7528; max_fails &#x5C5E;&#x6027;&#x3002;</td>
+<td>&#x53EF;&#x4EE5;&#x5728; server &#x4E2D;&#x4F7F;&#x7528; max_fails &#x5C5E;&#x6027;</td>
 </tr>
 <tr>
 <td>NGX_HTTP_UPSTREAM_FAIL_TIMEOUT</td>
-<td>&#x53EF;&#x4EE5;&#x5728; server &#x4E2D;&#x4F7F;&#x7528; fail_timeout &#x5C5E;&#x6027;&#x3002;</td>
+<td>&#x53EF;&#x4EE5;&#x5728; server &#x4E2D;&#x4F7F;&#x7528; fail_timeout &#x5C5E;&#x6027;</td>
 </tr>
 <tr>
 <td>NGX_HTTP_UPSTREAM_DOWN</td>
-<td>&#x53EF;&#x4EE5;&#x5728; server &#x4E2D;&#x4F7F;&#x7528; down &#x5C5E;&#x6027;&#x3002;</td>
+<td>&#x53EF;&#x4EE5;&#x5728; server &#x4E2D;&#x4F7F;&#x7528; down &#x5C5E;&#x6027;</td>
 </tr>
 <tr>
 <td>NGX_HTTP_UPSTREAM_WEIGHT</td>
-<td>&#x53EF;&#x4EE5;&#x5728; server &#x4E2D;&#x4F7F;&#x7528; weight &#x5C5E;&#x6027;&#x3002;</td>
+<td>&#x53EF;&#x4EE5;&#x5728; server &#x4E2D;&#x4F7F;&#x7528; weight &#x5C5E;&#x6027;</td>
 </tr>
 <tr>
 <td>NGX_HTTP_UPSTREAM_BACKUP</td>
-<td>&#x53EF;&#x4EE5;&#x5728; server &#x4E2D;&#x4F7F;&#x7528; backup &#x5C5E;&#x6027;&#x3002;</td>
+<td>&#x53EF;&#x4EE5;&#x5728; server &#x4E2D;&#x4F7F;&#x7528; backup &#x5C5E;&#x6027;</td>
 </tr>
 </tbody>
 </table>
 <p>&#x2003;&#x2003;
 &#x5982;&#x679C;&#x8054;&#x60F3;&#x5230;&#x521A;&#x521A;&#x9047;&#x5230;&#x7684;&#x90A3;&#x4E2A;&#x795E;&#x5947;&#x7684;&#x914D;&#x7F6E;&#x9519;&#x8BEF;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x4E00;&#x4E2A;&#x7ED3;&#x8BBA;&#xFF1A;
 &#x5728;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x7684;&#x6307;&#x4EE4;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E2D;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5E76;&#x4FEE;&#x6539; upstream{} &#x4E2D; server &#x6307;&#x4EE4;&#x652F;&#x6301;&#x7684;&#x5C5E;&#x6027;&#x3002;
-&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x6027;&#x8D28;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x540C;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x5BF9;&#x5404;&#x79CD;&#x5C5E;&#x6027;&#x7684;&#x652F;&#x6301;&#x60C5;&#x51B5;&#x90FD;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x9700;&#x8981;&#x5728;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x68C0;&#x6D4B;&#x51FA;&#x662F;&#x5426;&#x4F7F;&#x7528;&#x4E86;&#x4E0D;&#x652F;&#x6301;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5C5E;&#x6027;&#x5E76;&#x7ED9;&#x51FA;&#x9519;&#x8BEF;&#x63D0;&#x793A;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;&#x63D0;&#x5347;&#x7CFB;&#x7EDF;&#x7EF4;&#x62A4;&#x6027;&#x662F;&#x5F88;&#x6709;&#x610F;&#x4E49;&#x7684;&#x3002;
+&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x6027;&#x8D28;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x540C;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6A21;&#x5757;&#x5BF9;&#x5404;&#x79CD;&#x5C5E;&#x6027;&#x7684;&#x652F;&#x6301;&#x60C5;&#x51B5;&#x90FD;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x9700;&#x8981;&#x5728;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x65F6;&#x68C0;&#x6D4B;&#x51FA;&#x662F;&#x5426;&#x4F7F;&#x7528;&#x4E86;&#x4E0D;&#x652F;&#x6301;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5C5E;&#x6027;&#x5E76;&#x7ED9;&#x51FA;&#x9519;&#x8BEF;&#x63D0;&#x793A;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;&#x63D0;&#x5347;&#x7CFB;&#x7EDF;&#x7EF4;&#x62A4;&#x6027;&#x662F;&#x5F88;&#x6709;&#x610F;&#x4E49;&#x7684;&#x3002;
 &#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x673A;&#x5236;&#x4E5F;&#x5B58;&#x5728;&#x7F3A;&#x9677;&#xFF0C;&#x6B63;&#x5982;&#x524D;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x6240;&#x793A;&#xFF0C;&#x6CA1;&#x6709;&#x673A;&#x5236;&#x80FD;&#x591F;&#x8FFD;&#x52A0;&#x68C0;&#x67E5;&#x5728;&#x66F4;&#x65B0;&#x652F;&#x6301;&#x5C5E;&#x6027;&#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x914D;&#x7F6E;&#x4E86;&#x4E0D;&#x652F;&#x6301;&#x5C5E;&#x6027;&#x7684; server &#x6307;&#x4EE4;&#x3002;</p>
 
                     
