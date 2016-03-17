@@ -53,7 +53,7 @@
         data-chapter-title="配置解析接口"
         data-filepath="s11/11.2.1.md"
         data-basepath=".."
-        data-revision="Wed Mar 16 2016 14:56:12 GMT+0800 (CST)"
+        data-revision="Thu Mar 17 2016 11:19:02 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,7 +3724,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x914D;&#x7F6E;&#x89E3;&#x6790;&#x63A5;&#x53E3;">&#x914D;&#x7F6E;&#x89E3;&#x6790;&#x63A5;&#x53E3;</h1>
+                        <h1 id="1121-&#x914D;&#x7F6E;&#x89E3;&#x6790;&#x63A5;&#x53E3;">11.2.1 &#x914D;&#x7F6E;&#x89E3;&#x6790;&#x63A5;&#x53E3;</h1>
 <hr>
 <p>&#x2003;&#x2003;
 ngx_init_cycle &#x63D0;&#x4F9B;&#x7684;&#x662F;&#x914D;&#x7F6E;&#x89E3;&#x6790;&#x63A5;&#x53E3;&#x3002;
@@ -3735,7 +3735,7 @@ ngx_init_cycle &#x63D0;&#x4F9B;&#x7684;&#x662F;&#x914D;&#x7F6E;&#x89E3;&#x6790;&
 <p>&#x2003;&#x2003;
 &#x4E00;&#x3001;&#x51C6;&#x5907;&#x5185;&#x5B58;</p>
 <p>&#x2003;&#x2003;
-nginx &#x6839;&#x636E;&#x4EE5;&#x5F80;&#x7684;&#x7ECF;&#x9A8C;( old_cycle )&#x9884;&#x6D4B;&#x8FD9;&#x4E00;&#x6B21;&#x7684;&#x914D;&#x7F6E;&#x9700;&#x8981;&#x5206;&#x914D;&#x591A;&#x5C11;&#x5185;&#x5B58;&#x3002;
+Nginx &#x6839;&#x636E;&#x4EE5;&#x5F80;&#x7684;&#x7ECF;&#x9A8C;( old_cycle )&#x9884;&#x6D4B;&#x8FD9;&#x4E00;&#x6B21;&#x7684;&#x914D;&#x7F6E;&#x9700;&#x8981;&#x5206;&#x914D;&#x591A;&#x5C11;&#x5185;&#x5B58;&#x3002;
 &#x6BD4;&#x5982;&#x8FD9;&#x6BB5;&#xFF1A;</p>
 <pre><code>if (old_cycle-&gt;shared_memory.part.nelts) {
     n = old_cycle-&gt;shared_memory.part.nelts;
@@ -3755,10 +3755,10 @@ if (ngx_list_init(&amp;cycle-&gt;shared_memory, pool, n, sizeof(ngx_shm_zone_t))
 <p>&#x2003;&#x2003;
 &#x4E8C;&#x3001;&#x51C6;&#x5907;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;</p>
 <p>&#x2003;&#x2003;
-nginx &#x542F;&#x52A8;&#x53EF;&#x80FD;&#x51FA;&#x9519;&#xFF0C;&#x51FA;&#x9519;&#x5C31;&#x8981;&#x8BB0;&#x5F55;&#x5230;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x4E2D;&#x3002;
-&#x800C;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x672C;&#x8EAB;&#x4E5F;&#x662F;&#x914D;&#x7F6E;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x89E3;&#x6790;&#x5B8C;&#x914D;&#x7F6E; nginx &#x5C31;&#x4E0D;&#x80FD;&#x4E86;&#x89E3;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x7684;&#x4FE1;&#x606F;&#x3002;
-nginx &#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x4E0A;&#x4E00;&#x4E2A;&#x5468;&#x671F;&#x7684;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x6765;&#x8BB0;&#x5F55;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x65F6;&#x53D1;&#x751F;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x5728;&#x914D;&#x7F6E;&#x89E3;&#x6790;&#x5B8C;&#x6210;&#x4EE5;&#x540E; nginx &#x5C31;&#x7528;&#x65B0;&#x7684;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x66FF;&#x6362;&#x65E7;&#x7684;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x3002;
-&#x5177;&#x4F53;&#x4EE3;&#x7801;&#x6458;&#x6284;&#x5982;&#x4E0B;&#xFF0C;&#x4EE5;&#x8BF4;&#x660E; nginx &#x89E3;&#x6790;&#x914D;&#x7F6E;&#x65F6;&#x4F7F;&#x7528; old_cycle &#x7684;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#xFF1A;</p>
+Nginx &#x542F;&#x52A8;&#x53EF;&#x80FD;&#x51FA;&#x9519;&#xFF0C;&#x51FA;&#x9519;&#x5C31;&#x8981;&#x8BB0;&#x5F55;&#x5230;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x4E2D;&#x3002;
+&#x800C;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x672C;&#x8EAB;&#x4E5F;&#x662F;&#x914D;&#x7F6E;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x89E3;&#x6790;&#x5B8C;&#x914D;&#x7F6E; Nginx &#x5C31;&#x4E0D;&#x80FD;&#x4E86;&#x89E3;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x7684;&#x4FE1;&#x606F;&#x3002;
+Nginx &#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x4E0A;&#x4E00;&#x4E2A;&#x5468;&#x671F;&#x7684;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x6765;&#x8BB0;&#x5F55;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x65F6;&#x53D1;&#x751F;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x5728;&#x914D;&#x7F6E;&#x89E3;&#x6790;&#x5B8C;&#x6210;&#x4EE5;&#x540E; Nginx &#x5C31;&#x7528;&#x65B0;&#x7684;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x66FF;&#x6362;&#x65E7;&#x7684;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x3002;
+&#x5177;&#x4F53;&#x4EE3;&#x7801;&#x6458;&#x6284;&#x5982;&#x4E0B;&#xFF0C;&#x4EE5;&#x8BF4;&#x660E; Nginx &#x89E3;&#x6790;&#x914D;&#x7F6E;&#x65F6;&#x4F7F;&#x7528; old_cycle &#x7684;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#xFF1A;</p>
 <pre><code>log = old_cycle-&gt;log;
 pool-&gt;log = log;
 cycle-&gt;log = log;
@@ -3792,7 +3792,7 @@ conf.log = log;
 conf.module_type = NGX_CORE_MODULE;
 conf.cmd_type = NGX_MAIN_CONF;
 </code></pre><p>&#x2003;&#x2003;
-&#x51C6;&#x5907;&#x597D;&#x4E86;&#x8FD9;&#x4E9B;&#x5185;&#x5BB9; nginx &#x5F00;&#x59CB;&#x8C03;&#x7528;&#x914D;&#x7F6E;&#x89E3;&#x6790;&#x6A21;&#x5757;&#xFF0C;&#x5176;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+&#x51C6;&#x5907;&#x597D;&#x4E86;&#x8FD9;&#x4E9B;&#x5185;&#x5BB9; Nginx &#x5F00;&#x59CB;&#x8C03;&#x7528;&#x914D;&#x7F6E;&#x89E3;&#x6790;&#x6A21;&#x5757;&#xFF0C;&#x5176;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code>if (ngx_conf_param(&amp;conf) != NGX_CONF_OK) {
     environ = senv;
     ngx_destroy_cycle_pools(&amp;conf);
@@ -3805,11 +3805,11 @@ if (ngx_conf_parse(&amp;conf, &amp;cycle-&gt;conf_file) != NGX_CONF_OK) {
     return NULL;
 }
 </code></pre><p>&#x2003;&#x2003;
-&#x7B2C;&#x4E00;&#x4E2A; if &#x89E3;&#x6790; nginx &#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570; -g &#x52A0;&#x5165;&#x7684;&#x914D;&#x7F6E;&#x3002;
-&#x7B2C;&#x4E8C;&#x4E2A; if &#x89E3;&#x6790; nginx &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;
+&#x7B2C;&#x4E00;&#x4E2A; if &#x89E3;&#x6790; Nginx &#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570; -g &#x52A0;&#x5165;&#x7684;&#x914D;&#x7F6E;&#x3002;
+&#x7B2C;&#x4E8C;&#x4E2A; if &#x89E3;&#x6790; Nginx &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;
 &#x597D;&#x7684;&#x8BBE;&#x8BA1;&#x5C31;&#x4F53;&#x73B0;&#x5728;&#x63A5;&#x53E3;&#x6781;&#x5EA6;&#x7B80;&#x5316;&#xFF0C;&#x6A21;&#x5757;&#x4E4B;&#x95F4;&#x7684;&#x8026;&#x5408;&#x975E;&#x5E38;&#x4F4E;&#x3002;
 &#x8FD9;&#x91CC;&#x53EA;&#x4F7F;&#x7528;&#x533A;&#x533A; 10 &#x884C;&#x5B8C;&#x6210;&#x4E86;&#x914D;&#x7F6E;&#x7684;&#x89E3;&#x6790;&#x3002;
-&#x5728;&#x8FD9;&#x91CC;&#x5148;&#x6D45;&#x5C1D;&#x8F84;&#x6B62;&#xFF0C;&#x5177;&#x4F53; nginx &#x5982;&#x4F55;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x5C06;&#x5728;&#x540E;&#x9762;&#x7684;&#x5C0F;&#x8282;&#x505A;&#x7EC6;&#x81F4;&#x7684;&#x4ECB;&#x7ECD;&#x3002;</p>
+&#x5728;&#x8FD9;&#x91CC;&#x5148;&#x6D45;&#x5C1D;&#x8F84;&#x6B62;&#xFF0C;&#x5177;&#x4F53; Nginx &#x5982;&#x4F55;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x5C06;&#x5728;&#x540E;&#x9762;&#x7684;&#x5C0F;&#x8282;&#x505A;&#x7EC6;&#x81F4;&#x7684;&#x4ECB;&#x7ECD;&#x3002;</p>
 
                     
                     </section>
