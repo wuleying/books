@@ -53,7 +53,7 @@
         data-chapter-title="创建并初始化上下文环境"
         data-filepath="s11/11.3.2.1.md"
         data-basepath=".."
-        data-revision="Thu Mar 17 2016 11:19:02 GMT+0800 (CST)"
+        data-revision="Thu Mar 17 2016 16:09:22 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,7 +3724,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x521B;&#x5EFA;&#x5E76;&#x521D;&#x59CB;&#x5316;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;">&#x521B;&#x5EFA;&#x5E76;&#x521D;&#x59CB;&#x5316;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;</h1>
+                        <h1 id="11321-&#x521B;&#x5EFA;&#x5E76;&#x521D;&#x59CB;&#x5316;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;">11.3.2.1 &#x521B;&#x5EFA;&#x5E76;&#x521D;&#x59CB;&#x5316;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;</h1>
 <hr>
 <pre><code>ctx = ngx_pcalloc(cf-&gt;pool, sizeof(ngx_http_conf_ctx_t));
 
@@ -3775,11 +3775,10 @@ for (m = 0; ngx_modules[m]; m++) {
     }
 }
 </code></pre><p>&#x2003;&#x2003;
-http &#x6A21;&#x5757;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883; ctx(&#x6CE8;&#x610F;&#x5728;&#x901A;&#x7528;&#x89E3;&#x6790;&#x6D41;&#x7A0B;&#x4E2D;&#x63D0;&#x5230;&#x7684; ctx &#x662F;&#x540C;&#x4E00;&#x4E2A;&#x4E1C;&#x897F;)&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x5B83;&#x662F;&#x7531;&#x4E09;&#x4E2A;&#x6307;&#x9488;&#x6570;&#x7EC4;&#x7EC4;&#x6210;&#x7684;&#xFF1A;main_conf&#x3001;srv_conf&#x3001;loc_conf&#x3002;
-&#x6839;&#x636E;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x4E09;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x7B49;&#x4E8E;&#x7CFB;&#x7EDF;&#x4E2D; http &#x6A21;&#x5757;&#x7684;&#x4E2A;&#x6570;&#x3002;
-&#x60F3;&#x60F3;&#x5E73;&#x65F6;&#x4E09;&#x56DB;&#x5341;&#x4E2A; http &#x6A21;&#x5757;&#x7684;&#x89C4;&#x6A21;&#xFF0C;&#x4E5F;&#x5E94;&#x8BE5;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x8FD9;&#x4E00;&#x5757;&#x7ED3;&#x6784;&#x7684;&#x5E9E;&#x5927;&#x3002;
+http &#x6A21;&#x5757;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883; ctx (&#x6CE8;&#x610F;&#x5728;&#x901A;&#x7528;&#x89E3;&#x6790;&#x6D41;&#x7A0B;&#x4E2D;&#x63D0;&#x5230;&#x7684; ctx &#x662F;&#x540C;&#x4E00;&#x4E2A;&#x4E1C;&#x897F;) &#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x5B83;&#x662F;&#x7531;&#x4E09;&#x4E2A;&#x6307;&#x9488;&#x6570;&#x7EC4;&#x7EC4;&#x6210;&#x7684;&#xFF1A;main_conf&#x3001;srv_conf&#x3001;loc_conf&#x3002;
+&#x6839;&#x636E;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x4E09;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x7B49;&#x4E8E;&#x7CFB;&#x7EDF;&#x4E2D; http &#x6A21;&#x5757;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x8054;&#x60F3;&#x5E73;&#x65F6;&#x4E09;&#x56DB;&#x5341;&#x4E2A; http &#x6A21;&#x5757;&#x7684;&#x89C4;&#x6A21;&#xFF0C;&#x4E5F;&#x5E94;&#x8BE5;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x8FD9;&#x4E00;&#x5757;&#x7ED3;&#x6784;&#x7684;&#x5E9E;&#x5927;&#x3002;
 Nginx &#x8FD8;&#x4E3A;&#x6BCF;&#x4E2A;&#x6A21;&#x5757;&#x5206;&#x522B;&#x6267;&#x884C;&#x5BF9;&#x5E94;&#x7684; create &#x51FD;&#x6570;&#x5206;&#x914D;&#x7A7A;&#x95F4;&#x3002;
-&#x9700;&#x8981;&#x6CE8;&#x610F;&#x540E;&#x9762;&#x7684;&#x8FD9;&#x4E00;&#x53E5; cf-&gt;ctx = ctx&#xFF0C;&#x6B63;&#x662F;&#x8FD9;&#x4E00;&#x53E5;&#x5C06;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x6210;&#x521A;&#x521A;&#x5EFA;&#x7ACB;&#x7684; ctx&#x3002;
+&#x9700;&#x8981;&#x6CE8;&#x610F;&#x8FD9;&#x4E00;&#x53E5; cf-&gt;ctx = ctx&#xFF0C;&#x6B63;&#x662F;&#x8FD9;&#x4E00;&#x53E5;&#x5C06;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x6210;&#x521A;&#x521A;&#x5EFA;&#x7ACB;&#x7684; ctx&#x3002;
 &#x6700;&#x540E;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x5404;&#x4E2A; http &#x6A21;&#x5757;&#x7684; preconfiguration &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5B8C;&#x6210;&#x4E86;&#x5BF9;&#x5E94;&#x6A21;&#x5757;&#x7684;&#x9884;&#x5904;&#x7406;&#x64CD;&#x4F5C;&#xFF0C;&#x5176;&#x4E3B;&#x8981;&#x5DE5;&#x4F5C;&#x662F;&#x521B;&#x5EFA;&#x6A21;&#x5757;&#x7528;&#x5230;&#x7684;&#x53D8;&#x91CF;&#x3002;</p>
 
                     

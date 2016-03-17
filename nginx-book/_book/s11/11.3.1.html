@@ -53,7 +53,7 @@
         data-chapter-title="通用过程"
         data-filepath="s11/11.3.1.md"
         data-basepath=".."
-        data-revision="Thu Mar 17 2016 11:19:02 GMT+0800 (CST)"
+        data-revision="Thu Mar 17 2016 16:09:22 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,11 +3724,10 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x901A;&#x7528;&#x8FC7;&#x7A0B;">&#x901A;&#x7528;&#x8FC7;&#x7A0B;</h1>
+                        <h1 id="1131-&#x901A;&#x7528;&#x8FC7;&#x7A0B;">11.3.1 &#x901A;&#x7528;&#x8FC7;&#x7A0B;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x914D;&#x7F6E;&#x89E3;&#x6790;&#x6A21;&#x5757;&#x5728; ngx_conf_file.c &#x4E2D;&#x5B9E;&#x73B0;&#x3002;
-&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#x51FD;&#x6570;&#x4E3B;&#x8981;&#x662F; ngx_conf_parse&#xFF0C;&#x53E6;&#x5916;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x63A5;&#x53E3; ngx_conf_param &#x7528;&#x6765;&#x89E3;&#x6790;&#x547D;&#x4EE4;&#x884C;&#x4F20;&#x9012;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x5F53;&#x7136;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x4E5F;&#x662F;&#x5BF9; ngx_conf_parse &#x7684;&#x5305;&#x88C5;&#x3002;</p>
+&#x914D;&#x7F6E;&#x89E3;&#x6790;&#x6A21;&#x5757;&#x5728; ngx_conf_file.c &#x4E2D;&#x5B9E;&#x73B0;&#xFF0C;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#x51FD;&#x6570;&#x4E3B;&#x8981;&#x662F; ngx_conf_parse&#xFF0C;&#x53E6;&#x5916;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x63A5;&#x53E3; ngx_conf_param &#x7528;&#x6765;&#x89E3;&#x6790;&#x547D;&#x4EE4;&#x884C;&#x4F20;&#x9012;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x5F53;&#x7136;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x4E5F;&#x662F;&#x5BF9; ngx_conf_parse &#x7684;&#x5305;&#x88C5;&#x3002;</p>
 <p>&#x2003;&#x2003;
 ngx_conf_parse &#x51FD;&#x6570;&#x652F;&#x6301;&#x4E09;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x89E3;&#x6790;&#x73AF;&#x5883;&#xFF1A;</p>
 <table>
@@ -3754,15 +3753,13 @@ ngx_conf_parse &#x51FD;&#x6570;&#x652F;&#x6301;&#x4E09;&#x79CD;&#x4E0D;&#x540C;&
 </tbody>
 </table>
 <p>&#x2003;&#x2003;
-&#x5148;&#x6765;&#x9E1F;&#x77B0; Nginx &#x89E3;&#x6790;&#x914D;&#x7F6E;&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x53EF;&#x53C2;&#x89C1;&#x4E0B;&#x9762;&#x793A;&#x610F;&#x56FE;&#xFF1A;</p>
+&#x5148;&#x6765;&#x9E1F;&#x77B0; Nginx &#x89E3;&#x6790;&#x914D;&#x7F6E;&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x53EF;&#x53C2;&#x89C1;&#x793A;&#x610F;&#x56FE;&#xFF1A;</p>
 <p>&#x2003;&#x2003;
 (&#x56FE;11-2 &#x7F3A;&#x5931;)</p>
 <p>&#x2003;&#x2003;
-&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x9012;&#x5F52;&#x7684;&#x8FC7;&#x7A0B;&#x3002;
-Nginx &#x9996;&#x5148;&#x89E3;&#x6790; core &#x6A21;&#x5757;&#x7684;&#x914D;&#x7F6E;&#x3002;
-core &#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x4E00;&#x4E9B;&#x5757;&#x6307;&#x4EE4;&#xFF0C;&#x8FD9;&#x4E9B;&#x6307;&#x4EE4;&#x5F15;&#x5165;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x7684;&#x6A21;&#x5757;&#xFF0C;Nginx &#x9047;&#x5230;&#x8FD9;&#x4E9B;&#x6307;&#x4EE4;&#x5C31;&#x91CD;&#x65B0;&#x8FED;&#x4EE3;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#xFF0C;&#x89E3;&#x6790;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x7684;&#x914D;&#x7F6E;&#x3002;
+&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x9012;&#x5F52;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;Nginx &#x9996;&#x5148;&#x89E3;&#x6790; core &#x6A21;&#x5757;&#x7684;&#x914D;&#x7F6E;&#xFF0C;core &#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x4E00;&#x4E9B;&#x5757;&#x6307;&#x4EE4;&#xFF0C;&#x8FD9;&#x4E9B;&#x6307;&#x4EE4;&#x5F15;&#x5165;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x7684;&#x6A21;&#x5757;&#xFF0C;Nginx &#x9047;&#x5230;&#x8FD9;&#x4E9B;&#x6307;&#x4EE4;&#x5C31;&#x91CD;&#x65B0;&#x8FED;&#x4EE3;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#xFF0C;&#x89E3;&#x6790;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x7684;&#x914D;&#x7F6E;&#x3002;
 &#x8FD9;&#x4E9B;&#x6A21;&#x5757;&#x914D;&#x7F6E;&#x4E2D;&#x53C8;&#x6709;&#x4E00;&#x4E9B;&#x5757;&#x6307;&#x4EE4;&#x5F15;&#x5165;&#x65B0;&#x7684;&#x6A21;&#x5757;&#x7C7B;&#x578B;&#x6216;&#x8005;&#x6307;&#x4EE4;&#x7C7B;&#x578B;&#xFF0C;Nginx &#x5C31;&#x4F1A;&#x518D;&#x6B21;&#x8FED;&#x4EE3;&#xFF0C;&#x89E3;&#x6790;&#x8FD9;&#x4E9B;&#x65B0;&#x7684;&#x914D;&#x7F6E;&#x7C7B;&#x578B;&#x3002;
-&#x6BD4;&#x5982;&#x4E0A;&#x56FE; Nginx &#x9047;&#x5230; events &#x6307;&#x4EE4;&#xFF0C;&#x5C31;&#x91CD;&#x65B0;&#x8C03;&#x7528; ngx_conf_parse() &#x89E3;&#x6790; event &#x6A21;&#x5757;&#x914D;&#x7F6E;&#xFF0C;&#x89E3;&#x6790;&#x5B8C;&#x4EE5;&#x540E; ngx_conf_parse() &#x8FD4;&#x56DE;&#xFF0C;Nginx &#x7EE7;&#x7EED;&#x89E3;&#x6790; core &#x6A21;&#x5757;&#x6307;&#x4EE4;&#xFF0C;&#x76F4;&#x5230;&#x9047;&#x5230; http &#x6307;&#x4EE4;&#x3002;
+&#x6BD4;&#x5982;&#x4E0A;&#x56FE; Nginx &#x9047;&#x5230; events &#x6307;&#x4EE4;&#xFF0C;&#x5C31;&#x91CD;&#x65B0;&#x8C03;&#x7528; ngx_conf_parse() &#x89E3;&#x6790; event &#x6A21;&#x5757;&#x914D;&#x7F6E;&#xFF0C;&#x89E3;&#x6790;&#x5B8C;&#x540E; ngx_conf_parse() &#x8FD4;&#x56DE;&#xFF0C;Nginx &#x7EE7;&#x7EED;&#x89E3;&#x6790; core &#x6A21;&#x5757;&#x6307;&#x4EE4;&#xFF0C;&#x76F4;&#x5230;&#x9047;&#x5230; http &#x6307;&#x4EE4;&#x3002;
 Nginx &#x518D;&#x6B21;&#x8C03;&#x7528; ngx_conf_parse() &#x89E3;&#x6790; http &#x6A21;&#x5757;&#x914D;&#x7F6E;&#x7684; http &#x7EA7;&#x6307;&#x4EE4;&#xFF0C;&#x5F53;&#x9047;&#x5230; server &#x6307;&#x4EE4;&#x65F6; Nginx &#x53C8;&#x4E00;&#x6B21;&#x8C03;&#x7528; ngx_conf_parse() &#x89E3;&#x6790; http &#x6A21;&#x5757;&#x914D;&#x7F6E;&#x7684; server &#x7EA7;&#x6307;&#x4EE4;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x4E86;&#x89E3;&#x4E86; Nginx &#x89E3;&#x6790;&#x914D;&#x7F6E;&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x6765;&#x770B;&#x5176;&#x4E2D;&#x7684;&#x5173;&#x952E;&#x51FD;&#x6570; ngx_conf_parse()&#x3002;</p>
@@ -3789,12 +3786,10 @@ ngx_conf_parse() &#x89E3;&#x6790;&#x914D;&#x7F6E;&#x5206;&#x6210;&#x4E24;&#x4E2A
 </code></pre><p>&#x2003;&#x2003;
 &#x8FD9;&#x91CC;&#x6CE8;&#x610F; cf-&gt;handler &#x548C; cf-&gt;handler_conf &#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x5176;&#x4E2D; handler &#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x89E3;&#x6790;&#x51FD;&#x6570;&#x6307;&#x9488;&#xFF0C;handler_conf &#x662F; conf &#x6307;&#x9488;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x4E0B;&#x9762;&#x7740;&#x91CD;&#x4ECB;&#x7ECD; Nginx &#x5185;&#x5EFA;&#x7684;&#x6307;&#x4EE4;&#x89E3;&#x6790;&#x673A;&#x5236;&#x3002;
-&#x672C;&#x673A;&#x5236;&#x5206;&#x4E3A; 4 &#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</p>
+&#x4E0B;&#x9762;&#x7740;&#x91CD;&#x4ECB;&#x7ECD; Nginx &#x5185;&#x5EFA;&#x7684;&#x6307;&#x4EE4;&#x89E3;&#x6790;&#x673A;&#x5236;&#xFF0C;&#x672C;&#x673A;&#x5236;&#x5206;&#x4E3A; 4 &#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</p>
 <p>&#x2003;&#x2003;
-&#x4E00;&#x3001;&#x53EA;&#x6709;&#x5904;&#x7406;&#x7684;&#x6A21;&#x5757;&#x7684;&#x7C7B;&#x578B;&#x662F; NGX_CONF_MODULE &#x6216;&#x8005;&#x662F;&#x5F53;&#x524D;&#x6B63;&#x5728;&#x5904;&#x7406;&#x7684;&#x6A21;&#x5757;&#x7C7B;&#x578B;&#x624D;&#x53EF;&#x80FD;&#x88AB;&#x6267;&#x884C;&#x3002;
-Nginx &#x4E2D;&#x6709;&#x4E00;&#x79CD;&#x6A21;&#x5757;&#x7C7B;&#x578B;&#x662F; NGX_CONF_MODULE&#xFF0C;&#x5F53;&#x524D;&#x53EA;&#x6709; ngx_conf_module &#x4E00;&#x79CD;&#xFF0C;&#x53EA;&#x652F;&#x6301;&#x4E00;&#x6761;&#x6307;&#x4EE4; include&#x3002;
-include &#x6307;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#x540E;&#x9762;&#x518D;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</p>
+&#x4E00;&#x3001;&#x53EA;&#x6709;&#x5904;&#x7406;&#x7684;&#x6A21;&#x5757;&#x7684;&#x7C7B;&#x578B;&#x662F; NGX_CONF_MODULE &#x6216;&#x662F;&#x5F53;&#x524D;&#x6B63;&#x5728;&#x5904;&#x7406;&#x7684;&#x6A21;&#x5757;&#x7C7B;&#x578B;&#x624D;&#x53EF;&#x80FD;&#x88AB;&#x6267;&#x884C;&#x3002;
+Nginx &#x4E2D;&#x6709;&#x4E00;&#x79CD;&#x6A21;&#x5757;&#x7C7B;&#x578B;&#x662F; NGX_CONF_MODULE&#xFF0C;&#x5F53;&#x524D;&#x53EA;&#x6709; ngx_conf_module &#x4E00;&#x79CD;&#xFF0C;&#x53EA;&#x652F;&#x6301;&#x4E00;&#x6761;&#x6307;&#x4EE4; include&#xFF0C;include &#x6307;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#x540E;&#x9762;&#x518D;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</p>
 <pre><code>ngx_modules[i]-&gt;type != NGX_CONF_MODULE &amp;&amp; ngx_modules[i]-&gt;type != cf-&gt;module_type
 </code></pre><p>&#x2003;&#x2003;
 &#x4E8C;&#x3001;&#x5339;&#x914D;&#x6307;&#x4EE4;&#x540D;&#xFF0C;&#x5224;&#x65AD;&#x6307;&#x4EE4;&#x7528;&#x6CD5;&#x662F;&#x5426;&#x6B63;&#x786E;&#x3002;</p>
@@ -3802,14 +3797,13 @@ include &#x6307;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#x540E;&#x9762;&#x518D;&#x8FDB;
 (1) &#x6307;&#x4EE4;&#x7684; Context &#x5FC5;&#x987B;&#x5F53;&#x524D;&#x89E3;&#x6790; Context &#x76F8;&#x7B26;&#xFF1B;</p>
 <pre><code>!(cmd-&gt;type &amp; cf-&gt;cmd_type)
 </code></pre><p>&#x2003;&#x2003;
-(2) &#x975E;&#x5757;&#x6307;&#x4EE4;&#x5FC5;&#x987B;&#x4EE5; ; &#x7ED3;&#x5C3E;&#xFF1B;</p>
+(2) &#x975E;&#x5757;&#x6307;&#x4EE4;&#x5FC5;&#x987B;&#x4EE5; &quot;;&quot; &#x7ED3;&#x5C3E;&#x3002;</p>
 <pre><code>!(cmd-&gt;type &amp; NGX_CONF_BLOCK) &amp;&amp; last != NGX_OK
 </code></pre><p>&#x2003;&#x2003;
-(3) &#x5757;&#x6307;&#x4EE4;&#x5FC5;&#x987B;&#x540E;&#x63A5; { &#xFF1B;</p>
+(3) &#x5757;&#x6307;&#x4EE4;&#x5FC5;&#x987B;&#x540E;&#x63A5; {&#x3002;</p>
 <pre><code>(cmd-&gt;type &amp; NGX_CONF_BLOCK) &amp;&amp; last != NGX_CONF_BLOCK_START
 </code></pre><p>&#x2003;&#x2003;
-(4) &#x6307;&#x4EE4;&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x5FC5;&#x987B;&#x6B63;&#x786E;&#x3002;
-&#x6CE8;&#x610F;&#x6307;&#x4EE4;&#x53C2;&#x6570;&#x6709;&#x6700;&#x5927;&#x503C; NGX_CONF_MAX_ARGS&#xFF0C;&#x76EE;&#x524D;&#x503C;&#x4E3A; 8&#x3002;</p>
+(4) &#x6307;&#x4EE4;&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x5FC5;&#x987B;&#x6B63;&#x786E;&#xFF0C;&#x6CE8;&#x610F;&#x6307;&#x4EE4;&#x53C2;&#x6570;&#x6709;&#x6700;&#x5927;&#x503C; NGX_CONF_MAX_ARGS&#xFF0C;&#x76EE;&#x524D;&#x503C;&#x4E3A; 8&#x3002;</p>
 <pre><code>if (!(cmd-&gt;type &amp; NGX_CONF_ANY)) {
     if (cmd-&gt;type &amp; NGX_CONF_FLAG) {
         if (cf-&gt;args-&gt;nelts != 2) {
@@ -3845,17 +3839,17 @@ include &#x6307;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#x540E;&#x9762;&#x518D;&#x8FDB;
 </code></pre><p>&#x2003;&#x2003;
 (1) NGX_DIRECT_CONF &#x5E38;&#x91CF;&#x5355;&#x7EAF;&#x7528;&#x6765;&#x6307;&#x5B9A;&#x914D;&#x7F6E;&#x5B58;&#x50A8;&#x533A;&#x7684;&#x5BFB;&#x5740;&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x7528;&#x4E8E; core &#x6A21;&#x5757;&#x3002;</p>
 <p>&#x2003;&#x2003;
-(2) NGX_MAIN_CONF &#x5E38;&#x91CF;&#x6709;&#x4E24;&#x91CD;&#x542B;&#x4E49;&#xFF0C;&#x5176;&#x4E00;&#x662F;&#x6307;&#x5B9A;&#x6307;&#x4EE4;&#x7684;&#x4F7F;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x662F; main(&#x5176;&#x5B9E;&#x8FD8;&#x662F;&#x6307; core &#x6A21;&#x5757;)&#xFF0C;&#x5176;&#x4E8C;&#x662F;&#x6307;&#x5B9A;&#x914D;&#x7F6E;&#x5B58;&#x50A8;&#x533A;&#x7684;&#x5BFB;&#x5740;&#x65B9;&#x6CD5;&#x3002;
+(2) NGX_MAIN_CONF &#x5E38;&#x91CF;&#x6709;&#x4E24;&#x91CD;&#x542B;&#x4E49;&#xFF0C;&#x5176;&#x4E00;&#x662F;&#x6307;&#x5B9A;&#x6307;&#x4EE4;&#x7684;&#x4F7F;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x662F; main (&#x5176;&#x5B9E;&#x8FD8;&#x662F;&#x6307; core &#x6A21;&#x5757;)&#xFF0C;&#x5176;&#x4E8C;&#x662F;&#x6307;&#x5B9A;&#x914D;&#x7F6E;&#x5B58;&#x50A8;&#x533A;&#x7684;&#x5BFB;&#x5740;&#x65B9;&#x6CD5;&#x3002;
 &#x6240;&#x4EE5;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x5E38;&#x5E38;&#x53EF;&#x4EE5;&#x89C1;&#x5230;&#x4F7F;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x662F; main &#x7684;&#x6307;&#x4EE4;&#x7684; cmd-&gt;type &#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code>NGX_MAIN_CONF|NGX_DIRECT_CONF|...
+<pre><code>NGX_MAIN_CONF | NGX_DIRECT_CONF | ...
 </code></pre><p>&#x2003;&#x2003;
 &#x8868;&#x793A;&#x6307;&#x4EE4;&#x4F7F;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x662F; main&#xFF0C;conf &#x5BFB;&#x5740;&#x65B9;&#x5F0F;&#x662F;&#x76F4;&#x63A5;&#x5BFB;&#x5740;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x4F7F;&#x7528; NGX_MAIN_CONF &#x8FD8;&#x8868;&#x793A;&#x6307;&#x5B9A;&#x914D;&#x7F6E;&#x5B58;&#x50A8;&#x533A;&#x7684;&#x5BFB;&#x5740;&#x65B9;&#x6CD5;&#x7684;&#x6307;&#x4EE4;&#x6709;4&#x4E2A;&#xFF1A;events&#x3001;http&#x3001;mail&#x3001;imap&#x3002;
-&#x8FD9;&#x56DB;&#x4E2A;&#x6307;&#x4EE4;&#x4E5F;&#x6709;&#x5171;&#x540C;&#x4E4B;&#x5904;&#xFF1A;&#x90FD;&#x662F;&#x4F7F;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x662F; main &#x7684;&#x5757;&#x6307;&#x4EE4;&#xFF0C;&#x5E76;&#x4E14;&#x5757;&#x4E2D;&#x7684;&#x6307;&#x4EE4;&#x90FD;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x7684;&#x6A21;&#x5757;(&#x5206;&#x522B;&#x662F; event &#x6A21;&#x5757;&#x3001;http &#x6A21;&#x5757;&#x3001;mail &#x6A21;&#x5757;&#x548C; mail &#x6A21;&#x5757;)&#x6765;&#x5904;&#x7406;&#x3002;</p>
-<pre><code>NGX_MAIN_CONF|NGX_CONF_BLOCK|...
+&#x8FD9;&#x56DB;&#x4E2A;&#x6307;&#x4EE4;&#x4E5F;&#x6709;&#x5171;&#x540C;&#x4E4B;&#x5904;&#xFF1A;&#x90FD;&#x662F;&#x4F7F;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x662F; main &#x7684;&#x5757;&#x6307;&#x4EE4;&#xFF0C;&#x5E76;&#x4E14;&#x5757;&#x4E2D;&#x7684;&#x6307;&#x4EE4;&#x90FD;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x7684;&#x6A21;&#x5757; (&#x5206;&#x522B;&#x662F; event &#x6A21;&#x5757;&#x3001;http &#x6A21;&#x5757;&#x3001;mail &#x6A21;&#x5757;&#x548C; mail &#x6A21;&#x5757;) &#x6765;&#x5904;&#x7406;&#x3002;</p>
+<pre><code>NGX_MAIN_CONF | NGX_CONF_BLOCK | ...
 </code></pre><p>&#x2003;&#x2003;
-&#x540E;&#x9762;&#x5206;&#x6790; ngx_http_block() &#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x518D;&#x5177;&#x4F53;&#x5206;&#x6790;&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981; NGX_MAIN_CONF &#x8FD9;&#x79CD;&#x914D;&#x7F6E;&#x5BFB;&#x5740;&#x65B9;&#x5F0F;&#x3002;</p>
+&#x540E;&#x9762;&#x5206;&#x6790; ngx_http_block() &#x51FD;&#x6570;&#x65F6;&#x518D;&#x5177;&#x4F53;&#x5206;&#x6790;&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981; NGX_MAIN_CONF &#x8FD9;&#x79CD;&#x914D;&#x7F6E;&#x5BFB;&#x5740;&#x65B9;&#x5F0F;&#x3002;</p>
 <p>&#x2003;&#x2003;
 (3) &#x9664;&#x5F00; core &#x6A21;&#x5757;&#xFF0C;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x7684;&#x6A21;&#x5757;&#x90FD;&#x4F1A;&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x79CD;&#x914D;&#x7F6E;&#x5BFB;&#x5740;&#x65B9;&#x5F0F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6839;&#x636E; cmd-&gt;conf &#x7684;&#x503C;&#x4ECE; cf-&gt;ctx &#x4E2D;&#x53D6;&#x51FA;&#x5BF9;&#x5E94;&#x7684;&#x914D;&#x7F6E;&#x3002;
 &#x4E3E; http &#x6A21;&#x5757;&#x4E3A;&#x4F8B;&#xFF0C;cf-&gt;conf &#x7684;&#x53EF;&#x9009;&#x503C;&#x662F; NGX_HTTP_MAIN_CONF_OFFSET&#x3001;NGX_HTTP_SRV_CONF_OFFSET&#x3001;NGX_HTTP_LOC_CONF_OFFSET&#xFF0C;&#x5206;&#x522B;&#x5BF9;&#x5E94; http{}&#x3001;server{}&#x3001;location{} &#x8FD9;&#x4E09;&#x4E2A; http &#x914D;&#x7F6E;&#x7EA7;&#x522B;&#x3002;</p>

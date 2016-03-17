@@ -53,7 +53,7 @@
         data-chapter-title="location 配置树"
         data-filepath="s11/11.3.2.3.1.md"
         data-basepath=".."
-        data-revision="Thu Mar 17 2016 11:19:02 GMT+0800 (CST)"
+        data-revision="Thu Mar 17 2016 16:09:22 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,10 +3724,10 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="location-&#x914D;&#x7F6E;&#x6811;">location &#x914D;&#x7F6E;&#x6811;</h1>
+                        <h1 id="113231-location-&#x914D;&#x7F6E;&#x6811;">11.3.2.3.1 location &#x914D;&#x7F6E;&#x6811;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x4ECB;&#x7ECD;&#x8FD9;&#x90E8;&#x5206;&#x4EE5;&#x524D;&#x5148;&#x8BF4;&#x660E;&#x4E00;&#x4E2A; Nginx &#x7684;&#x516C;&#x7406;&#xFF1A;&#x6240;&#x6709;&#x5B58;&#x653E;&#x53C2;&#x6570;&#x4E3A; NGX_HTTP_SRV_CONF_OFFSET &#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x914D;&#x7F6E;&#x4EC5;&#x5728;&#x8BF7;&#x6C42;&#x5339;&#x914D;&#x7684;&#x865A;&#x62DF;&#x4E3B;&#x673A;( server )&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x751F;&#x6548;&#xFF0C;&#x800C;&#x6240;&#x6709;&#x5B58;&#x653E;&#x53C2;&#x6570;&#x4E3A; NGX_HTTP_LOC_CONF_OFFSET &#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x914D;&#x7F6E;&#x4EC5;&#x5728;&#x8BF7;&#x6C42;&#x5339;&#x914D;&#x7684;&#x8DEF;&#x5F84;( location )&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x751F;&#x6548;&#x3002;</p>
+&#x4ECB;&#x7ECD;&#x8FD9;&#x90E8;&#x5206;&#x4EE5;&#x524D;&#x5148;&#x8BF4;&#x660E;&#x4E00;&#x4E2A; Nginx &#x7684;&#x516C;&#x7406;&#xFF1A;&#x6240;&#x6709;&#x5B58;&#x653E;&#x53C2;&#x6570;&#x4E3A; NGX_HTTP_SRV_CONF_OFFSET &#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x914D;&#x7F6E;&#x4EC5;&#x5728;&#x8BF7;&#x6C42;&#x5339;&#x914D;&#x7684;&#x865A;&#x62DF;&#x4E3B;&#x673A;( server )&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x751F;&#x6548;&#xFF0C;&#x800C;&#x6240;&#x6709;&#x5B58;&#x653E;&#x53C2;&#x6570;&#x4E3A; NGX_HTTP_LOC_CONF_OFFSET &#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x914D;&#x7F6E;&#x4EC5;&#x5728;&#x8BF7;&#x6C42;&#x5339;&#x914D;&#x7684;&#x8DEF;&#x5F84; (location) &#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x751F;&#x6548;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x6B63;&#x56E0;&#x4E3A;&#x6709;&#x8FD9;&#x4E2A;&#x516C;&#x7406;&#xFF0C;&#x6240;&#x4EE5; Nginx &#x9700;&#x8981;&#x8C03;&#x7528; merge_XXX &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5408;&#x5E76;&#x914D;&#x7F6E;&#x3002;
 &#x5177;&#x4F53;&#x7684;&#x539F;&#x56E0;&#x662F;&#x5F88;&#x591A;&#x914D;&#x7F6E;&#x6307;&#x4EE4;&#x53EF;&#x4EE5;&#x653E;&#x5728;&#x4E0D;&#x540C;&#x914D;&#x7F6E;&#x5C42;&#x7EA7;&#xFF0C;&#x6BD4;&#x5982; access_log &#x65E2;&#x53EF;&#x4EE5;&#x5728; http &#x5757;&#x4E2D;&#x914D;&#x7F6E;&#x53C8;&#x53EF;&#x4EE5;&#x5728; server &#x5757;&#x4E2D;&#x914D;&#x7F6E;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5728; location &#x5757;&#x4E2D;&#x914D;&#x7F6E;&#x3002;
@@ -3748,7 +3748,7 @@
     rv = ngx_http_merge_servers(cf, cmcf, module, mi);
 }
 </code></pre><p>&#x2003;&#x2003;
-&#x5C31;&#x662F;&#x521D;&#x59CB;&#x5316;HTTP&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x5E76;&#x4E14;&#x5B8C;&#x6210;&#x4E24;&#x6B65;&#x914D;&#x7F6E;&#x5408;&#x5E76;&#x64CD;&#x4F5C;&#xFF1A;&#x4ECE; HTTP &#x4E0A;&#x4E0B;&#x6587;&#x5408;&#x5E76;&#x5230;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x4EE5;&#x53CA;&#x4ECE;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#x4E0A;&#x4E0B;&#x6587;&#x5408;&#x5E76;&#x5230;&#x8DEF;&#x5F84;&#x4E0A;&#x4E0B;&#x6587;&#x3002;
+&#x5C31;&#x662F;&#x521D;&#x59CB;&#x5316; HTTP &#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x5E76;&#x4E14;&#x5B8C;&#x6210;&#x4E24;&#x6B65;&#x914D;&#x7F6E;&#x5408;&#x5E76;&#x64CD;&#x4F5C;&#xFF1A;&#x4ECE; HTTP &#x4E0A;&#x4E0B;&#x6587;&#x5408;&#x5E76;&#x5230;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x4EE5;&#x53CA;&#x4ECE;&#x865A;&#x62DF;&#x4E3B;&#x673A;&#x4E0A;&#x4E0B;&#x6587;&#x5408;&#x5E76;&#x5230;&#x8DEF;&#x5F84;&#x4E0A;&#x4E0B;&#x6587;&#x3002;
 &#x5176;&#x4E2D;&#x5408;&#x5E76;&#x5230;&#x8DEF;&#x5F84;&#x4E0A;&#x4E0B;&#x95EE;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x5728; ngx_http_merge_servers &#x51FD;&#x6570;&#x4E2D;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x89C1;&#xFF1A;</p>
 <pre><code>if (module-&gt;merge_loc_conf) {
     /* merge the server{}&apos;s loc_conf */
