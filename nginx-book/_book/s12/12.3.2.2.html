@@ -53,7 +53,7 @@
         data-chapter-title="ngx_http_write_filter_module 分析"
         data-filepath="s12/12.3.2.2.md"
         data-basepath=".."
-        data-revision="Fri Mar 18 2016 11:32:51 GMT+0800 (CST)"
+        data-revision="Fri Mar 18 2016 16:37:39 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,7 +3724,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="ngxhttpwritefiltermodule-&#x5206;&#x6790;">ngx_http_write_filter_module &#x5206;&#x6790;</h1>
+                        <h1 id="12322-ngxhttpwritefiltermodule-&#x5206;&#x6790;">12.3.2.2 ngx_http_write_filter_module &#x5206;&#x6790;</h1>
 <hr>
 <p>&#x2003;&#x2003;
 ngx_http_write_filter_module &#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A; body filter&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5B83;&#x7684;&#x6CE8;&#x518C;&#x51FD;&#x6570;&#x7684;&#x7279;&#x6B8A;&#x6027;&#xFF1A;</p>
@@ -3948,9 +3948,9 @@ ngx_http_write_filter(ngx_http_request_t *r, ngx_chain_t *in) {
 </code></pre><p>&#x2003;&#x2003;
 Nginx &#x5C06;&#x5F85;&#x53D1;&#x9001;&#x7684; chain &#x94FE;&#x8868;&#x4FDD;&#x5B58;&#x5728; r-&gt;out&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x51FD;&#x6570;&#x5148;&#x68C0;&#x67E5;&#x4E4B;&#x524D;&#x672A;&#x53D1;&#x9001;&#x5B8C;&#x7684;&#x94FE;&#x8868;&#x4E2D;&#x662F;&#x5426;&#x6709; flush&#xFF0C;recycled &#x4EE5;&#x53CA; last_buf &#x6807;&#x8BC6;&#xFF0C;&#x5E76;&#x8BA1;&#x7B97;&#x6240;&#x6709; buffer &#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x63A5;&#x7740;&#x5BF9;&#x65B0;&#x8F93;&#x5165;&#x7684; chain &#x94FE;&#x8868;&#x505A;&#x540C;&#x6837;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x5E76;&#x5C06;&#x65B0;&#x94FE;&#x8868;&#x52A0;&#x5230; r-&gt;out &#x7684;&#x961F;&#x5C3E;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8F93;&#x51FA;&#x94FE;&#x8868;&#x4E2D;&#x6CA1;&#x6709;&#x88AB;&#x6807;&#x8BC6;&#x4E3A;&#x6700;&#x540E;&#x4E00;&#x5757; buffer &#x7684;&#x8282;&#x70B9;&#xFF0C;&#x800C;&#x4E14;&#x6CA1;&#x6709;&#x9700;&#x8981; flush &#x6216;&#x8005;&#x6025;&#x7740;&#x56DE;&#x6536;&#x7684; buffer&#xFF0C;&#x5E76;&#x4E14;&#x5F53;&#x524D;&#x961F;&#x5217;&#x4E2D; buffer &#x603B;&#x5927;&#x5C0F;&#x4E0D;&#x591F; postpone_output &#x6307;&#x4EE4;&#x8BBE;&#x7F6E;&#x7684;&#x5927;&#x5C0F;(&#x9ED8;&#x8BA4;&#x4E3A; 1460 &#x5B57;&#x8282;)&#x65F6;&#xFF0C;&#x51FD;&#x6570;&#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;</p>
+&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8F93;&#x51FA;&#x94FE;&#x8868;&#x4E2D;&#x6CA1;&#x6709;&#x88AB;&#x6807;&#x8BC6;&#x4E3A;&#x6700;&#x540E;&#x4E00;&#x5757; buffer &#x7684;&#x8282;&#x70B9;&#xFF0C;&#x800C;&#x4E14;&#x6CA1;&#x6709;&#x9700;&#x8981; flush &#x6216;&#x8005;&#x6025;&#x7740;&#x56DE;&#x6536;&#x7684; buffer&#xFF0C;&#x5E76;&#x4E14;&#x5F53;&#x524D;&#x961F;&#x5217;&#x4E2D; buffer &#x603B;&#x5927;&#x5C0F;&#x4E0D;&#x591F; postpone_output &#x6307;&#x4EE4;&#x8BBE;&#x7F6E;&#x7684;&#x5927;&#x5C0F; (&#x9ED8;&#x8BA4;&#x4E3A; 1460 &#x5B57;&#x8282;) &#x65F6;&#xFF0C;&#x51FD;&#x6570;&#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;</p>
 <p>&#x2003;&#x2003;
-ngx_http_write_filter &#x4F1A;&#x8C03;&#x7528; c-&gt;send_chain &#x5F80;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;c-&gt;send_chain &#x7684;&#x53D6;&#x503C;&#x5728;&#x4E0D;&#x540C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x4EE5;&#x53CA;&#x534F;&#x8BAE;&#x4E0B;( https &#x4E0B;&#x7528;&#x7684;&#x662F; ngx_ssl_send_chain )&#x4F1A;&#x53D6;&#x4E0D;&#x540C;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5178;&#x578B;&#x7684; linux &#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E0B;&#x5B83;&#x7684;&#x53D6;&#x503C;&#x4E3A; ngx_linux_sendfile_chain&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;
+ngx_http_write_filter &#x4F1A;&#x8C03;&#x7528; c-&gt;send_chain &#x5F80;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;c-&gt;send_chain &#x7684;&#x53D6;&#x503C;&#x5728;&#x4E0D;&#x540C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x4EE5;&#x53CA;&#x534F;&#x8BAE;&#x4E0B; (https &#x4E0B;&#x7528;&#x7684;&#x662F; ngx_ssl_send_chain) &#x4F1A;&#x53D6;&#x4E0D;&#x540C;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5178;&#x578B;&#x7684; linux &#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E0B;&#x5B83;&#x7684;&#x53D6;&#x503C;&#x4E3A; ngx_linux_sendfile_chain&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6700;&#x7EC8;&#x4F1A;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;
 &#x5B83;&#x7684;&#x51FD;&#x6570;&#x539F;&#x578B;&#x4E3A;&#xFF1A;</p>
 <pre><code>ngx_chain_t *
 ngx_linux_sendfile_chain(ngx_connection_t *c, ngx_chain_t *in, off_t limit)
@@ -4018,7 +4018,7 @@ header.size = sizeof(struct iovec);
 header.nalloc = NGX_HEADERS;
 header.pool = c-&gt;pool;
 </code></pre><p>&#x2003;&#x2003;
-&#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5C31;&#x662F;&#x5904;&#x7406; in memory &#x7684;&#x90E8;&#x5206;&#xFF0C;&#x7136;&#x540E;&#x5C06; buf &#x653E;&#x5165;&#x5BF9;&#x5E94;&#x7684; iovec &#x6570;&#x7EC4;&#xFF0C;&#x5904;&#x7406;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x5C31;&#x662F;&#x5408;&#x5E76;&#x5185;&#x5B58;&#x8FDE;&#x7EED;&#x5E76;&#x76F8;&#x90BB;&#x7684; buf (&#x4E0D;&#x7BA1;&#x662F; in memory &#x8FD8;&#x662F; in file )&#xFF1A;</p>
+&#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5C31;&#x662F;&#x5904;&#x7406; in memory &#x7684;&#x90E8;&#x5206;&#xFF0C;&#x7136;&#x540E;&#x5C06; buf &#x653E;&#x5165;&#x5BF9;&#x5E94;&#x7684; iovec &#x6570;&#x7EC4;&#xFF0C;&#x5904;&#x7406;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x5C31;&#x662F;&#x5408;&#x5E76;&#x5185;&#x5B58;&#x8FDE;&#x7EED;&#x5E76;&#x76F8;&#x90BB;&#x7684; buf (&#x4E0D;&#x7BA1;&#x662F; in memory &#x8FD8;&#x662F; in file)&#xFF1A;</p>
 <pre><code>for (cl = in; cl &amp;&amp; send &lt; limit;  cl = cl-&gt;next) {
     if (ngx_buf_special(cl-&gt;buf)) {
         continue;
@@ -4030,7 +4030,7 @@ header.pool = c-&gt;pool;
     }
 
     /* &#x5982;&#x679C;&#x4E0D;&#x53EA;&#x662F;&#x5728; buf &#x4E2D;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x6709;&#x65F6; in file &#x7684; buf &#x53EF;&#x80FD;&#x9700;&#x8981;&#x5185;&#x5B58;&#x4E2D;&#x4E5F;&#x6709;&#x62F7;&#x8D1D;&#xFF0C;
-       &#x5982;&#x679C;&#x4E00;&#x4E2A; buf &#x540C;&#x65F6; in memoey &#x548C; in file &#x7684;&#x8BDD;&#xFF0C;Nginx &#x4F1A;&#x628A;&#x5B83;&#x5F53;&#x505A; in file &#x6765;&#x5904;&#x7406; */
+       &#x5982;&#x679C;&#x4E00;&#x4E2A; buf &#x540C;&#x65F6; in memoey &#x548C; in file&#xFF0C;Nginx &#x4F1A;&#x628A;&#x5B83;&#x5F53;&#x505A; in file &#x6765;&#x5904;&#x7406; */
     if (!ngx_buf_in_memory_only(cl-&gt;buf)) {
         break;
     }
@@ -4068,7 +4068,7 @@ header.pool = c-&gt;pool;
 }
 </code></pre><p>&#x2003;&#x2003;
 &#x7136;&#x540E;&#x662F; in file &#x7684;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x91CC;&#x6BD4;&#x8F83;&#x6838;&#x5FC3;&#x7684;&#x4E00;&#x4E2A;&#x5224;&#x65AD;&#x5C31;&#x662F; fprev == cl-&gt;buf-&gt;file_pos&#xFF0C;&#x548C;&#x4E0A;&#x9762;&#x7684; in memory &#x7C7B;&#x4F3C;&#xFF0C;fprev &#x4FDD;&#x5B58;&#x7684;&#x5C31;&#x662F;&#x4E0A;&#x4E00;&#x6B21;&#x5904;&#x7406;&#x7684; buf &#x7684;&#x5C3E;&#x90E8;&#x3002;
-&#x8FD9;&#x91CC;&#x5982;&#x679C;&#x8FD9;&#x4E24;&#x4E2A;&#x76F8;&#x7B49;&#xFF0C;&#x90A3;&#x5C31;&#x8BF4;&#x660E;&#x5F53;&#x524D;&#x7684;&#x4E24;&#x4E2A; buf &#x662F;&#x8FDE;&#x7EED;&#x7684;(&#x6587;&#x4EF6;&#x8FDE;&#x7EED;)&#xFF1A;</p>
+&#x8FD9;&#x91CC;&#x5982;&#x679C;&#x8FD9;&#x4E24;&#x4E2A;&#x76F8;&#x7B49;&#xFF0C;&#x90A3;&#x5C31;&#x8BF4;&#x660E;&#x5F53;&#x524D;&#x7684;&#x4E24;&#x4E2A; buf &#x662F;&#x8FDE;&#x7EED;&#x7684; (&#x6587;&#x4EF6;&#x8FDE;&#x7EED;)&#xFF1A;</p>
 <pre><code>/* &#x5982;&#x679C; header &#x7684;&#x5927;&#x5C0F;&#x4E0D;&#x4E3A; 0 &#x5219;&#x8BF4;&#x660E;&#x524D;&#x9762;&#x6709;&#x9700;&#x8981;&#x53D1;&#x9001;&#x7684; buf&#xFF0C;
    &#x5E76;&#x4E14;&#x6570;&#x636E;&#x5927;&#x5C0F;&#x5DF2;&#x7ECF;&#x8D85;&#x8FC7;&#x9650;&#x5236;&#x5219;&#x8DF3;&#x8FC7; in file &#x5904;&#x7406; */
 if (header.nelts == 0 &amp;&amp; cl &amp;&amp; cl-&gt;buf-&gt;in_file &amp;&amp; send &lt; limit) {
