@@ -53,7 +53,7 @@
         data-chapter-title="对 ssl 连接建立的准备"
         data-filepath="s12/12.5.2.1.md"
         data-basepath=".."
-        data-revision="Fri Mar 18 2016 16:37:39 GMT+0800 (CST)"
+        data-revision="Fri Mar 18 2016 18:03:42 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3724,7 +3724,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x5BF9;-ssl-&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x7684;&#x51C6;&#x5907;">&#x5BF9; ssl &#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x7684;&#x51C6;&#x5907;</h1>
+                        <h1 id="12521-&#x5BF9;-ssl-&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x7684;&#x51C6;&#x5907;">12.5.2.1 &#x5BF9; ssl &#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x7684;&#x51C6;&#x5907;</h1>
 <hr>
 <p>&#x2003;&#x2003;
 &#x66F4;&#x5177; ssl &#x534F;&#x8BAE;&#x89C4;&#x5B9A;&#xFF0C;&#x5728;&#x6B63;&#x5F0F;&#x53D1;&#x8D77;&#x6570;&#x636E;&#x6536;&#x53D1;&#x524D;&#x9700;&#x8981;&#x5EFA;&#x7ACB; ssl &#x8FDE;&#x63A5;&#xFF0C;&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x8FC7;&#x7A0B;&#x65E2; ssl &#x63E1;&#x624B;&#x3002;
@@ -3737,13 +3737,13 @@ ngx_http_init_request(ngx_event_t *rev) {
 
         sscf = ngx_http_get_module_srv_conf(r, ngx_http_ssl_module);
         if (sscf-&gt;enable || addr_conf-&gt;ssl) {
-            /* c-&gt;ssl &#x4E0D;&#x4E3A;&#x7A7A;&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x8BF7;&#x6C42;&#x590D;&#x7528;&#x957F;&#x8FDE;&#x63A5;(&#x5DF2;&#x7ECF;&#x5EFA;&#x7ACB;&#x8FC7; ssl &#x8FDE;&#x63A5;) */
+            /* c-&gt;ssl &#x4E0D;&#x4E3A;&#x7A7A;&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x8BF7;&#x6C42;&#x590D;&#x7528;&#x957F;&#x8FDE;&#x63A5; (&#x5DF2;&#x7ECF;&#x5EFA;&#x7ACB;&#x8FC7; ssl &#x8FDE;&#x63A5;) */
             if (c-&gt;ssl == NULL) {
                 c-&gt;log-&gt;action = &quot;SSL handshaking&quot;;
 
                 /*
-                 * Nginx.conf &#x4E2D;&#x5F00;&#x542F; ssl &#x534F;&#x8BAE;( listen 443 ssl )&#xFF0C;
-                 * &#x5374;&#x6CA1;&#x7528;&#x8BBE;&#x7F6E;&#x670D;&#x52A1;&#x5668;&#x8BC1;&#x4E66;( ssl_certificate &lt;certificate_path&gt; )
+                 * Nginx.conf &#x4E2D;&#x5F00;&#x542F; ssl &#x534F;&#x8BAE; (listen 443 ssl)&#xFF0C;
+                 * &#x5374;&#x6CA1;&#x7528;&#x8BBE;&#x7F6E;&#x670D;&#x52A1;&#x5668;&#x8BC1;&#x4E66; (ssl_certificate &lt;certificate_path&gt;)
                  */
                 if (addr_conf-&gt;ssl &amp;&amp; sscf-&gt;ssl.ctx == NULL) {
                     ngx_log_error(NGX_LOG_ERR, c-&gt;log, 0,
@@ -3798,7 +3798,7 @@ ngx_ssl_create_connection(ngx_ssl_t *ssl, ngx_connection_t *c, ngx_uint_t flags)
     /* &#x521B;&#x5EFA; openssl &#x5E93;&#x4E2D;&#x5BF9; ssl &#x8FDE;&#x63A5;&#x7684;&#x63CF;&#x8FF0;&#x7ED3;&#x6784; */
     sc-&gt;connection = SSL_new(ssl-&gt;ctx);
 
-    /* &#x5173;&#x8054;( openssl &#x5E93;) ssl &#x8FDE;&#x63A5;&#x5230; tcp &#x8FDE;&#x63A5;&#x5BF9;&#x5E94;&#x7684; socket */
+    /* &#x5173;&#x8054; (openssl &#x5E93;) ssl &#x8FDE;&#x63A5;&#x5230; tcp &#x8FDE;&#x63A5;&#x5BF9;&#x5E94;&#x7684; socket */
     SSL_set_fd(sc-&gt;connection, c-&gt;fd);
 
     if (flags &amp; NGX_SSL_CLIENT) {
@@ -3809,7 +3809,7 @@ ngx_ssl_create_connection(ngx_ssl_t *ssl, ngx_connection_t *c, ngx_uint_t flags)
         SSL_set_accept_state(sc-&gt;connection);
     }
 
-    /* &#x5173;&#x8054;( openssl &#x5E93;) ssl &#x8FDE;&#x63A5;&#x5230;&#x7528;&#x6237;&#x6570;&#x636E;(&#x5F53;&#x524D;&#x8FDE;&#x63A5; c ) */
+    /* &#x5173;&#x8054; (openssl &#x5E93;) ssl &#x8FDE;&#x63A5;&#x5230;&#x7528;&#x6237;&#x6570;&#x636E; (&#x5F53;&#x524D;&#x8FDE;&#x63A5; c) */
     SSL_set_ex_data(sc-&gt;connection, ngx_ssl_connection_index, c);
 
     c-&gt;ssl = sc;
@@ -3821,7 +3821,7 @@ ngx_ssl_create_connection(ngx_ssl_t *ssl, ngx_connection_t *c, ngx_uint_t flags)
 <p>&#x2003;&#x2003;
 (3) &#x6807;&#x660E;&#x5F53;&#x524D;&#x5F85;&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;&#x987B;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x4EE5;&#x6B64;&#x53EF;&#x4EE5;&#x8BA9; ssl &#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#x3002;
 &#x7531;&#x4E8E;&#x5F00;&#x542F;&#x4E86; ssl &#x534F;&#x8BAE;&#xFF0C;&#x5BF9;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#x7684;&#x6570;&#x636E;&#x8981;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#xFF0C;&#x8FD9;&#x5C31;&#x8981;&#x6C42;&#x5F85;&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;&#x5FC5;&#x987B;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x3002;
-&#x6807;&#x8BC6; r-&gt;main_filter_need_in_memory &#x4E3A; 1&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x540E;&#x7EED;&#x6570;&#x636E;&#x53D1;&#x9001;&#x524D;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x5230;&#x5185;&#x5B58;&#x4E2D;(&#x9632;&#x6B62;&#x5728;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x901A;&#x8FC7; sendfile &#x76F4;&#x63A5;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x800C;&#x6CA1;&#x6709;&#x52A0;&#x5BC6;)&#x3002;</p>
+&#x6807;&#x8BC6; r-&gt;main_filter_need_in_memory &#x4E3A; 1&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x540E;&#x7EED;&#x6570;&#x636E;&#x53D1;&#x9001;&#x524D;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x5230;&#x5185;&#x5B58;&#x4E2D; (&#x9632;&#x6B62;&#x5728;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x901A;&#x8FC7; sendfile &#x76F4;&#x63A5;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x800C;&#x6CA1;&#x6709;&#x52A0;&#x5BC6;)&#x3002;</p>
 
                     
                     </section>
