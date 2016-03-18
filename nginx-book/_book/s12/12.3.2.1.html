@@ -53,7 +53,7 @@
         data-chapter-title="ngx_http_copy_filter_module 分析"
         data-filepath="s12/12.3.2.1.md"
         data-basepath=".."
-        data-revision="Thu Mar 17 2016 16:09:22 GMT+0800 (CST)"
+        data-revision="Fri Mar 18 2016 11:32:51 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3742,7 +3742,7 @@ ngx_http_copy_filter_init(ngx_conf_t *cf) {
 &#x8BE5;&#x6A21;&#x5757;&#x6709;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#xFF0C;&#x547D;&#x4EE4;&#x540D;&#x4E3A; output_buffers&#xFF0C;&#x7528;&#x6765;&#x914D;&#x7F6E;&#x53EF;&#x7528;&#x7684; buffer &#x6570;&#x548C; buffer &#x5927;&#x5C0F;&#xFF0C;&#x5B83;&#x7684;&#x503C;&#x4FDD;&#x5B58;&#x5728; copy filter &#x7684; loc conf &#x7684; bufs &#x5B57;&#x6BB5;&#xFF0C;&#x9ED8;&#x8BA4;&#x6570;&#x91CF;&#x4E3A; 1&#xFF0C;&#x5927;&#x5C0F;&#x4E3A; 32768 &#x5B57;&#x8282;&#x3002;
 &#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5177;&#x4F53;&#x7684;&#x4F5C;&#x7528;&#x540E;&#x9762;&#x4F1A;&#x505A;&#x4ECB;&#x7ECD;&#x3002;</p>
 <p>&#x2003;&#x2003;
-nginx &#x4E2D;&#xFF0C;&#x4E00;&#x822C; filter &#x6A21;&#x5757;&#x53EF;&#x4EE5; header filter &#x51FD;&#x6570;&#x4E2D;&#x6839;&#x636E;&#x8BF7;&#x6C42;&#x54CD;&#x5E94;&#x5934;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x4E0A;&#x4E0B;&#x6587;( context )&#xFF0C;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x76F8;&#x5173;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5728; body filter &#x51FD;&#x6570;&#x4E2D;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x4E0A;&#x4E0B;&#x6587;&#x3002;
+Nginx &#x4E2D;&#xFF0C;&#x4E00;&#x822C; filter &#x6A21;&#x5757;&#x53EF;&#x4EE5; header filter &#x51FD;&#x6570;&#x4E2D;&#x6839;&#x636E;&#x8BF7;&#x6C42;&#x54CD;&#x5E94;&#x5934;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x4E0A;&#x4E0B;&#x6587;( context )&#xFF0C;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x76F8;&#x5173;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5728; body filter &#x51FD;&#x6570;&#x4E2D;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x4E0A;&#x4E0B;&#x6587;&#x3002;
 &#x800C; copy filter &#x6CA1;&#x6709; header filter&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x7684; context &#x7684;&#x521D;&#x59CB;&#x5316;&#x4E5F;&#x662F;&#x653E;&#x5728; body filter &#x4E2D;&#x7684;&#xFF0C;&#x800C;&#x5B83;&#x7684; ctx &#x5C31;&#x662F; ngx_output_chain_ctx_t&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x540D;&#x5B57;&#x662F; output_chain &#x5462;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A; copy filter &#x7684;&#x4E3B;&#x8981;&#x903B;&#x8F91;&#x7684;&#x5904;&#x7406;&#x90FD;&#x653E;&#x5728; ngx_output_chain &#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x53E6;&#x5916;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x5728; core &#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5C5E;&#x4E8E; http &#x76EE;&#x5F55;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x63A5;&#x4E0B;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x4E0A;&#x9762;&#x8BF4;&#x5230;&#x7684; context &#x7ED3;&#x6784;&#xFF1A;</p>
@@ -3920,7 +3920,7 @@ ngx_output_chain_as_is(ngx_output_chain_ctx_t *ctx, ngx_buf_t *buf) {
     return 1;
 }
 </code></pre><p>&#x2003;&#x2003;
-&#x4E0A;&#x9762;&#x6709;&#x4E24;&#x4E2A;&#x6807;&#x8BB0;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x4E00;&#x4E2A;&#x662F; need_in_memory&#xFF0C;&#x8FD9;&#x4E2A;&#x4E3B;&#x8981;&#x662F;&#x7528;&#x4E8E;&#x5F53;&#x4F7F;&#x7528; sendfile &#x7684;&#x65F6;&#x5019; nginx &#x5E76;&#x4E0D;&#x4F1A;&#x5C06;&#x8BF7;&#x6C42;&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x800C;&#x6709;&#x65F6;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E2A;&#x6807;&#x8BB0;&#x3002;
+&#x4E0A;&#x9762;&#x6709;&#x4E24;&#x4E2A;&#x6807;&#x8BB0;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x4E00;&#x4E2A;&#x662F; need_in_memory&#xFF0C;&#x8FD9;&#x4E2A;&#x4E3B;&#x8981;&#x662F;&#x7528;&#x4E8E;&#x5F53;&#x4F7F;&#x7528; sendfile &#x7684;&#x65F6;&#x5019; Nginx &#x5E76;&#x4E0D;&#x4F1A;&#x5C06;&#x8BF7;&#x6C42;&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x800C;&#x6709;&#x65F6;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E2A;&#x6807;&#x8BB0;&#x3002;
 &#x7136;&#x540E;&#x540E;&#x9762;&#x7684; body filter &#x5C31;&#x80FD;&#x64CD;&#x4F5C;&#x5185;&#x5BB9;&#x4E86;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x7B2C;&#x4E8C;&#x4E2A;&#x662F; need_in_temp&#xFF0C;&#x8FD9;&#x4E2A;&#x4E3B;&#x8981;&#x662F;&#x7528;&#x4E8E;&#x628A;&#x672C;&#x6765;&#x5C31;&#x5B58;&#x5728;&#x4E8E;&#x5185;&#x5B58;&#x4E2D;&#x7684; buf &#x590D;&#x5236;&#x4E00;&#x4EFD;&#x53EF;&#x4FEE;&#x6539;&#x7684;&#x62F7;&#x8D1D;&#x51FA;&#x6765;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x7528;&#x5230;&#x7684;&#x6A21;&#x5757;&#x6709; charset&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7F16;&#x89E3;&#x7801; filter&#x3002;</p>
@@ -3934,7 +3934,7 @@ if (in) {
 }
 </code></pre><p>&#x2003;&#x2003;
 &#x7136;&#x540E;&#x5C31;&#x662F;&#x4E3B;&#x8981;&#x7684;&#x903B;&#x8F91;&#x5904;&#x7406;&#x9636;&#x6BB5;&#x3002;
-&#x8FD9;&#x91CC; nginx &#x505A;&#x7684;&#x975E;&#x5E38;&#x5DE7;&#x5999;&#x4E5F;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x9996;&#x5148;&#x662F; chain &#x7684;&#x91CD;&#x7528;&#xFF0C;&#x7136;&#x540E;&#x662F; buf &#x7684;&#x91CD;&#x7528;&#x3002;</p>
+&#x8FD9;&#x91CC; Nginx &#x505A;&#x7684;&#x975E;&#x5E38;&#x5DE7;&#x5999;&#x4E5F;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x9996;&#x5148;&#x662F; chain &#x7684;&#x91CD;&#x7528;&#xFF0C;&#x7136;&#x540E;&#x662F; buf &#x7684;&#x91CD;&#x7528;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x5148;&#x6765;&#x770B; chain &#x7684;&#x91CD;&#x7528;&#x3002;
 &#x5173;&#x952E;&#x7684;&#x51E0;&#x4E2A;&#x7ED3;&#x6784;&#x4EE5;&#x53CA;&#x57DF;&#xFF1A;ctx &#x7684; free&#xFF0C;busy &#x4EE5;&#x53CA; ctx-&gt;pool &#x7684; chain &#x57DF;&#x3002;</p>
@@ -4030,8 +4030,8 @@ for ( ;; ) {
                     ngx_free_chain(ctx-&gt;pool, cl);
                 } else if (out || ctx-&gt;allocated == ctx-&gt;bufs.num) {
                     /* &#x5982;&#x679C;&#x5DF2;&#x7ECF;&#x7B49;&#x4E8E; buf &#x7684;&#x4E2A;&#x6570;&#x9650;&#x5236;&#xFF0C;&#x5219;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;&#xFF0C;&#x53D1;&#x9001;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684; buf&#x3002;
-                       &#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5982;&#x679C; out &#x5B58;&#x5728;&#x7684;&#x8BDD;&#xFF0C;nginx &#x4F1A;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x9001; out&#xFF0C;
-                       &#x7B49;&#x53D1;&#x9001;&#x5B8C;&#x4F1A;&#x518D;&#x6B21;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x91CC;&#x5F88;&#x597D;&#x7684;&#x4F53;&#x73B0;&#x4E86; nginx &#x7684;&#x6D41;&#x5F0F;&#x5904;&#x7406; */
+                       &#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5982;&#x679C; out &#x5B58;&#x5728;&#x7684;&#x8BDD;&#xFF0C;Nginx &#x4F1A;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x9001; out&#xFF0C;
+                       &#x7B49;&#x53D1;&#x9001;&#x5B8C;&#x4F1A;&#x518D;&#x6B21;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x91CC;&#x5F88;&#x597D;&#x7684;&#x4F53;&#x73B0;&#x4E86; Nginx &#x7684;&#x6D41;&#x5F0F;&#x5904;&#x7406; */
                     break;
                 } else if (ngx_output_chain_get_buf(ctx, bsize) != NGX_OK) {
                     /* &#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E5F;&#x6BD4;&#x8F83;&#x5173;&#x952E;&#xFF0C;&#x5B83;&#x7528;&#x6765;&#x53D6;&#x5F97; buf&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x4F1A;&#x8BE6;&#x7EC6;&#x770B;&#x8FD9;&#x4E2A;&#x51FD;&#x6570; */
@@ -4079,7 +4079,7 @@ for ( ;; ) {
 &#x5982;&#x679C;&#x5F53;&#x524D;&#x7684; buf &#x4F4D;&#x4E8E;&#x6700;&#x540E;&#x4E00;&#x4E2A; chain &#x5219;&#x9700;&#x8981;&#x7279;&#x6B8A;&#x5904;&#x7406;&#xFF0C;&#x4E00;&#x662F; buf &#x7684; recycled &#x57DF;&#xFF0C;&#x53E6;&#x5916;&#x662F;&#x5C06;&#x8981;&#x5206;&#x914D;&#x7684; buf &#x7684;&#x5927;&#x5C0F;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x5148;&#x6765;&#x8BF4; recycled &#x57DF;&#xFF0C;&#x8FD9;&#x4E2A;&#x57DF;&#x8868;&#x793A;&#x5F53;&#x524D;&#x7684; buf &#x9700;&#x8981;&#x88AB;&#x56DE;&#x6536;&#x3002;
-&#x800C;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B; nginx (&#x6BD4;&#x5982;&#x5728;&#x975E; last buf )&#x4F1A;&#x7F13;&#x5B58;&#x4E00;&#x90E8;&#x5206; buf (&#x9ED8;&#x8BA4;&#x662F; 1460 &#x5B57;&#x8282;)&#xFF0C;&#x7136;&#x540E;&#x518D;&#x53D1;&#x9001;&#xFF0C;&#x800C;&#x8BBE;&#x7F6E;&#x4E86; recycled &#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x8BA9;&#x5B83;&#x7F13;&#x5B58; buf&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5C3D;&#x91CF;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x7136;&#x540E;&#x4EE5;&#x4F9B;&#x56DE;&#x6536;&#x4F7F;&#x7528;&#x3002;
+&#x800C;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B; Nginx (&#x6BD4;&#x5982;&#x5728;&#x975E; last buf )&#x4F1A;&#x7F13;&#x5B58;&#x4E00;&#x90E8;&#x5206; buf (&#x9ED8;&#x8BA4;&#x662F; 1460 &#x5B57;&#x8282;)&#xFF0C;&#x7136;&#x540E;&#x518D;&#x53D1;&#x9001;&#xFF0C;&#x800C;&#x8BBE;&#x7F6E;&#x4E86; recycled &#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x8BA9;&#x5B83;&#x7F13;&#x5B58; buf&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5C3D;&#x91CF;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x7136;&#x540E;&#x4EE5;&#x4F9B;&#x56DE;&#x6536;&#x4F7F;&#x7528;&#x3002;
 &#x56E0;&#x6B64;&#x5982;&#x679C;&#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A; buf&#xFF0C;&#x5219;&#x4E0D;&#x9700;&#x8981;&#x8BBE;&#x7F6E; recycled &#x57DF;&#x7684;&#xFF0C;&#x5426;&#x5219;&#x7684;&#x8BDD;&#xFF0C;&#x9700;&#x8981;&#x8BBE;&#x7F6E; recycled &#x57DF;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x7136;&#x540E;&#x5C31;&#x662F; buf &#x7684;&#x5927;&#x5C0F;&#x3002;
@@ -4156,7 +4156,7 @@ ngx_output_chain_get_buf(ngx_output_chain_ctx_t *ctx, off_t bsize) {
     return NGX_OK;
 }
 </code></pre><p>&#x2003;&#x2003;
-&#x5206;&#x914D;&#x65B0;&#x7684; buf &#x548C; chain&#xFF0C;&#x5E76;&#x8C03;&#x7528; ngx_output_chain_copy_buf &#x62F7;&#x8D1D;&#x5B8C;&#x6570;&#x636E;&#x4E4B;&#x540E;&#xFF0C;nginx &#x5C31;&#x5C06;&#x65B0;&#x7684; chain &#x94FE;&#x8868;&#x4EA4;&#x7ED9;&#x4E0B;&#x4E00;&#x4E2A; body filter &#x7EE7;&#x7EED;&#x5904;&#x7406;&#xFF1A;</p>
+&#x5206;&#x914D;&#x65B0;&#x7684; buf &#x548C; chain&#xFF0C;&#x5E76;&#x8C03;&#x7528; ngx_output_chain_copy_buf &#x62F7;&#x8D1D;&#x5B8C;&#x6570;&#x636E;&#x4E4B;&#x540E;&#xFF0C;Nginx &#x5C31;&#x5C06;&#x65B0;&#x7684; chain &#x94FE;&#x8868;&#x4EA4;&#x7ED9;&#x4E0B;&#x4E00;&#x4E2A; body filter &#x7EE7;&#x7EED;&#x5904;&#x7406;&#xFF1A;</p>
 <pre><code>if (out == NULL &amp;&amp; last != NGX_NONE) {
     if (ctx-&gt;in) {
         return NGX_AGAIN;

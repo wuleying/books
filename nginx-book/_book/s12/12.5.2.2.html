@@ -53,7 +53,7 @@
         data-chapter-title="实际 ssl 握手阶段"
         data-filepath="s12/12.5.2.2.md"
         data-basepath=".."
-        data-revision="Thu Mar 17 2016 16:09:22 GMT+0800 (CST)"
+        data-revision="Fri Mar 18 2016 11:32:51 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -3760,7 +3760,7 @@ if (n == -1 &amp;&amp; ngx_socket_errno == NGX_EAGAIN) {
 </code></pre><p>&#x2003;&#x2003;
 (3) &#x9996;&#x5B57;&#x8282;&#x63A2;&#x6D4B;&#xFF1A;&#x82E5;&#x6210;&#x529F;&#x67E5;&#x770B; 1 &#x4E2A;&#x5B57;&#x8282;&#x6570;&#x636E;&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x9996;&#x5B57;&#x8282;&#x6765;&#x63A2;&#x6D4B;&#x63A5;&#x53D7;&#x5230;&#x7684;&#x6570;&#x636E;&#x662F; ssl &#x63E1;&#x624B;&#x5305;&#x8FD8;&#x662F; http &#x6570;&#x636E;&#x3002;
 &#x6839;&#x636E; ssl &#x534F;&#x8BAE;&#x89C4;&#x5B9A; ssl &#x63E1;&#x624B;&#x5305;&#x7684;&#x9996;&#x5B57;&#x8282;&#x4E2D;&#x5305;&#x542B;&#x6709; ssl &#x534F;&#x8BAE;&#x7684;&#x7248;&#x672C;&#x4FE1;&#x606F;&#x3002;
-nginx &#x6839;&#x636E;&#x6B64;&#x6765;&#x5224;&#x65AD;&#x662F;&#x8FDB;&#x884C; ssl &#x63E1;&#x624B;&#x8FD8;&#x662F;&#x8FD4;&#x56DE;&#x6B63;&#x5E38;&#x5904;&#x7406; http &#x8BF7;&#x6C42;(&#x5B9E;&#x9645;&#x8FD4;&#x56DE;&#x5E94;&#x7B54; 400 BAD REQUEST )&#x3002;</p>
+Nginx &#x6839;&#x636E;&#x6B64;&#x6765;&#x5224;&#x65AD;&#x662F;&#x8FDB;&#x884C; ssl &#x63E1;&#x624B;&#x8FD8;&#x662F;&#x8FD4;&#x56DE;&#x6B63;&#x5E38;&#x5904;&#x7406; http &#x8BF7;&#x6C42;(&#x5B9E;&#x9645;&#x8FD4;&#x56DE;&#x5E94;&#x7B54; 400 BAD REQUEST )&#x3002;</p>
 <pre><code>if (n == 1) {
     if (buf[0] &amp; 0x80 /* SSLv2 */ || buf[0] == 0x16 /* SSLv3/TLSv1 */) {
         ngx_log_debug1(NGX_LOG_DEBUG_HTTP, rev-&gt;log, 0,
