@@ -2,7 +2,7 @@
 ***
 
 &emsp;&emsp;
-整个 Unix 体系结构包括这么几个部分：
+整个 Unix 体系结构包括以下几部分：
 
 + 内核 (kernel)
 + 系统调用 (system call)
