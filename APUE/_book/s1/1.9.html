@@ -53,7 +53,7 @@
         data-chapter-title="时间值"
         data-filepath="s1/1.9.md"
         data-basepath=".."
-        data-revision="Sun Mar 20 2016 18:20:39 GMT+0800 (CST)"
+        data-revision="Tue Mar 22 2016 14:36:11 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2971,10 +2971,8 @@ int main() {
         perror(&quot;_SC_CLK_TCK not supported&quot;);
         exit(-1);
     }
-
-    // operations.
-    // ...
-
+    // operations
+    ...
     struct tms buf;
 
     if(times(&amp;buf) == -1) {
@@ -2986,10 +2984,10 @@ int main() {
            &quot;sys time:%.3lfs\n&quot;
            &quot;cuser time:%.3lfs\n&quot;
            &quot;csys time:%.3lfs\n&quot;,
-           buf.tms_utime*1.0/clock_tck_per_sec,
-           buf.tms_stime*1.0/clock_tck_per_sec,
-           buf.tms_cutime*1.0/clock_tck_per_sec,
-           buf.tms_cstime*1.0/clock_tck_per_sec);
+           buf.tms_utime * 1.0 / clock_tck_per_sec,
+           buf.tms_stime * 1.0 / clock_tck_per_sec,
+           buf.tms_cutime * 1.0 / clock_tck_per_sec,
+           buf.tms_cstime * 1.0 / clock_tck_per_sec);
 
     return 0;
 }
