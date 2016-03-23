@@ -53,7 +53,7 @@
         data-chapter-title="底层实现"
         data-filepath="s3/3.13.md"
         data-basepath=".."
-        data-revision="Tue Mar 22 2016 15:16:42 GMT+0800 (CST)"
+        data-revision="Wed Mar 23 2016 15:32:27 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2947,7 +2947,7 @@
                         <h1 id="313-&#x5E95;&#x5C42;&#x5B9E;&#x73B0;">3.13 &#x5E95;&#x5C42;&#x5B9E;&#x73B0;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x8FD9;&#x8282;&#x4E3B;&#x8981;&#x8BF4;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x7684;&#xFF0C;&#x5047;&#x8BBE;&#x5728;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E2D;&#x5B58;&#x5728;&#x5F88;&#x591A;&#x8FDB;&#x7A0B; (process)&#xFF0C;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x8868;&#xFF0C;&#x5927;&#x81F4;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+&#x8FD9;&#x8282;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x7684;&#xFF0C;&#x5047;&#x8BBE;&#x5728;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E2D;&#x5B58;&#x5728;&#x5F88;&#x591A;&#x8FDB;&#x7A0B; (process)&#xFF0C;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x8868;&#xFF0C;&#x5927;&#x81F4;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code>struct Process {
     // &#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x5C31;&#x662F;&#x4E0B;&#x6807;
     vector&lt;FileDescriptorEntry&gt; entries;
@@ -2967,8 +2967,8 @@ struct FileDescriptorEntry {
     vnode_t* vnode; // &#x6240;&#x6307;&#x5411;&#x7684; vnode
 };
 </code></pre><p>&#x2003;&#x2003;
-&#x5728;&#x8FDB;&#x7A0B;&#x590D;&#x5236;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x5E76;&#x6CA1;&#x6709;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x8868;&#x9879;&#xFF0C;&#x800C;&#x662F;&#x6307;&#x5411;&#x76F8;&#x540C;&#x7684;&#x8868;&#x9879;&#x3002;
-vnode_t &#x5C31;&#x662F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5BF9;&#x5E94;&#x7684;&#x5185;&#x5BB9;&#x4E86;&#xFF0C;&#x5305;&#x62EC;&#x4F4D;&#x7F6E;&#x3001;&#x5927;&#x5C0F;&#x3001;&#x5C5E;&#x6027;&#x7B49;&#x4FE1;&#x606F;&#x3002;</p>
+&#x5728;&#x8FDB;&#x7A0B;&#x4E2D;&#x590D;&#x5236;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x5E76;&#x6CA1;&#x6709;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x8868;&#x9879;&#xFF0C;&#x800C;&#x662F;&#x6307;&#x5411;&#x76F8;&#x540C;&#x7684;&#x8868;&#x9879;&#x3002;
+vnode_t &#x5C31;&#x662F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5BF9;&#x5E94;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5305;&#x62EC;&#x4F4D;&#x7F6E;&#x3001;&#x5927;&#x5C0F;&#x3001;&#x5C5E;&#x6027;&#x7B49;&#x4FE1;&#x606F;&#x3002;</p>
 
                     
                     </section>
