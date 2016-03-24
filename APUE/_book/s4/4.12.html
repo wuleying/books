@@ -53,7 +53,7 @@
         data-chapter-title="inotify"
         data-filepath="s4/4.12.md"
         data-basepath=".."
-        data-revision="Wed Mar 23 2016 15:32:27 GMT+0800 (CST)"
+        data-revision="Thu Mar 24 2016 17:10:00 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2958,7 +2958,7 @@ int inotify_init(void);
 // return a new file descriptor
 int inotify_init1(int flags);
 
-// pathname      &#x9700;&#x8981;&#x76D1;&#x63A7;&#x7684;&#x6587;&#x4EF6;&#x6216;&#x8005;&#x662F;&#x76EE;&#x5F55;
+// pathname      &#x9700;&#x8981;&#x76D1;&#x63A7;&#x7684;&#x6587;&#x4EF6;&#x6216;&#x662F;&#x76EE;&#x5F55;
 // mask          &#x76D1;&#x63A7;&#x6807;&#x8BB0;
 // return a nonnegative watch descriptor
 int inotify_add_watch(int fd, const char *pathname, uint32_t mask);
@@ -2970,11 +2970,11 @@ fd &#x53EF;&#x4EE5;&#x653E;&#x5728; epoll &#x91CC;&#x8FDB;&#x884C;&#x76D1;&#x63A
 &#x76D1;&#x63A7;&#x4E8B;&#x4EF6;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code>/* Structure describing an inotify event. */
 struct inotify_event {
-  int wd;               /* Watch descriptor. */
-  uint32_t mask;        /* Watch mask. */
-  uint32_t cookie;      /* Cookie to synchronize two events. */
-  uint32_t len;         /* Length (including NULs) of name. */
-  char name __flexarr;  /* Name. */
+  int       wd;                 /* Watch descriptor. */
+  uint32_t  mask;               /* Watch mask. */
+  uint32_t  cookie;             /* Cookie to synchronize two events. */
+  uint32_t  len;                /* Length (including NULs) of name. */
+  char      name __flexarr;     /* Name. */
 };
 </code></pre><p>&#x2003;&#x2003;
 __flexarr &#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x662F;&#x4E00;&#x4E2A;&#x60AC;&#x6302;&#x6307;&#x9488;&#xFF0C;&#x8868;&#x793A;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#xFF0C;&#x6587;&#x4EF6;&#x957F;&#x5EA6;&#x901A;&#x8FC7; len &#x8868;&#x793A;&#xFF0C;&#x6240;&#x4EE5;&#x8BFB;&#x53D6;&#x4E00;&#x4E2A; event &#x4E4B;&#x540E;&#x8FD8;&#x9700;&#x8981;&#x5411;&#x524D;&#x79FB;&#x52A8; len &#x4E2A;&#x5B57;&#x8282;&#x624D;&#x80FD;&#x8BFB;&#x53D6;&#x4E0B;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
@@ -3022,7 +3022,7 @@ __flexarr &#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x662F;&#x4E00;&#x4E2A;&#x60AC;&#x630
                           | IN_CLOSE_NOWRITE | IN_OPEN | IN_MOVED_FROM        \
                           | IN_MOVED_TO | IN_CREATE | IN_DELETE               \
                           | IN_DELETE_SELF | IN_MOVE_SELF)
-</code></pre><p>&#x2003;&#x2003;<br>man &#x91CC;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x6709;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#xFF1A;</p>
+</code></pre><p>&#x2003;&#x2003;<br>man &#x91CC;&#x5BF9;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x6709;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#xFF1A;</p>
 <pre><code>inotify events
     The  inotify_add_watch(2) mask argument and the mask field of the inotify_event structure returned when read(2)ing an ino&#x2010;
     tify file descriptor are both bit masks identifying inotify events.  The following bits can  be  specified  in  mask  when
@@ -3090,7 +3090,7 @@ __flexarr &#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x662F;&#x4E00;&#x4E2A;&#x60AC;&#x630
     /proc/sys/fs/inotify/max_user_watches
            This specifies an upper limit on the number of watches that can be created per real user ID.
 </code></pre><p>&#x2003;&#x2003;
-&#x9650;&#x5236;&#x4E86;&#x521B;&#x5EFA;&#x7684; instance &#x4E2A;&#x6570;&#x5DF2;&#x7ECF; watch &#x7684;&#x6570;&#x76EE;&#xFF0C;&#x4EE5;&#x53CA; event &#x7684;&#x6570;&#x76EE;&#x3002;
+&#x9650;&#x5236;&#x4E86;&#x521B;&#x5EFA;&#x7684; instance &#x4E2A;&#x6570;&#x3001;&#x5DF2;&#x7ECF; watch &#x7684;&#x6570;&#x76EE;&#xFF0C;&#x4EE5;&#x53CA; event &#x7684;&#x6570;&#x76EE;&#x3002;
 &#x5982;&#x679C; event &#x51FA;&#x73B0;&#x6EA2;&#x51FA;&#xFF0C;&#x5C31;&#x4F1A;&#x4EA7;&#x751F; IN_Q_OVERFLOW &#x4E8B;&#x4EF6;&#x3002;
 &#x901A;&#x5E38;&#x5982;&#x679C;&#x51FA;&#x73B0; overflow &#x4E8B;&#x4EF6;&#x610F;&#x5473;&#x7740;&#x76D1;&#x63A7;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x4E22;&#x5931;&#xFF0C;&#x90A3;&#x4E48;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x4E3B;&#x52A8;&#x8FDB;&#x884C;&#x626B;&#x63CF;&#x3002;</p>
 

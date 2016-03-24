@@ -6,14 +6,14 @@
 在说明文件属性之前先看看有哪些属性是需要被讨论的。
 
 &emsp;&emsp;
-获取一个文件属性可以使用下面这几个函数：
+获取一个文件属性可以使用下面几个函数：
 
     stat(const char* restrict pathname, struct stat* restrict buf);
     fstat(int fd, struct stat* restrict buf);
     lstat(const char* restrict pathname, struct stat* restrict buf);
 
 &emsp;&emsp;
-其中 lstat 和 stat 区别是：lstat 是获取软链接文件属性的。
+lstat 和 stat 区别是：lstat 用来获取软链接文件属性。
 
     struct stat {
         mode_t      st_mode;      // 文件类型和访问权限
