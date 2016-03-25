@@ -53,7 +53,7 @@
         data-chapter-title="组文件"
         data-filepath="s6/6.3.md"
         data-basepath=".."
-        data-revision="Fri Mar 25 2016 14:21:42 GMT+0800 (CST)"
+        data-revision="Fri Mar 25 2016 16:13:35 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2958,10 +2958,11 @@ dirlt:x:500
 </code></pre><p>&#x2003;&#x2003;
 &#x7ED3;&#x6784;&#x548C;&#x63A5;&#x53E3;&#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#xFF1A;</p>
 <pre><code>#include &lt;grp.h&gt;
+
 struct group {
     char   *gr_name;       /* group name */
     char   *gr_passwd;     /* group password */
-    gid_t   gr_gid;        /* group ID */
+    gid_t   gr_gid;        /* group id */
     char  **gr_mem;        /* group members */
 };
 
@@ -2977,6 +2978,7 @@ void endgrent();
 &#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
 <pre><code>#include &lt;grp.h&gt;
 #include &lt;cstdio&gt;
+
 int main() {
     setgrent();
     struct group *gp = getgrent();

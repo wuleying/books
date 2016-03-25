@@ -53,7 +53,7 @@
         data-chapter-title="口令文件"
         data-filepath="s6/6.1.md"
         data-basepath=".."
-        data-revision="Fri Mar 25 2016 14:21:42 GMT+0800 (CST)"
+        data-revision="Fri Mar 25 2016 16:13:35 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2966,12 +2966,12 @@ ftp:x:14:50:FTP User:/:/sbin/nologin
 nobody:x:99:99:Nobody:/:/sbin/nologin
 dbus:x:81:81:System message bus:/:/sbin/nologin
 </code></pre><p>&#x2003;&#x2003;
-&#x4E4B;&#x524D;&#x63D0;&#x5230;&#x8FC7;&#x6BCF;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x542B;&#x4E49;&#x3002;
-&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5BC6;&#x7801;&#x90FD;&#x662F;&#x4F7F;&#x7528; x &#x8868;&#x793A;&#x3002;
-&#x5982;&#x679C;&#x4E0D;&#x5E0C;&#x671B;&#x7528;&#x6237;&#x767B;&#x5F55;&#xFF0C;&#x90A3;&#x4E48;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x4E0D;&#x5B58;&#x5728;&#x7684; shell &#x6BD4;&#x5982; /sbin/noshell &#x6216;&#x662F; /sbin/nologin&#x3002;</p>
+&#x4E4B;&#x524D;&#x8BB2;&#x8FC7;&#x6BCF;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x542B;&#x4E49;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5BC6;&#x7801;&#x90FD;&#x662F;&#x4F7F;&#x7528; x &#x8868;&#x793A;&#x3002;
+&#x5982;&#x679C;&#x4E0D;&#x5E0C;&#x671B;&#x7528;&#x6237;&#x767B;&#x5F55;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x4E0D;&#x5B58;&#x5728;&#x7684; shell&#xFF0C;&#x6BD4;&#x5982; /sbin/noshell &#x6216;&#x662F; /sbin/nologin&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x6240;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x7ED3;&#x6784;&#x548C;&#x63A5;&#x53E3;&#x5305;&#x62EC;&#xFF1A;</p>
 <pre><code>#include &lt;pwd.h&gt;
+
 struct passwd {
     char    *pw_name;      /* user name */
     char    *pw_passwd;    /* user password */
@@ -2997,6 +2997,7 @@ void endpwent(void);
 &#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
 <pre><code>#include &lt;pwd.h&gt;
 #include &lt;cstdio&gt;
+
 int main() {
     setpwent();
     struct passwd* pw = getpwent();
