@@ -53,7 +53,7 @@
         data-chapter-title="控制进程和 CPU 亲和性"
         data-filepath="s7/7.8.1.md"
         data-basepath=".."
-        data-revision="Fri Mar 25 2016 16:13:35 GMT+0800 (CST)"
+        data-revision="Sat Mar 26 2016 14:49:12 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2949,6 +2949,7 @@
 <pre><code>#include &lt;sched.h&gt;
 #include &lt;unistd.h&gt;
 #include &lt;pthread.h&gt;
+
 void* (void *arg) {
     int a = 0;
     while(1) {
@@ -2964,9 +2965,11 @@ int main() {
     CPU_SET(3, &amp;cpu_set);
     sched_setaffinity(getpid(), sizeof(cpu_set), &amp;cpu_set);
     pthread_t thread[5];
-    for(int i = 0; i &lt; 5; i++){
+
+    for(int i = 0; i &lt; 5; i++) {
         pthread_create(thread + i, NULL, ok, NULL);
     }
+
     for(int i = 0; i &lt; 5; i++) {
         pthread_join(thread[i], NULL);
     }
