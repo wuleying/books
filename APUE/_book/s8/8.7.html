@@ -53,7 +53,7 @@
         data-chapter-title="system 函数"
         data-filepath="s8/8.7.md"
         data-basepath=".."
-        data-revision="Sat Mar 26 2016 14:49:12 GMT+0800 (CST)"
+        data-revision="Sat Mar 26 2016 16:02:48 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2951,32 +2951,32 @@ system &#x51FD;&#x6570;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x975E;&#x5E38;&#x65B9;&
 system &#x672C;&#x8EAB;&#x5B9E;&#x73B0;&#x5927;&#x81F4;&#x5C31;&#x662F;&#xFF1A;</p>
 <ul>
 <li>fork/exec</li>
-<li>&#x4F7F;&#x7528;&#x547D;&#x4EE4; /bin/sh -c &#x6765;&#x6267;&#x884C; cmdstring</li>
+<li>&#x4F7F;&#x7528;&#x547D;&#x4EE4; /bin/sh -c &#x6765;&#x6267;&#x884C; cmd string</li>
 <li>&#x7236;&#x8FDB;&#x7A0B;&#x4F7F;&#x7528; waitpid &#x5F97;&#x5230;&#x7ED3;&#x679C;</li>
 </ul>
 <p>&#x2003;&#x2003;
-&#x5BF9;&#x4E8E; system &#x7684;&#x8FD4;&#x56DE;&#x503C;&#x6709;&#x4E0B;&#x9762;&#x4E09;&#x79CD;&#xFF1A;</p>
+system &#x7684;&#x8FD4;&#x56DE;&#x503C;&#x6709;&#x4E0B;&#x9762;&#x4E09;&#x79CD;&#xFF1A;</p>
 <ul>
-<li>&#x5982;&#x679C; fork &#x6216;&#x8005;&#x662F; waitpid &#x8FD4;&#x56DE;&#x9664; EINTR &#x4E4B;&#x5916;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE; -1 &#x5E76;&#x4E14;&#x8BBE;&#x7F6E; errno</li>
+<li>&#x5982;&#x679C; fork &#x6216;&#x662F; waitpid &#x8FD4;&#x56DE;&#x9664; EINTR &#x4E4B;&#x5916;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE; -1 &#x5E76;&#x4E14;&#x8BBE;&#x7F6E; errno</li>
 <li>&#x5982;&#x679C; exec &#x5931;&#x8D25;&#xFF0C;/bin/sh &#x8FD4;&#x56DE;&#x503C;&#x76F8;&#x5F53;&#x4E8E;&#x6267;&#x884C; exit(127)</li>
 <li>&#x5982;&#x679C;&#x90FD;&#x6210;&#x529F;&#xFF0C;&#x8FD4;&#x56DE;&#x547D;&#x4EE4;&#x7684;&#x7EC8;&#x6B62;&#x72B6;&#x6001;</li>
 </ul>
 <p>&#x2003;&#x2003;
-&#x56E0;&#x4E3A; cmdstring &#x662F;&#x901A;&#x8FC7; /bin/sh &#x6765;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x91CC;&#x9762;&#x5141;&#x8BB8;&#x5305;&#x542B; glob &#x7B26;&#x53F7;&#x548C;&#x91CD;&#x5B9A;&#x5411;&#x7B49; shell &#x5B57;&#x7B26;&#x3002;</p>
+&#x56E0;&#x4E3A; cmd string &#x662F;&#x901A;&#x8FC7; /bin/sh &#x6765;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x91CC;&#x9762;&#x5141;&#x8BB8;&#x5305;&#x542B; glob &#x7B26;&#x53F7;&#x548C;&#x91CD;&#x5B9A;&#x5411;&#x7B49; shell &#x5B57;&#x7B26;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#x5728; waitpid &#x51FA;&#x6765;&#x4E4B;&#x524D;&#xFF0C;system &#x4F7F;&#x7528; wait &#x51FD;&#x6570;&#x6765;&#x7B49;&#x5F85;&#x5B50;&#x8FDB;&#x7A0B;&#x8FD4;&#x56DE;&#xFF0C;&#x65B9;&#x5F0F;&#x5927;&#x6982;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code>while((lastpid = wait(&amp;status)) != pid &amp;&amp; lastpid != -1);
 </code></pre><p>&#x2003;&#x2003;
-&#x90A3;&#x4E48;&#x5982;&#x679C;&#x5728; system &#x4E4B;&#x524D;&#x6267;&#x884C;&#x4E86;&#x4E00;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B; S&#xFF0C;&#x7136;&#x540E; system &#x542F;&#x52A8;&#x3002;
-&#x8FD9;&#x5728; system &#x7684; cmdstring &#x4E4B;&#x524D;&#x5B50;&#x8FDB;&#x7A0B; S &#x8FD4;&#x56DE;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x662F;&#x4E22;&#x5F03;&#x4E86;&#x3002;
+&#x8FD9;&#x6837;&#x5982;&#x679C;&#x5728; system &#x4E4B;&#x524D;&#x6267;&#x884C;&#x4E86;&#x4E00;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B; S&#xFF0C;&#x7136;&#x540E; system &#x542F;&#x52A8;&#xFF0C;&#x5728; system &#x7684; cmd string &#x4E4B;&#x524D;&#x5B50;&#x8FDB;&#x7A0B; S &#x8FD4;&#x56DE;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x662F;&#x4E22;&#x5F03;&#x4E86;&#x3002;
 &#x5F53; system &#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B;&#x5728;&#x5916;&#x9762; wait &#x5B50;&#x8FDB;&#x7A0B; S &#x5C31;&#x4F1A;&#x963B;&#x585E;&#x4F4F;&#xFF0C;&#x56E0;&#x4E3A;&#x5B50;&#x8FDB;&#x7A0B; S &#x5DF2;&#x7ECF;&#x5904;&#x7406;&#x5E76;&#x4E22;&#x5F03;&#x4E86;&#x3002;
 &#x6240;&#x4EE5;&#x9700;&#x8981;&#x4F7F;&#x7528; waitpid &#x8FD9;&#x79CD;&#x6709;&#x9009;&#x62E9;&#x7684;&#x7B49;&#x5F85;&#x5B50;&#x8FDB;&#x7A0B;&#x7ED3;&#x675F;&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x8FD8;&#x6709;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF1A;&#x5982;&#x679C;&#x6267;&#x884C; system &#x7684;&#x8FDB;&#x7A0B;&#x6709;&#x6548;&#x7528;&#x6237; ID &#x662F; 0 (root)&#xFF0C;&#x6267;&#x884C;&#x4E00;&#x4E2A; X &#x6CA1;&#x6709;&#x4E0D;&#x4F1A;&#x8BBE;&#x7F6E; uid &#x548C; gid &#x4F4D;&#xFF0C;&#x56E0;&#x4E3A; system &#x6CA1;&#x6709;&#x8C03;&#x7528; setuid &#x548C; setgid &#x63A5;&#x53E3;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4; X &#x7684;&#x6709;&#x6548;&#x7528;&#x6237; ID &#x662F; 0 (root)&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x4F7F;&#x7528; system &#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x7279;&#x522B;&#x5C0F;&#x5FC3;&#x3002;
+&#x8FD8;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF1A;&#x5982;&#x679C;&#x6267;&#x884C; system &#x7684;&#x8FDB;&#x7A0B;&#x6709;&#x6548;&#x7528;&#x6237; ID &#x662F; 0 (root)&#xFF0C;&#x6267;&#x884C;&#x4E00;&#x4E2A; X &#x4E0D;&#x4F1A;&#x8BBE;&#x7F6E; uid &#x548C; gid &#x4F4D;&#xFF0C;&#x56E0;&#x4E3A; system &#x6CA1;&#x6709;&#x8C03;&#x7528; setuid &#x548C; setgid &#x63A5;&#x53E3;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4; X &#x7684;&#x6709;&#x6548;&#x7528;&#x6237; ID &#x662F; 0 (root)&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x4F7F;&#x7528; system &#x65F6;&#x9700;&#x8981;&#x7279;&#x522B;&#x5C0F;&#x5FC3;&#x3002;
 &#x539F;&#x7406;&#x662F;&#xFF1A;</p>
 <pre><code>// main.cc
 #include &lt;cstdio&gt;
 #include &lt;cstdlib&gt;
+
 int main(int argc, char* const argv[]) {
     system(argv[1]);
     return 0;
@@ -2985,6 +2985,7 @@ int main(int argc, char* const argv[]) {
 // echo.cc
 #include &lt;unistd.h&gt;
 #include &lt;cstdio&gt;
+
 int main() {
     printf(&quot;ruid=%d, euid=%d\n&quot;, getuid(), geteuid());
     return 0;
@@ -3020,10 +3021,10 @@ int main() {
 [root@localhost doc]# exit
 exit
 [dirlt@localhost.localdomain]$ ./main  ./echo
-ruid=500, euid=500 // &#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#x3002;&#x5982;&#x679C;&#x6309;&#x7167;&#x4E0A;&#x9762;&#x9610;&#x8FF0;&#xFF0C;&#x5E94;&#x8BE5; euid &#x7B49;&#x4E8E; 0
+ruid=500, euid=500 // &#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#x3002;&#x5982;&#x679C;&#x6309;&#x7167;&#x4E0A;&#x9762;&#x9610;&#x8FF0;&#xFF0C;euid &#x5E94;&#x8BE5;&#x7B49;&#x4E8E; 0
 [dirlt@localhost.localdomain]$
 </code></pre><p>&#x2003;&#x2003;
-&#x5BF9;&#x4E8E; bash2 &#x4EE5;&#x4E0A;&#x7248;&#x672C;&#x4FEE;&#x590D;&#x4E86;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;
+bash2 &#x4EE5;&#x4E0A;&#x7248;&#x672C;&#x4FEE;&#x590D;&#x4E86;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;
 &#x56DE;&#x60F3;&#x4E00;&#x4E0B; system &#x8C03;&#x7528;&#x7684;&#x662F; /bin/sh &#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#xFF0C;&#x5982;&#x679C; /bin/sh &#x53D1;&#x73B0;&#x6709;&#x6548;&#x7528;&#x6237;&#x548C;&#x5B9E;&#x9645;&#x7528;&#x6237;&#x4E0D;&#x5339;&#x914D;&#xFF0C;&#x4F1A;&#x5C06;&#x6709;&#x6548;&#x7528;&#x6237;&#x8BBE;&#x7F6E;&#x6210;&#x4E3A;&#x5B9E;&#x9645;&#x7528;&#x6237;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x4E3A;&#x4E86;&#x9A8C;&#x8BC1;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x60C5;&#x51B5;</p>
@@ -3033,6 +3034,7 @@ ruid=500, euid=500 // &#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x91CC;&#x5E76;&#x6CA1;&#
 #include &lt;sys/types.h&gt;
 #include &lt;sys/wait.h&gt;
 #include &lt;unistd.h&gt;
+
 int main(int argc, char* const argv[]) {
     pid_t pid = fork();
     if(pid == 0) {

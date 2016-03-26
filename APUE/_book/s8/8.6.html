@@ -53,7 +53,7 @@
         data-chapter-title="更改用户 ID 和组 ID"
         data-filepath="s8/8.6.md"
         data-basepath=".."
-        data-revision="Sat Mar 26 2016 14:49:12 GMT+0800 (CST)"
+        data-revision="Sat Mar 26 2016 16:02:48 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2949,6 +2949,7 @@
 <p>&#x2003;&#x2003;
 &#x6240;&#x6D89;&#x53CA;&#x7684;&#x51FD;&#x6570;&#x5305;&#x62EC;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#xFF1A;</p>
 <pre><code>#include &lt;unistd.h&gt;
+
 int setuid(uid_t uid);
 int setgid(gid_t gid);
 // r for real
@@ -2958,10 +2959,9 @@ int setregid(gid_t rgid, gid_t egid);
 int seteuid(uid_t uid);
 int setegid(gid_t gid);
 </code></pre><p>&#x2003;&#x2003;
-&#x7EC4; id &#x548C;&#x7528;&#x6237; id &#x5728;&#x5904;&#x7406;&#x903B;&#x8F91;&#x4E0A;&#x9762;&#x662F;&#x7B49;&#x4EF7;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x8BF4;&#x660E;&#x5BF9;&#x4E8E; uid &#x7684;&#x5904;&#x7406;&#x3002;</p>
+&#x7EC4; id &#x548C;&#x7528;&#x6237; id &#x5728;&#x5904;&#x7406;&#x903B;&#x8F91;&#x4E0A;&#x662F;&#x7B49;&#x4EF7;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x8BF4;&#x660E;&#x5BF9; uid &#x7684;&#x5904;&#x7406;&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x6709;&#x5FC5;&#x8981;&#x89E3;&#x91CA;&#x4FDD;&#x5B58;&#x8BBE;&#x7F6E;&#x7528;&#x6237; ID &#x7684;&#x4F5C;&#x7528;&#x3002;
-&#x4FDD;&#x5B58;&#x8BBE;&#x7F6E;&#x7528;&#x6237; ID &#x5224;&#x65AD;&#x662F;&#x5426;&#x5B58;&#x5728;&#x662F;&#x7528; _SC_SAVED_IDS &#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x3002;
+&#x4FDD;&#x5B58;&#x8BBE;&#x7F6E;&#x7528;&#x6237; ID &#x5224;&#x65AD;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4F7F;&#x7528; _SC_SAVED_IDS &#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x3002;
 &#x5047;&#x8BBE;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F; aaa&#xFF0C;&#x7528;&#x6237;&#x662F; dirlt&#xFF0C;aaa &#x7684; owner &#x662F; root &#x5E76;&#x4E14;&#x8BBE;&#x7F6E;&#x4E86;&#x8BBE;&#x7F6E; uid &#x4F4D;&#x3002;
 &#x5F53; exec &#x8FD9;&#x4E2A; aaa &#x7A0B;&#x5E8F;&#xFF0C;ruid &#x7B49;&#x4E8E; dirlt&#xFF0C;euid &#x7B49;&#x4E8E; root&#x3002;
 &#x56E0;&#x4E3A; ruid &#x7B49;&#x4E8E; dirlt&#xFF0C;euid &#x7B49;&#x4E8E; root&#xFF0C;&#x5982;&#x679C;&#x8FDB;&#x884C;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;seteuid &#x4FEE;&#x6539;&#x6709;&#x6548;&#x7528;&#x6237; id &#x4E3A; dirlt &#x662F;&#x5141;&#x8BB8;&#x7684;&#xFF0C;&#x56E0;&#x4E3A; ruid &#x5C31;&#x662F; dirlt&#x3002;
@@ -2969,7 +2969,7 @@ int setegid(gid_t gid);
 &#x7CFB;&#x7EDF;&#x4E0D;&#x53EF;&#x80FD;&#x518D;&#x53BB;&#x8BFB;&#x53D6;&#x4E00;&#x6B21;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x6C42;&#x5185;&#x6838;&#x672C;&#x8EAB;&#x5C31;&#x4FDD;&#x5B58;&#x4E00;&#x4E2A;&#x8BBE;&#x7F6E;&#x7528;&#x6237; id&#x3002;
 &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8BBE;&#x7F6E;&#x7528;&#x6237; id &#x901A;&#x5E38;&#x4FDD;&#x5B58;&#x7684;&#x5185;&#x5BB9;&#x5C31;&#x662F;&#x7B2C;&#x4E00;&#x6B21; exec &#x6587;&#x4EF6;&#x4F7F;&#x7528;&#x7684; euid&#x3002;</p>
 <p>&#x2003;&#x2003;
-&#x5BF9;&#x4E8E; setuid(uid) &#x884C;&#x4E3A;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+setuid(uid) &#x884C;&#x4E3A;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
 <ul>
 <li>&#x5982;&#x679C;&#x662F;&#x8D85;&#x7EA7;&#x7528;&#x6237;&#x8FDB;&#x7A0B;&#xFF0C;&#x90A3;&#x4E48; ruid &#x7B49;&#x4E8E; uid&#xFF0C;euid &#x7B49;&#x4E8E; uid&#xFF0C;saved_id &#x7B49;&#x4E8E; uid</li>
 <li>&#x5982;&#x679C;&#x4E0D;&#x662F;&#x8D85;&#x7EA7;&#x7528;&#x6237;&#x8FDB;&#x7A0B;&#xFF0C;&#x5982;&#x679C; uid &#x7B49;&#x4E8E;&#x5B9E;&#x9645;&#x7528;&#x6237; id &#x6216;&#x662F;&#x4FDD;&#x5B58;&#x8BBE;&#x7F6E; id&#xFF0C;&#x90A3;&#x4E48; euid &#x7B49;&#x4E8E; uid</li>

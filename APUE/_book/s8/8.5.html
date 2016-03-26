@@ -53,7 +53,7 @@
         data-chapter-title="exec 函数"
         data-filepath="s8/8.5.md"
         data-basepath=".."
-        data-revision="Sat Mar 26 2016 14:49:12 GMT+0800 (CST)"
+        data-revision="Sat Mar 26 2016 16:02:48 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2947,8 +2947,7 @@
                         <h1 id="85-exec-&#x51FD;&#x6570;">8.5 exec &#x51FD;&#x6570;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-exec &#x51FD;&#x6570;&#x5E76;&#x4E0D;&#x521B;&#x5EFA;&#x4EFB;&#x4F55;&#x65B0;&#x8FDB;&#x7A0B;&#xFF0C;&#x6240;&#x4EE5;&#x524D;&#x540E;&#x8FDB;&#x7A0B;&#x5173;&#x7CFB;&#x662F;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x4EFB;&#x4F55;&#x6539;&#x53D8;&#x3002;
-exec &#x6240;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x5C31;&#x662F;&#x66FF;&#x6362;&#x5F53;&#x524D;&#x6B63;&#x6587;&#x6BB5;&#x3001;&#x6570;&#x636E;&#x3001;&#x5806;&#x548C;&#x6808;&#x3002;
+exec &#x51FD;&#x6570;&#x5E76;&#x4E0D;&#x521B;&#x5EFA;&#x4EFB;&#x4F55;&#x65B0;&#x8FDB;&#x7A0B;&#xFF0C;&#x6240;&#x4EE5;&#x524D;&#x540E;&#x8FDB;&#x7A0B;&#x5173;&#x7CFB;&#x662F;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x4EFB;&#x4F55;&#x6539;&#x53D8;&#xFF0C;exec &#x6240;&#x505A;&#x7684;&#x5C31;&#x662F;&#x66FF;&#x6362;&#x5F53;&#x524D;&#x6B63;&#x6587;&#x6BB5;&#x3001;&#x6570;&#x636E;&#x3001;&#x5806;&#x548C;&#x6808;&#x3002;
 exec &#x65CF;&#x51FD;&#x6570;&#x5305;&#x62EC;&#xFF1A;</p>
 <pre><code>int execl(const char* pathname, const char* arg0, ...);     // end with NULL
 int execv(const char* pathname, char* const argv[]);        // end with NULL
@@ -2960,7 +2959,7 @@ int execvp(const char* filename, char* const argv[]);       // end with NULL
 exec &#x5982;&#x679C;&#x4F20;&#x5165;&#x7684;&#x662F; filename&#xFF0C;&#x90A3;&#x4E48;&#xFF1A;</p>
 <ul>
 <li>&#x5982;&#x679C;&#x5305;&#x542B; /&#xFF0C;&#x90A3;&#x4E48;&#x8BA4;&#x4E3A;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x8DEF;&#x5F84;&#x540D; pathname</li>
-<li>&#x5426;&#x5219;&#x5728; PATH &#x73AF;&#x5883;&#x53D8;&#x91CF;&#x91CC;&#x9762;&#x67E5;&#x627E;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;</li>
+<li>&#x5426;&#x5219;&#x5728; PATH &#x73AF;&#x5883;&#x53D8;&#x91CF;&#x91CC;&#x67E5;&#x627E;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;</li>
 <li>&#x5982;&#x679C;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E0D;&#x662F;&#x94FE;&#x63A5;&#x5668;&#x4EA7;&#x751F;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A; shell &#x6587;&#x4EF6;&#xFF0C;&#x4F7F;&#x7528; /bin/sh &#x6267;&#x884C;</li>
 </ul>
 <p>&#x2003;&#x2003;

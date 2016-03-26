@@ -53,7 +53,7 @@
         data-chapter-title="_exit 函数"
         data-filepath="s8/8.3.md"
         data-basepath=".."
-        data-revision="Sat Mar 26 2016 14:49:12 GMT+0800 (CST)"
+        data-revision="Sat Mar 26 2016 16:02:48 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2952,11 +2952,12 @@ _exit &#x51FD;&#x6570;&#x53C2;&#x6570;&#x662F;&#x9000;&#x51FA;&#x72B6;&#x6001;&#
 <p>&#x2003;&#x2003;
 &#x5982;&#x679C;&#x7236;&#x8FDB;&#x7A0B;&#x5728;&#x5B50;&#x8FDB;&#x7A0B;&#x4E4B;&#x524D;&#x7ED3;&#x675F;&#xFF0C;&#x5185;&#x6838;&#x5982;&#x4F55;&#x5C06;&#x7EC8;&#x6B62;&#x72B6;&#x6001;&#x4F20;&#x56DE;&#x7ED9;&#x7236;&#x8FDB;&#x7A0B;&#x5462;&#xFF1F;
 &#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5B50;&#x8FDB;&#x7A0B;&#x5DF2;&#x7ECF;&#x6CA1;&#x6709;&#x7236;&#x8FDB;&#x7A0B;&#x6210;&#x4E3A;&#x4E86;&#x5B64;&#x513F;&#x8FDB;&#x7A0B;&#x3002;
-&#x5BF9;&#x4E8E;&#x5B64;&#x513F;&#x8FDB;&#x7A0B;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x4FEE;&#x6539;&#x8FD9;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x7236;&#x8FDB;&#x7A0B;&#x4E3A; init &#x8FDB;&#x7A0B;&#xFF0C;&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;&#x5927;&#x81F4;&#x5982;&#x4E0B;&#xFF1A;&#x6BCF;&#x5F53;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7EC8;&#x6B62;&#x65F6;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x9010;&#x4E2A;&#x68C0;&#x67E5;&#x6240;&#x6709;&#x6D3B;&#x52A8;&#x8FDB;&#x7A0B;&#xFF0C;&#x4EE5;&#x5224;&#x65AD;&#x5B83;&#x662F;&#x5426;&#x9700;&#x8981;&#x662F;&#x6B63;&#x8981;&#x7EC8;&#x6B62;&#x8FDB;&#x7A0B;&#x7684;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x5982;&#x679C;&#x662F;&#xFF0C;&#x4FEE;&#x6539; ppid &#x4E3A; 1&#x3002;</p>
+&#x5BF9;&#x4E8E;&#x5B64;&#x513F;&#x8FDB;&#x7A0B;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x4FEE;&#x6539;&#x8FD9;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x7236;&#x8FDB;&#x7A0B;&#x4E3A; init &#x8FDB;&#x7A0B;&#xFF0C;&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;&#x5927;&#x81F4;&#x5982;&#x4E0B;&#xFF1A;&#x6BCF;&#x5F53;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7EC8;&#x6B62;&#x65F6;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x9010;&#x4E2A;&#x68C0;&#x67E5;&#x6240;&#x6709;&#x6D3B;&#x52A8;&#x8FDB;&#x7A0B;&#xFF0C;&#x4EE5;&#x5224;&#x65AD;&#x5B83;&#x662F;&#x5426;&#x662F;&#x9700;&#x8981;&#x7EC8;&#x6B62;&#x8FDB;&#x7A0B;&#x7684;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x5982;&#x679C;&#x662F;&#xFF0C;&#x4FEE;&#x6539; ppid &#x4E3A; 1&#x3002;</p>
 <pre><code>#include &lt;sys/types.h&gt;
 #include &lt;unistd.h&gt;
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
+
 int main() {
     int env = 0;
     pid_t pid = fork();
@@ -2975,14 +2976,15 @@ int main() {
 </code></pre><p>&#x2003;&#x2003;
 &#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x5B50;&#x8FDB;&#x7A0B;&#x5728;&#x7236;&#x8FDB;&#x7A0B;&#x4E4B;&#x524D;&#x7ED3;&#x675F;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B;&#x5982;&#x4F55;&#x6765;&#x83B7;&#x5F97;&#x5B50;&#x8FDB;&#x7A0B;&#x7684;&#x7EC8;&#x6B62;&#x72B6;&#x6001;&#x5462;&#xFF1F;
 &#x5185;&#x6838;&#x4E3A;&#x6BCF;&#x4E2A;&#x7EC8;&#x6B62;&#x5B50;&#x8FDB;&#x7A0B;&#x4FDD;&#x5B58;&#x4E86;&#x4E00;&#x5B9A;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B;&#x8C03;&#x7528; wait/waitpid &#x5C31;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#x8FDB;&#x7A0B; ID&#x3001;&#x7EC8;&#x6B62;&#x72B6;&#x6001;&#x4EE5;&#x53CA;&#x5360;&#x7528; CPU &#x65F6;&#x95F4;&#x3002;
-&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x7EC8;&#x6B62;&#x4F46;&#x662F;&#x7236;&#x8FDB;&#x7A0B;&#x5C1A;&#x672A;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x6210;&#x4E3A;&#x50F5;&#x6B7B;&#x8FDB;&#x7A0B; (zombie)&#x3002;
-&#x800C;&#x5982;&#x679C;&#x5B50;&#x8FDB;&#x7A0B;&#x53D8;&#x6210;&#x5B64;&#x513F;&#x8FDB;&#x7A0B;&#x7531; init &#x6258;&#x7BA1;&#x540E;&#x662F;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;&#x50F5;&#x6B7B;&#x8FDB;&#x7A0B;&#x7684;&#xFF0C;&#x56E0;&#x4E3A; init &#x5185;&#x90E8;&#x4F1A;&#x901A;&#x8FC7; wait &#x6765;&#x5904;&#x7406;&#x3002;</p>
+&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x7EC8;&#x6B62;&#x4F46;&#x662F;&#x7236;&#x8FDB;&#x7A0B;&#x5C1A;&#x672A;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x6210;&#x4E3A;&#x50F5;&#x5C38;&#x8FDB;&#x7A0B; (zombie)&#x3002;
+&#x5B50;&#x8FDB;&#x7A0B;&#x53D8;&#x6210;&#x5B64;&#x513F;&#x8FDB;&#x7A0B;&#x7531; init &#x6258;&#x7BA1;&#x540E;&#x662F;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;&#x50F5;&#x5C38;&#x8FDB;&#x7A0B;&#x7684;&#xFF0C;&#x56E0;&#x4E3A; init &#x5185;&#x90E8;&#x4F1A;&#x901A;&#x8FC7; wait &#x6765;&#x5904;&#x7406;&#x3002;</p>
 <pre><code>#include &lt;sys/types.h&gt;
 #include &lt;unistd.h&gt;
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
+
 int main() {
-    // &#x521B;&#x5EFA; 10 &#x4E2A;&#x50F5;&#x6B7B;&#x8FDB;&#x7A0B;
+    // &#x521B;&#x5EFA; 10 &#x4E2A;&#x50F5;&#x5C38;&#x8FDB;&#x7A0B;
     int i = 0;
     for(i = 0; i &lt; 10; i++){
         if(fork() == 0) {
