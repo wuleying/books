@@ -53,7 +53,7 @@
         data-chapter-title="作业控制"
         data-filepath="s9/9.5.md"
         data-basepath=".."
-        data-revision="Sat Mar 26 2016 16:02:48 GMT+0800 (CST)"
+        data-revision="Sun Mar 27 2016 16:45:48 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2953,7 +2953,7 @@
 <li>SIGTSTP (Ctrl+Z)</li>
 <li>SIGINT (Ctrl+C)</li>
 <li>SIGQUIT (Ctrl+\)</li>
-<li>SIGHUP (&#x7EC8;&#x7AEF;&#x65AD;&#x5F00;&#x6216;&#x8005;&#x662F;&#x7F51;&#x7EDC;&#x65AD;&#x5F00;)</li>
+<li>SIGHUP (&#x7EC8;&#x7AEF;&#x65AD;&#x5F00;&#x6216;&#x662F;&#x7F51;&#x7EDC;&#x65AD;&#x5F00;)</li>
 <li>SIGCONT (fg&#xFF0C;&#x5C06;&#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x7EC4;&#x5207;&#x6362;&#x5230;&#x524D;&#x53F0;&#x8FDB;&#x7A0B;&#x7EC4;)</li>
 <li>SIGTTIN</li>
 <li>SIGTTOUT</li>
@@ -2964,7 +2964,7 @@
 &#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x8BF4;&#x8BF4; SIGTTIN &#x548C; SIGTTOUT &#x4FE1;&#x53F7;&#x3002;
 &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x7EC4;&#x5C1D;&#x8BD5;&#x8BFB;&#x53D6;&#x63A7;&#x5236;&#x7EC8;&#x7AEF;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A; SIGTTIN &#x4FE1;&#x53F7;&#xFF0C;&#x540E;&#x53F0;&#x4F5C;&#x4E1A;&#x4F1A;&#x505C;&#x6B62;&#xFF0C;shell &#x68C0;&#x6D4B;&#x5230;&#x540E;&#x53F0;&#x4F5C;&#x4E1A;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x901A;&#x77E5;&#x4F5C;&#x4E1A;&#x505C;&#x6B62;&#x3002;
 &#x540C;&#x6837;&#x5982;&#x679C;&#x51C6;&#x5907;&#x5199;&#x63A7;&#x5236;&#x7EC8;&#x7AEF;&#x4F1A;&#x4EA7;&#x751F; SIGTTOUT &#x4FE1;&#x53F7;&#xFF0C;&#x540E;&#x53F0;&#x4F5C;&#x4E1A;&#x4E5F;&#x4F1A;&#x88AB;&#x901A;&#x77E5;&#x505C;&#x6B62;&#x3002;
-&#x4E0D;&#x8FC7;&#x5927;&#x90E8;&#x5206;&#x60C5;&#x51B5;&#x662F;&#x4F5C;&#x4E1A;&#x4F1A;&#x76F4;&#x63A5;&#x5199;&#x5230;&#x7EC8;&#x7AEF;&#x4E0A;&#xFF0C;&#x800C; shell &#x4F1A;&#x663E;&#x793A;&#x540E;&#x53F0;&#x4F5C;&#x4E1A;&#x8FD0;&#x884C;&#x5B8C;&#x6BD5;&#x3002;
+&#x4E0D;&#x8FC7;&#x5927;&#x90E8;&#x5206;&#x60C5;&#x51B5;&#x4F5C;&#x4E1A;&#x4F1A;&#x76F4;&#x63A5;&#x5199;&#x5230;&#x7EC8;&#x7AEF;&#x4E0A;&#xFF0C;&#x800C; shell &#x4F1A;&#x663E;&#x793A;&#x540E;&#x53F0;&#x4F5C;&#x4E1A;&#x8FD0;&#x884C;&#x5B8C;&#x6BD5;&#x3002;
 &#x53EF;&#x4EE5;&#x7A0D;&#x5FAE;&#x8C03;&#x6574;&#x4E00;&#x4E0B;&#x63A7;&#x5236;&#x7EC8;&#x7AEF;&#x884C;&#x4E3A;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x6837;&#x7684;&#x7ED3;&#x679C;&#xFF1A;</p>
 <pre><code>[zhangyan@tc-cm-et18.tc.baidu.com]$ cat &gt; tmp.txt &amp;
 [2] 30493 // &#x6302;&#x8D77;
@@ -3003,7 +3003,7 @@ int main() {
     return 0;
 }
 </code></pre><p>&#x2003;&#x2003;
-&#x56E0;&#x4E3A; getppid() &#x4E3A; shell &#x7684; pid&#xFF0C;&#x5F53;&#x8BBE;&#x7F6E;&#x4E3A;&#x524D;&#x53F0;&#x8FDB;&#x7A0B;&#x65F6;&#xFF0C;&#x7EE7;&#x7EED;&#x4ECE; stdin &#x8BFB;&#x53D6;&#x5C31;&#x4F1A;&#x4EA7;&#x751F; SIGTTIN &#x4FE1;&#x53F7;&#xFF0C;&#x7136;&#x540E; stop &#x6389;&#xFF0C;&#x901A;&#x77E5;&#x5230;&#x7236;&#x8FDB;&#x7A0B; shell&#xFF0C;&#x7136;&#x540E; shell &#x544A;&#x8BC9;&#x901A;&#x77E5;&#x5B50;&#x8FDB;&#x7A0B;&#x505C;&#x6B62;&#x4E86;&#x3002;</p>
+&#x56E0;&#x4E3A; getppid() &#x4E3A; shell &#x7684; pid&#xFF0C;&#x5F53;&#x8BBE;&#x7F6E;&#x4E3A;&#x524D;&#x53F0;&#x8FDB;&#x7A0B;&#x65F6;&#xFF0C;&#x7EE7;&#x7EED;&#x4ECE; stdin &#x8BFB;&#x53D6;&#x5C31;&#x4F1A;&#x4EA7;&#x751F; SIGTTIN &#x4FE1;&#x53F7; stop &#x6389;&#xFF0C;&#x901A;&#x77E5;&#x5230;&#x7236;&#x8FDB;&#x7A0B; shell&#xFF0C;&#x7136;&#x540E; shell &#x544A;&#x8BC9;&#x901A;&#x77E5;&#x5B50;&#x8FDB;&#x7A0B;&#x505C;&#x6B62;&#x4E86;&#x3002;</p>
 <pre><code>[dirlt@localhost.localdomain]$ ./a.out
 
 [2]+  Stopped                 ./a.out
