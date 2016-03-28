@@ -53,7 +53,7 @@
         data-chapter-title="sigsetjmp/siglongjmp"
         data-filepath="s10/10.7.3.md"
         data-basepath=".."
-        data-revision="Sun Mar 27 2016 16:45:48 GMT+0800 (CST)"
+        data-revision="Mon Mar 28 2016 11:51:12 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2950,6 +2950,7 @@
 setjmp &#x548C; longjmp &#x5E76;&#x6CA1;&#x6709;&#x89C4;&#x5B9A;&#x5982;&#x4F55;&#x6765;&#x5904;&#x7406;&#x4FE1;&#x53F7;&#x5C4F;&#x853D;&#x5B57;&#x3002;</p>
 <pre><code>int sigsetjmp(sigjmp_buf env, int savemask); // &#x662F;&#x5426;&#x4FDD;&#x5B58;&#x4FE1;&#x53F7;&#x5C4F;&#x853D;&#x5B57;
 int siglongjmp(sigjmp_buf, int val);
+
 #include &lt;unistd.h&gt;
 #include &lt;setjmp.h&gt;
 #include &lt;signal.h&gt;
@@ -2977,7 +2978,7 @@ int main() {
 <pre><code>[zhangyan@tc-cm-et18.tc.baidu.com]$ kill -s SIGUSR1 28591
 SIGUSR1 masked=1
 </code></pre><p>&#x2003;&#x2003;
-&#x5982;&#x679C;&#x4FEE;&#x6539;&#x79F0;&#x4E3A; sig &#x7248;&#x672C;&#xFF1A;</p>
+&#x5982;&#x679C;&#x4FEE;&#x6539;&#x4E3A; sig &#x7248;&#x672C;&#xFF1A;</p>
 <pre><code>sigjmp_buf env;
 void handler(int signo) {
     siglongjmp(env, 1);
