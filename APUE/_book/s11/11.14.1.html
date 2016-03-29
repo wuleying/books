@@ -53,7 +53,7 @@
         data-chapter-title="attr"
         data-filepath="s11/11.14.1.md"
         data-basepath=".."
-        data-revision="Tue Mar 29 2016 11:47:54 GMT+0800 (CST)"
+        data-revision="Tue Mar 29 2016 15:18:00 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2973,13 +2973,14 @@ pthread_attr_setschedparam
 pthread_attr_getschedpolicy
 pthread_attr_setschedpolicy
 </code></pre><p>&#x2003;&#x2003;
-inheritsched &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5982;&#x679C;&#x8C03;&#x7528; pthread_create &#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#xFF0C;&#x8C03;&#x5EA6;&#x7B56;&#x7565;&#x662F;&#x81EA;&#x5DF1;&#x663E;&#x793A;&#x8BBE;&#x7F6E;&#x8FD8;&#x662F;&#x7EE7;&#x627F;&#x4E8E;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x7684;&#x7EBF;&#x7A0B;&#x3002;
+inheritsched &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5982;&#x679C;&#x4F7F;&#x7528; pthread_create &#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#xFF0C;&#x8C03;&#x5EA6;&#x7B56;&#x7565;&#x662F;&#x81EA;&#x5DF1;&#x663E;&#x793A;&#x8BBE;&#x7F6E;&#x8FD8;&#x662F;&#x7EE7;&#x627F;&#x4E8E;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x7684;&#x7EBF;&#x7A0B;&#x3002;
 schedpolicy &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x8C03;&#x5EA6;&#x7B56;&#x7565;&#xFF0C;&#x800C; schedparam &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x8C03;&#x5EA6;&#x7B56;&#x7565;&#x6240;&#x6D89;&#x53CA;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4E0D;&#x8FC7;&#x4ECE;&#x73B0;&#x5728;&#x6587;&#x4EF6;&#x91CC;&#x53EA;&#x6709; priority &#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x3002;
 &#x8C03;&#x5EA6;&#x7B56;&#x7565;&#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#xFF1A;</p>
-<pre><code>SCHED_FIFO
-SCHED_RR
-SCHED_SPORADIC
-</code></pre><p>&#x2003;&#x2003;</p>
+<ul>
+<li>SCHED_FIFO</li>
+<li>SCHED_RR</li>
+<li>SCHED_SPORADIC</li>
+</ul>
 <pre><code>// /usr/include/bits/sched.h
 struct sched_param {
     int __sched_priority;
@@ -2993,8 +2994,8 @@ pthread_attr_getscope
 <pre><code>PTHREAD_SCOPE_SYSTEM    // signifying system scheduling contention scope
 PTHREAD_SCOPE_PROCESS   // signifying process scheduling contention scope
 </code></pre><p>&#x2003;&#x2003;
-process contention scope &#x662F;&#x6307;&#x5404;&#x4E2A;&#x7EBF;&#x7A0B;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E2D;&#x7ADE;&#x4E89;&#x88AB;&#x8C03;&#x5EA6;&#x7684; CPU &#x65F6;&#x95F4;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x548C;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x7ADE;&#x4E89;&#x3002;
-system contention scope &#x662F;&#x53EA;&#x7EBF;&#x7A0B;&#x76F4;&#x63A5;&#x548C;&#x7CFB;&#x7EDF;&#x8303;&#x56F4;&#x5185;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x7ADE;&#x4E89;&#xFF0C;&#x800C;&#x4E0D;&#x8BBA;&#x5B83;&#x4EEC;&#x548C;&#x4EC0;&#x4E48;&#x8FDB;&#x7A0B;&#x5173;&#x8054;&#x3002;</p>
+process contention scope &#x662F;&#x6307;&#x5404;&#x4E2A;&#x7EBF;&#x7A0B;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E2D;&#x7ADE;&#x4E89;&#x88AB;&#x8C03;&#x5EA6;&#x7684; CPU &#x65F6;&#x95F4;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x548C;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x7ADE;&#x4E89;&#x3002;
+system contention scope &#x662F;&#x6307;&#x7EBF;&#x7A0B;&#x76F4;&#x63A5;&#x548C;&#x7CFB;&#x7EDF;&#x8303;&#x56F4;&#x5185;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x7ADE;&#x4E89;&#xFF0C;&#x800C;&#x4E0D;&#x8BBA;&#x5B83;&#x4EEC;&#x548C;&#x4EC0;&#x4E48;&#x8FDB;&#x7A0B;&#x5173;&#x8054;&#x3002;</p>
 <p>&#x2003;&#x2003;
 <strong>(6) stack</strong></p>
 <pre><code>pthread_attr_getstack
