@@ -53,7 +53,7 @@
         data-chapter-title="实现"
         data-filepath="s13/13.2.2.md"
         data-basepath=".."
-        data-revision="Wed Mar 30 2016 11:27:55 GMT+0800 (CST)"
+        data-revision="Wed Mar 30 2016 14:37:11 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2947,13 +2947,13 @@
                         <h1 id="1322-&#x5B9E;&#x73B0;">13.2.2 &#x5B9E;&#x73B0;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x5B9E;&#x73B0;&#x4E0A;&#x6240;&#x6709;&#x7684;&#x9501;&#x90FD;&#x662F;&#x6302;&#x5728;&#x5728; v &#x8282;&#x70B9;&#x8868;&#x4E4B;&#x540E;&#xFF0C;&#x4EE5;&#x94FE;&#x8868;&#x5F62;&#x5F0F;&#x6302;&#x63A5;&#xFF1A;</p>
+&#x5B9E;&#x73B0;&#x4E0A;&#x6240;&#x6709;&#x7684;&#x9501;&#x90FD;&#x662F;&#x6302;&#x8F7D;&#x5728; v &#x8282;&#x70B9;&#x8868;&#x4E4B;&#x540E;&#xFF0C;&#x4EE5;&#x94FE;&#x8868;&#x5F62;&#x5F0F;&#x6302;&#x63A5;&#xFF1A;</p>
 <pre><code>struct lockf {
-    struct  lockf* next;
+    struct  lockf* next;    // &#x540E;&#x7EED;&#x8282;&#x70B9;
     flag_t  flag;           // &#x6807;&#x8BC6;
     off_t   start;          // &#x8D77;&#x59CB;&#x504F;&#x79FB;&#x91CF;
     off_t   len;            // &#x957F;&#x5EA6;
-    pid_t   pid;            // &#x662F;&#x4EC0;&#x4E48;&#x8FDB;&#x7A0B;&#x5C1D;&#x8BD5;&#x9501;&#x4F4F;&#x6587;&#x4EF6;
+    pid_t   pid;            // &#x5C1D;&#x8BD5;&#x9501;&#x4F4F;&#x6587;&#x4EF6;&#x7684;&#x8FDB;&#x7A0B; id
 };
 </code></pre><p>&#x2003;&#x2003;
 &#x9501;&#x91CC;&#x4FDD;&#x5B58;&#x4E86;&#x662F;&#x4EC0;&#x4E48;&#x8FDB;&#x7A0B;&#x9501;&#x4F4F;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x5B50;&#x8FDB;&#x7A0B;&#x5E76;&#x4E0D;&#x80FD;&#x591F;&#x7EE7;&#x627F;&#x7236;&#x8FDB;&#x7A0B;&#x7684;&#x9501;&#xFF0C;&#x800C; exec &#x53EF;&#x4EE5;&#x3002;</p>
