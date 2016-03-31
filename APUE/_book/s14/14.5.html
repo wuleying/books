@@ -53,7 +53,7 @@
         data-chapter-title="信号量"
         data-filepath="s14/14.5.md"
         data-basepath=".."
-        data-revision="Wed Mar 30 2016 14:37:11 GMT+0800 (CST)"
+        data-revision="Thu Mar 31 2016 11:36:57 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -2947,8 +2947,8 @@
                         <h1 id="145-&#x4FE1;&#x53F7;&#x91CF;">14.5 &#x4FE1;&#x53F7;&#x91CF;</h1>
 <hr>
 <p>&#x2003;&#x2003;
-&#x4FE1;&#x53F7;&#x91CF;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x8FDB;&#x884C;&#x591A;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x540C;&#x6B65;&#x3002;
-&#x901A;&#x5E38;&#x9488;&#x5BF9;&#x8D44;&#x6E90;&#x63D0;&#x4F9B;&#x7C7B;&#x4F3C;&#x4E8E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x91CC;&#x9762;&#x63D0;&#x5230;&#x7684; PV &#x64CD;&#x4F5C;&#x3002;
+&#x4FE1;&#x53F7;&#x91CF;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x591A;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x540C;&#x6B65;&#x3002;
+&#x901A;&#x5E38;&#x9488;&#x5BF9;&#x8D44;&#x6E90;&#x63D0;&#x4F9B;&#x7C7B;&#x4F3C;&#x4E8E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x91CC;&#x7684; PV &#x64CD;&#x4F5C;&#x3002;
 &#x4E0D;&#x8FC7; XSI &#x7684;&#x4FE1;&#x53F7;&#x91CF;&#x8981;&#x590D;&#x6742;&#x5F97;&#x591A;&#xFF0C;XSI &#x7684;&#x4FE1;&#x53F7;&#x91CF;&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x4FE1;&#x53F7;&#x96C6;&#x5408;&#x3002;
 &#x6BCF;&#x4E00;&#x4E2A;&#x4FE1;&#x53F7;&#x91CF;&#x96C6;&#x90FD;&#x6709;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x7684;&#x4FE1;&#x606F;&#x7ED3;&#x6784;&#xFF1A;</p>
 <pre><code>/* Data structure describing a set of semaphores.  */
@@ -2974,12 +2974,14 @@ struct semid_ds {
 &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0B;&#x9762;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#x90FD;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x6216;&#x662F;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x3002;
 &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4FE1;&#x53F7;&#x91CF;&#x96C6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF1A;</p>
 <pre><code>#include &lt;sys/sem.h&gt;
+
 int semget(key_t key, int nsems, int flag);
 </code></pre><p>&#x2003;&#x2003;
 &#x5176;&#x4E2D; nsems &#x8868;&#x793A;&#x60F3;&#x8981;&#x521B;&#x5EFA;&#x7684;&#x4FE1;&#x53F7;&#x91CF;&#x96C6;&#x5408;&#x4E2A;&#x6570;&#xFF0C;&#x800C; flag &#x542B;&#x4E49;&#x548C;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E00;&#x6837;&#x5141;&#x8BB8; IPC_CREAT &#x548C; IPC_EXCL&#xFF0C;&#x4F4E; 9 &#x4F4D;&#x4E3A;&#x6743;&#x9650;&#x3002;</p>
 <p>&#x2003;&#x2003;
 &#x63A7;&#x5236;&#x8FD9;&#x4E2A;&#x4FE1;&#x53F7;&#x96C6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF1A;</p>
 <pre><code>#include &lt;sys/sem.h&gt;
+
 union semun {
    int              val;
    struct semid_ds *buf;
@@ -3001,8 +3003,9 @@ GETZCNT     // +semnum&#xFF0C;&#x5F97;&#x5230;&#x7B49;&#x5F85;&#x8D44;&#x6E90;&#
 GETALL      // +array &#x5F97;&#x5230;&#x6240;&#x6709;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x8D44;&#x6E90;&#x4E2A;&#x6570;
 SETALL      // +array &#x8BBE;&#x7F6E;&#x6240;&#x6709;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x8D44;&#x6E90;&#x4E2A;&#x6570;
 </code></pre><p>&#x2003;&#x2003;
-&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x662F;&#x64CD;&#x4F5C;&#x4FE1;&#x53F7;&#x91CF;&#x96C6;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x5141;&#x8BB8;&#x6279;&#x91CF;&#x64CD;&#x4F5C;&#x4FE1;&#x53F7;&#x96C6;&#x5E76;&#x4E14;&#x4EE5;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x65B9;&#x5F0F;&#x5B8C;&#x6210;&#x3002;</p>
+&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x662F;&#x64CD;&#x4F5C;&#x4FE1;&#x53F7;&#x91CF;&#x96C6;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x5141;&#x8BB8;&#x6279;&#x91CF;&#x64CD;&#x4F5C;&#x4FE1;&#x53F7;&#x96C6;&#x5E76;&#x4EE5;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x65B9;&#x5F0F;&#x5B8C;&#x6210;&#x3002;</p>
 <pre><code>#include &lt;sys/sem.h&gt;
+
 struct sembuf {
     unsigned short sem_num; // number index in sem set
     short sem_op;           // &#x5927;&#x4E8E;&#x3001;&#x5C0F;&#x4E8E;&#x6216;&#x7B49;&#x4E8E; 0
@@ -3011,9 +3014,8 @@ struct sembuf {
 
 int semop(int semid, struct sembuf semoparray[], size_t nops);
 </code></pre><p>&#x2003;&#x2003;
-&#x8BED;&#x4E49;&#x5C31;&#x662F;&#x8FDB;&#x884C;&#x6BCF;&#x4E2A; semoparry &#x91CC;&#x9762;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5E76;&#x4E14;&#x4EE5;&#x539F;&#x5B50;&#x65B9;&#x5F0F;&#x64CD;&#x4F5C;&#x3002;
-sem_num &#x8868;&#x793A;&#x64CD;&#x4F5C;&#x7B2C;&#x51E0;&#x4E2A;&#x4FE1;&#x53F7;&#x91CF;&#x3002;
-&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x89E3;&#x91CA;&#x4E00;&#x4E0B; sem_op &#x548C; sem_flag&#xFF0C;&#x9996;&#x5148;&#x5982;&#x679C; sem_flag &#x6307;&#x5B9A;&#x4E3A; SEM_UNDO&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A; sem_op &#x505A;&#x4E86;&#x53D6;&#x53CD;&#xFF0C;SEM_UNDO &#x662F;&#x64A4;&#x9500;&#x521A;&#x624D;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+&#x8BED;&#x4E49;&#x5C31;&#x662F;&#x8FDB;&#x884C;&#x6BCF;&#x4E2A; semoparry &#x91CC;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5E76;&#x4E14;&#x4EE5;&#x539F;&#x5B50;&#x65B9;&#x5F0F;&#x64CD;&#x4F5C;&#xFF0C;sem_num &#x8868;&#x793A;&#x64CD;&#x4F5C;&#x7B2C;&#x51E0;&#x4E2A;&#x4FE1;&#x53F7;&#x91CF;&#x3002;
+&#x5982;&#x679C; sem_flag &#x6307;&#x5B9A;&#x4E3A; SEM_UNDO&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A; sem_op &#x505A;&#x4E86;&#x53D6;&#x53CD;&#xFF0C;SEM_UNDO &#x662F;&#x64A4;&#x9500;&#x521A;&#x624D;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
 <ul>
 <li>sem_op &#x5927;&#x4E8E; 0&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x91CA;&#x653E;&#x8D44;&#x6E90;</li>
 <li>sem_op &#x5C0F;&#x4E8E; 0&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x83B7;&#x53D6;&#x8D44;&#x6E90;<ul>
@@ -3040,7 +3042,7 @@ sem_num &#x8868;&#x793A;&#x64CD;&#x4F5C;&#x7B2C;&#x51E0;&#x4E2A;&#x4FE1;&#x53F7;
 </li>
 </ul>
 <p>&#x2003;&#x2003;
-&#x5176;&#x5B9E;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x63A5;&#x53E3;&#x8FD8;&#x662F;&#x975E;&#x5E38;&#x6613;&#x4E8E;&#x7406;&#x89E3;&#x7684;&#xFF0C;&#x4F46;&#x5374;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#xFF0C;&#x5F88;&#x5C11;&#x6709;&#x60C5;&#x51B5;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x591A;&#x4E2A;&#x4FE1;&#x53F7;&#x96C6;&#x3002;
+&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x63A5;&#x53E3;&#x8FD8;&#x662F;&#x975E;&#x5E38;&#x6613;&#x4E8E;&#x7406;&#x89E3;&#x7684;&#xFF0C;&#x5F88;&#x5C11;&#x6709;&#x60C5;&#x51B5;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x591A;&#x4E2A;&#x4FE1;&#x53F7;&#x96C6;&#x3002;
 &#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x901A;&#x8FC7;&#x4FE1;&#x53F7;&#x91CF;&#x6765;&#x540C;&#x6B65;&#x7236;&#x5B50;&#x8FDB;&#x7A0B;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
 <pre><code>#include &lt;unistd.h&gt;
 #include &lt;sys/sem.h&gt;
