@@ -27,5 +27,11 @@ do
     fi
 done
 
+cd $target_dir;
+pwd;
+
+#删除shell脚本文件
+rm `find . -name *.sh`;
+
 echo "OK."
 
